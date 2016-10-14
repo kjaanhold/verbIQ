@@ -13,6 +13,7 @@
 2. `print(arpabet["string"])`
 
 For example:
-print(arpabet["carpet"])
 
-[[u'K', u'AA1', u'R', u'P', u'AH0', u'T']]
+`print(arpabet["carpet"])`
+
+Returns: [[u'K', u'AA1', u'R', u'P', u'AH0', u'T']]
