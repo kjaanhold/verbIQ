@@ -199,6 +199,3 @@ def destress(syllab):
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
-
-
-print(syllabify('HELLO W ORL DIS'.split()))
