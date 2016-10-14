@@ -3,8 +3,8 @@
 `sudo pip install -U nltk`
 
 ## 2. Launch Python through terminal and type:
-`import nltk` 
+1. `import nltk` 
 
-`nltk.download()` 
+2. `nltk.download()` 
 
 ## 3. From the GUI that launched, go to corpora and install cmudict. 
