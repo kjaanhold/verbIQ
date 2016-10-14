@@ -12,12 +12,6 @@
 1. `arpabet = nltk.corpus.cmudict.dict()`
 2. `print(arpabet["string"])`
 
-For example:
-
-`print(arpabet["carpet"])`
-
-[[u'K', u'AA1', u'R', u'P', u'AH0', u'T']]
-
-## 5. Translate to arpabet using translator.py
+## 4. Translate to arpabet using translator.py
 
 Run it and follow the commands, prints out the input word in arpabet.
