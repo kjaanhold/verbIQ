@@ -16,4 +16,4 @@ For example:
 
 `print(arpabet["carpet"])`
 
-Returns: [[u'K', u'AA1', u'R', u'P', u'AH0', u'T']]
+[[u'K', u'AA1', u'R', u'P', u'AH0', u'T']]
