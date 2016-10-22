@@ -1,6 +1,6 @@
 ## 1. Clone this repository, in terminal:
-`cd ~/Desktop`
-`git clone git@github.com:kjaanhold/syllabify.git`
+1. `cd ~/Desktop`
+2. `git clone git@github.com:kjaanhold/syllabify.git`
 
 ## 2. Install nltk through terminal using:
 `sudo pip install -U nltk`
