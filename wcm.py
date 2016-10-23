@@ -13,7 +13,14 @@ VOICED_AF = {'V', 'DH', 'Z', 'ZH'}
 AF = {'F', 'TH', 'S', 'SH', 'CH'} | VOICED_AF
 
 # Ask for a word to score
-string = raw_input("Enter a word to score: ")
+strings = []
+def userInput():
+    string = raw_input("Enter a word to score (type Q once finished): ")
+    strings.append(string)
+    if string.lower() == "q":
+        strings.remove("q")
+        return strings
+    userInput()
 
 def translator(string):
     stringInArpabet = arpabet[string.lower()]
@@ -62,4 +69,7 @@ def wcm(phonemes, *sylab):
     return score
 
 # Call the function with input word
-print(wcm(string))
+userInput()
+for string in strings:
+    print(string + ": " + str(wcm(string)))
+
