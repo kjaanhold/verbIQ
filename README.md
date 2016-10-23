@@ -15,3 +15,4 @@
 `python wcm.py`
 
 After entering the word, the translation to ARPABET is done inside wcm.py, hence returning the score right away.
+One by one you can enter multiple words (input is asked until you type Q) 
