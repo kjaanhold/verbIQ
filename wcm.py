@@ -2,6 +2,7 @@
 
 from syllabify import syllabify
 import nltk
+import csv
 
 # Arpabet dictionary
 arpabet = nltk.corpus.cmudict.dict()
@@ -67,9 +68,3 @@ def wcm(phonemes, *sylab):
                                                                     # for each fricative and affricate (in addition to the point received
                                                                     # for #3)
     return score
-
-# Call the function with input word
-userInput()
-for string in strings:
-    print(string + ": " + str(wcm(string)))
-
