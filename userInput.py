@@ -1,5 +1,8 @@
 from wcm import *
 from numpy import *
+import pandas as pd
+import scipy.stats as stats
+from StringIO import StringIO
 
 # Define user inputs
 name = raw_input("Enter your kid's name: ")
@@ -15,24 +18,34 @@ for string in word_vector:
 
 print(" ")
 print("Your kid:")
-print("Average WCM score: " + str(mean(word_scores)))
-print("Maximum WCM score: " + str(max(word_scores)))
-print("Variance of WCM score: " + str(var(word_scores)))
+print("Average WCM score: " + str(round(mean(word_scores),3)))
+print("Maximum WCM score: " + str(round(max(word_scores),3)))
+print("Variance of WCM score: " + str(round(var(word_scores),3)))
 
 # Read in comparison data
-with open('output.csv', 'rb') as f:
-    reader = csv.reader(f)
-    word_list = list(reader)
+data = pd.read_csv('output.csv',dtype={'data_id':int,'age':int,'sex':object,'mom_ed':object,
+                                       'value':object,'item_id':object,'type':object,'category':object,
+                                       'definition':object,'score':int})
 
-sameage_scores = []
-for elem in range(1,len(word_list)):
-    if word_list[elem][1] == age:
-        sameage_scores.append(word_list[elem][9])
+# Subset of same age data
+sameage_data = data[data['age']==int(age)]
 
-sameage_scores = array(sameage_scores).astype(float)
+# Aggregate scores for each kid
+max_scores = (sameage_data.groupby('data_id')['score'].max()).values.tolist()
+avg_scores = (sameage_data.groupby('data_id')['score'].mean()).values.tolist()
+var_scores = (sameage_data.groupby('data_id')['score'].var()).values.tolist()
+
+# Aggregate scores for agegroup
+max_scores_age = sameage_data.groupby('age')['score'].max().values.tolist()
+avg_scores_age = sameage_data.groupby('age')['score'].mean().values.tolist()
+var_scores_age = sameage_data.groupby('age')['score'].var().values.tolist()
 
 print(" ")
-print("Average scores in this age: ")
-print("Average WCM score: " + str(mean(sameage_scores)))
-print("Maximum WCM score: " + str(max(sameage_scores)))
-print("Variance of WCM score: " + str(var(sameage_scores)))
+print("Average WCM score in this age: " + str(round(avg_scores_age[0],3)))
+print("Maximum WCM score in this age: " + str(round(max_scores_age[0],3)))
+print("Variance of WCM scores in this age: " + str(round(var_scores_age[0],3)))
+
+print(" ")
+print("Your kid's average WCM score is higher than " + str(round(stats.percentileofscore(avg_scores,mean(word_scores)),3)) + "% of others in same age!")
+print("Your kid's maximum WCM score is higher than " + str(round(stats.percentileofscore(max_scores,max(word_scores)),3)) + "% of others in same age!")
+#print("Your kid's variance of WCM score is higher than " + str(round(stats.percentileofscore(var_scores,var(word_scores)),3)) + "% of others in same age!")
