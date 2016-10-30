@@ -11,8 +11,6 @@
 
 ## 4. From the GUI that launched, go to corpora and install cmudict. 
 
-## 5. Run wcm.py (ie through terminal or IDE) 
-`python wcm.py`
+## 5. Run userInput.py and follow the commands
+`userInput.py`
 
-After entering the word, the translation to ARPABET is done inside wcm.py, hence returning the score right away.
-One by one you can enter multiple words (input is asked until you type Q) 
