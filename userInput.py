@@ -12,21 +12,21 @@ words = raw_input("Enter the words your kid spoke (separated by comma): ")
 # Add words to vector and score them
 word_vector = words.split(', ')
 word_scores = []
-unkown_words = []
+unknown_words = []
+
 
 for string in word_vector:
     try:
         word_scores.append(wcm(string))
     except:
-        unkown_words.append(word_vector.pop(word_vector.index(string)))
-
+        unknown_words.append(string)
 
 print(" ")
 print("Your kid:")
 print("Average WCM score: " + str(round(mean(word_scores),3)))
 print("Maximum WCM score: " + str(round(max(word_scores),3)))
 print("Variance of WCM score: " + str(round(var(word_scores),3)))
-print("Unkown words: " + str(''.join(str(e) for e in unkown_words)))
+print("Unkown words: " + str(', '.join(str(e) for e in unknown_words)))
 
 # Read in comparison data
 data = pd.read_csv('output.csv',dtype={'data_id':int,'age':int,'sex':object,'mom_ed':object,
