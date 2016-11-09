@@ -23,7 +23,10 @@ for word in word_vector:
 
 soundex_scores = []
 for key in words_meanings:
-    soundex_scores.append(soundex_distance(key,words_meanings[key]))
+    if not words_meanings[key]:
+        soundex_scores.append(0.0)
+    else:
+        soundex_scores.append(soundex_distance(key, words_meanings[key]))
 
 for string in words_meanings:
     if not words_meanings[string]:
