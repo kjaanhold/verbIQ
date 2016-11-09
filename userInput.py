@@ -9,20 +9,33 @@ from StringIO import StringIO
 # Define user inputs
 name = raw_input("Enter your kid's name: ")
 age = raw_input("Enter your kid's age (in months): ")
-words = raw_input("Enter the words your kid spoke (separated by comma): ")
+words = raw_input("Enter the pronunciation of words your kid spoke (separated by comma): ")
+
 
 # Add words to vector and score them
 word_vector = words.split(', ')
 word_scores = []
 unknown_words = []
 
+words_meanings = {}
+for word in word_vector:
+    words_meanings[word] = raw_input("Enter the meaning of " + str(word) + " (may leave blank if correctly pronounced): ")
 
-for string in word_vector:
-    try:
-        word_scores.append(wcm(string))
-    except:
-        unknown_words.append(string)
+soundex_scores = []
+for key in words_meanings:
+    soundex_scores.append(soundex_distance(key,words_meanings[key]))
 
+for string in words_meanings:
+    if not words_meanings[string]:
+        try:
+            word_scores.append(wcm(string))
+        except:
+            unknown_words.append(words_meanings[string])
+    else:
+        try:
+            word_scores.append(wcm(words_meanings[string]))
+        except:
+            unknown_words.append(words_meanings[string])
 
 # Read in comparison data
 data = pd.read_csv('output.csv',dtype={'data_id':int,'age':int,'sex':object,'mom_ed':object,
@@ -53,6 +66,7 @@ print("Average WCM score: " + str(round(mean(word_scores),3)))
 print("Maximum WCM score: " + str(round(max(word_scores),3)))
 print("Variance of WCM score: " + str(round(var(word_scores),3)))
 print("Average pair-wise soundex difference: " + str(round(mean(soundex_differences),2)))
+print("Pronounced word vs real meaning average soundex difference: " + str(round(mean(soundex_scores),2)))
 if unknown_words:
     print("Unkown words: " + str(', '.join(str(e) for e in unknown_words)))
 

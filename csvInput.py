@@ -19,8 +19,6 @@ for elem in range(1,len(word_list)):
     if len(word_list[elem]) == 10:
         final_list.append(word_list[elem])
 
-print(final_list)
-
 # Write the results to a csv.
 with open("new_output.csv", "wb") as f:
     writer = csv.writer(f)
