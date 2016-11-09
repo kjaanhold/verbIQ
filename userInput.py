@@ -28,6 +28,8 @@ for key in words_meanings:
     else:
         soundex_scores.append(soundex_distance(key, words_meanings[key]))
 
+
+# TODO calculate wcm for correctly pronounced words
 for string in words_meanings:
     if not words_meanings[string]:
         try:
