@@ -1,5 +1,7 @@
 ## Launch an AWS EC2 instance
 
+In security groups, allow SSH (protocol = TCP, source = My IP, Port range = 22) and HTTP (protocol = TCP, source = Anywhere, Port range = 80)
+
 ## Install and update needed packages:
 
   `sudo apt-get update`
