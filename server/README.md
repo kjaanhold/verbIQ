@@ -30,4 +30,5 @@
       Allow from all
   </Directory>`
   
-  # 6. Restart the server with new configs `sudo apachectl restart`
+  # 6. Restart the server with new configs 
+  `sudo apachectl restart`
