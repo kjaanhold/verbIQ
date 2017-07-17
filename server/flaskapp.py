@@ -40,7 +40,7 @@ def return_age(dob):
     return("Your age is " + str(age.days) + " days")
 
 @app.route("/names/<name>")
-def addnames():
+def addnames(names):
     rows = execute_query("""INSERT INTO names VALUES ?""",
                          [name.title()])
     return("Inserted " + str(rows) + " to table names")
