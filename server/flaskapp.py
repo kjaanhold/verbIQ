@@ -44,9 +44,12 @@ def addnames(name):
     con = connect_to_database()
     cur = con.cursor()
     
-    return(cur)
+    query = """INSERT INTO %s VALUES '%s'""" % ('names', name.title())
 
-    #query = """INSERT INTO %s VALUES '%s'""" % ('names', name.title())
+    cur.execute(query)
+    
+    con.commit()
+    con.close()
 
     #cur.execute(query)
     #g.db.commit()
