@@ -44,7 +44,7 @@ def addnames(name):
     con = connect_to_database()
     cur = con.cursor()
     
-    query = """INSERT INTO %s VALUES '%s'""" % ('names', name.title())
+    query = """INSERT INTO %s VALUES '%s'""" % ('names', name)
 
     return(str(query))
     #cur.execute(query)
