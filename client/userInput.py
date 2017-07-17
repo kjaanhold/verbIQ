@@ -28,17 +28,17 @@ for key in words_meanings:
     else:
         soundex_scores.append(soundex_distance(key, words_meanings[key]))
 
-
-# TODO calculate wcm for correctly pronounced words
 for string in words_meanings:
     if not words_meanings[string]:
         try:
             word_scores.append(wcm(string))
+            print(string + str(wcm(string)))
         except:
             unknown_words.append(words_meanings[string])
     else:
         try:
             word_scores.append(wcm(words_meanings[string]))
+            print(string + str(wcm(string)))
         except:
             unknown_words.append(words_meanings[string])
 
@@ -65,6 +65,14 @@ max_scores_age = sameage_data.groupby('age')['score'].max().values.tolist()
 avg_scores_age = sameage_data.groupby('age')['score'].mean().values.tolist()
 var_scores_age = sameage_data.groupby('age')['score'].var().values.tolist()
 
+histo = pd.DataFrame(sameage_data.groupby(['score','data_id'])['score'].count())
+
+histo.to_csv("histogram.csv")
+#print(histo.groupby('score')[''].mean())
+
+
+#kidhisto = word_scores.
+
 print(" ")
 print("Your kid:")
 print("Average WCM score: " + str(round(mean(word_scores),3)))
@@ -76,6 +84,7 @@ if unknown_words:
     print("Unkown words: " + str(', '.join(str(e) for e in unknown_words)))
 
 print(" ")
+print("Other kids:")
 print("Average WCM score in this age: " + str(round(avg_scores_age[0],3)))
 print("Maximum WCM score in this age: " + str(round(max_scores_age[0],3)))
 print("Variance of WCM scores in this age: " + str(round(var_scores_age[0],3)))
