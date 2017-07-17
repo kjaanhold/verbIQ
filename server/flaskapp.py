@@ -1,7 +1,7 @@
 import csv
 import sqlite3
 
-from flask import Flask, request, g
+from flask import Flask, request, g, jsonify
 from datetime import datetime, date
 
 DATABASE = '/home/ubuntu/verbIQ/verbiq.db'
