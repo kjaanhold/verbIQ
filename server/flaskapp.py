@@ -34,16 +34,17 @@ def hello_world():
     return 'Hello from Flask!'
 
 @app.route('/age')
-def return_age():
-    args = request.args
-    return args
+def return_age(dob):
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    return jsonify('age': age.days)
 
-    #date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-    #age = date.today() - date_object
-    #data = {
-    #    'age': age.days
-    #}
-    #return jsonify(data)
+@app.route('/mypage', methods=['GET', 'POST'])
+def login():
+    name = request.form['name']
+    password = request.form['surname']
+
+    return(str(name))
 
 @app.route("/names/<name>")
 def addnames(name):
