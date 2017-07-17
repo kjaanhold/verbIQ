@@ -42,7 +42,7 @@ def return_age(dob):
 @app.route("/viewdb")
 def viewdb():
     rows = execute_query("""SELECT * FROM names""")
-    return '<br>'.join(str(row) for row in rows)
+    return(rows)
   
 if __name__ == '__main__':
   app.run()
