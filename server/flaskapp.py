@@ -39,8 +39,14 @@ def return_age(dob):
     age = date.today() - date_object
     return("Your age is " + str(age.days) + " days")
 
-@app.route("/viewdb")
-def viewdb():
+@app.route("/names/<name>")
+def addnames():
+    rows = execute_query("""INSERT INTO names VALUES ?""",
+                         [name.title()])
+    return("Inserted " + str(rows) + " to table names")
+
+@app.route("/names")
+def addnames():
     rows = execute_query("""SELECT * FROM names""")
     return(str(rows))
   
