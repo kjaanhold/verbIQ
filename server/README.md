@@ -19,7 +19,8 @@
   
 # Add the following block just after the DocumentRoot /var/www/html line
 
- `WSGIDaemonProcess flaskapp threads=5
+ ```{shell}
+  WSGIDaemonProcess flaskapp threads=5
   WSGIScriptAlias / /var/www/html/flaskapp/flaskapp.wsgi
 
   <Directory flaskapp>
@@ -27,7 +28,8 @@
       WSGIApplicationGroup %{GLOBAL}
       Order deny,allow
       Allow from all
-  </Directory>`
+  </Directory>
+  ```
   
 # Restart the server with new configs 
   `sudo apachectl restart`
