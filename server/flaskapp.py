@@ -67,6 +67,6 @@ def addnames(name):
 def getnames():
     rows = execute_query("""SELECT * FROM names""")
     return(str(rows))
-  
+
 if __name__ == '__main__':
-  app.run()
+    app.run()
