@@ -42,7 +42,7 @@ def return_age(dob):
     #data = {
     #    'age': age.days
     #}
-    return jsonify(data)
+    #return jsonify(data)
 
 @app.route("/names/<name>")
 def addnames(name):
