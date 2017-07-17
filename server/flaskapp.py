@@ -4,7 +4,7 @@ import sqlite3
 from flask import Flask, request, g
 from datetime import datetime, date
 
-DATABASE = '/var/www/html/flaskapp/verbiq.db'
+DATABASE = '/home/ubuntu/verbIQ/verbiq.db'
 app = Flask(__name__)
 app.config.from_object(__name__)
 
