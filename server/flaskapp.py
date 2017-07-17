@@ -42,9 +42,8 @@ def return_age(dob):
 @app.route("/names/<name>")
 def addnames(name):
     query = """INSERT INTO names VALUES ?""" , name.title() 
-    return(str(query))
-    #rows = execute_query('INSERT INTO names VALUES (?)', [name.title()])
-    #return("Inserted " + str(name) + " to table names")
+    rows = execute_query(query)
+    return("Inserted " + str(rows) + " to table names")
 
 @app.route("/namelist")
 def getnames():
