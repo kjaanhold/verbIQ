@@ -41,9 +41,16 @@ def return_age(dob):
 
 @app.route("/names/<name>")
 def addnames(name):
+    cur = g.db.cursor()
+    g.db = get_db()
+
     query = """INSERT INTO %s VALUES '%s'""" % ('names', name.title())
-    rows = execute_query(query)
-    return("Inserted " + str(rows) + " to table names")
+
+    cur.execute(query)
+    g.db.commit()
+    cur.close()
+    
+    return("Inserted " + str(name) + " to table names")
 
 @app.route("/namelist")
 def getnames():
