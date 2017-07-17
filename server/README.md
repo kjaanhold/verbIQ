@@ -17,7 +17,7 @@
   
   `sudo ln -sT ~/verbIQ /var/www/html/flaskapp`
   
-## Add the following block after to 
+## Add the following block to
 `/etc/apache2/sites-enabled/000-default.conf` after
 `DocumentRoot /var/www/html` line
 
