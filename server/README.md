@@ -20,7 +20,7 @@ In security groups, allow:
 ## Clone this repo to home directory and link it 
   `git clone https://github.com/kjaanhold/verbIQ.git`
   
-  `sudo ln -sT ~/verbIQ/server/flaskapp /var/www/html/flaskapp`
+  `sudo ln -sT ~/verbIQ/server /var/www/html/flaskapp`
   
 ## Add the following block to
 `/etc/apache2/sites-enabled/000-default.conf` after
