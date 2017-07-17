@@ -36,8 +36,7 @@ def hello_world():
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-    age = date.today() - date_object
-    return("Your age is " + str(age.days) + " days")
+    return(jsonify(age = date.today() - date_object))
 
 @app.route("/names/<name>")
 def addnames(name):
@@ -46,8 +45,8 @@ def addnames(name):
     
     query = """INSERT INTO %s VALUES '%s'""" % ('names', name)
 
-    return(str(query))
-    #cur.execute(query)
+    #return(str(query))
+    cur.execute(query)
     
     #con.commit()
     #con.close()
