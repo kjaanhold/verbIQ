@@ -1,6 +1,6 @@
-# Launch an AWS EC2 instance
+## Launch an AWS EC2 instance
 
-# Install and update needed packages:
+## Install and update needed packages:
 
   `sudo apt-get update`
   
@@ -12,12 +12,14 @@
   
   `sudo pip install flask`
   
-# Clone this repo to home directory and link it 
+## Clone this repo to home directory and link it 
   `git clone https://github.com/kjaanhold/verbIQ.git`
   
   `sudo ln -sT ~/verbIQ /var/www/html/flaskapp`
   
-# Add the following block just after the DocumentRoot /var/www/html line
+## Add the following block after to 
+`/etc/apache2/sites-enabled/000-default.conf` after
+`DocumentRoot /var/www/html` line
 
  ```{shell}
   WSGIDaemonProcess flaskapp threads=5
@@ -31,5 +33,5 @@
   </Directory>
   ```
   
-# Restart the server with new configs 
+## Restart the server with new configs 
   `sudo apachectl restart`
