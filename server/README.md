@@ -3,7 +3,6 @@
 In security groups, allow:
 
 * SSH (protocol = TCP, source = My IP, Port range = 22)
-
 * HTTP (protocol = TCP, source = Anywhere, Port range = 80)
 
 ## Install and update needed packages:
