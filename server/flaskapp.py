@@ -26,6 +26,7 @@ def close_connection(exception):
 def execute_query(query, args=()):
     cur = get_db().execute(query, args)
     rows = cur.fetchall()
+    cur.commit()
     cur.close()
     return rows
 
