@@ -35,7 +35,7 @@ def hello_world():
 
 @app.route('/age/')
 def return_age(dob):
-    return(request.args.get('dob'))
+    return(request.data)
 
     #date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     #age = date.today() - date_object
