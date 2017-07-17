@@ -41,11 +41,10 @@ def return_age(dob):
 
 @app.route("/names/<name>")
 def addnames(name):
-
-    connection = get_db()
-    cursor = connection.cursor()
+    con = connect_to_database()
+    cur = con.cursor()
     
-    return(cursor)
+    return(cur)
 
     #query = """INSERT INTO %s VALUES '%s'""" % ('names', name.title())
 
