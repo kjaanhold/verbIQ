@@ -33,18 +33,14 @@ def execute_query(query, args=()):
 def hello_world():
     return 'Hello from Flask!'
 
-@app.route('/age')
+@app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
-    return jsonify({'age': age.days})
-
-@app.route('/mypage', methods=['GET', 'POST'])
-def login():
-    name = request.form['name']
-    password = request.form['surname']
-
-    return(str(name))
+    data = {
+        'age': age.days
+    }
+    return jsonify(data)
 
 @app.route("/names/<name>")
 def addnames(name):
@@ -69,6 +65,6 @@ def addnames(name):
 def getnames():
     rows = execute_query("""SELECT * FROM names""")
     return(str(rows))
-
+  
 if __name__ == '__main__':
-    app.run()
+  app.run()
