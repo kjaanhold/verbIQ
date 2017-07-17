@@ -46,7 +46,7 @@ def addnames():
                          [name.title()])
     return("Inserted " + str(rows) + " to table names")
 
-@app.route("/names")
+@app.route("/namelist")
 def addnames():
     rows = execute_query("""SELECT * FROM names""")
     return(str(rows))
