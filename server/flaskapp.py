@@ -37,7 +37,7 @@ def hello_world():
 def return_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
-    return jsonify('age': age.days)
+    return jsonify({'age': age.days})
 
 @app.route('/mypage', methods=['GET', 'POST'])
 def login():
