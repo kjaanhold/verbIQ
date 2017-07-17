@@ -33,9 +33,9 @@ def execute_query(query, args=()):
 def hello_world():
     return 'Hello from Flask!'
 
-@app.route('/age/<dob>', methods=['GET'])
+@app.route('/age/')
 def return_age(dob):
-    return(request.args.get('Date_of_Birth'))
+    return(request.query_string)
 
     #date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     #age = date.today() - date_object
