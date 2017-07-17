@@ -36,7 +36,7 @@ def hello_world():
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-    return(jsonify(age = date.today() - date_object))
+    return jsonify(age = date.today() - date_object)
 
 @app.route("/names/<name>")
 def addnames(name):
