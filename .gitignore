@@ -8,3 +8,5 @@
 .Rhistory
 
 *.csv
+
+*.pem
