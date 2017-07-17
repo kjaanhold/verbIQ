@@ -35,11 +35,13 @@ def hello_world():
 
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
-    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-    age = date.today() - date_object
-    data = {
-        'age': age.days
-    }
+    return(request.args.get)
+
+    #date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    #age = date.today() - date_object
+    #data = {
+    #    'age': age.days
+    #}
     return jsonify(data)
 
 @app.route("/names/<name>")
