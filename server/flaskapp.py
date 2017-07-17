@@ -47,7 +47,7 @@ def addnames():
     return("Inserted " + str(rows) + " to table names")
 
 @app.route("/namelist")
-def addnames():
+def getnames():
     rows = execute_query("""SELECT * FROM names""")
     return(str(rows))
   
