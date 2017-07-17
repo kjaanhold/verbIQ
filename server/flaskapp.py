@@ -50,8 +50,8 @@ def addnames(name):
     
     query = """INSERT INTO %s VALUES '%s'""" % ('names', name)
 
-    #return(str(query))
-    cur.execute(query)
+    return(str(query))
+    #cur.execute(query)
     
     #con.commit()
     #con.close()
