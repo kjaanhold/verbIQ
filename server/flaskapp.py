@@ -41,7 +41,7 @@ def return_age(dob):
 
 @app.route("/names/<name>")
 def addnames(name):
-    con = connect_to_database()
+    con = sqlite3.connect('/home/ubuntu/verbIQ/verbiq.db')
     cur = con.cursor()
     
     query = """INSERT INTO %s VALUES '%s'""" % ('names', name.title())
