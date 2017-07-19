@@ -36,7 +36,7 @@ def hello_world():
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-    age = date.today() - date_object dfdfd
+    age = date.today() - date_object
     data = {'messages':[{"text": age.days}]}
     return jsonify(data)
 
