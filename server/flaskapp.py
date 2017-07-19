@@ -63,7 +63,7 @@ def direct_block_based_on_age(dob):
     elif age_in_days < 4*365:
         next_block = "36M_EST"
     else next_block = "48M_EST"
-    data = {"redirect_to_blocks": [next_block]}
+    data = {"redirect_to_blocks": ["48M_EST"]}
     return jsonify(data)
 
 @app.route("/names/<name>")
