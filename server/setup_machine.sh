@@ -5,7 +5,7 @@ sudo apt-get update
 sudo apt-get install -y apache2
 sudo apt-get install -y libapache2-mod-wsgi
 sudo apt-get install -y python-pip
-sudo pip install -y flask
+sudo pip install flask
 
 # link the repo
 sudo ln -sT ~/verbIQ/server /var/www/html/flaskapp
