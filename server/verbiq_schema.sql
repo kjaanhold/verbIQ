@@ -7,6 +7,11 @@ create table children (
 	gender text
 );
 
+drop table if exists names;
+create table names (
+	name text
+);
+
 drop table if exists users;
 create table users (
 	id_user integer primary key not null,
