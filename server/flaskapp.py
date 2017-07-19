@@ -37,7 +37,7 @@ def hello_world():
 def return_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
-    data = {'messages':[{"text": age.days}, {"text": "Hi there!"}]}
+    data = {'messages':[{"text": age.days}]}
     return jsonify(data)
 
 @app.route("/names/<name>")
