@@ -4,7 +4,7 @@ import sqlite3
 from flask import Flask, request, g, jsonify
 from datetime import datetime, date
 
-DATABASE = '/home/ubuntu/verbIQ/verbiq.db'
+DATABASE = '/home/ubuntu/verbIQ/server/verbiq.db'
 app = Flask(__name__)
 app.config.from_object(__name__)
 
@@ -75,7 +75,7 @@ def addnames(name):
     query = "INSERT INTO %s VALUES ('%s')" % ('names', name)
     query2 = 'INSERT INTO users %s' % ('?')
 
-    cur.execute(query, name)
+    cur.execute(query)
     
     con.commit()
     cur.close()
