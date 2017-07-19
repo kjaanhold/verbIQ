@@ -46,19 +46,25 @@ def direct_block_based_on_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_in_days = int(age.days)
-    if age_in_days < 120:
-        next_block = "3M_EST"
-    elif age_in_days < 150:
-        next_block = "4M_EST"
-    elif age_in_days < 180:
-        next_block = "5M_EST"
-    elif age_in_days < 210:
+    if age_in_days < 3*30:
+        next_block = "2M_EST"
+    elif age_in_days < 4.5*30:
+        next_block = "3M_EST"        
+    elif age_in_days < 6*30:
+        next_block = "4,5M_EST"
+    elif age_in_days < 7*30:
         next_block = "6M_EST"
-    elif age_in_days < 2*365:
+    elif age_in_days < 8*30:
+        next_block = "7M_EST"
+    elif age_in_days < 9*30:
+        next_block = "8M_EST"
+    elif age_in_days < 12*30:
+        next_block = "9M_EST"
+    elif age_in_days < 1.5*365:
         next_block = "12M_EST"
-    elif age_in_days < 3*365:
+    elif age_in_days < 2*365:
         next_block = "18M_EST"
-    elif age_in_days < 3.5*365:
+    elif age_in_days < 3*365:
         next_block = "24M_EST"
     elif age_in_days < 4*365:
         next_block = "36M_EST"
