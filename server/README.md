@@ -9,4 +9,4 @@ In security groups, allow:
 
 `git clone https://github.com/kjaanhold/verbIQ.git`
 
-## Run setup_machine.sh to spin up the machine
+## Run `setup_machine.sh` to spin up the machine
