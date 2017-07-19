@@ -37,7 +37,7 @@ def hello_world():
 def return_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
-    out_text = "Su lapse vanus päevades on: " + age.days
+    out_text = "Su lapse vanus päevades on: " + str(age.days)
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
 
