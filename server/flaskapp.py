@@ -41,6 +41,13 @@ def return_age(dob):
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
 
+@app.route('/age_block_selection/<dob>', methods=['GET'])
+def direct_block_based_on_age(dob):
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    data = {'type': "show_block", 'block_name':"3M_EST",'title':"3M_EST kysimused"}
+    return jsonify(data)
+
 @app.route("/names/<name>")
 def addnames(name):
     con = connect_to_database()
