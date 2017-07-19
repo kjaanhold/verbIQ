@@ -1,10 +1,15 @@
 import csv
 import sqlite3
 
-conn = sqlite3.connect('verbIQ.db')
+conn = sqlite3.connect('verbiq.db')
 cur = conn.cursor()
-cur.execute("""DROP TABLE IF EXISTS names""")
-cur.execute("""CREATE TABLE names (name text)""")
+
+fp = open('/home/ubuntu/verbIQ/server/verbiq_schema.sql', 'r')
+data = fp.read().decode("utf-8-sig").encode("utf-8").replace('\n', '').replace('\t','')
+data = data.split(";")
+
+for query in data:
+	cur.execute(query)
 
 conn.commit()
 conn.close()
