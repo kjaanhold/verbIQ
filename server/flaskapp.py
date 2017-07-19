@@ -46,7 +46,32 @@ def return_age_in_months(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     out_text = round(int(age.days)/30)
-    data = {"set_attributes":{"Vanus_kuudes":out_text},"block_names":["PARENT_EST"],"type":"show_block","title":"go"}
+#    data = {"set_attributes":{"Vanus_kuudes":out_text},"block_names":["PARENT_EST"],"type":"show_block","title":"go"}
+    data = {
+      "messages": [
+        {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "button",
+              "text": "Hello!",
+              "buttons": [
+                {
+                  "type": "show_block",
+                  "block_name": "some block name",
+                  "title": "Show the block!"
+                },
+                {
+                  "type": "web_url",
+                  "url": "https://petersapparel.parseapp.com/buy_item?item_id=100",
+                  "title": "Buy Item"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
     return jsonify(data)
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
