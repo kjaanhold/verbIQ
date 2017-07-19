@@ -62,7 +62,7 @@ def addnames(name):
 
 @app.route("/namelist")
 def getnames():
-    rows = execute_query("""SELECT * FROM names""")
+    rows = execute_query("""SELECT * FROM users""")
     return(str(rows))
   
 if __name__ == '__main__':
