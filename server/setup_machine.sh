@@ -7,8 +7,7 @@ sudo apt-get install -y libapache2-mod-wsgi
 sudo apt-get install -y python-pip
 sudo pip install -y flask
 
-# clone and link the repo
-git clone https://github.com/kjaanhold/verbIQ.git
+# link the repo
 sudo ln -sT ~/verbIQ/server /var/www/html/flaskapp
 
 # change site config file
