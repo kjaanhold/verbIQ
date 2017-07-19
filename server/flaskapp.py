@@ -72,10 +72,10 @@ def addnames(name):
     con = connect_to_database()
     cur = con.cursor()
     
-    query = """INSERT INTO %s VALUES '%s'""" % ('names', name)
-    query2 = 'INSERT INTO users VALUES %s' % ('?')
+    query = "INSERT INTO %s VALUES ('%s')" % ('names', name)
+    query2 = 'INSERT INTO users %s' % ('?')
 
-    cur.execute(query2, name)
+    cur.execute(query, name)
     
     con.commit()
     cur.close()
@@ -84,7 +84,7 @@ def addnames(name):
 
 @app.route("/namelist")
 def getnames():
-    rows = execute_query("""SELECT * FROM users""")
+    rows = execute_query("""SELECT * FROM names""")
     return(str(rows))
   
 if __name__ == '__main__':
