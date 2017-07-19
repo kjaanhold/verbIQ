@@ -75,10 +75,10 @@ def addnames(name):
     query = """INSERT INTO %s VALUES '%s'""" % ('names', name)
     query2 = 'INSERT INTO users VALUES %s' % ('?')
 
-    #cur.execute(query2, name)
+    cur.execute(query2, name)
     
-    #con.commit()
-    #cur.close()
+    con.commit()
+    cur.close()
 
     return("Inserted " + str(name) + " to table names")
 
