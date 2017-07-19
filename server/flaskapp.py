@@ -41,13 +41,13 @@ def return_age(dob):
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
 
-#@app.route('/age_months/<dob>', methods=['GET'])
-#def return_age_in_months(dob):
-#    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-#    age = date.today() - date_object
-#    out_text = round(str(age.days)/30)
-#    data = {"set_attributes":{"Vanus_kuudes":out_text},"block_names":["PARENT_EST"],"type":"show_block","title":"go"}
-#    return jsonify(data)
+@app.route('/age_months/<dob>', methods=['GET'])
+def return_age_in_months(dob):
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    out_text = round(str(age.days)/30)
+    data = {"set_attributes":{"Vanus_kuudes":out_text},"block_names":["PARENT_EST"],"type":"show_block","title":"go"}
+    return jsonify(data)
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
 def direct_block_based_on_age(dob):
