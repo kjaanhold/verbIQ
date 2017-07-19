@@ -54,20 +54,14 @@ def addnames(name):
     cur = con.cursor()
     
     query = """INSERT INTO %s VALUES '%s'""" % ('names', name)
-
     query2 = 'INSERT INTO users VALUES %s' % ('?')
 
-    return(str(query2) + str(name))
-    #cur.execute(query)
+    cur.execute(query, name)
     
-    #con.commit()
-    #con.close()
+    con.commit()
+    cur.close()
 
-    #cur.execute(query)
-    #g.db.commit()
-    #cur.close()
-    
-    #return("Inserted " + str(name) + " to table names")
+    return("Inserted " + str(name) + " to table names")
 
 @app.route("/namelist")
 def getnames():
