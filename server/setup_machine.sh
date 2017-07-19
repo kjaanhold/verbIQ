@@ -16,3 +16,6 @@ mv /home/ubuntu/verbIQ/server/000-default.conf /etc/apache2/sites-enabled/
 
 # restart the server
 sudo apachectl restart
+
+# create the DB
+python createDB.py
