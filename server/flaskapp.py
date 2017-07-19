@@ -45,7 +45,7 @@ def return_age(dob):
 def direct_block_based_on_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
-    data = {'type': "show_block", 'block_name':"3M_EST",'title':"3M_EST kysimused"}
+    data = {"redirect_to_blocks": ["3M_EST"]}
     return jsonify(data)
 
 @app.route("/names/<name>")
