@@ -11,7 +11,7 @@ sudo pip install -y flask
 sudo ln -sT ~/verbIQ/server /var/www/html/flaskapp
 
 # change site config file
-mv /home/ubuntu/verbIQ/server/000-default.conf /etc/apache2/sites-enabled/
+sudo mv /home/ubuntu/verbIQ/server/000-default.conf /etc/apache2/sites-enabled/
 
 # restart the server
 sudo apachectl restart
