@@ -45,7 +45,25 @@ def return_age(dob):
 def direct_block_based_on_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
-    data = {"redirect_to_blocks": ["3M_EST"]}
+    age_in_days = int(age.days)
+    if age_in_days < 120:
+        next_block = "3M_EST"
+    elif age_in_days < 150:
+        next_block = "4M_EST"
+    elif age_in_days < 180:
+        next_block = "5M_EST"
+    elif age_in_days < 210:
+        next_block = "6M_EST"
+    elif age_in_days < 2*365:
+        next_block = "12M_EST"
+    elif age_in_days < 3*365:
+        next_block = "18M_EST"
+    elif age_in_days < 3.5*365:
+        next_block = "24M_EST"
+    elif age_in_days < 4*365:
+        next_block = "36M_EST"
+    else next_block = "48M_EST"
+    data = {"redirect_to_blocks": [next_block]}
     return jsonify(data)
 
 @app.route("/names/<name>")
