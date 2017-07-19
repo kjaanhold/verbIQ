@@ -73,10 +73,8 @@ def addnames(name):
     cur = con.cursor()
     
     query = "INSERT INTO %s VALUES ('%s')" % ('names', name)
-    query2 = 'INSERT INTO users %s' % ('?')
-
-    cur.execute(query)
     
+    cur.execute(query)
     con.commit()
     cur.close()
 
