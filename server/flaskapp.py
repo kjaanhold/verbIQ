@@ -45,7 +45,7 @@ def return_age(dob):
 def return_age_in_months(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
-    out_text = round(str(age.days)/30)
+    out_text = round(int(age.days)/30)
     data = {"set_attributes":{"Vanus_kuudes":out_text},"block_names":["PARENT_EST"],"type":"show_block","title":"go"}
     return jsonify(data)
 
