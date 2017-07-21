@@ -33,14 +33,16 @@ def execute_query(query, args=()):
 def hello_world():
     return 'Hello from Flask!'
 
-@app.route('/age/<dob>', methods=['GET'])
-def return_age(dob):
-    dofb = request.args.get(‘dob’)
+@app.route('/age/', methods=['GET'])
+def return_age():
+    dofb = request.args.get('dob')
+    child_name = request.args.get('name')
     date_object = datetime.strptime(dofb, "%Y-%m-%d").date()
     age = date.today() - date_object
-    out_text = "Selge, su laps on: " + str(age.days) + " kuud vana. Korrektne?"
+    out_text = "Tänan. " + str(child_name) + " sündis " + str(date_object) + " ja ta on praegu " + str(round(int(age.days)/30)) + " kuu vavanune."
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
+
 
 
 
