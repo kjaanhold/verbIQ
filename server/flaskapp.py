@@ -33,13 +33,16 @@ def execute_query(query, args=()):
 def hello_world():
     return 'Hello from Flask!'
 
-#@app.route('/age/<dob>', methods=['GET'])
-#def return_age(dob):
-#    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-#    age = date.today() - date_object
-#    out_text = "Selge, su laps on: " + str(age.days) # + " kuud vana. Korrektne?"
-#    data = {'messages':[{"text": out_text}]}
-#    return jsonify(data)
+@app.route('/age/<dob>', methods=['GET'])
+def return_age(dob):
+    dofb = request.args.get(‘dob’)
+    date_object = datetime.strptime(dofb, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    out_text = "Selge, su laps on: " + str(age.days) + " kuud vana. Korrektne?"
+    data = {'messages':[{"text": out_text}]}
+    return jsonify(data)
+
+
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
 def direct_block_based_on_age(dob):
