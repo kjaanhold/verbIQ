@@ -34,7 +34,7 @@ def hello_world():
     return 'Hello from Flask!'
 
 @app.route('/age/<dob>', methods=['GET'])
-def return_age():
+def return_age(dob):
 #    args = request.args
 #    return jsonify(args) # For debugging
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
