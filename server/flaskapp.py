@@ -42,7 +42,7 @@ def return_age(dob):
     return jsonify(data)
 
 @app.route('/age_check/', methods=['GET'])
-def return_age():
+def age_check():
     dob = request.args.get('dob')
     name = request.args.get('name')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
