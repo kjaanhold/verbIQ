@@ -35,9 +35,13 @@ def hello_world():
 
 @app.route('/age/<dob>', methods=['GET'])
 def return_age():
-    args = request.args
-    return jsonify(args) # For debugging
-
+#    args = request.args
+#    return jsonify(args) # For debugging
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    out_text = "Selge, su laps on: " + str(age.days) # + " kuud vana. Õige?"
+    data = {'messages':[{"text": out_text}]}
+    return jsonify(data)
 #    dofb = request.args.get('dob')
 #    child_name = request.args.get('name')
 #    date_object = datetime.strptime(dofb, "%Y-%m-%d").date()
