@@ -39,7 +39,7 @@ def return_age():
     child_name = request.args.get('name')
     date_object = datetime.strptime(dofb, "%Y-%m-%d").date()
     age = date.today() - date_object
-    out_text = "Tänan. " + str(child_name) + " sündis " + str(date_object) + " ja ta on praegu " + str(round(int(age.days)/30)) + " kuu vavanune."
+    out_text = "Tanan. " + str(child_name) + " syndis " + str(date_object) + " ja ta on praegu " + str(round(int(age.days)/30)) + " kuu vavanune."
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
 
