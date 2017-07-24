@@ -35,22 +35,22 @@ def hello_world():
 
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
-#    args = request.args
-#    return jsonify(args) # For debugging
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     out_text = "Selge, su laps on: " + str(age.days) 
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
-#    dofb = request.args.get('dob')
-#    child_name = request.args.get('name')
-#    date_object = datetime.strptime(dofb, "%Y-%m-%d").date()
-#    age = date.today() - date_object
+
+@app.route('/age/', methods=['GET'])
+def return_age():
+    dob = request.args.get('dob')
+    name = request.args.get('name')
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - name
 #    out_text = "Tanan. " + str(child_name) + " syndis " + str(date_object) + " ja ta on praegu " + str(round(int(age.days)/30)) + " kuu vavanune."
-#    data = {'messages':[{"text": out_text}]}
-#    return jsonify(data)
-
-
+    out_text = "test"
+    data = {'messages':[{"text": out_text}]}
+    return jsonify(data)
 
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
