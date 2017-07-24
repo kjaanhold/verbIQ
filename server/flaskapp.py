@@ -41,7 +41,7 @@ def return_age(dob):
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
 
-@app.route('/age/', methods=['GET'])
+@app.route('/age_check/', methods=['GET'])
 def return_age():
     dob = request.args.get('dob')
     name = request.args.get('name')
