@@ -33,7 +33,7 @@ def execute_query(query, args=()):
 def hello_world():
     return 'Hello from Flask!'
 
-@app.route('/age/', methods=['GET'])
+@app.route('/age', methods=['GET'])
 def return_age():
     args = request.args
     return jsonify(args) # For debugging
