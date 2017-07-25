@@ -99,7 +99,7 @@ def addnames(name):
  #   cur.close()
 
 #    return("Inserted " + str(name) + " to table names")
-    return(query)
+    return(str(con) + str(cur))
 
 @app.route("/namelist")
 def getnames():
