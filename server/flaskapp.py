@@ -87,19 +87,17 @@ def direct_block_based_on_age(dob):
     data = {"redirect_to_blocks": [next_block]}
     return jsonify(data)
 
-@app.route("/names/<name>", methods = ['POST'])
-def addnames(name):
+@app.route("/names/", methods = ['POST'])
+def addnames():
     con = connect_to_database()
     cur = con.cursor()
-    
+    name = request.args.get('Lapse_eesnimi')
     query = "INSERT INTO %s VALUES ('%s');" % ('names', name) 
-    
- #   cur.execute(query)
- #   con.commit()
- #   cur.close()
-
-#    return("Inserted " + str(name) + " to table names")
-    return(str(con) + str(cur))
+    cur.execute(query)
+    con.commit()
+    cur.close()
+    return("Inserted " + str(name) + " to table names")
+#    return(str(con) + str(cur))
 
 @app.route("/namelist")
 def getnames():
