@@ -48,7 +48,7 @@ def age_check():
 #    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
 #    age = date.today() - date_object
 #    out_text = "Tanan. " + str(child_name) + " syndis " + str(date_object) + " ja ta on praegu " + str(round(int(age.days)/30)) + " kuu vavanune."
-    out_text = "test"
+    out_text = str(dob) + str(name)
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
 
