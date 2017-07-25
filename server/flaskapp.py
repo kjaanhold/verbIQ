@@ -92,7 +92,7 @@ def addnames(name):
     con = connect_to_database()
     cur = con.cursor()
     
-    query = "INSERT INTO %s VALUES ('%s')" % ('names', name)
+    query = "INSERT INTO %s VALUES ('%s');" % ('names', name) 
     
     cur.execute(query)
     con.commit()
