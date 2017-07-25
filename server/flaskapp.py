@@ -91,12 +91,14 @@ def direct_block_based_on_age(dob):
 def addnames():
     con = connect_to_database()
     cur = con.cursor()
-    name = request.form['Lapse_eesnimi']
-    query = "INSERT INTO %s VALUES ('%s');" % ('names', str(name)) 
+    name = request.form.get('Lapse_eesnimi',type = str)
+    query = "INSERT INTO %s VALUES ('%s');" % ('names', name) 
     cur.execute(query)
     con.commit()
     cur.close()
-    return("Inserted " + str(name) + " to table names")
+    data = {'messages':[{"text": query}]}
+    return jsonify(data)    
+#    return("Inserted " + str(name) + " to table names")
 #    return(str(con) + str(cur))
 
 @app.route("/namelist")
