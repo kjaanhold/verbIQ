@@ -59,17 +59,17 @@ def age_check():
             "type": "template",
             "payload": {
               "template_type": "button",
-              "text": "Hello!",
+              "text": out_text,
               "buttons": [
                 {
                   "type": "show_block",
-                  "block_name": "some block name",
-                  "title": "Show the block!"
+                  "block_name": "age_block_selection",
+                  "title": u"Õige, edasi!"
                 },
                 {
-                  "type": "web_url",
-                  "url": "https://petersapparel.parseapp.com/buy_item?item_id=100",
-                  "title": "Buy Item"
+                  "type": "show_block",
+                  "block_name": "PARENT_EST",
+                  "title": "Viga, parandame..."
                 }
               ]
             }
