@@ -91,8 +91,8 @@ def direct_block_based_on_age(dob):
 def addnames():
     con = connect_to_database()
     cur = con.cursor()
-    name = request.args.get('Lapse_eesnimi')
-    query = "INSERT INTO %s VALUES ('%s');" % ('names', name) 
+    name = request.form['Lapse_eesnimi']
+    query = "INSERT INTO %s VALUES ('%s');" % ('names', str(name)) 
     cur.execute(query)
     con.commit()
     cur.close()
