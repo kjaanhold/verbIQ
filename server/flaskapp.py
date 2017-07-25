@@ -45,11 +45,11 @@ def return_age(dob):
 
 @app.route('/age_check', methods=['GET'])
 def age_check():
-    dob = request.args.get('dob')
-    name = request.args.get('name')
+    dob = request.args.get('Synni_kuupaev')
+    name = request.args.get('Lapse_nimi')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
-    out_text = u"Tänan. " + str(name) + u" sündis " + str(date_object) + " ja ta on praegu " + str(round(int(age.days)/30)) + " kuu vanune."
+    out_text = "T" + u"U+00E4" + "nan. " + str(name) + u" sündis " + str(date_object) + " ja ta on praegu " + str(round(int(age.days)/30)) + " kuu vanune."
 #    out_text = str(dob) + str(name)
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
