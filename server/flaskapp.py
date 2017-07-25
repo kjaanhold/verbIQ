@@ -51,7 +51,32 @@ def age_check():
     age = date.today() - date_object
     out_text = u"Tänan. " + (name) + u" sündis " + str(date_object) + " ja ta on praegu " + str(int(round(int(age.days)/30))) + " kuu vanune."
 #    out_text = str(dob) + str(name)
-    data = {'messages':[{"text": out_text}]}
+#    data = {'messages':[{"text": out_text}]}
+    data = {
+      "messages": [
+        {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "button",
+              "text": "Hello!",
+              "buttons": [
+                {
+                  "type": "show_block",
+                  "block_name": "some block name",
+                  "title": "Show the block!"
+                },
+                {
+                  "type": "web_url",
+                  "url": "https://petersapparel.parseapp.com/buy_item?item_id=100",
+                  "title": "Buy Item"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
     return jsonify(data)
 
 
