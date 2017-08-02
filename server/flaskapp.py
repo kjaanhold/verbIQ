@@ -113,7 +113,7 @@ def direct_block_based_on_age(dob):
     return jsonify(data)
 
 @app.route("/names/", methods = ['POST'])
-def addnames(name):
+def addnames():
     if request.method == "POST":
         con = connect_to_database()
         cur = con.cursor()
