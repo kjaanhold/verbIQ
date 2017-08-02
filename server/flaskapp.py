@@ -115,8 +115,8 @@ def direct_block_based_on_age(dob):
 @app.route("/names", methods = ['GET','POST'])
 def addnames():
     if request.method == "POST":
-        #con = connect_to_database()
-        #cur = con.cursor()
+        con = connect_to_database()
+        cur = con.cursor()
         name = request.form['name']
         query = "INSERT INTO %s VALUES ('%s');" % ('names', name) 
         #cur.execute(query)
