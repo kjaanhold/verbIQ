@@ -115,19 +115,15 @@ def direct_block_based_on_age(dob):
 @app.route("/names", methods = ['GET','POST'])
 def addnames():
     if request.method == "POST":
-        try:
-            con = connect_to_database()
-            cur = con.cursor()
-            name = request.form['name']
-            query = "INSERT INTO %s VALUES ('%s');" % ('names', name) 
-            cur.execute(query)
-            con.commit()
-            cur.close()
-            return("Inserted " + str(name) + " to table names")
-        except SQLAlchemyError as e:
-            reason=str(e)
-            flash(reason)
-
+        con = connect_to_database()
+        cur = con.cursor()
+        name = request.form['name']
+        query = "INSERT INTO %s VALUES ('%s');" % ('names', name) 
+        cur.execute(query)
+        con.commit()
+        cur.close()
+        return("Inserted " + str(name) + " to table names")
+        
 @app.route("/namelist")
 def getnames():
     rows = execute_query("""SELECT * FROM names""")
