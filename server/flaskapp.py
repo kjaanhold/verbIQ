@@ -122,7 +122,6 @@ def addnames():
         #cur.execute(query)
         #con.commit()
         #cur.close()
-        execute_query(query)
         return("Inserted " + str(name) + " to table names")
         
 @app.route("/namelist")
