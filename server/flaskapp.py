@@ -118,11 +118,10 @@ def addnames():
         con = connect_to_database()
         cur = con.cursor()
         name = request.form['name']
-        query = "INSERT INTO %s VALUES ('%s');" % ('names', name) 
-        return(query)
-        #cur.execute(query)
-        #con.commit()
-        #cur.close()
+        query = "INSERT INTO %s VALUES ('%s');" % ('names', name)
+        cur.execute(query)
+        con.commit()
+        cur.close()
         return("Inserted " + str(name) + " to table names")
         
 @app.route("/namelist")
