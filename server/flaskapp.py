@@ -128,6 +128,8 @@ def addnames():
         except exc.SQLAlchemyError as e:
             reason=str(e)
             flash(reason)
+    else:
+        return("Other")
         
 @app.route("/namelist")
 def getnames():
