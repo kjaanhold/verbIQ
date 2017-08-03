@@ -81,6 +81,42 @@ def age_check():
     return jsonify(data)
 
 
+@app.route('/names_check', methods=['GET'])
+def names_check():
+ #   dob = request.args.get('Synni_kuupaev')
+ #   name = request.args.get('Lapse_eesnimi')
+    rows = execute_query("""SELECT * FROM names""")
+    out_text = str(rows) + "\n"
+#    out_text = str(dob) + str(name)
+#    data = {'messages':[{"text": out_text}]}
+    data = {
+      "messages": [
+        {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "button",
+              "text": out_text,
+              "buttons": [
+                {
+                  "type": "show_block",
+                  "block_name": "age_block_selection",
+                  "title": u"Õige, edasi!"
+                },
+                {
+                  "type": "show_block",
+                  "block_name": "PARENT_EST",
+                  "title": "Viga, parandame..."
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+    return jsonify(data)
+
+
 @app.route('/age_block_selection/<dob>', methods=['GET'])
 def direct_block_based_on_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
