@@ -134,7 +134,7 @@ def addnames():
 @app.route("/namelist")
 def getnames():
     rows = execute_query("""SELECT * FROM names""")
-    return(str(rows))
+    return(str(rows) + "\n")
   
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)
