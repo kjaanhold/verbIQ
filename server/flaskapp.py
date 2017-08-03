@@ -124,7 +124,7 @@ def addnames():
             cur.execute(query)
             con.commit()
             cur.close()
-            return("\n Inserted " + str(name) + " to table names")
+            return("Inserted " + str(name) + " to table names \n")
         except exc.SQLAlchemyError as e:
             reason=str(e)
             flash(reason)
