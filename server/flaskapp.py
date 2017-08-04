@@ -153,14 +153,14 @@ def direct_block_based_on_age(dob):
 def addnames():
     if request.method == "POST":
         try:
-            con = connect_to_database()
-            cur = con.cursor()
+            #con = connect_to_database()
+            #cur = con.cursor()
             name = request.form['name']
             query = "INSERT INTO %s VALUES ('%s');" % ('names', name)
-            cur.execute("SELECT * FROM names")
+            rows = execute_query(query)
             #con.commit()
             #cur.close()
-            data = {'messages':[{"text": "Cursor: " + str(cur)}]}
+            data = {'messages':[{"text": str(rows)}]}
             return jsonify(data)
         except exc.SQLAlchemyError as e:
             reason=str(e)
