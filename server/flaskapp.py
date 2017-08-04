@@ -163,7 +163,9 @@ def addnames():
             return("Inserted " + str(name) + " to table names \n")
         except exc.SQLAlchemyError as e:
             reason=str(e)
-            return(reason)
+            data = {'messages':[{"text": reason}]}
+            return jsonify(data)
+            #flash(reason)
     elif request.method == "GET":
         return("This was a GET request")
         
