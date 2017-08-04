@@ -157,9 +157,9 @@ def addnames():
             cur = con.cursor()
             name = request.form['name']
             query = "INSERT INTO %s VALUES ('%s');" % ('names', name)
-            cur.execute(query)
-            con.commit()
-            cur.close()
+            #cur.execute(query)
+            #con.commit()
+            #cur.close()
             data = {'messages':[{"text": "Inserted " + str(name) + " to table names \n"}]}
             return jsonify(data)
         except exc.SQLAlchemyError as e:
