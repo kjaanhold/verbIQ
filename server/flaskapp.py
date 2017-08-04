@@ -160,7 +160,8 @@ def addnames():
             cur.execute(query)
             con.commit()
             cur.close()
-            return("Inserted " + str(name) + " to table names \n")
+            data = {'messages':[{"text": "Inserted " + str(name) + " to table names \n"}]}
+            return jsonify(data)
         except exc.SQLAlchemyError as e:
             reason=str(e)
             data = {'messages':[{"text": reason}]}
