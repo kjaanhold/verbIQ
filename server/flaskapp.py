@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 
 def connect_to_database():
-    return sqlite3.connect('DATABASE')
+    return sqlite3.connect(app.config['DATABASE'])
 
 def get_db():
     db = getattr(g, 'db', None)
