@@ -153,7 +153,8 @@ def direct_block_based_on_age(dob):
 def addnames():
     if request.method == "POST":
         name = request.form['name']
-        data = {'messages':[{"text": str(name)}]}
+        query = "INSERT INTO %s VALUES ('%s');" % ('names', name)
+        data = {'messages':[{"text": query}]}
         return jsonify(data)
         #try:
         #    con = connect_to_database()
