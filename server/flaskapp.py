@@ -153,20 +153,20 @@ def direct_block_based_on_age(dob):
 def addnames():
     if request.method == "POST":
         try:
-            con = sqlite3.connect(DATABASE)
-            cur = con.cursor()
             name = request.form['name']
             query = "INSERT INTO %s VALUES ('%s');" % ('names', name)
-            cur.execute(query)
-            con.commit()
-            cur.close()
-            data = {'messages':[{"text": "Inserted " + str(name) + " to the database"}]}
+            with sql.connect("database.db") as con:
+                cur = con.cursor()
+                cur.execute(query)
+                con.commit()
+            data = {'messages':[{"text": "Inserted " + str(name) + " to the database \n"}]}
             return jsonify(data)
         except exc.SQLAlchemyError as e:
             reason=str(e)
             data = {'messages':[{"text": reason}]}
             return jsonify(data)
-            #flash(reason)
+        finally:
+            con.close()
     elif request.method == "GET":
         return("This was a GET request")
         
