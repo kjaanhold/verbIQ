@@ -155,7 +155,7 @@ def addnames():
         try:
             name = request.form['name']
             query = "INSERT INTO %s VALUES ('%s');" % ('names', name)
-            with sql.connect(DATABASE) as con:
+            with sqlite3.connect(DATABASE) as con:
                 cur = con.cursor()
                 cur.execute(query)
                 con.commit()
