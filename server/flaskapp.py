@@ -152,18 +152,20 @@ def direct_block_based_on_age(dob):
 @app.route("/names", methods = ['GET','POST'])
 def addnames():
     if request.method == "POST":
-        try:
-            con = connect_to_database()
-            cur = con.cursor()
-            name = request.form['name']
-            query = "INSERT INTO %s VALUES ('%s');" % ('names', name)
-            cur.execute(query)
-            con.commit()
-            cur.close()
-            return("Inserted " + str(name) + " to table names \n")
-        except exc.SQLAlchemyError as e:
-            reason=str(e)
-            flash(reason)
+        data = {'messages':[{"text": "Hello"}]}
+        return jsonify(data)
+        #try:
+        #    con = connect_to_database()
+        #    cur = con.cursor()
+        #    name = request.form['name']
+        #    query = "INSERT INTO %s VALUES ('%s');" % ('names', name)
+        #    cur.execute(query)
+        #    con.commit()
+        #    cur.close()
+        #    return("Inserted " + str(name) + " to table names \n")
+        #except exc.SQLAlchemyError as e:
+        #    reason=str(e)
+        #    flash(reason)
     elif request.method == "GET":
         return("This was a GET request")
         
