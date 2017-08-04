@@ -157,7 +157,7 @@ def addnames():
             cur = con.cursor()
             name = request.form['name']
             query = "INSERT INTO %s VALUES ('%s');" % ('names', name)
-            cur.execute(query)
+            cur.execute("SELECT * FROM names")
             #con.commit()
             #cur.close()
             data = {'messages':[{"text": "Cursor: " + str(cur)}]}
