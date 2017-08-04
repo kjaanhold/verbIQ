@@ -152,7 +152,8 @@ def direct_block_based_on_age(dob):
 @app.route("/names", methods = ['GET','POST'])
 def addnames():
     if request.method == "POST":
-        data = {'messages':[{"text": "Hello"}]}
+        name = request.form['name']
+        data = {'messages':[{"text": str(name)}]}
         return jsonify(data)
         #try:
         #    con = connect_to_database()
