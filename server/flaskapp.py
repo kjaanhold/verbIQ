@@ -156,8 +156,7 @@ def addnames():
             name = request.form['name']
             query = "INSERT INTO %s VALUES ('%s');" % ('names', name)
             with sqlite3.connect(DATABASE) as con:
-                cur = con.cursor()
-                cur.execute(query)
+                con.execute(query)
                 con.commit()
             data = {'messages':[{"text": "Inserted " + str(name) + " to the database \n"}]}
             return jsonify(data)
