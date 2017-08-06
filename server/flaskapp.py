@@ -81,6 +81,44 @@ def age_check():
     return jsonify(data)
 
 
+@app.route('/age_test_summary', methods=['GET'])
+def age_test_summary():
+    dob = request.args.get('Synni_kuupaev')
+    name = request.args.get('Lapse_eesnimi')
+    m4_haarab = request.args.get('4m_haarab')
+    m4_refleksid = request.args.get('4m_refleksid')
+    m4_seljaltkyljele = request.args.get('4m_seljaltkyljele')
+    m4_helisuund = request.args.get('4m_helisuund')
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    out_text = "1 " + m4_haarab + " 2 " + m4_refleksid + " 3 " + m4_seljaltkyljele + " 4 " + m4_helisuund 
+    data = {
+      "messages": [
+        {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "button",
+              "text": out_text,
+              "buttons": [
+                {
+                  "type": "show_block",
+                  "block_name": "age_block_selection",
+                  "title": u"Õige, edasi!"
+                },
+                {
+                  "type": "show_block",
+                  "block_name": "PARENT_EST",
+                  "title": "Viga, parandame..."
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+    return jsonify(data)
+
 @app.route('/names_check', methods=['GET'])
 def names_check():
  #   dob = request.args.get('Synni_kuupaev')
