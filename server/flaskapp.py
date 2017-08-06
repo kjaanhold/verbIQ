@@ -91,7 +91,10 @@ def age_test_summary():
     m4_helisuund = request.args.get('4m_helisuund')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
-    out_text = "1 " + m4_haarab + " 2 " + m4_refleksid + " 3 " + m4_seljaltkyljele + " 4 " + m4_helisuund 
+    if (m4_haarab == "Jah" and m4_refleksid == "Jah" and m4_seljaltkyljele == "Jah" and m4_helisuund == "Jah"):
+        out_text = "Suurepärane! " + name + " oskab kõike mis " + age + " kuu vanune laps peaks oskama."
+    else:
+        out_text = "1 " + m4_haarab + " 2 " + m4_refleksid + " 3 " + m4_seljaltkyljele + " 4 " + m4_helisuund 
     data = {
       "messages": [
         {
@@ -104,11 +107,11 @@ def age_test_summary():
                 {
                   "type": "show_block",
                   "block_name": "age_block_selection",
-                  "title": u"Õige, edasi!"
+                  "title": u"Default answer"
                 },
                 {
                   "type": "show_block",
-                  "block_name": "PARENT_EST",
+                  "block_name": "4,5M_EST",
                   "title": "Viga, parandame..."
                 }
               ]
