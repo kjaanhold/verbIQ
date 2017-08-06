@@ -92,10 +92,12 @@ def age_test_summary():
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     if (m4_haarab == "Jah" and m4_refleksid == "Jah" and m4_seljaltkyljele == "Jah" and m4_helisuund == "Jah"):
-#        out_text = "Jess!" + name 
-        out_text = u"Suurepärane! " + name + u" oskab kõike mis " + str(int(round(int(age.days)/30))) + u" kuu vanune laps peaks oskama."
+        out_text = u"Suurepärane! " + name + u" oskab kõike mida " + str(int(round(int(age.days)/30))) + u" kuu vanune laps peaks oskama. Kas soovid veel midagi meie kohta teada?"
+    elif (m4_haarab == "Ei" and m4_refleksid == "Ei" and m4_seljaltkyljele == "Ei" and m4_helisuund == "Ei"):
+        out_text = "Jama lugu... Küsi meilt abi: info@verbiq.com"
+
     else:
-        out_text = "1 " + m4_haarab + " 2 " + m4_refleksid + " 3 " + m4_seljaltkyljele + " 4 " + m4_helisuund 
+        out_text = "Nojah, midagi tahab veel parandamist" + " (1 " + m4_haarab + " 2 " + m4_refleksid + " 3 " + m4_seljaltkyljele + " 4 " + m4_helisuund + ")."
     data = {
       "messages": [
         {
