@@ -92,7 +92,7 @@ def age_test_summary():
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     if (m4_haarab == "Jah" and m4_refleksid == "Jah" and m4_seljaltkyljele == "Jah" and m4_helisuund == "Jah"):
-        out_text = "Suurepärane! " + name + " oskab kõike mis " + age + " kuu vanune laps peaks oskama."
+        out_text = u"Suurepärane! " + name + u" oskab kõike mis " + age + u" kuu vanune laps peaks oskama."
     else:
         out_text = "1 " + m4_haarab + " 2 " + m4_refleksid + " 3 " + m4_seljaltkyljele + " 4 " + m4_helisuund 
     data = {
