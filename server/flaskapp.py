@@ -92,7 +92,37 @@ def age_test_summary():
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     if (m4_haarab == "Jah" and m4_refleksid == "Jah" and m4_seljaltkyljele == "Jah" and m4_helisuund == "Jah"):
-        out_text = u"Suurepärane! " + name + u" oskab kõike mida " + str(int(round(int(age.days)/30))) + u" kuu vanune laps peaks oskama. Kas soovid veel midagi meie kohta teada?"
+        out_text =  u"Tänan! " + name + u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse: \n 1. \n 2. \n 3. "
+        data = {
+          "messages": [
+            {
+              "attachment": {
+                "type": "template",
+                "payload": {
+                  "template_type": "button",
+                  "text": out_text,
+                  "buttons": [
+                    {
+                      "type": "show_block",
+                      "block_name": "age_block_selection",
+                      "title": u"Mul on veel küsimusi"
+                    },
+                    {
+                      "type": "show_block",
+                      "block_name": "4,5M_EST",
+                      "title": "Tänan. Andke märku kui saabub aeg uute oskuste hindamiseks!"
+                    },
+                    {
+                      "type": "show_block",
+                      "block_name": "4,5M_EST",
+                      "title": "Soovin ise sisestada uusi oskusi ja edusamme, mida laps õpib."
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
     elif (m4_haarab == "Ei" and m4_refleksid == "Ei" and m4_seljaltkyljele == "Ei" and m4_helisuund == "Ei"):
         out_text = "Jama lugu... Küsi meilt abi: info@verbiq.com"
 
