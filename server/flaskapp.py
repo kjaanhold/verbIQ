@@ -97,6 +97,12 @@ def age_test_summary():
         out_text =  u"Tänan! " + name + u" praegu veel õpib peamisi eakohaseid oskusi: \n 1. blah \n 2. blah-blah\n 3. blah-blah-blah"
     else:
         out_text =  u"Tänan! " + name + u" on juba omadanud järgmised lapse arengus jälgitavad oskused: \n 1. blah \n 2. blah-blah\n 3. blah-blah-blah \n " + name + u" praegu veel õpib neid oskuseid: \n 1. blah \n 2. blah-blah "
+    button1 = {
+                  "type": "show_block",
+                  "block_name": "age_block_selection",
+                  "title": u"Default answer"
+                }
+
     data = {
       "messages": [
         {
@@ -106,11 +112,7 @@ def age_test_summary():
               "template_type": "button",
               "text": out_text,
               "buttons": [
-                {
-                  "type": "show_block",
-                  "block_name": "age_block_selection",
-                  "title": u"Default answer"
-                },
+                button1,
                 {
                   "type": "show_block",
                   "block_name": "4,5M_EST",
