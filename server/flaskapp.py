@@ -94,9 +94,9 @@ def age_test_summary():
     if (m4_haarab == "Jah" and m4_refleksid == "Jah" and m4_seljaltkyljele == "Jah" and m4_helisuund == "Jah"):
         out_text =  u"Tänan! " + name + u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse: \n 1. blah \n 2. blah-blah\n 3. blah-blah-blah"
     elif (m4_haarab == "Ei" and m4_refleksid == "Ei" and m4_seljaltkyljele == "Ei" and m4_helisuund == "Ei"):
-        out_text = "Jama lugu... Küsi meilt abi: info@verbiq.com"
+        out_text =  u"Tänan! " + name + u" praegu veel õpib peamisi eakohaseid oskusi: \n 1. blah \n 2. blah-blah\n 3. blah-blah-blah"
     else:
-        out_text = "Nojah, midagi tahab veel parandamist" + " (1 " + m4_haarab + " 2 " + m4_refleksid + " 3 " + m4_seljaltkyljele + " 4 " + m4_helisuund + ")."
+        out_text =  u"Tänan! " + name + u" on juba omadanud järgmised lapse arengus jälgitavad oskused: \n 1. blah \n 2. blah-blah\n 3. blah-blah-blah \n " + name + u" praegu veel õpib neid oskuseid: \n 1. blah \n 2. blah-blah "
     data = {
       "messages": [
         {
