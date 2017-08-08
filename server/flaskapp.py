@@ -102,6 +102,11 @@ def age_test_summary():
                   "block_name": "age_block_selection",
                   "title": u"Default answer"
                 }
+    button2 =  {
+                  "type": "show_block",
+                  "block_name": "4,5M_EST",
+                  "title": "Viga, parandame..."
+                }
 
     data = {
       "messages": [
@@ -113,11 +118,8 @@ def age_test_summary():
               "text": out_text,
               "buttons": [
                 button1,
-                {
-                  "type": "show_block",
-                  "block_name": "4,5M_EST",
-                  "title": "Viga, parandame..."
-                }
+                button2,
+                button2
               ]
             }
           }
