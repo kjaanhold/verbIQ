@@ -111,11 +111,6 @@ def age_test_summary():
                       "type": "show_block",
                       "block_name": "4,5M_EST",
                       "title": u"Tänan. "
-                    },
-                    {
-                      "type": "show_block",
-                      "block_name": "4,5M_EST",
-                      "title": u"Soovin "
                     }
                   ]
                 }
