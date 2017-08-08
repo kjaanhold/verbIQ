@@ -110,12 +110,12 @@ def age_test_summary():
                     {
                       "type": "show_block",
                       "block_name": "4,5M_EST",
-                      "title": "Tänan. Andke märku kui saabub aeg uute oskuste hindamiseks!"
+                      "title": u"Tänan. Andke märku kui saabub aeg uute oskuste hindamiseks!"
                     },
                     {
                       "type": "show_block",
                       "block_name": "4,5M_EST",
-                      "title": "Soovin ise sisestada uusi oskusi ja edusamme, mida laps õpib."
+                      "title": u"Soovin ise sisestada uusi oskusi ja edusamme, mida laps õpib."
                     }
                   ]
                 }
