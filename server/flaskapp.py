@@ -93,96 +93,10 @@ def age_test_summary():
     age = date.today() - date_object
     if (m4_haarab == "Jah" and m4_refleksid == "Jah" and m4_seljaltkyljele == "Jah" and m4_helisuund == "Jah"):
         out_text =  u"Tänan! " + name + u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse: \n 1. blah \n 2. blah-blah\n 3. blah-blah-blah"
-        data = {
-          "messages": [
-            {
-              "attachment": {
-                "type": "template",
-                "payload": {
-                  "template_type": "button",
-                  "text": out_text,
-                  "buttons": [
-                    {
-                      "type": "show_block",
-                      "block_name": "age_block_selection",
-                      "title": u"Mul on "
-                    },
-                    {
-                      "type": "show_block",
-                      "block_name": "4,5M_EST",
-                      "title": u"Tänan. "
-                    }
-                  ]
-                }
-              }
-            }
-          ]
-        }
     elif (m4_haarab == "Ei" and m4_refleksid == "Ei" and m4_seljaltkyljele == "Ei" and m4_helisuund == "Ei"):
         out_text = "Jama lugu... Küsi meilt abi: info@verbiq.com"
-        data = {
-          "messages": [
-            {
-              "attachment": {
-                "type": "template",
-                "payload": {
-                  "template_type": "button",
-                  "text": out_text,
-                  "buttons": [
-                    {
-                      "type": "show_block",
-                      "block_name": "age_block_selection",
-                      "title": u"Mul on "
-                    },
-                    {
-                      "type": "show_block",
-                      "block_name": "4,5M_EST",
-                      "title": u"Tänan. "
-                    },
-                    {
-                      "type": "show_block",
-                      "block_name": "4,5M_EST",
-                      "title": u"Soovin "
-                    }
-                  ]
-                }
-              }
-            }
-          ]
-        }
     else:
         out_text = "Nojah, midagi tahab veel parandamist" + " (1 " + m4_haarab + " 2 " + m4_refleksid + " 3 " + m4_seljaltkyljele + " 4 " + m4_helisuund + ")."
-        data = {
-          "messages": [
-            {
-              "attachment": {
-                "type": "template",
-                "payload": {
-                  "template_type": "button",
-                  "text": out_text,
-                  "buttons": [
-                    {
-                      "type": "show_block",
-                      "block_name": "age_block_selection",
-                      "title": u"Mul on "
-                    },
-                    {
-                      "type": "show_block",
-                      "block_name": "4,5M_EST",
-                      "title": u"Tänan. "
-                    },
-                    {
-                      "type": "show_block",
-                      "block_name": "4,5M_EST",
-                      "title": u"Soovin "
-                    }
-                  ]
-                }
-              }
-            }
-          ]
-        }
-'''
     data = {
       "messages": [
         {
@@ -208,7 +122,7 @@ def age_test_summary():
         }
       ]
     }
-'''
+
     return jsonify(data)
 
 @app.route('/names_check', methods=['GET'])
