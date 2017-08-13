@@ -2,6 +2,7 @@
 
 import csv
 import sqlite3
+import translitcodec
 
 from flask import Flask, request, g, jsonify
 from datetime import datetime, date
@@ -227,7 +228,7 @@ def getnames():
 @app.route("/testlist")
 def gettests():
     rows = execute_query("""SELECT description FROM tests LIMIT 1""")
-    return(str(rows) + "\n")
+    return(str(rows).decode('latin-1') + "\n")
 
 if __name__ == '__main__':
   app.run()
