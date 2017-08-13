@@ -224,5 +224,10 @@ def getnames():
     rows = execute_query("""SELECT * FROM names""")
     return(str(rows) + "\n")
   
+@app.route("/testlist")
+def gettests():
+    rows = execute_query("""SELECT * FROM tests""")
+    return(str(rows) + "\n")
+
 if __name__ == '__main__':
   app.run()
