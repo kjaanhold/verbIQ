@@ -6,7 +6,6 @@ import sqlite3
 import translitcodec
 
 from flask import Flask, request, g, jsonify
-from flask.ext.mysql import MySQL
 from datetime import datetime, date
 from sqlalchemy import exc
 
