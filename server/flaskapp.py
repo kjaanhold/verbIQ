@@ -226,7 +226,7 @@ def getnames():
   
 @app.route("/testlist")
 def gettests():
-    rows = execute_query("""SELECT * FROM tests""")
+    rows = execute_query("""SELECT description FROM tests LIMIT 1""")
     return(str(rows) + "\n")
 
 if __name__ == '__main__':
