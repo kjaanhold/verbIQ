@@ -11,5 +11,12 @@ data = data.split(";")
 for query in data:
 	cur.execute(query)
 
+fp = open('/home/ubuntu/verbIQ/server/fill_milestone_tests_table.sql', 'r')
+data = fp.read().decode("utf-8-sig").encode("utf-8").replace('\n', '').replace('\t','')
+data = data.split(";")
+
+for query in data:
+	cur.execute(query)
+
 conn.commit()
 conn.close()
