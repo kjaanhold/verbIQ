@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # install libraries
-sudo apt-get update
+sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install -y apache2
 sudo apt-get install -y libapache2-mod-wsgi
 sudo apt-get install -y python-pip
+sudo apt-get install -y postgresql postgresql-contrib
 sudo pip install flask
 sudo pip install sqlalchemy
 
