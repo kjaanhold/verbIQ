@@ -40,17 +40,17 @@ drop table if exists milestones;
 create table milestones (
 	id_milestone integer primary key not null,
 	target_age text,
-	name text,
+	type text,
 	description text
 );
 
 drop table if exists tests;
 create table tests (
 	id_test integer primary key not null,
-	target_age text not null,
-	name text not null,
+	channel text,
+	block_name text	,
 	description text not null,
-	block_name text
+	follow_up_question text
 );
 
 drop table if exists test_results;
