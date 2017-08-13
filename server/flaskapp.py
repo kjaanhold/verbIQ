@@ -6,6 +6,7 @@ import sqlite3
 import translitcodec
 
 from flask import Flask, request, g, jsonify
+from __future__ import unicode_literals
 from datetime import datetime, date
 from sqlalchemy import exc
 
