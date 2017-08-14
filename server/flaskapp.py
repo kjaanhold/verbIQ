@@ -1,4 +1,3 @@
-#! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import csv
@@ -6,7 +5,6 @@ import sqlite3
 import translitcodec
 
 from flask import Flask, request, g, jsonify
-from __future__ import unicode_literals
 from datetime import datetime, date
 from sqlalchemy import exc
 
@@ -53,7 +51,7 @@ def age_check():
     name = request.args.get('Lapse_eesnimi')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
-    out_text = "Tänan. " + (name) + " sündis " + str(date_object) + " ja ta on praegu " + str(int(round(int(age.days)/30))) + " kuu vanune."
+    out_text = u"Tänan. " + (name) + u" sündis " + str(date_object) + " ja ta on praegu " + str(int(round(int(age.days)/30))) + " kuu vanune."
 #    out_text = str(dob) + str(name)
 #    data = {'messages':[{"text": out_text}]}
     data = {
@@ -68,7 +66,7 @@ def age_check():
                 {
                   "type": "show_block",
                   "block_name": "age_block_selection",
-                  "title": "Õige, edasi!"
+                  "title": u"Õige, edasi!"
                 },
                 {
                   "type": "show_block",
@@ -152,7 +150,7 @@ def names_check():
                 {
                   "type": "show_block",
                   "block_name": "age_block_selection",
-                  "title": "Õige, edasi!"
+                  "title": u"Õige, edasi!"
                 },
                 {
                   "type": "show_block",
