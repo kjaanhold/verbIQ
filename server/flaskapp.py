@@ -2,7 +2,6 @@
 
 import csv
 import sqlite3
-import translitcodec
 
 from flask import Flask, request, g, jsonify
 from datetime import datetime, date
