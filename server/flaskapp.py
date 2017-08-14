@@ -235,7 +235,7 @@ def getmilestones():
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
-    query = "SELECT target_age, description FROM milestones WHERE target_age = 6;"
+    query = "SELECT target_age, description FROM milestones WHERE target_age <= %s;" % age_months
     rows = execute_query(query)
     return(str(rows) + "\n")
 
