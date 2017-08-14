@@ -2,7 +2,6 @@
 
 import csv
 import sqlite3
-import translitcodec
 
 from flask import Flask, request, g, jsonify
 from datetime import datetime, date
@@ -228,7 +227,18 @@ def getnames():
 @app.route("/testlist")
 def gettests():
     rows = execute_query("""SELECT description FROM tests LIMIT 1""")
-    return(str(rows).decode('latin-1') + "\n")
+    return(str(rows) + "\n")
+
+@app.route("/age_milestones")
+def getmilestones():
+    dob = request.args.get('Synni_kuupaev')
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    age_months = str(int(age.days)/30)
+    query = "SELECT description FROM milestones WHERE target_age <= %s LIMIT 1;" % (age_months)
+    rows = execute_query(query)
+    return(str(rows) + "\n")
+
 
 if __name__ == '__main__':
   app.run()
