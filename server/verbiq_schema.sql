@@ -39,7 +39,7 @@ create table families (
 drop table if exists milestones;
 create table milestones (
 	id_milestone integer primary key not null,
-	target_age text,
+	target_age numeric,
 	type text,
 	description text
 );
