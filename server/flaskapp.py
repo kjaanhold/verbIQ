@@ -60,6 +60,11 @@ def return_age(dob):
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
 
+@app.route('/test', methods=['GET'])
+def test_pg_connection():
+    result = db.session.query(playground).filter_by(ids=5).first()
+    return(result)
+
 @app.route('/age_check', methods=['GET'])
 def age_check():
     dob = request.args.get('Synni_kuupaev')
