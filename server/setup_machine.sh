@@ -8,6 +8,9 @@ sudo apt-get install -y python-pip
 sudo apt-get install -y postgresql postgresql-contrib
 sudo pip install flask
 sudo pip install sqlalchemy
+sudo pip install flask_sqlalchemy
+sudo pip install flask_script
+sudo pip install flask_migrate
 
 # link the repo
 sudo ln -sT ~/verbIQ/server /var/www/html/flaskapp
