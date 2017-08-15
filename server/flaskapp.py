@@ -48,10 +48,15 @@ def execute_query(query, args=()):
     cur.close()
     return rows
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods = ['GET','POST'])
 def hello_world():
-    result = db.session.query(Station).first()
-    return(str(result))
+    if request.method == "POST":
+      id = request.form['id']
+      lat = request.form['lat']
+      lng = request.form['lng']
+      new_data = Station(id, lat, lng)
+      db.session.add(new_data)
+      db.session.commit()
 
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
