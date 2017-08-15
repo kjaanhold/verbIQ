@@ -5,6 +5,7 @@ import sqlite3
 
 from flask import Flask, request, g, jsonify
 from datetime import datetime, date
+from models import db
 from sqlalchemy import exc
 
 DATABASE = '/home/ubuntu/verbIQ/server/verbiq.db'
