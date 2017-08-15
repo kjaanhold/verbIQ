@@ -58,6 +58,9 @@ def hello_world():
       db.session.add(new_data)
       db.session.commit()
       return 'OK'
+    if request.method == "GET":
+      rows = db.session.query(Station)
+      return rows
 
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
