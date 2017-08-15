@@ -48,9 +48,10 @@ def execute_query(query, args=()):
     cur.close()
     return rows
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def hello_world():
-    return db.session.query(Station).first()
+    result = db.session.query(Station).first()
+    return(str(result))
 
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
