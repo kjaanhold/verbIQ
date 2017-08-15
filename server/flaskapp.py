@@ -59,7 +59,7 @@ def hello_world():
       db.session.commit()
       return 'OK'
     if request.method == "GET":
-      rows = Station.query.all()
+      rows = db.session.query(Station)
       return rows
 
 @app.route('/age/<dob>', methods=['GET'])
