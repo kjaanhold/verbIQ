@@ -59,7 +59,7 @@ def hello_world():
       db.session.commit()
       return 'OK'
     if request.method == "GET":
-      lat = User.query.first()
+      lat = Station.query.first()
       return str(lat.lat)
 
 @app.route('/age/<dob>', methods=['GET'])
