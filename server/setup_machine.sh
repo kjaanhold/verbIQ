@@ -5,9 +5,10 @@ sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install -y apache2
 sudo apt-get install -y libapache2-mod-wsgi
 sudo apt-get install -y python-pip
-sudo apt-get install -y postgresql postgresql-contrib
+sudo apt-get install -y postgresql postgresql-contrib libpq-dev
 sudo pip install flask
 sudo pip install sqlalchemy
+sudo pip install psycopg2 Flask-SQLAlchemy Flask-Migrate
 sudo pip install flask_sqlalchemy
 sudo pip install flask_script
 sudo pip install flask_migrate
