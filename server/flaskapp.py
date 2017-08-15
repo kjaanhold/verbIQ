@@ -8,8 +8,23 @@ from datetime import datetime, date
 from sqlalchemy import exc
 
 DATABASE = '/home/ubuntu/verbIQ/server/verbiq.db'
+
+POSTGRES = {
+    'user': 'postgres',
+    'pw': 'password',
+    'db': 'my_database',
+    'host': 'localhost',
+    'port': '5432',
+}
+
+app.config['DEBUG'] = True
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:\
+%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
+
 app = Flask(__name__)
 app.config.from_object(__name__)
+
+db.init_app(app)
 
 def connect_to_database():
     return sqlite3.connect(app.config['DATABASE'])
