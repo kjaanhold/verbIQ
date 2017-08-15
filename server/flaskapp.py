@@ -50,7 +50,7 @@ def execute_query(query, args=()):
 
 @app.route('/')
 def hello_world():
-    return db.session.query(playground).filter_by(ids=5).first()
+    return db.session.query(Station).filter_by(ids=5).first()
 
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
