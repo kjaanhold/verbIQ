@@ -59,8 +59,8 @@ def hello_world():
       db.session.commit()
       return 'OK'
     if request.method == "GET":
-      data = Station.query.all().strip('[]')
-      return str(data)
+      data = Station.query.all()
+      return str(', '.join(data))
 
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
