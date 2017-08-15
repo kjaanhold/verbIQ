@@ -57,6 +57,7 @@ def hello_world():
       new_data = Station(id, lat, lng)
       db.session.add(new_data)
       db.session.commit()
+      return 'OK'
 
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
