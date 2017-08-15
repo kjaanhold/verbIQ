@@ -60,7 +60,7 @@ def hello_world():
       return 'OK'
     if request.method == "GET":
       data = Station.query.all()
-      return str(data.lat)
+      return str(data)
 
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
