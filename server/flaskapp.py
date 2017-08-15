@@ -50,7 +50,7 @@ def execute_query(query, args=()):
 
 @app.route('/')
 def hello_world():
-    return 'Hello from Flask!'
+    return db.session.query(playground).filter_by(ids=5).first()
 
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
@@ -59,11 +59,6 @@ def return_age(dob):
     out_text = "Selge, su laps on: " + str(age.days) 
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
-
-@app.route('/test', methods=['GET'])
-def test_pg_connection():
-    result = db.session.query(playground).filter_by(ids=5).first()
-    return(result)
 
 @app.route('/age_check', methods=['GET'])
 def age_check():
