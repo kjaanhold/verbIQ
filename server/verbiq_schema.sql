@@ -44,6 +44,13 @@ create table milestones (
 	description text
 );
 
+drop table if exists test_blocks;
+create table test_blocks (
+	id_test_block integer primary key not null,
+	key_test text,
+	block_name text
+);
+
 drop table if exists tests;
 create table tests (
 	id_test integer primary key not null,
@@ -56,10 +63,11 @@ create table tests (
 drop table if exists test_results;
 create table test_results (
 	id_test_result integer primary key not null,
-	key_test integer not null,
-	key_user integer not null,
-	key_child  integer not null,
-	date_created  date not null,
+	key_test integer,
+	key_user integer,
+	key_child  integer,
+	lapse_eesnimi text,
+	date_created date,
 	result_type text,
 	result_value text
 );

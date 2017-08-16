@@ -38,3 +38,30 @@ class Station(BaseModel, db.Model):
     	self.id = id
     	self.lat = lat
     	self.lng = lng
+
+
+class TestResults(BaseModel, db.Model):
+    """Model for the test_results table"""
+    __tablename__ = 'test_results'
+
+    id_test_result = db.Column(db.Integer, primary_key = True)
+    key_user = db.Column(db.Integer)
+    block_name = db.Column(db.Text)
+    lapse_eesnimi = db.Column(db.Text)
+    date_created = db.Column(db.Timestamp)
+    result_type = db.Column(db.Text)
+    result_value = db.Column(db.Text)
+
+    def __init__(self, id_test_result, key_user, block_name,lapse_eesnimi,date_created,result_type,result_value):
+        self.id_test_result = id_test_result
+        self.key_user = key_user
+        self.block_name = block_name
+        self.lapse_eesnimi = lapse_eesnimi
+        self.date_created = date_created
+        self.result_type = result_type
+        self.result_value = result_value
+
+
+
+
+

@@ -62,6 +62,25 @@ def hello_world():
       data = Station.query.first()
       return str(data.lat) + str(data.lng) + str(data.id)
 
+@app.route('/store_test_results', methods = ['GET','POST'])
+def store_test_results():
+    if request.method == "POST":
+      id_test_result = request.form['id_test_result']
+      key_user = request.form['key_user']
+      block_name = request.form['block_name']
+      lapse_eesnimi = request.form['lapse_eesnimi']
+      date_created = now()
+      result_type = "chatfuel"
+      result_value = request.form['result_value']
+      
+      new_data = TestResults(id_test_result, key_user, block_name,lapse_eesnimi,date_created,result_type,result_value)
+      db.session.add(new_data)
+      db.session.commit()
+      return 'OK'
+    if request.method == "GET":
+      data = TestResults.query.first()
+      return str(data.id_test_result)
+
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
@@ -258,6 +277,7 @@ def gettests():
 @app.route("/age_milestones")
 def getmilestones():
     dob = request.args.get('Synni_kuupaev')
+    name = request.args.get('Lapse_eesnimi')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
@@ -265,6 +285,58 @@ def getmilestones():
     rows = execute_query(query)
     return(str(rows) + "\n")
 
+@app.route("/test_results")
+def test_results():
+    dob = request.args.get('Synni_kuupaev')
+    name = request.args.get('Lapse_eesnimi')
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    age_months = str(int(age.days)/30)
+    answered_jah = "SELECT m.description FROM milestones m  JOIN milestone_tests mt ON a.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age, "jah")
+    answered_ei = "SELECT m.description FROM milestones m  JOIN milestone_tests mt ON a.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age, "ei")
+    answered_ei_tea = "SELECT m.description FROM milestones m  JOIN milestone_tests mt ON a.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age, "ei tea")
+ #   not_answered 
+    rows_jah = execute_query(answered_jah)
+    rows_ei = execute_query(answered_ei)
+    rows_ei_tea = execute_query(answered_ei_tea)
+
+    if (length(str(rows_ei)) < 3 AND length(str(rows_ei_tea)) < 3 AND length(str(rows_jah)) > 2):
+        out_text =  u"Tänan! " + name + u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse: \n"+ str(rows) + "\n"
+    elif (length(str(rows_ei)) > 2 AND length(str(rows_ei_tea)) < 3 AND length(str(rows_jah)) < 3):
+        out_text =  u"Tänan! " + name + u" praegu veel õpib peamisi eakohaseid oskusi: \n"+ str(rows_ei) + "\n"
+    else:
+        out_text =  u"Tänan! " + name + u" on juba omadanud järgmised lapse arengus jälgitavad oskused: \n" + str(rows_jah) + "\n" + name + u" õpib praegu veel neid oskuseid: \n" + str(rows_ei) "\n"
+    button1 = {
+                  "type": "show_block",
+                  "block_name": "age_block_selection",
+                  "title": u"Default answer"
+                }
+    button2 =  {
+                  "type": "show_block",
+                  "block_name": "4,5M_EST",
+                  "title": "Viga, parandame..."
+                }
+
+    data = {
+      "messages": [
+        {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "button",
+              "text": out_text,
+              "buttons": [
+                button1,
+                button2,
+                button2
+              ]
+            }
+          }
+        }
+      ]
+    }
+
+    return jsonify(data)
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0')
