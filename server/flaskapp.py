@@ -315,10 +315,6 @@ def proposenexttest():
     data = {"redirect_to_blocks": [next_block_name]}
     return jsonify(data)
 
-
-aga mitte enne teatud aega (nt 2nädalat).
-[16/08/2017, 12:53:33] Jaan Tulviste: Kui kõik jah, siis tuleks küsida järgmise vanuse (M4.5) küsimata küsimusi, kui võimalik siis sama arenguteema kohta (‘M3_asja_jalgimine’ > ‘M4.5_haarab_asja’), kuid siin on vaja neid arenguteemasid juba küsimustega paremini seostada).
-
 @app.route("/test_results")
 def test_results():
     dob = request.args.get('Synni_kuupaev')
