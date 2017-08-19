@@ -296,6 +296,7 @@ def proposenexttest():
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
+'''
     not_answered_test = "SELECT block_name FROM tests t LEFT JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.id_test_result IS NULL ORDER BY RANDOM() LIMIT 1;" % (name, age)
     not_answered_test_rows = execute_query(not_answered_test)
     failed_test_two_weeks = "SELECT block_name FROM tests t JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s AND tr.date_created < date.today() - '2 weeks'::interval) WHERE tr.result_value != '%s' ORDER BY RANDOM() LIMIT 1;" % (name, age, "jah")
@@ -304,7 +305,7 @@ def proposenexttest():
     failed_test_rows = execute_query(failed_test)
     not_answered_older_age_test = "SELECT block_name FROM tests t LEFT JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s) WHERE tr.id_test_result IS NULL ORDER BY m.target_age LIMIT 1;" % (name)
     not_answered_older_age_test_rows = execute_query(not_answered_older_age_test)
-'''
+
     if (length(str(not_answered_test_rows))>3):
         next_block_name = str(not_answered_test_rows)
     elif (length(str(failed_test_two_weeks_rows))>3):
@@ -316,7 +317,8 @@ def proposenexttest():
     else:
         next_block_name = "default_answer"
   '''
-    next_block_name = str(not_answered_test_rows) + str(failed_test_two_weeks_rows) + str(not_answered_older_age_test_rows)
+#    next_block_name = str(not_answered_test_rows) + str(failed_test_two_weeks_rows) + str(not_answered_older_age_test_rows)
+    next_block_name = str(str(age_months))
 
     data = {"redirect_to_blocks": [next_block_name]}
     return jsonify(data)
