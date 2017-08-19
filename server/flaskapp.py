@@ -289,7 +289,7 @@ def getmilestones():
     rows = execute_query(query)
     return(str(rows) + "\n")
 
-
+'''
 @app.route("/test_results")
 def test_results():
     dob = request.args.get('Synni_kuupaev')
@@ -299,15 +299,15 @@ def test_results():
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
-    answered_jah = "SELECT m.description FROM milestones m JOIN milestone_tests mt ON m.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age, "jah")
-    answered_ei = "SELECT m.description FROM milestones m JOIN milestone_tests mt ON m.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age, "ei")
-    answered_ei_tea = "SELECT m.description FROM milestones m JOIN milestone_tests mt ON m.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age, "ei tea")
+    answered_jah = "SELECT m.description FROM milestones m JOIN milestone_tests mt ON m.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age_months, "jah")
+    answered_ei = "SELECT m.description FROM milestones m JOIN milestone_tests mt ON m.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age_months, "ei")
+    answered_ei_tea = "SELECT m.description FROM milestones m JOIN milestone_tests mt ON m.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age_months, "ei tea")
  
     # not answered 
     rows_jah = execute_query(answered_jah)
     rows_ei = execute_query(answered_ei)
     rows_ei_tea = execute_query(answered_ei_tea)
-'''
+
     if (length(str(rows_ei)) < 3 and length(str(rows_ei_tea)) < 3 and length(str(rows_jah)) > 2):
         out_text = u"Tänan! " + name + u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse: \n"+ str(rows) + "\n"
     elif (length(str(rows_ei)) > 2 and length(str(rows_ei_tea)) < 3 and length(str(rows_jah)) < 3):
@@ -347,7 +347,6 @@ def test_results():
 
     return jsonify(data)
     '''
-    return (str(rows_jah))
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)
