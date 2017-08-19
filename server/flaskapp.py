@@ -381,7 +381,7 @@ def test_results():
 
     return jsonify(data)
 '''
-    return str("test")
+    return ("test")
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0')
