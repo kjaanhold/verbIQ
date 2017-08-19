@@ -299,9 +299,9 @@ def test_results():
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
-    answered_jah = "SELECT m.description FROM milestones m JOIN milestone_tests mt ON a.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age, "jah")
-    answered_ei = "SELECT m.description FROM milestones m JOIN milestone_tests mt ON a.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age, "ei")
-    answered_ei_tea = "SELECT m.description FROM milestones m JOIN milestone_tests mt ON a.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age, "ei tea")
+    answered_jah = "SELECT m.description FROM milestones m JOIN milestone_tests mt ON m.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age, "jah")
+    answered_ei = "SELECT m.description FROM milestones m JOIN milestone_tests mt ON m.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age, "ei")
+    answered_ei_tea = "SELECT m.description FROM milestones m JOIN milestone_tests mt ON m.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age, "ei tea")
  
     # not answered 
     rows_jah = execute_query(answered_jah)
