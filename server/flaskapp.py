@@ -304,7 +304,7 @@ def proposenexttest():
     failed_test_rows = execute_query(failed_test)
     not_answered_older_age_test = "SELECT block_name FROM tests t LEFT JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s) WHERE tr.id_test_result IS NULL ORDER BY m.target_age LIMIT 1;" % (name)
     not_answered_older_age_test_rows = execute_query(not_answered_older_age_test)
-
+'''
     if (length(str(not_answered_test_rows))>3):
         next_block_name = str(not_answered_test_rows)
     elif (length(str(failed_test_two_weeks_rows))>3):
@@ -315,9 +315,12 @@ def proposenexttest():
         next_block_name = str(not_answered_older_age_test_rows)
     else:
         next_block_name = "default_answer"
-  
+  '''
+    next_block_name = str(not_answered_test_rows) + str(failed_test_two_weeks_rows) + str(not_answered_older_age_test_rows)
+
     data = {"redirect_to_blocks": [next_block_name]}
     return jsonify(data)
+
 
 '''
 @app.route("/test_results")
