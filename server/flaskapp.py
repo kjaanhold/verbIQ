@@ -292,7 +292,19 @@ def getmilestones():
 
 @app.route("/next_test")
 def proposenexttest():
+    dob = request.args.get('Synni_kuupaev')
+    name = request.args.get('Lapse_eesnimi')
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    age_months = str(int(age.days)/30)
+    query = "SELECT target_age, description FROM milestones WHERE target_age <= %s;" % age_months
+    rows = execute_query(query)
+    return(str(rows) + "\n")
+
 '''
+@app.route("/next_test")
+def proposenexttest():
+
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
@@ -320,9 +332,9 @@ def proposenexttest():
     next_block_name = str(not_answered_test_rows) + str(failed_test_two_weeks_rows) + str(not_answered_older_age_test_rows)
     data = {"redirect_to_blocks": [next_block_name]}
 #    return jsonify(data)
-'''
-    return str("test")
 
+    return str("test")
+'''
 
 
 '''
