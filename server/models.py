@@ -39,7 +39,7 @@ class Station(BaseModel, db.Model):
     	self.lat = lat
     	self.lng = lng
 
-
+'''
 class TestResults(BaseModel, db.Model):
     """Model for the test_results table"""
     __tablename__ = 'test_results'
@@ -61,7 +61,7 @@ class TestResults(BaseModel, db.Model):
         self.result_type = result_type
         self.result_value = result_value
 
-
+'''
 
 
 
