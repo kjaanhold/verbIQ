@@ -288,9 +288,10 @@ def getmilestones():
     rows = execute_query(query)
     return(str(rows) + "\n")
 
-'''
+
 @app.route("/next_test")
 def proposenexttest():
+  '''
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
@@ -317,12 +318,13 @@ def proposenexttest():
     else:
         next_block_name = "default_answer"
   
-#    next_block_name = str(not_answered_test_rows) + str(failed_test_two_weeks_rows) + str(not_answered_older_age_test_rows)
+    next_block_name = str(not_answered_test_rows) + str(failed_test_two_weeks_rows) + str(not_answered_older_age_test_rows)
+'''
     next_block_name = str("test")
 
     data = {"redirect_to_blocks": [next_block_name]}
     return jsonify(data)
-'''
+
 
 '''
 @app.route("/test_results")
