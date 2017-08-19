@@ -69,7 +69,7 @@ def store_test_results():
       key_user = request.form['key_user']
       block_name = request.form['block_name']
       lapse_eesnimi = request.form['lapse_eesnimi']
-      date_created = datetime.now()
+      date_created = 'server_default'
       result_type = "chatfuel"
       result_value = request.form['result_value']
       
