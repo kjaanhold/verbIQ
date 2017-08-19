@@ -299,7 +299,7 @@ def proposenexttest():
     age_months = str(int(age.days)/30)
 #    query = "SELECT target_age, description FROM milestones WHERE target_age <= %s;" % age_months
 #    not_answered_test = "SELECT block_name FROM tests t LEFT JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND  t.target_age <= %s) WHERE tr.id_test_result IS NULL;" % (name, age_months)
-    not_answered_test = "SELECT block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= "+ 8 +" ORDER BY RANDOM() LIMIT 1;" 
+    not_answered_test = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone ORDER BY RANDOM() LIMIT 1;" 
     not_answered_test_rows = execute_query(not_answered_test)    
 #    rows = execute_query(query)
     return(str(not_answered_test_rows) + "\n")
