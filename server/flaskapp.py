@@ -325,9 +325,9 @@ def proposenexttest():
     data = {"redirect_to_blocks": [next_block_name]}
     return jsonify(data)
 
+'''
 @app.route("/test_results")
 def test_results():
-'''
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
@@ -378,8 +378,8 @@ def test_results():
     }
 
     return jsonify(data)
-'''
     return ("test")
+    '''
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)
