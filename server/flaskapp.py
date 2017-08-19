@@ -337,7 +337,7 @@ def proposenexttest():
 
 @app.route("/test_results")
 def testresults():
-    query = "SELECT target_age, description FROM test_results;" 
+    query = "SELECT block_name, result_value FROM test_results;" 
     rows = execute_query(query)
     return(str(rows) + "\n")
 
