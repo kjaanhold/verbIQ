@@ -296,12 +296,14 @@ def proposenexttest():
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
-
     rows = execute_query("SELECT * FROM test_results;")
-    if not rows:
+#   if no previous tests done
+    if not rows:  
         not_answered_test = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
+
+#   some previous tests were done
     else:
-        not_answered_test = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone LEFT JOIN test_results tr ON t.block_name = tr.block_name WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)    
+        not_answered_test = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN test_results tr ON t.block_name = tr.block_name WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)    
     not_answered_test_rows = execute_query(not_answered_test)    
     return(str(not_answered_test_rows) + "\n")
 
