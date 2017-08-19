@@ -61,7 +61,7 @@ def hello_world():
     if request.method == "GET":
       data = Station.query.first()
       return str(data.lat) + str(data.lng) + str(data.id)
-
+'''
 @app.route('/store_test_results', methods = ['GET','POST'])
 def store_test_results():
     if request.method == "POST":
@@ -80,6 +80,7 @@ def store_test_results():
     if request.method == "GET":
       data = TestResults.query.first()
       return str(data.id_test_result)
+'''
 
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
