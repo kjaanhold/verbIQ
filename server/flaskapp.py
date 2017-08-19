@@ -21,7 +21,6 @@ POSTGRES = {
 app = Flask(__name__)
 
 app.config.from_object(__name__)
-app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:\
 %(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
 
@@ -288,7 +287,7 @@ def getmilestones():
     rows = execute_query(query)
     return(str(rows) + "\n")
 
-'''
+
 @app.route("/next_test")
 def proposenexttest():
 
@@ -300,10 +299,13 @@ def proposenexttest():
 
     not_answered_test = "SELECT block_name FROM tests t LEFT JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.id_test_result IS NULL ORDER BY RANDOM() LIMIT 1;" % (name, age)
     not_answered_test_rows = execute_query(not_answered_test)
+
     failed_test_two_weeks = "SELECT block_name FROM tests t JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s AND tr.date_created < date.today() - '2 weeks'::interval) WHERE tr.result_value != '%s' ORDER BY RANDOM() LIMIT 1;" % (name, age, "jah")
     failed_test_two_weeks_rows = execute_query(failed_test_two_weeks)
+
     failed_test = "SELECT block_name FROM tests t JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s WHERE tr.result_value != '%s' ORDER BY RANDOM() LIMIT 1;" % (name, age, "jah")
     failed_test_rows = execute_query(failed_test)
+
     not_answered_older_age_test = "SELECT block_name FROM tests t LEFT JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s) WHERE tr.id_test_result IS NULL ORDER BY m.target_age LIMIT 1;" % (name)
     not_answered_older_age_test_rows = execute_query(not_answered_older_age_test)
 
@@ -322,10 +324,6 @@ def proposenexttest():
 
     data = {"redirect_to_blocks": [next_block_name]}
     return jsonify(data)
-
-    return str("test")
-'''
-
 
 @app.route("/test_results")
 def test_results():
@@ -384,4 +382,4 @@ def test_results():
     return ("test")
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0')
+  app.run(host='0.0.0.0', debug=True)
