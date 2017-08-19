@@ -288,10 +288,10 @@ def getmilestones():
     rows = execute_query(query)
     return(str(rows) + "\n")
 
-
+'''
 @app.route("/next_test")
 def proposenexttest():
-  '''
+
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
@@ -322,9 +322,9 @@ def proposenexttest():
 
     data = {"redirect_to_blocks": [next_block_name]}
     return jsonify(data)
-'''
-    return str("test")
 
+    return str("test")
+'''
 
 '''
 @app.route("/test_results")
