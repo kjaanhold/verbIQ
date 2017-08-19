@@ -72,7 +72,7 @@ def store_test_results():
       result_type = 'chatfuel'
       result_value = request.form['result_value']
       
-      new_data = TestResults(id_test_result, key_user, block_name,lapse_eesnimi,'DEFAULT',result_type,result_value)
+      new_data = TestResults(id_test_result, key_user, block_name,lapse_eesnimi,result_type,result_value)
       db.session.add(new_data)
       db.session.commit()
       return 'OK'
