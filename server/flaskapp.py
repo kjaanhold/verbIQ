@@ -339,7 +339,11 @@ def proposenexttest():
 def testresults():
     query = "SELECT * FROM test_results;" 
     rows = execute_query(query)
-    return(str(rows) + "a" + "\n")
+    if str(rows) = "[]":
+        out = "null"
+    else:
+        out = "yks"
+    return(out + "\n")
 
 '''
 @app.route("/test_results")
