@@ -289,7 +289,6 @@ def getmilestones():
     rows = execute_query(query)
     return(str(rows) + "\n")
 
-
 @app.route("/next_test")
 def proposenexttest():
     dob = request.args.get('Synni_kuupaev')
@@ -336,6 +335,11 @@ def proposenexttest():
     return str("test")
 '''
 
+@app.route("/test_results")
+def testresults():
+    query = "SELECT * FROM test_results;" 
+    rows = execute_query(query)
+    return(str(rows) + "\n")
 
 '''
 @app.route("/test_results")
