@@ -3,7 +3,7 @@
 import csv
 import sqlite3
 
-from flask import Flask, request, g, jsonify
+from flask import Flask, reque, g, jsonify
 from datetime import datetime, date
 from models import *
 from sqlalchemy import exc
@@ -69,10 +69,11 @@ def store_test_results():
       key_user = request.form['key_user']
       block_name = request.form['block_name']
       lapse_eesnimi = request.form['lapse_eesnimi']
+      date_created = datetime.utcnow()
       result_type = 'chatfuel'
       result_value = request.form['result_value']
       
-      new_data = TestResults(id_test_result, key_user, block_name,lapse_eesnimi,result_type,result_value)
+      new_data = TestResults(id_test_result, key_user, block_name, lapse_eesnimi, date_created, result_type, result_value)
       db.session.add(new_data)
       db.session.commit()
       return 'OK'
