@@ -2,7 +2,6 @@
 
 import csv
 import sqlite3
-import numpy
 
 from flask import Flask, request, g, jsonify
 from datetime import datetime, date
@@ -340,11 +339,7 @@ def proposenexttest():
 def testresults():
     query = "SELECT * FROM test_results;" 
     rows = execute_query(query)
-    if rows > 0:
-        out = "true"
-    else:
-        out = "false"
-    return(out)
+    return(str(rows) + "a" + "\n")
 
 '''
 @app.route("/test_results")
