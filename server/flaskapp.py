@@ -319,11 +319,11 @@ def proposenexttest():
         next_block_name = "default_answer"
   
     next_block_name = str(not_answered_test_rows) + str(failed_test_two_weeks_rows) + str(not_answered_older_age_test_rows)
-'''
-    next_block_name = str("test")
 
     data = {"redirect_to_blocks": [next_block_name]}
     return jsonify(data)
+'''
+    return str("test")
 
 
 '''
