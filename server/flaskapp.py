@@ -219,8 +219,10 @@ def direct_block_based_on_age(dob):
         next_block = "2M_EST"
     elif age_in_days < 4.5*30:
         next_block = "3M_EST"        
+#    elif age_in_days < 6*30:
+#        next_block = "4,5M_EST"
     elif age_in_days < 6*30:
-        next_block = "4,5M_EST"
+        next_block = "next_test_selection"
     elif age_in_days < 7*30:
         next_block = "6M_EST"
     elif age_in_days < 8*30:
