@@ -3,7 +3,7 @@
 import csv
 import sqlite3
 
-from flask import Flask, reque, g, jsonify
+from flask import Flask, request, g, jsonify
 from datetime import datetime, date
 from models import *
 from sqlalchemy import exc
