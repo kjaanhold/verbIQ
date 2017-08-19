@@ -48,7 +48,7 @@ class TestResults(BaseModel, db.Model):
     key_user = db.Column(db.Integer)
     block_name = db.Column(db.String)
     lapse_eesnimi = db.Column(db.String)
-    date_created = db.Column(db.DateTime, server_default=db.func.now())
+    date_created = db.Column(db.DateTime)
     result_type = db.Column(db.String)
     result_value = db.Column(db.String)
 
