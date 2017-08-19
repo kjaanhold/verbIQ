@@ -2,6 +2,7 @@
 
 import csv
 import sqlite3
+import numpy
 
 from flask import Flask, request, g, jsonify
 from datetime import datetime, date
@@ -339,7 +340,11 @@ def proposenexttest():
 def testresults():
     query = "SELECT * FROM test_results;" 
     rows = execute_query(query)
-    return(length(str(rows)))
+    if numpy.isnan(rows) = True:
+        out = "true"
+    else:
+        out = "false"
+    return(out)
 
 '''
 @app.route("/test_results")
