@@ -340,7 +340,7 @@ def proposenexttest():
 def testresults():
     query = "SELECT * FROM test_results;" 
     rows = execute_query(query)
-    if numpy.isnan(rows) = True:
+    if rows > 0:
         out = "true"
     else:
         out = "false"
