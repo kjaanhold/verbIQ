@@ -288,6 +288,7 @@ def getmilestones():
     rows = execute_query(query)
     return(str(rows) + "\n")
 
+'''
 @app.route("/next_test")
 def proposenexttest():
     dob = request.args.get('Synni_kuupaev')
@@ -317,6 +318,7 @@ def proposenexttest():
   
     data = {"redirect_to_blocks": [next_block_name]}
     return jsonify(data)
+'''
 
 @app.route("/test_results")
 def test_results():
