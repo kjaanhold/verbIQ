@@ -46,11 +46,11 @@ class TestResults(BaseModel, db.Model):
 
     id_test_result = db.Column(db.Integer, primary_key = True)
     key_user = db.Column(db.Integer)
-    block_name = db.Column(db.Text)
-    lapse_eesnimi = db.Column(db.Text)
-    date_created = db.Column(db.Timestamp)
-    result_type = db.Column(db.Text)
-    result_value = db.Column(db.Text)
+    block_name = db.Column(db.String)
+    lapse_eesnimi = db.Column(db.String)
+    date_created = db.Column(db.DateTime)
+    result_type = db.Column(db.String)
+    result_value = db.Column(db.String)
 
     def __init__(self, id_test_result, key_user, block_name,lapse_eesnimi,date_created,result_type,result_value):
         self.id_test_result = id_test_result
