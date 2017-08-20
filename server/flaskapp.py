@@ -99,7 +99,7 @@ def gettestresults():
  #     not_answered_test_rows = execute_query(not_answered_test)    
 
 
-      return jsonify(block_name)
+      return str(block_name)
 
 
 
