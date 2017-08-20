@@ -92,7 +92,42 @@ def gettestresults():
         "block_name": data.block_name,
         "result_value": data.result_value
       }
-      return jsonify(data_out) #str(data.key_user)+";"+str(data.block_name)+";"+str(data.lapse_eesnimi)+";"+str(data.date_created)+";"+str(data.result_type)+";"+str(data.result_value)+";"
+      block_name = data.block_name
+      result_value = data.result_value
+
+      not_answered_test = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN %s ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
+      not_answered_test_rows = execute_query(not_answered_test)    
+
+
+      return jsonify(not_answered_test_rows)
+      
+
+
+
+    dob = request.args.get('Synni_kuupaev')
+    name = request.args.get('Lapse_eesnimi')
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    age_months = str(int(age.days)/30)
+    rows = execute_query("SELECT * FROM test_results;")
+#   if no previous tests done
+    if not rows:  
+        not_answered_test = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
+
+#   some previous tests were done
+    else:
+        not_answered_test = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN test_results tr ON t.block_name = tr.block_name WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)    
+    not_answered_test_rows = execute_query(not_answered_test)    
+    return(str(not_answered_test_rows) + "\n")
+
+
+
+
+
+
+
+
+
 
 
 @app.route('/age/<dob>', methods=['GET'])
