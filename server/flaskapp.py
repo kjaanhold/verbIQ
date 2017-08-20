@@ -80,7 +80,7 @@ def store_test_results():
 
     if request.method == "GET":
       data = TestResults.query.first()
-      return str(data.id_test_result)
+      return str(data.id_test_result)+";"+str(data.key_user)+";"+str(data.block_name)+";"+str(data.lapse_eesnimi)+";"+str(data.date_created)+";"+str(data.result_type)+";"+str(data.result_value)+";"
 
 
 @app.route('/age/<dob>', methods=['GET'])
