@@ -93,10 +93,11 @@ def proposenexttest():
     age_months = str(int(age.days)/30)
 
     if not TestResults.query.filter_by(lapse_eesnimi = name).first():
+      # this kid hasn't done any tests yet
       query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
 
     else:
-
+      # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name).first()
       data_out = {
         "block_name": data.block_name,
@@ -107,29 +108,32 @@ def proposenexttest():
 
       query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
 
-    rows = execute_query(query)    
-    return str(rows)
+    rows = execute_query(query)
+    data = {"redirect_to_blocks": [rows]}    
+    return jsonify(data)
 
 '''
-    dob = request.args.get('Synni_kuupaev')
-    name = request.args.get('Lapse_eesnimi')
-    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-    age = date.today() - date_object
-    age_months = str(int(age.days)/30)
-    rows = execute_query("SELECT * FROM test_results;")
-#   if no previous tests done
-    if not rows:  
-        not_answered_test = 
-
-#   some previous tests were done
+    failed_test_two_weeks = "SELECT block_name FROM tests t JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s AND tr.date_created < date.today() - '2 weeks'::interval) WHERE tr.result_value != '%s' ORDER BY RANDOM() LIMIT 1;" % (name, age, "jah")
+    failed_test_two_weeks_rows = execute_query(failed_test_two_weeks)
+    failed_test = "SELECT block_name FROM tests t JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s WHERE tr.result_value != '%s' ORDER BY RANDOM() LIMIT 1;" % (name, age, "jah")
+    failed_test_rows = execute_query(failed_test)
+    not_answered_older_age_test = "SELECT block_name FROM tests t LEFT JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s) WHERE tr.id_test_result IS NULL ORDER BY m.target_age LIMIT 1;" % (name)
+    not_answered_older_age_test_rows = execute_query(not_answered_older_age_test)
+    if (length(str(not_answered_test_rows))>3):
+        next_block_name = str(not_answered_test_rows)
+    elif (length(str(failed_test_two_weeks_rows))>3):
+        next_block_name = str(failed_test_two_weeks_rows)
+    elif (length(str(failed_test_rows))<3):
+        next_block_name = str(failed_test_two_weeks_rows)
+    elif (length(str(not_answered_older_age_test_rows))>3):
+        next_block_name = str(not_answered_older_age_test_rows)
     else:
-        not_answered_test = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN test_results tr ON t.block_name = tr.block_name WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)    
-    not_answered_test_rows = execute_query(not_answered_test)    
-    return(str(not_answered_test_rows) + "\n")
+        next_block_name = "default_answer"
+  
+    next_block_name = str(not_answered_test_rows) + str(failed_test_two_weeks_rows) + str(not_answered_older_age_test_rows)
+    data = {"redirect_to_blocks": [next_block_name]}
+#    return 
 '''
-
-
-
 
 
 
@@ -317,12 +321,7 @@ def addnames():
         finally:
             con.close()
     elif request.method == "GET":
-        return("This was a GET request")
-        
-@app.route("/namelist")
-def getnames():
-    rows = execute_query("""SELECT * FROM names""")
-    return(str(rows) + "\n")
+        return("This was a GET request")    
 
 
 @app.route("/age_milestones")
