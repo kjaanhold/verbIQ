@@ -103,7 +103,7 @@ def gettestresults():
 
 
 
-
+'''
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
@@ -120,7 +120,7 @@ def gettestresults():
     not_answered_test_rows = execute_query(not_answered_test)    
     return(str(not_answered_test_rows) + "\n")
 
-
+'''
 
 
 
