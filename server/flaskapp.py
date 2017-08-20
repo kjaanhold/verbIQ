@@ -114,7 +114,7 @@ def proposenexttest():
 
 '''
     if not rows:
-      data = TestResults.query.filter_by(lapse_eesnimi = name, result_value != "jah").first()
+      data = TestResults.query.filter_by(lapse_eesnimi = name).first()
       data_out = {
         "block_name": data.block_name
       }
