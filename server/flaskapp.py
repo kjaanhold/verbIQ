@@ -86,7 +86,11 @@ def store_test_results():
 @app.route('/test_results', methods = ['GET','POST'])
 def gettestresults():
     if request.method == "GET":
+      dob = request.args.get('Synni_kuupaev')
       name = request.args.get('Lapse_eesnimi')
+      date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+      age = date.today() - date_object
+      age_months = str(int(age.days)/30)
       data = TestResults.query.filter_by(lapse_eesnimi = name).first()
       data_out = {
         "block_name": data.block_name,
@@ -104,11 +108,6 @@ def gettestresults():
 
 
 '''
-    dob = request.args.get('Synni_kuupaev')
-    name = request.args.get('Lapse_eesnimi')
-    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-    age = date.today() - date_object
-    age_months = str(int(age.days)/30)
     rows = execute_query("SELECT * FROM test_results;")
 #   if no previous tests done
     if not rows:  
