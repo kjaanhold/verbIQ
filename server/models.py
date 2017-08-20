@@ -30,7 +30,7 @@ class Station(BaseModel, db.Model):
     """Model for the stations table"""
     __tablename__ = 'stations'
 
-    id = db.Column(db.Integer, db.Sequence('seq_reg_id', start=10000, increment=1), primary_key = True)
+    id = db.Column(db.Integer, primary_key = True)
     lat = db.Column(db.Float)
     lng = db.Column(db.Float)
     date_created = db.Column(db.DateTime)
