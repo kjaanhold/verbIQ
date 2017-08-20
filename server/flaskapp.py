@@ -79,9 +79,18 @@ def store_test_results():
       return 'OK'
 
     if request.method == "GET":
-      data = TestResults.query.filter_by(lapse_eesnimi = "mikk").first()
+      data = TestResults.query.first()
       return str(data.id_test_result)+";"+str(data.key_user)+";"+str(data.block_name)+";"+str(data.lapse_eesnimi)+";"+str(data.date_created)+";"+str(data.result_type)+";"+str(data.result_value)+";"
 
+
+@app.route('/test_results', methods = ['GET'])
+def gettestresults(name):
+      data = TestResults.query.filter_by(lapse_eesnimi = %s).first() % (name)
+      data_out = {
+        "block_name": data.block_name, 
+        "result_value": data.result_value
+        }
+      return jsonify(data_out)
 
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
