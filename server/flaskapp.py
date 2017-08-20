@@ -54,7 +54,7 @@ def hello_world():
       lat = request.form['lat']
       lng = request.form['lng']
       date_created = datetime.utcnow()
-      new_data = Station(id, lat, lng)
+      new_data = Station(id, lat, lng, date_created)
       db.session.add(new_data)
       db.session.commit()
       return 'OK'
