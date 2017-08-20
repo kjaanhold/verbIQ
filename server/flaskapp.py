@@ -95,7 +95,7 @@ def proposenexttest():
     if not TestResults.query.filter_by(lapse_eesnimi = name).first():
       # this kid hasn't done any tests yet
       query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
-
+      text = u"Ei ole veel ühtegi vastust"
     else:
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name).first()
@@ -109,7 +109,7 @@ def proposenexttest():
       query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
 
     rows = execute_query(query)
-    data = {"redirect_to_blocks": [rows]}    
+    data = {"redirect_to_blocks": rows, "selection_criteria": text}    
     return jsonify(data)
 
 '''
