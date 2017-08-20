@@ -96,25 +96,34 @@ def proposenexttest():
       # this kid hasn't done any tests yet
       query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
       text = u"Esimene test sellele lapsele"
-
-
-
+      rows = execute_query(query)
 
     else:
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name).first()
       data_out = {
-        "block_name": data.block_name,
-        "result_value": data.result_value
+        "block_name": data.block_name
       }
       block_name = data.block_name
-      result_value = data.result_value
 
       query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
       text = u"Veel vastamata test sellele lapsele"
+      rows = execute_query(query)
+
+      if not rows:
+        data = TestResults.query.filter_by(lapse_eesnimi = name, result_value != "jah").first()
+        data_out = {
+          "block_name": data.block_name
+        }
+        block_name = data.block_name
+        query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
+        text = u"Varem ebaõnnestunud test"
+        rows = execute_query(query)
 
 
-    rows = execute_query(query)
+
+
+
     data = {"redirect_to_blocks": rows, "selection_criteria": text}    
     return jsonify(data)
 
