@@ -79,7 +79,7 @@ def store_test_results():
       return 'OK'
 
     if request.method == "GET":
-      data = TestResults.query.first()
+      data = TestResults.query.filter_by(key_user = "mikk").first()
       return str(data.id_test_result)+";"+str(data.key_user)+";"+str(data.block_name)+";"+str(data.lapse_eesnimi)+";"+str(data.date_created)+";"+str(data.result_type)+";"+str(data.result_value)+";"
 
 
@@ -273,9 +273,9 @@ def getnames():
     rows = execute_query("""SELECT * FROM names""")
     return(str(rows) + "\n")
   
-@app.route("/testlist")
-def gettests():
-    rows = execute_query("""SELECT description FROM tests LIMIT 1""")
+@app.route("/test_results")
+def gettestresults():
+    rows = execute_query("""SELECT * FROM test_results LIMIT 1""")
     return(str(rows) + "\n")
 
 @app.route("/age_milestones")
