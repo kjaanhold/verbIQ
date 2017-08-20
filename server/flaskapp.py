@@ -96,11 +96,11 @@ def gettestresults():
       result_value = data.result_value
 
       not_answered_test = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN %s ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
-      not_answered_test_rows = execute_query(not_answered_test)    
+ #     not_answered_test_rows = execute_query(not_answered_test)    
 
 
-      return jsonify(not_answered_test_rows)
-      
+      return str(not_answered_test)
+
 
 
 
