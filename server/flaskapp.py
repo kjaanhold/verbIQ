@@ -53,13 +53,14 @@ def hello_world():
       id = request.form['id']
       lat = request.form['lat']
       lng = request.form['lng']
+      date_created = datetime.utcnow()
       new_data = Station(id, lat, lng)
       db.session.add(new_data)
       db.session.commit()
       return 'OK'
     if request.method == "GET":
-      data = Station.query.order_by(Station.id.desc()).first()
-      return str(data.lat) + str(data.lng) + str(data.id)
+      data = Station.query.order_by(Station.date_created.desc()).first()
+      return str(data.lat) + str(data.lng) + str(data.id) + str(data.date_created)
 
 @app.route('/store_test_results', methods = ['GET','POST'])
 def store_test_results():
