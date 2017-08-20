@@ -84,7 +84,8 @@ def store_test_results():
 
 
 @app.route('/test_results', methods = ['GET'])
-def gettestresults(name):
+def gettestresults():
+      name = "mikk"
       data = TestResults.query.filter_by(lapse_eesnimi = %s).first() % (name)
       data_out = {
         "block_name": data.block_name, 
