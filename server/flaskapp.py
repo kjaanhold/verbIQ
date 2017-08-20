@@ -83,6 +83,18 @@ def store_test_results():
       return str(data.id_test_result)+";"+str(data.key_user)+";"+str(data.block_name)+";"+str(data.lapse_eesnimi)+";"+str(data.date_created)+";"+str(data.result_type)+";"+str(data.result_value)+";"
 
 
+@app.route('/test_results', methods = ['GET'])
+def gettestresults():
+#      name = "mikk"
+  data = TestResults.query.first() 
+'''      data_out = {
+        "block_name": data.block_name, 
+        "result_value": data.result_value
+        }
+      return jsonify(data_out)
+'''
+  return str(data.id_test_result)
+
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
