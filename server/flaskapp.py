@@ -92,7 +92,7 @@ def gettestresults():
         "block_name": data.block_name,
         "result_value": data.result_value
       }
-      return str(data.id_test_result)+";"+str(data.key_user)+";"+str(data.block_name)+";"+str(data.lapse_eesnimi)+";"+str(data.date_created)+";"+str(data.result_type)+";"+str(data.result_value)+";"
+      return jsonify(data_out) #str(data.key_user)+";"+str(data.block_name)+";"+str(data.lapse_eesnimi)+";"+str(data.date_created)+";"+str(data.result_type)+";"+str(data.result_value)+";"
 
 
 @app.route('/age/<dob>', methods=['GET'])
