@@ -87,11 +87,13 @@ def store_test_results():
 def gettestresults():
 #      name = "mikk"
       data = TestResults.query.first() 
-      data_out = {
+'''      data_out = {
         "block_name": data.block_name, 
         "result_value": data.result_value
         }
       return jsonify(data_out)
+'''
+      return str(data.id_test_result)
 
 @app.route('/age/<dob>', methods=['GET'])
 def return_age(dob):
