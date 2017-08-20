@@ -58,7 +58,7 @@ def hello_world():
       db.session.commit()
       return 'OK'
     if request.method == "GET":
-      data = TestResults.query.order_by(Station.id.desc()).first()
+      data = Station.query.order_by(Station.id.desc()).first()
       return str(data.lat) + str(data.lng) + str(data.id)
 
 @app.route('/store_test_results', methods = ['GET','POST'])
