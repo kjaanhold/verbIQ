@@ -33,13 +33,11 @@ class Station(BaseModel, db.Model):
     id = db.Column(db.Integer, primary_key = True)
     lat = db.Column(db.Float)
     lng = db.Column(db.Float)
-    date_created = db.Column(db.DateTime)
 
-    def __init__(self, id, lat, lng, date_created):
+    def __init__(self, id, lat, lng):
     	self.id = id
     	self.lat = lat
     	self.lng = lng
-        self.date_created = date_created
 
 
 class TestResults(BaseModel, db.Model):
