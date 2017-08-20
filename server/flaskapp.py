@@ -87,7 +87,7 @@ def store_test_results():
 def gettestresults():
     if request.method == "GET":
       name = "mikk"
-      data = TestResults.query.first()
+      data = TestResults.query.filter_by(lapse_eesnimi = name).first()
       data_out = {
         "block_name": data.block_name,
         "result_value": data.result_value
