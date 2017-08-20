@@ -91,8 +91,11 @@ def gettestresults():
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
-    
-    if request.method == "GET":
+
+    if not TestResults.query.filter_by(lapse_eesnimi = name).first():
+      return str("error")
+      
+    else:
 
       data = TestResults.query.filter_by(lapse_eesnimi = name).first()
       data_out = {
