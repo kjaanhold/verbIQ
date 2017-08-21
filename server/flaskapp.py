@@ -48,11 +48,7 @@ def execute_query(query, args=()):
     return rows
 
 @app.route('/', methods = ['GET','POST'])
-def hello_world():
-    if request.method == "POST":
- #     id = request.form['id']
-      lat = request.form['lat']
-      lng = request.form['lng']
+re
       new_data = Station(id, lat, lng)
       db.session.add(new_data)
       db.session.commit()
@@ -111,7 +107,7 @@ def proposenexttest():
       text = u"Veel vastamata testid"
 
     rows = execute_query(query)
-    data = {"redirect_to_blocks": rows, "selection_criteria": text}    
+    data = {"redirect_to_blocks": rows[0], "selection_criteria": text}    
     return jsonify(data)
 
 
@@ -253,10 +249,8 @@ def direct_block_based_on_age(dob):
         next_block = "2M_EST"
     elif age_in_days < 4.5*30:
         next_block = "3M_EST"        
-#    elif age_in_days < 6*30:
-#        next_block = "4,5M_EST"
     elif age_in_days < 6*30:
-        next_block = "next_test_selection"
+        next_block = "4,5M_EST"
     elif age_in_days < 7*30:
         next_block = "6M_EST"
     elif age_in_days < 8*30:
