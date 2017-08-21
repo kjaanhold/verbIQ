@@ -50,7 +50,7 @@ def execute_query(query, args=()):
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
     if request.method == "POST":
-      id = request.form['id']
+ #     id = request.form['id']
       lat = request.form['lat']
       lng = request.form['lng']
       new_data = Station(id, lat, lng)
@@ -65,7 +65,7 @@ def hello_world():
 def store_test_results():
     if request.method == "POST":
 
-      id_test_result = request.form['id_test_result']
+#      id_test_result = request.form['id_test_result']
       key_user = request.form['messenger user id']
       block_name = request.form['last visited block id']
       lapse_eesnimi = request.form['Lapse_eesnimi']
