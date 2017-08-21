@@ -107,7 +107,7 @@ def proposenexttest():
       text = u"Veel vastamata testid"
 
     rows = execute_query(query)
-    data = {"redirect_to_blocks": rows[1], "selection_criteria": text}    
+    data = {"redirect_to_blocks": rows, "selection_criteria": text}    
     return jsonify(data)
 
 
