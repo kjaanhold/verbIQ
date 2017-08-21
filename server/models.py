@@ -45,7 +45,7 @@ class TestResults(BaseModel, db.Model):
     __tablename__ = 'test_results'
 
     id_test_result = db.Column(db.Integer, primary_key = True)
-    key_user = db.Column(db.Integer)
+    key_user = db.Column(db.String)
     block_name = db.Column(db.String)
     lapse_eesnimi = db.Column(db.String)
     date_created = db.Column(db.DateTime)
