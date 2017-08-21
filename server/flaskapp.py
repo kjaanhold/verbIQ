@@ -66,7 +66,6 @@ def store_test_results():
     if request.method == "POST":
 
       id_test_result = request.form['id_test_result']
-#      id_test_result = session['id']
       key_user = request.form['messenger user id']
       block_name = request.form['last visited block id']
       lapse_eesnimi = request.form['Lapse_eesnimi']
@@ -81,7 +80,7 @@ def store_test_results():
 
     if request.method == "GET":
       out = TestResults.query.order_by(TestResults.date_created.desc()).first()
-      data = {'messages':[{"text": "Inserted " + str(out.id_test_result) + " to the database \n"}]}
+      data = {'messages':[{"text": "Inserted id" + str(out.id_test_result) + " to the database" +request.args.get('messenger user id') }]}
       return jsonify(data)
 
 
