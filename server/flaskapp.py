@@ -89,7 +89,7 @@ def store_test_results():
       data = {'messages':[{"text": "id_test_result: " + str(n0) + ", " + str(n1) + ", " + str(n2) + ", " + str(n3) + ", " + str(n4)}]}
       return jsonify(data)
 
-
+'''
 @app.route('/next_test', methods = ['GET','POST'])
 def proposenexttest():
 
@@ -121,7 +121,13 @@ def proposenexttest():
     out_text = str(rows)
     out_text = out_text.replace("[(u'","")
     out_text = out_text.replace("',)]","")
-#    data = {"redirect_to_blocks": [rows]} 
+#    data = {"redirect_to_blocks": [out_text]} 
+    out_text = "Testing"
+    data = {'messages':[{"text": out_text}]}
+    return jsonify(data)
+'''
+@app.route('/next_test', methods = ['GET','POST'])
+def proposenexttest():
     out_text = "Testing"
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
