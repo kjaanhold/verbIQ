@@ -79,9 +79,14 @@ def store_test_results():
       return 'OK'
 
     if request.method == "GET":
-      out = TestResults.query.order_by(TestResults.date_created.desc()).first()
+#      out = TestResults.query.order_by(TestResults.date_created.desc()).first()
+      n0 = request.args.get('id_test_result')
       n1 = request.args.get('messenger user id')
-      data = {'messages':[{"text": "Inserted id" + str(out.id_test_result) + " to the database" + str(n1)}]}
+      n2 = request.args.get('last visited block id')
+      n3 = request.args.get('Lapse_eesnimi')
+      n4 = request.args.get('test_result')
+
+      data = {'messages':[{"text": "id_test_result: " + str(n0) + ", " + str(n1) + ", " + str(n2) + ", " + str(n3) + ", " + str(n4)}]}
       return jsonify(data)
 
 
