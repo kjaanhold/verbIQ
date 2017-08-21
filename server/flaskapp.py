@@ -117,12 +117,13 @@ def proposenexttest():
       query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
       text = u"Veel vastamata testid"
 
-    rows = str(execute_query(query))
-    rows = rows.replace("[(u'","")
-    rows = rows.replace("',)]","")
+    rows = execute_query(query)
+    out_text = str(execute_query(rows))
+    out_text = rows.replace("[(u'","")
+    out_text = rows.replace("',)]","")
 #    data = {"redirect_to_blocks": [rows]} 
 
-    data = {'messages':[{"text": rows}]}
+    data = {'messages':[{"text": out_text}]}
     return jsonify(data)
 
 
@@ -154,8 +155,7 @@ def age_check():
               "buttons": [
                 {
                   "type": "show_block",
-#                  "block_name": "age_block_selection",
-                  "block_name": "next_test",
+                  "block_name": "age_block_selection",
                   "title": u"Õige, edasi!"
                 },
                 {
