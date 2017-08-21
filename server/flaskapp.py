@@ -137,18 +137,6 @@ def proposenexttest():
             "payload": {
               "template_type": "button",
               "text": out_text,
-              "buttons": [
-                {
-                  "type": "show_block",
-                  "block_name": "age_block_selection",
-                  "title": u"Õige, edasi!"
-                },
-                {
-                  "type": "show_block",
-                  "block_name": "PARENT_EST",
-                  "title": "Viga, parandame..."
-                }
-              ]
             }
           }
         }
