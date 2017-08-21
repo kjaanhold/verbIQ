@@ -129,12 +129,38 @@ def proposenexttest():
 @app.route('/next_test', methods = ['GET','POST'])
 def proposenexttest():
     out_text = "Testing"
-    data = {'messages':[{"text": out_text}]}
+    data = {
+      "messages": [
+        {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "button",
+              "text": out_text,
+              "buttons": [
+                {
+                  "type": "show_block",
+                  "block_name": "age_block_selection",
+                  "title": u"Õige, edasi!"
+                },
+                {
+                  "type": "show_block",
+                  "block_name": "PARENT_EST",
+                  "title": "Viga, parandame..."
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+
     return jsonify(data)
 
 
-@app.route('/age/<dob>', methods=['GET'])
-def return_age(dob):
+@app.route('/age/', methods=['GET'])
+def return_age():
+    dob = request.args.get('Synni_kuupaev')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     out_text = "Selge, su laps on: " + str(age.days) 
