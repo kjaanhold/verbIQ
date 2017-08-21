@@ -123,19 +123,14 @@ def proposenexttest():
     out_text = out_text.replace("',)]","")
 #    data = {"redirect_to_blocks": [out_text]} 
 #    out_text = "Testing"
-'''    data = {
+    data = {
       "messages": [
         {
           "text": out_text
         }
       ]
     }
-'''
-    data = {
-     "messages": [
-       {"text": "Welcome to our store!"}
-     ]
-    }
+
     return jsonify(data)
 
 
