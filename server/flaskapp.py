@@ -128,12 +128,8 @@ def proposenexttest():
         out_text
       ]
     }
-'''
-    data = {
-      "redirect_to_blocks": 
-        rows
-    }
-'''
+
+
 
 
     return jsonify(data)
