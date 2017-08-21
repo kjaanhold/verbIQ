@@ -130,7 +130,7 @@ def proposenexttest():
     }
 '''
     data = {
-      "redirect_to_blocks": out_text
+      "redirect_to_blocks": rows
     }
 
 
