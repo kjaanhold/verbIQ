@@ -80,8 +80,9 @@ def store_test_results():
       return 'OK'
 
     if request.method == "GET":
-      data = TestResults.query.order_by(TestResults.date_created.desc()).first()
-      return str(data.id_test_result)+";"+str(data.key_user)+";"+str(data.block_name)+";"+str(data.lapse_eesnimi)+";"+str(data.date_created)+";"+str(data.result_type)+";"+str(data.result_value)+";"
+      out = TestResults.query.order_by(TestResults.date_created.desc()).first()
+      data = {'messages':[{"text": "Inserted " + str(out.id_test_result) + " to the database \n"}]}
+      return jsonify(data)
 
 
 @app.route('/next_test', methods = ['GET','POST'])
