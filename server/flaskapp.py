@@ -125,7 +125,8 @@ def proposenexttest():
 #    out_text = "Testing"
     data = {
       "redirect_to_blocks": [
-        out_text
+#        out_text
+        rows
       ]
     }
 
