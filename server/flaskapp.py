@@ -122,7 +122,7 @@ def proposenexttest():
     out_text = out_text.replace("[(u'","")
     out_text = out_text.replace("',)]","")
 #    data = {"redirect_to_blocks": [rows]} 
-
+    out_text = "Testing"
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
 
