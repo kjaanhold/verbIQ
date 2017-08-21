@@ -120,7 +120,11 @@ def proposenexttest():
     rows = str(execute_query(query))
     rows = rows.replace("[(u'","")
     rows = rows.replace("',)]","")
-    data = {"redirect_to_blocks": [rows]}    
+    data = {"redirect_to_blocks": [rows]}  
+    data = {
+      "redirect_to_blocks": ["6M_EST"]
+    }
+
     return jsonify(data)
 
 
