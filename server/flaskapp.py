@@ -89,7 +89,7 @@ def store_test_results():
       data = {'messages':[{"text": "id_test_result: " + str(n0) + ", " + str(n1) + ", " + str(n2) + ", " + str(n3) + ", " + str(n4)}]}
       return jsonify(data)
 
-'''
+
 @app.route('/next_test', methods = ['GET','POST'])
 def proposenexttest():
 
@@ -122,13 +122,8 @@ def proposenexttest():
     out_text = out_text.replace("[(u'","")
     out_text = out_text.replace("',)]","")
 #    data = {"redirect_to_blocks": [out_text]} 
-    out_text = "Testing"
-    data = {'messages':[{"text": out_text}]}
-    return jsonify(data)
-'''
-@app.route('/next_test', methods = ['GET','POST'])
-def proposenexttest():
-    out_text = "Testing"
+#    out_text = "Testing"
+#    data = {'messages':[{"text": out_text}]}
     data = {
       "messages": [
         {
@@ -137,6 +132,18 @@ def proposenexttest():
             "payload": {
               "template_type": "button",
               "text": out_text,
+              "buttons": [
+                {
+                  "type": "show_block",
+                  "block_name": "age_block_selection",
+                  "title": u"Õige, edasi!"
+                },
+                {
+                  "type": "show_block",
+                  "block_name": "PARENT_EST",
+                  "title": "Viga, parandame..."
+                }
+              ]
             }
           }
         }
@@ -144,6 +151,7 @@ def proposenexttest():
     }
 
     return jsonify(data)
+
 
 
 @app.route('/age/', methods=['GET'])
