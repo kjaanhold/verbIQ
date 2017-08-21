@@ -123,13 +123,15 @@ def proposenexttest():
     out_text = out_text.replace("',)]","")
 #    data = {"redirect_to_blocks": [out_text]} 
 #    out_text = "Testing"
-    data = {
+'''    data = {
       "redirect_to_blocks": [
-#        out_text
-        rows
+        out_text
       ]
     }
-
+'''
+    data = {
+      "redirect_to_blocks": out_text
+    }
 
 
 
