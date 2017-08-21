@@ -80,7 +80,8 @@ def store_test_results():
 
     if request.method == "GET":
       out = TestResults.query.order_by(TestResults.date_created.desc()).first()
-      data = {'messages':[{"text": "Inserted id" + str(out.id_test_result) + " to the database" +request.args.get('messenger user id') }]}
+      n1 = request.args.get('messenger user id')
+      data = {'messages':[{"text": "Inserted id" + str(out.id_test_result) + " to the database" + str(n1)}]}
       return jsonify(data)
 
 
