@@ -65,8 +65,8 @@ def hello_world():
 def store_test_results():
     if request.method == "POST":
 
-#      id_test_result = request.form['id_test_result']
-      id_test_result = session['id']
+      id_test_result = request.form['id_test_result']
+#      id_test_result = session['id']
       key_user = request.form['messenger user id']
       block_name = request.form['last visited block id']
       lapse_eesnimi = request.form['Lapse_eesnimi']
