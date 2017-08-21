@@ -121,10 +121,6 @@ def proposenexttest():
     rows = rows.replace("[(u'","")
     rows = rows.replace("',)]","")
     data = {"redirect_to_blocks": [rows]}  
-    data = {
-      "redirect_to_blocks": ["6M_EST"]
-    }
-
     return jsonify(data)
 
 
@@ -156,7 +152,8 @@ def age_check():
               "buttons": [
                 {
                   "type": "show_block",
-                  "block_name": "age_block_selection",
+#                  "block_name": "age_block_selection",
+                  "block_name": "next_test",
                   "title": u"Õige, edasi!"
                 },
                 {
