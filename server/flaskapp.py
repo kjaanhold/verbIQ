@@ -118,6 +118,7 @@ def proposenexttest():
       text = u"Veel vastamata testid"
 
     rows = execute_query(query)
+    rows = replace(replace(str(rows),"[",""),"]","")
     data = {"redirect_to_blocks": rows, "selection_criteria": text}    
     return jsonify(data)
 
