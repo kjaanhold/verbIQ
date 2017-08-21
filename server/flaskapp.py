@@ -71,7 +71,7 @@ def store_test_results():
       lapse_eesnimi = request.form['Lapse_eesnimi']
       date_created = datetime.utcnow()
       result_type = 'chatfuel'
-      result_value = request.form['last clicked button name']
+      result_value = request.form['test_result']
       
       new_data = TestResults(id_test_result, key_user, block_name, lapse_eesnimi, date_created, result_type, result_value)
       db.session.add(new_data)
