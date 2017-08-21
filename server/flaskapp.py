@@ -119,8 +119,8 @@ def proposenexttest():
 
     rows = execute_query(query)
     out_text = str(execute_query(rows))
-    out_text = rows.replace("[(u'","")
-    out_text = rows.replace("',)]","")
+    out_text = out_text.replace("[(u'","")
+    out_text = out_text.replace("',)]","")
 #    data = {"redirect_to_blocks": [rows]} 
 
     data = {'messages':[{"text": out_text}]}
