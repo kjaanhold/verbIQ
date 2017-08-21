@@ -133,8 +133,7 @@ def proposenexttest():
 '''
     data = {
      "messages": [
-       {"text": "Welcome to our store!"},
-       {"text": "How can I help you?"}
+       {"text": "Welcome to our store!"}
      ]
     }
     return jsonify(data)
