@@ -124,12 +124,13 @@ def proposenexttest():
 #    data = {"redirect_to_blocks": [out_text]} 
 #    out_text = "Testing"
     data = {
-      "messages": [
-        {
-          "text": out_text
-        }
+      "redirect_to_blocks": [
+        out_text
       ]
     }
+
+
+
 
     return jsonify(data)
 
