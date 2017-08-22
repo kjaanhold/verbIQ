@@ -65,7 +65,7 @@ def hello_world():
 def store_test_results():
     if request.method == "POST":
 
-      id_test_result = request.form['id_test_result']
+#      id_test_result = request.form['id_test_result']
       key_user = request.form['messenger user id']
       block_name = request.form['last visited block id']
       lapse_eesnimi = request.form['Lapse_eesnimi']
@@ -121,14 +121,11 @@ def proposenexttest():
     out_text = str(rows)
     out_text = out_text.replace("[(u'","")
     out_text = out_text.replace("',)]","")
-#    data = {"redirect_to_blocks": [out_text]} 
-#    out_text = "Testing"
     data = {
       "redirect_to_blocks": [
         out_text
       ]
     }
-
     return jsonify(data)
 
 
