@@ -116,7 +116,7 @@ def proposenexttest():
       text = u"Veel vastamata testid"
 
 #    rows = execute_query(query)
-    rows = query
+    rows = text
     out_text = str(rows)
     out_text = out_text.replace("[(u'","")
     out_text = out_text.replace("',)]","")
