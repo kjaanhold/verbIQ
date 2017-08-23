@@ -89,6 +89,9 @@ def store_test_results():
 
 
 @app.route('/next_test', methods = ['GET','POST'])
+
+store_test_results()
+
 def proposenexttest():
 
     dob = request.args.get('Synni_kuupaev')
