@@ -71,10 +71,46 @@ def store_test_results():
       result_type = 'chatfuel'
       result_value = request.form['test_result']
 
+      dob = request.args.get('Synni_kuupaev')
+      name = request.args.get('Lapse_eesnimi')
+      date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+      age = date.today() - date_object
+      age_months = str(int(age.days)/30)
+
       new_data = TestResults(key_user=str(key_user), block_name=str(block_name), lapse_eesnimi=str(lapse_eesnimi), date_created=str(date_created), result_type=str(result_type), result_value=str(result_value))
       db.session.add(new_data)
       db.session.commit()
-      return 'ok'
+
+
+      if not TestResults.query.filter_by(lapse_eesnimi = name).first():
+        # this kid hasn't done any tests yet
+        query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
+        text = u"Ei ole veel ühtegi vastust"
+
+      else:
+        # this kid has done at least one test
+        data = TestResults.query.filter_by(lapse_eesnimi = name).first()
+        data_out = {
+          "block_name": data.block_name,
+          "result_value": data.result_value
+        }
+        block_name = data.block_name
+        result_value = data.result_value
+
+        query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
+        text = u"Veel vastamata testid"
+
+      rows = execute_query(query)
+      out_text = str(rows)
+      out_text = out_text.replace("[(u'","")
+      out_text = out_text.replace("',)]","")
+      data = {
+        "redirect_to_blocks": [
+          out_text
+        ]
+      }
+      return jsonify(data)
+
 
     if request.method == "GET":
 #      out = TestResults.query.order_by(TestResults.date_created.desc()).first()
@@ -89,9 +125,6 @@ def store_test_results():
 
 
 @app.route('/next_test', methods = ['GET','POST'])
-
-store_test_results()
-
 def proposenexttest():
 
     dob = request.args.get('Synni_kuupaev')
