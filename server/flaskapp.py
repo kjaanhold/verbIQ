@@ -74,7 +74,7 @@ def store_test_results():
       new_data = TestResults(key_user=str(key_user), block_name=str(block_name), lapse_eesnimi=str(lapse_eesnimi), date_created=str(date_created), result_type=str(result_type), result_value=str(result_value))
       db.session.add(new_data)
       db.session.commit()
-      return 'OK'
+      return proposenexttest()
 
     if request.method == "GET":
 #      out = TestResults.query.order_by(TestResults.date_created.desc()).first()
