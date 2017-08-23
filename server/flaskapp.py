@@ -64,8 +64,8 @@ def hello_world():
 def store_test_results():
     if request.method == "POST":
 
-      key_user = request.form['messenger user id']
-      block_name = request.form['last visited block id']
+      key_user = request.form['messenger_user_id']
+      block_name = request.form['last_visited_block_id']
       lapse_eesnimi = request.form['Lapse_eesnimi']
       date_created = datetime.utcnow()
       result_type = 'chatfuel'
