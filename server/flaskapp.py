@@ -64,7 +64,7 @@ def hello_world():
 def store_test_results():
     if request.method == "POST":
 
-      key_user = request.form['messenger_user_id']
+      key_user = request.form['messenger user id']
       block_name = request.form['last_visited_block_id']
       lapse_eesnimi = request.form['lapse_eesnimi']
       date_created = datetime.utcnow()
