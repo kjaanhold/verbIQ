@@ -52,7 +52,7 @@ def hello_world():
     if request.method == "POST":
       lat = request.form['lat']
       lng = request.form['lng']
-      new_data = Station(lat=lat, lng=lng)
+      new_data = Station(id="DEFAULT", lat=lat, lng=lng)
       db.session.add(new_data)
       db.session.commit()
       return 'OK'
