@@ -66,12 +66,12 @@ def store_test_results():
 
       key_user = request.form['messenger_user_id']
       block_name = request.form['last_visited_block_id']
-      lapse_eesnimi = request.form['Lapse_eesnimi']
+      lapse_eesnimi = request.form['lapse_eesnimi']
       date_created = datetime.utcnow()
       result_type = 'chatfuel'
       result_value = request.form['test_result']
       
-      new_data = TestResults(key_user, block_name, lapse_eesnimi, date_created, result_type, result_value)
+      new_data = TestResults(key_user=key_user, block_name=block_name, lapse_eesnimi=lapse_eesnimi, date_created=date_created, result_type=result_type, result_value=result_value)
       db.session.add(new_data)
       db.session.commit()
       return 'OK'
