@@ -35,7 +35,6 @@ class Station(BaseModel, db.Model):
     lng = db.Column(db.Float)
 
     def __init__(self, id, lat, lng):
-    	self.id = id
     	self.lat = lat
     	self.lng = lng
 
