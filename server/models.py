@@ -51,8 +51,7 @@ class TestResults(BaseModel, db.Model):
     result_type = db.Column(db.String)
     result_value = db.Column(db.String)
 
-    def __init__(self, id_test_result, key_user, block_name,lapse_eesnimi,date_created,result_type,result_value):
-        self.id_test_result = id_test_result
+    def __init__(self, key_user, block_name,lapse_eesnimi,date_created,result_type,result_value):
         self.key_user = key_user
         self.block_name = block_name
         self.lapse_eesnimi = lapse_eesnimi
