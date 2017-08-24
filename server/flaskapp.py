@@ -132,9 +132,10 @@ def proposenexttest():
       result_dict = [u.__dict__ for u in data]
 #      out = str(result_dict)
 #      out = ['a', 'b']
+      out = ["The", "earth", "revolves", "around", "sun"]
       s = str(result_dict[0]['block_name'])
 #      out.extend(s)
-      out = "tes"
+#      out = "tes"
 
 #      data_str = str(data)
 
