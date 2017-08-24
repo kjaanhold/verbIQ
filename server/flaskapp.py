@@ -157,7 +157,7 @@ def proposenexttest():
 
 
         # now focus only on non-Jah answers:
-        data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), test_result != 'Jah').all()
+        data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), test_result = 'Jah').all()
 '''
         result_dict = [u.__dict__ for u in data]
         block_name = [d.get('block_name') for d in result_dict]
