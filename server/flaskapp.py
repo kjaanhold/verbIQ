@@ -136,7 +136,7 @@ def proposenexttest():
 
       out = ''
       for i in range (0,50):
-        if not tr(result_dict[i]['block_name']):
+        if not str(result_dict[i]['block_name']):
           break
         else:
           out = out + str(result_dict[i]['block_name']) + ','
