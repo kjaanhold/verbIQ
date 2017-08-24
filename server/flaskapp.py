@@ -130,9 +130,7 @@ def proposenexttest():
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
       result_dict = [u.__dict__ for u in data]
-
-
-      out = str(result_dict[4]['block_name'])
+      out = str(result_dict)
 
 #      data_str = str(data)
 
