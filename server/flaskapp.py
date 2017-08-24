@@ -131,7 +131,7 @@ def proposenexttest():
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
       result_dict = [u.__dict__ for u in data]
 #      out = str(result_dict)
-      out = result_dict['block_name']
+      out = jsonify(result_dict['block_name'])
 
 
 #      data_str = str(data)
