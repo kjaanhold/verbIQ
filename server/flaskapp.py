@@ -111,6 +111,7 @@ def to_json(inst, cls):
     return json.dumps(d)
 
 
+
 @app.route('/next_test', methods = ['GET','POST'])
 def proposenexttest():
 
@@ -128,6 +129,8 @@ def proposenexttest():
     else:
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
+      result_dict = [u.__dict__ for u in data]
+
 #      data_str = str(data)
 
 #      data_out = {
