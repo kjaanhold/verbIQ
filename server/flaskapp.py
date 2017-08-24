@@ -136,7 +136,7 @@ def proposenexttest():
 
       out = 'random'
 
-      if not result_dict[100]['block_name']:
+      if not result_dict[1]['block_name']:
         out = 'fail'
 
 #      for i in range (0,15):
