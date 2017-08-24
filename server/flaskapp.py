@@ -139,7 +139,7 @@ def proposenexttest():
         if not str(result_dict[i]['block_name']):
           break
         else:
-          out = out + str(result_dict[i]['block_name']) + ','
+          out = out + ','  + i #+ str(result_dict[i]['block_name'])
 #      out.extend(s)
 #      out = "tes"
 
