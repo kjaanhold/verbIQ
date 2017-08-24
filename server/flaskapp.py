@@ -128,7 +128,7 @@ def proposenexttest():
     else:
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
-      result_dict = [u.__dict__ for u in data]
+      result_dict = u.__dict__ for u in data
 #      out = str(result_dict)
 #      out = ['a', 'b']
 #      out = ["The", "earth", "revolves", "around", "sun"]
@@ -136,8 +136,6 @@ def proposenexttest():
 
       out = 'random'
 
-      if not result_dict[1]['block_name']:
-        out = 'fail'
 
 #      for i in range (0,15):
 #        if length(str(result_dict[i])) > 1:
