@@ -131,25 +131,15 @@ def proposenexttest():
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
       result_dict = [u.__dict__ for u in data]
       out = str(result_dict)
-
-
-
-      block_names = []
-      for i in range(2):
-        block_names = block_names.append(str(result_dict[i]['block_name']))
-
-      out = str(result_dict[4]['block_name'])
-
-
 #      out = str(result_dict[4]['block_name'])
 
 
 #      data_str = str(data)
 
-#      data_out = {
-#        "block_name": data.block_name,
-#        "result_value": data.result_value
-#      }
+      data_out = {
+        "block_name": result_dict.block_name,
+        "result_value": result_dict.result_value
+      }
 
 #    json_string = jsonify(data_out)
 #    return (data)
