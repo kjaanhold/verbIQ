@@ -137,8 +137,8 @@ def proposenexttest():
 #      data_str = str(data)
 
       data_out = {
-        "block_name": result_dict.block_name,
-        "result_value": result_dict.result_value
+        "block_name": data.block_name,
+        "result_value": data.result_value
       }
 
 #    json_string = jsonify(data_out)
