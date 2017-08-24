@@ -135,8 +135,11 @@ def proposenexttest():
 #      out = str(result_dict[0]['block_name']) + ',' + str(result_dict[1]['block_name'])
 
       out = ''
-      for i in range (0,5):
-        out = out + str(result_dict[i]['block_name']) + ','
+      for i in range (0,50):
+        if not tr(result_dict[i]['block_name']):
+          break
+        else:
+          out = out + str(result_dict[i]['block_name']) + ','
 #      out.extend(s)
 #      out = "tes"
 
