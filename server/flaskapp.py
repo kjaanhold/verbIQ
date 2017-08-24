@@ -135,9 +135,9 @@ def proposenexttest():
 #      }
 
 #    json_string = jsonify(data_out)
-    return jsonify(data)
+#    return (data)
 
-#    return ("aaa")
+    return ("aaa")
 
 '''
       output = {
