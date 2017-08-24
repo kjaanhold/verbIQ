@@ -116,9 +116,8 @@ def proposenexttest():
       for i in data:
         a = a.append(i)
 
-    return str(a)
-#      json_string = jsonify(a)
-#      return (json_string)
+    json_string = jsonify(a)
+    return (json_string)
 
 '''
       output = {
