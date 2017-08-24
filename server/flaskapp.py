@@ -3,7 +3,7 @@
 import csv
 import sqlite3
 import json
-
+import numpy
 
 from flask import Flask, request, g, jsonify
 from datetime import datetime, date
