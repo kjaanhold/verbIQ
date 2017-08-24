@@ -131,10 +131,10 @@ def proposenexttest():
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
       result_dict = [u.__dict__ for u in data]
       block_names = []
-#      for i in result_dict:
-#        block_names = block_names.append(i)
+      for i in range(2):
+        block_names = block_names.append(result_dict[i]['block_name'])
 
-      out = str(result_dict['block_name'])
+      out = str(result_dict[4]['block_name'])
 
 #      data_str = str(data)
 
