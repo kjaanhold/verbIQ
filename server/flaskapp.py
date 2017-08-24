@@ -113,7 +113,7 @@ def proposenexttest():
         "result_value": data.result_value
       }
       a = []
-      for i in data:
+      for i in data_out:
         a = a.append(i)
 
     json_string = jsonify(a)
