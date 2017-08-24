@@ -147,7 +147,7 @@ def proposenexttest():
 
     data = {
       "redirect_to_blocks": [
-        out_text
+        str(rows)
       ]
     }
     return jsonify(data)
