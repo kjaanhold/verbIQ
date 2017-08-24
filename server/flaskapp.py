@@ -71,7 +71,7 @@ def store_test_results():
       result_type = 'chatfuel'
       result_value = request.form['test_result']
 
-      new_data = TestResults(key_user=str(key_user), block_name=str("'"+block_name+"'"), lapse_eesnimi=str(lapse_eesnimi.lower()), date_created=str(date_created), result_type=str(result_type), result_value=str(result_value))
+      new_data = TestResults(key_user=str(key_user), block_name=str("'"+block_name+"'"), lapse_eesnimi=str(lapse_eesnimi).lower(), date_created=str(date_created), result_type=str(result_type), result_value=str(result_value))
       db.session.add(new_data)
       db.session.commit()
       return 'ok'
@@ -99,8 +99,8 @@ def proposenexttest():
 
     if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
       # this kid hasn't done any tests yet
-      query = str(name)
-#      query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
+#      query = str(name)
+      query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
       text = u"Ei ole veel ühtegi vastust"
 
     else:
@@ -116,12 +116,12 @@ def proposenexttest():
       query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
       text = u"Veel vastamata testid"
 
-#    rows = execute_query(query)
+    rows = execute_query(query)
 #    rows = query
-#    out_text = str(rows)
-#    out_text = out_text.replace("[(u'","")
-#    out_text = out_text.replace("',)]","")
-    out_text = str(name)
+    out_text = str(rows)
+    out_text = out_text.replace("[(u'","")
+    out_text = out_text.replace("',)]","")
+#    out_text = str(name)
     data = {
       "redirect_to_blocks": [
         out_text
