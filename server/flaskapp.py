@@ -114,6 +114,7 @@ def proposenexttest():
       #}
 
       #json_string = jsonify(data_out)
+      
       output = {
         'data': TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
         }
