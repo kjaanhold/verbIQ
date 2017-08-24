@@ -135,11 +135,15 @@ def proposenexttest():
 #      out = str(result_dict[0]['block_name']) + ',' + str(result_dict[1]['block_name'])
 
       out = 'random'
-      for i in range (0,15):
-        if length(str(result_dict[i])) > 1:
-          out = out + ',' + str(result_dict[i]['block_name'])
-        else:
-          break
+
+      if not result_dict[100]['block_name']:
+        out = 'fail'
+
+#      for i in range (0,15):
+#        if length(str(result_dict[i])) > 1:
+#          out = out + ',' + str(result_dict[i]['block_name'])
+#        else:
+#          break
 
 #      out.extend(s)
 #      out = "tes"
