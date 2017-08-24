@@ -105,10 +105,11 @@ def proposenexttest():
 
     else:
       # this kid has done at least one test
-      data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()
-      json_string = json.dumps(data.block_name)
-
-    return (json_string)
+      data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
+      rows = []
+      for i in data:
+        rows[i] = rows.append(i)
+    return str(rows)
 '''
       data_out = {
         "block_name": data.block_name,
