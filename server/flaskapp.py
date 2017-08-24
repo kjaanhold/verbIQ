@@ -124,6 +124,17 @@ def proposenexttest():
       # this kid hasn't done any tests yet
       query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
       text = u"Ei ole veel ühtegi vastust"
+      rows = execute_query(query)
+      out_text = str(rows)
+      out_text = out_text.replace("[(u'","")
+      out_text = out_text.replace("',)]","")
+
+#    if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), test_result = 'Ei').first():
+
+
+
+
+
 
     else:
       # this kid has done at least one test
@@ -139,13 +150,13 @@ def proposenexttest():
       query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
       text = u"Veel vastamata testid"
 
-    rows = execute_query(query)
-    out_text = str(rows)
-    out_text = out_text.replace("[(u'","")
-    out_text = out_text.replace("',)]","")
+      rows = execute_query(query)
+      out_text = str(rows)
+      out_text = out_text.replace("[(u'","")
+      out_text = out_text.replace("',)]","")
 
-    if out_text == '[]':
-      out_text = 'Default answer'
+      if out_text == '[]':
+        out_text = 'Default answer'
 
     data = {
       "redirect_to_blocks": [
