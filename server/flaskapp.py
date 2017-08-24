@@ -142,7 +142,7 @@ def proposenexttest():
 #    json_string = jsonify(data_out)
 #    return (data)
 
-    return ("aaa")
+    return (out)
 
 '''
       output = {
