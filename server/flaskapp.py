@@ -108,7 +108,7 @@ def proposenexttest():
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
       json_string = json.dumps(data.block_name)
 
-    return str(json_string)
+    return jsonify(json_string)
 '''
       data_out = {
         "block_name": data.block_name,
