@@ -144,7 +144,7 @@ def proposenexttest():
     out_text = out_text.replace("[(u'","")
     out_text = out_text.replace("',)]","")
 
-    if out_text == '"[]"':
+    if out_text == '[]':
       out_text = 'Default answer'
 
     data = {
@@ -152,7 +152,7 @@ def proposenexttest():
         str(out_text)
       ]
     }
-    return str(out_text) # jsonify(data)
+    return jsonify(data)
 
 
 
