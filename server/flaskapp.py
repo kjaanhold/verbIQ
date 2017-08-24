@@ -144,7 +144,7 @@ def proposenexttest():
         str(block_name)
       ]
     }
-    return jsonify(data)
+    return str(block_name)
 
 
 
