@@ -4,6 +4,7 @@ import csv
 import sqlite3
 import json
 
+
 from flask import Flask, request, g, jsonify
 from datetime import datetime, date
 from models import db, Station, TestResults
@@ -106,13 +107,16 @@ def proposenexttest():
     else:
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()
-      json_string = json.dumps(data.block_name)
+      data_out = {
+        "block_name": data.block_name,
+        "result_value": data.result_value
+      }
 
+      json_string = json.dumps(data_out)
 
+#    return jsonify({'data': TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()})
 
-    return jsonify({'data': TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()})
-
-#    return (json_string)
+    return (json_string)
 '''
       data_out = {
         "block_name": data.block_name,
