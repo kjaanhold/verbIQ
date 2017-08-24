@@ -134,12 +134,13 @@ def proposenexttest():
 #      out = ["The", "earth", "revolves", "around", "sun"]
 #      out = str(result_dict[0]['block_name']) + ',' + str(result_dict[1]['block_name'])
 
-      out = ''
+      out = 'random'
       for i in range (0,15):
-        if not result_dict[i]:
-          break
-        else:
-          out = out + ','  + i #+ str(result_dict[i]['block_name'])
+        if length(str(result_dict[i])) > 1:
+          out = out + ',' + str(result_dict[i]['block_name'])
+      else:
+        break
+
 #      out.extend(s)
 #      out = "tes"
 
