@@ -138,8 +138,8 @@ def proposenexttest():
       for i in range (0,15):
         if length(str(result_dict[i])) > 1:
           out = out + ',' + str(result_dict[i]['block_name'])
-      else:
-        break
+        else:
+          break
 
 #      out.extend(s)
 #      out = "tes"
