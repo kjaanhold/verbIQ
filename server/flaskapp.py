@@ -105,6 +105,8 @@ def proposenexttest():
     else:
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
+      json_string = json.dumps(data)
+
     return jsonify(data)
 '''
       data_out = {
