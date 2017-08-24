@@ -148,6 +148,7 @@ def proposenexttest():
       out_text = out_text.replace("[(u'","")
       out_text = out_text.replace("',)]","")
 
+'''
       if out_text == '[]':
         # now focus only on non-Jah answers:
         data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), test_result != 'Jah').all()
@@ -165,6 +166,9 @@ def proposenexttest():
         out_text = str(rows)
         out_text = out_text.replace("[(u'","")
         out_text = out_text.replace("',)]","")
+'''
+    if out_text == '[]':
+      out_text = 'Default block'
 
     data = {
       "redirect_to_blocks": [
