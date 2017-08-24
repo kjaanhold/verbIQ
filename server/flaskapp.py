@@ -152,7 +152,7 @@ def proposenexttest():
         str(out_text)
       ]
     }
-    return jsonify(data)
+    return str(out_text) # jsonify(data)
 
 
 
