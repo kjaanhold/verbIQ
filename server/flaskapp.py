@@ -132,7 +132,7 @@ def proposenexttest():
       result_dict = [u.__dict__ for u in data]
       block_names = []
       for i in range(2):
-        block_names = block_names.append(result_dict[i]['block_name'])
+        block_names = block_names.append(i)
 
       out = str(result_dict[4]['block_name'])
 
