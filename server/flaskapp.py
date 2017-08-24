@@ -134,7 +134,7 @@ def proposenexttest():
 #      out = ["The", "earth", "revolves", "around", "sun"]
 #      out = str(result_dict[0]['block_name']) + ',' + str(result_dict[1]['block_name'])
 
-      out = result_dict
+      out = str(result_dict)
 
 
 #      for i in range (0,15):
