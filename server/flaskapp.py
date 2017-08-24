@@ -133,7 +133,7 @@ def proposenexttest():
 #      out = str(result_dict)
       out = []
       s = str(result_dict[0]['block_name'])
-      out.append(s)
+      out.extend(s)
 
 
 #      data_str = str(data)
