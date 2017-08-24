@@ -129,53 +129,8 @@ def proposenexttest():
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
       result_dict = [u.__dict__ for u in data]
-#      out = str(result_dict)
-#      out = ['a', 'b']
-#      out = ["The", "earth", "revolves", "around", "sun"]
-#      out = str(result_dict[0]['block_name']) + ',' + str(result_dict[1]['block_name'])
-
-      out = str(result_dict)
       block_name = [d.get('block_name') for d in result_dict]
-
-
-
-#      for i in range (0,15):
-#        if length(str(result_dict[i])) > 1:
-#          out = out + ',' + str(result_dict[i]['block_name'])
-#        else:
-#          break
-
-#      out.extend(s)
-#      out = "tes"
-
-#      data_str = str(data)
-
-#      data_out = {
-#        "block_name": data.block_name,
-#        "result_value": data.result_value
-#      }
-
-#    json_string = jsonify(data_out)
-#    return (data)
-
-    return str(block_name)
-
-'''
-      output = {
-        'data': TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()
-        }
-'''
-
-'''
-      data_out = {
-        "block_name": data.block_name,
-        "result_value": data.result_value
-      }
-      block_name = data.block_name
-      result_value = data.result_value
-
-      query = str(block_name)
-#      query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
+      query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
       text = u"Veel vastamata testid"
 
 #    rows = execute_query(query)
@@ -183,14 +138,14 @@ def proposenexttest():
     out_text = str(rows)
     out_text = out_text.replace("[(u'","")
     out_text = out_text.replace("',)]","")
-#    out_text = str(name)
+
     data = {
       "redirect_to_blocks": [
-        out_text
+        query
       ]
     }
     return jsonify(data)
-'''
+
 
 
 @app.route('/age/', methods=['GET'])
