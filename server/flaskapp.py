@@ -130,7 +130,7 @@ def proposenexttest():
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
       result_dict = [u.__dict__ for u in data]
-      out = json.dumps(str(result_dict))
+      out = json.dumps(result_dict)
 
 #      data_str = str(data)
 
