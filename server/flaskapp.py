@@ -112,16 +112,15 @@ def proposenexttest():
         "block_name": data.block_name,
         "result_value": data.result_value
       }
-
       json_string = jsonify(data_out)
+      return (json_string)
+
 '''
       output = {
         'data': TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()
         }
 '''
-#    return jsonify(output)
 
-    return (json_string)
 '''
       data_out = {
         "block_name": data.block_name,
