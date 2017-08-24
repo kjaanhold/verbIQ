@@ -3,7 +3,6 @@
 import csv
 import sqlite3
 import json
-import numpy
 
 from flask import Flask, request, g, jsonify
 from datetime import datetime, date
@@ -132,8 +131,8 @@ def proposenexttest():
       result_dict = [u.__dict__ for u in data]
 #      out = str(result_dict)
 #      out = ['a', 'b']
-      out = ["The", "earth", "revolves", "around", "sun"]
-      s = str(result_dict[0]['block_name'])
+#      out = ["The", "earth", "revolves", "around", "sun"]
+      out = str(result_dict[0]['block_name']) + ',' + str(result_dict[1]['block_name'])
 #      out.extend(s)
 #      out = "tes"
 
