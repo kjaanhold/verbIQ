@@ -135,7 +135,7 @@ def proposenexttest():
 #      out = str(result_dict[0]['block_name']) + ',' + str(result_dict[1]['block_name'])
 
       out = ''
-      for i in range (0,50):
+      for i in range (0,15):
         if not str(result_dict[i]['block_name']):
           break
         else:
