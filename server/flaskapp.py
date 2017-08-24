@@ -152,7 +152,6 @@ def proposenexttest():
 
       if out_text == '[]':
         out_text = 'Default answer'
-        
 # now focus only on non-Jah answers:
 #        data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), test_result = 'Jah').all()
 '''
