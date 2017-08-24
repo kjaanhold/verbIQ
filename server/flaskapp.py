@@ -108,17 +108,15 @@ def proposenexttest():
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()
       data_out = {
-        "block_name": data.block_name,
+#        "block_name": data.block_name,
         "result_value": data.result_value
       }
 
       json_string = json.dumps(data_out)
-      out = json.loads(json_string)
-
 
 #    return jsonify({'data': TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()})
 
-    return (out)
+    return (json_string)
 '''
       data_out = {
         "block_name": data.block_name,
