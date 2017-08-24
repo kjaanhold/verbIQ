@@ -150,7 +150,7 @@ def proposenexttest():
         block_name
       ]
     }
-    return str(query)
+    return jsonify(data)
 
 
 
