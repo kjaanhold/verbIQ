@@ -105,7 +105,7 @@ def proposenexttest():
 
     else:
       # this kid has done at least one test
-      data = TestResults.query.filter_by(lapse_eesnimi = name).all()
+      data = TestResults.query.all()
       query = str(data)
 '''      data_out = {
         "block_name": data.block_name,
