@@ -89,6 +89,27 @@ def store_test_results():
       data = {'messages':[{"text": "id_test_result: " + str(n0) + ", " + str(n1) + ", " + str(n2) + ", " + str(n3) + ", " + str(n4)}]}
       return jsonify(data)
 
+def to_json(inst, cls):
+    """
+    Jsonify the sql alchemy query result.
+    """
+    convert = dict()
+    # add your coversions for things like datetime's 
+    # and what-not that aren't serializable.
+    d = dict()
+    for c in cls.__table__.columns:
+        v = getattr(inst, c.name)
+        if c.type in convert.keys() and v is not None:
+            try:
+                d[c.name] = convert[c.type](v)
+            except:
+                d[c.name] = "Error:  Failed to covert using ", str(convert[c.type])
+        elif v is None:
+            d[c.name] = str()
+        else:
+            d[c.name] = v
+    return json.dumps(d)
+
 
 @app.route('/next_test', methods = ['GET','POST'])
 def proposenexttest():
@@ -107,16 +128,16 @@ def proposenexttest():
     else:
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
-#      data = TestResults.query.all()
+
 #      data_out = {
 #        "block_name": data.block_name,
 #        "result_value": data.result_value
 #      }
 
 #    json_string = jsonify(data_out)
-#    return (json_string)
+    return jsonify(data)
 
-    return ("aaa")
+#    return ("aaa")
 
 '''
       output = {

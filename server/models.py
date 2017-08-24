@@ -58,7 +58,9 @@ class TestResults(BaseModel, db.Model):
         self.result_type = result_type
         self.result_value = result_value
 
-
+    @property
+    def json(self):
+        return to_json(self, self.__class__)
 
 
 
