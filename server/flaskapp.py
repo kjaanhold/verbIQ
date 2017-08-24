@@ -144,6 +144,9 @@ def proposenexttest():
     out_text = out_text.replace("[(u'","")
     out_text = out_text.replace("',)]","")
 
+    if out_text == '':
+      out_text = 'Default answer'
+
     data = {
       "redirect_to_blocks": [
         str(out_text)
