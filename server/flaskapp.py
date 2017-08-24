@@ -112,8 +112,13 @@ def proposenexttest():
         "block_name": data.block_name,
         "result_value": data.result_value
       }
-      json_string = jsonify(data_out)
-      return (json_string)
+      a = []
+      for i in data:
+        a = a.append(i)
+
+    return str(a)
+#      json_string = jsonify(a)
+#      return (json_string)
 
 '''
       output = {
