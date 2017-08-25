@@ -190,10 +190,19 @@ def run_test():
     query = "SELECT t.description FROM tests t ORDER BY RANDOM() LIMIT 1;"    
     rows = execute_query(query)
     out_text = str(rows)
-#    out_text = out_text.replace("[(u'","")
-#    out_text = out_text.replace("',)]","")
+    out_text = out_text.replace("[(u'","")
+    out_text = out_text.replace("',)]","")
 
-
+{
+  "set_attributes": 
+    {
+      "some attribute": "some value",
+      "another attribute": "another value"
+    },
+  "block_names": ["BlockWithUserAttributes"],
+  "type": "show_block",
+  "title": "go"
+}
 
     data = {
       "messages": [
@@ -205,6 +214,10 @@ def run_test():
               "text": out_text,
               "buttons": [
                 {
+                  "set_attributes": 
+                  {
+                    "Lapse_eesnimi": "mall"
+                  },
                   "type": "show_block",
                   "block_name": "test recurring testst",
                   "title": u"Jah"
