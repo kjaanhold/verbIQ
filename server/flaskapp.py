@@ -207,7 +207,7 @@ def run_test():
       block_name = block_name.replace("')]","")
 
 #    if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), test_result = 'Ei').first():
-
+'''
     else:
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
@@ -232,7 +232,7 @@ def run_test():
       block_name = out_text.split(", ")[1]
       block_name = block_name.replace("u'","")
       block_name = block_name.replace("')]","")
-
+'''
 #      if out_text == '[]':
 #        out_text = 'Default answer' 
 
