@@ -4,7 +4,7 @@ import csv
 import sqlite3
 import json
 
-from flask import Flask, request, g, jsonify
+from flask import Flask, request, g, jsonify, Response
 from datetime import datetime, date
 from models import db, Station, TestResults
 from sqlalchemy import exc
@@ -317,7 +317,8 @@ def age_check():
         }
       ]
     }
-    return jsonify(data)
+    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8" ))
+    return response
 
 '''
 @app.route('/age_test_summary', methods=['GET'])
