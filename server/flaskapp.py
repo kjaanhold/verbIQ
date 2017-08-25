@@ -66,7 +66,7 @@ def store_test_results():
     if request.method == "POST":
 
       key_user = request.form['messenger user id']
-      block_name = request.form['last visited block name']
+      block_name = request.form['last_visited_block_id']
       lapse_eesnimi = request.form['Lapse_eesnimi']
       date_created = datetime.utcnow()
       result_type = 'chatfuel'
@@ -195,6 +195,10 @@ def run_test():
 
     data = {
 
+      "set_attributes":
+        {
+          "last_visited_block_id": out_text
+        },
       "messages": [
         {
           "attachment": {
