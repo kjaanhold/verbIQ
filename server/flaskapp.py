@@ -171,15 +171,15 @@ def return_age():
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
 
-@app.route('/age_check', methods=['GET'])
-def age_check():
+@app.route('/run_test', methods=['GET'])
+def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
+    age_months = str(int(age.days)/30)
+
     out_text = u"Tänan. " + (name) + u" sündis " + str(date_object) + " ja ta on praegu " + str(int(round(int(age.days)/30))) + " kuu vanune."
-#    out_text = str(dob) + str(name)
-#    data = {'messages':[{"text": out_text}]}
     data = {
       "messages": [
         {
@@ -208,6 +208,41 @@ def age_check():
     return jsonify(data)
 
 
+@app.route('/age_check', methods=['GET'])
+def age_check():
+    dob = request.args.get('Synni_kuupaev')
+    name = request.args.get('Lapse_eesnimi')
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    out_text = u"Tänan. " + (name) + u" sündis " + str(date_object) + " ja ta on praegu " + str(int(round(int(age.days)/30))) + " kuu vanune."
+    data = {
+      "messages": [
+        {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "button",
+              "text": out_text,
+              "buttons": [
+                {
+                  "type": "show_block",
+                  "block_name": "age_block_selection",
+                  "title": u"Õige, edasi!"
+                },
+                {
+                  "type": "show_block",
+                  "block_name": "PARENT_EST",
+                  "title": "Viga, parandame..."
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+    return jsonify(data)
+
+'''
 @app.route('/age_test_summary', methods=['GET'])
 def age_test_summary():
     dob = request.args.get('Synni_kuupaev')
@@ -253,44 +288,8 @@ def age_test_summary():
         }
       ]
     }
-
     return jsonify(data)
-
-@app.route('/names_check', methods=['GET'])
-def names_check():
- #   dob = request.args.get('Synni_kuupaev')
- #   name = request.args.get('Lapse_eesnimi')
-    rows = execute_query("""SELECT * FROM names""")
-    out_text = str(rows) + "\n"
-#    out_text = str(dob) + str(name)
-#    data = {'messages':[{"text": out_text}]}
-    data = {
-      "messages": [
-        {
-          "attachment": {
-            "type": "template",
-            "payload": {
-              "template_type": "button",
-              "text": out_text,
-              "buttons": [
-                {
-                  "type": "show_block",
-                  "block_name": "age_block_selection",
-                  "title": u"Õige, edasi!"
-                },
-                {
-                  "type": "show_block",
-                  "block_name": "PARENT_EST",
-                  "title": "Viga, parandame..."
-                }
-              ]
-            }
-          }
-        }
-      ]
-    }
-    return jsonify(data)
-
+'''
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
 def direct_block_based_on_age(dob):
@@ -301,10 +300,8 @@ def direct_block_based_on_age(dob):
         next_block = "2M_EST"
     elif age_in_days < 4.5*30:
         next_block = "3M_EST"        
-#    elif age_in_days < 6*30:
-#        next_block = "4,5M_EST"
     elif age_in_days < 6*30:
-        next_block = "next_test_selection"
+        next_block = "4,5M_EST"
     elif age_in_days < 7*30:
         next_block = "6M_EST"
     elif age_in_days < 8*30:
@@ -324,29 +321,7 @@ def direct_block_based_on_age(dob):
     else:
         next_block = "48M_EST"
     data = {"redirect_to_blocks": [next_block]}
-    return jsonify(data)
-
-@app.route("/names", methods = ['GET','POST'])
-def addnames():
-    if request.method == "POST":
-        try:
-            con = connect_to_database()
-            cur = con.cursor()
-            name = request.form['name']
-            query = "INSERT INTO %s VALUES ('%s');" % ('names', name)
-            cur.execute(query)
-            con.commit()
-            cur.close()
-            data = {'messages':[{"text": "Inserted " + str(name) + " to the database \n"}]}
-            return jsonify(data)
-        except exc.SQLAlchemyError as e:
-            reason=str(e)
-            data = {'messages':[{"text": reason}]}
-            return jsonify(data)
-        finally:
-            con.close()
-    elif request.method == "GET":
-        return("This was a GET request")    
+    return jsonify(data)   
 
 
 @app.route("/age_milestones")
@@ -359,103 +334,6 @@ def getmilestones():
     query = "SELECT target_age, description FROM milestones WHERE target_age <= %s;" % age_months
     rows = execute_query(query)
     return(str(rows) + "\n")
-
-
-
-'''
-@app.route("/next_test")
-def proposenexttest():
-
-    dob = request.args.get('Synni_kuupaev')
-    name = request.args.get('Lapse_eesnimi')
-    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-    age = date.today() - date_object
-    age_months = str(int(age.days)/30)
-
-    failed_test_two_weeks = "SELECT block_name FROM tests t JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s AND tr.date_created < date.today() - '2 weeks'::interval) WHERE tr.result_value != '%s' ORDER BY RANDOM() LIMIT 1;" % (name, age, "jah")
-    failed_test_two_weeks_rows = execute_query(failed_test_two_weeks)
-    failed_test = "SELECT block_name FROM tests t JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s WHERE tr.result_value != '%s' ORDER BY RANDOM() LIMIT 1;" % (name, age, "jah")
-    failed_test_rows = execute_query(failed_test)
-    not_answered_older_age_test = "SELECT block_name FROM tests t LEFT JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s) WHERE tr.id_test_result IS NULL ORDER BY m.target_age LIMIT 1;" % (name)
-    not_answered_older_age_test_rows = execute_query(not_answered_older_age_test)
-    if (length(str(not_answered_test_rows))>3):
-        next_block_name = str(not_answered_test_rows)
-    elif (length(str(failed_test_two_weeks_rows))>3):
-        next_block_name = str(failed_test_two_weeks_rows)
-    elif (length(str(failed_test_rows))<3):
-        next_block_name = str(failed_test_two_weeks_rows)
-    elif (length(str(not_answered_older_age_test_rows))>3):
-        next_block_name = str(not_answered_older_age_test_rows)
-    else:
-        next_block_name = "default_answer"
-  
-    next_block_name = str(not_answered_test_rows) + str(failed_test_two_weeks_rows) + str(not_answered_older_age_test_rows)
-    data = {"redirect_to_blocks": [next_block_name]}
-#    return jsonify(data)
-
-    return str("test")
-'''
-
-
-
-'''
-@app.route("/test_results")
-def test_results():
-    dob = request.args.get('Synni_kuupaev')
-    name = request.args.get('Lapse_eesnimi')
-    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-
-    age = date.today() - date_object
-    age_months = str(int(age.days)/30)
-
-    answered_jah = "SELECT m.description FROM milestones m JOIN milestone_tests mt ON m.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age_months, "jah")
-    answered_ei = "SELECT m.description FROM milestones m JOIN milestone_tests mt ON m.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age_months, "ei")
-    answered_ei_tea = "SELECT m.description FROM milestones m JOIN milestone_tests mt ON m.id_milestone = mt.key_milestone JOIN tests t on mt.key_test = t.id_test JOIN test_results tr ON (t.block_name = tr.block_name AND tr.lapse_eesnimi = %s AND m.target_age <= %s) WHERE tr.result_value = '%s';" % (name, age_months, "ei tea")
- 
-    # not answered 
-    rows_jah = execute_query(answered_jah)
-    rows_ei = execute_query(answered_ei)
-    rows_ei_tea = execute_query(answered_ei_tea)
-
-    if (length(str(rows_ei)) < 3 and length(str(rows_ei_tea)) < 3 and length(str(rows_jah)) > 2):
-        out_text = u"Tänan! " + name + u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse: \n"+ str(rows) + "\n"
-    elif (length(str(rows_ei)) > 2 and length(str(rows_ei_tea)) < 3 and length(str(rows_jah)) < 3):
-        out_text = u"Tänan! " + name + u" praegu veel õpib peamisi eakohaseid oskusi: \n"+ str(rows_ei) + "\n"
-    else:
-        out_text = u"Tänan! " + name + u" on juba omandanud järgmised lapse arengus jälgitavad oskused: \n" + str(rows_jah) + "\n" + name + u" õpib praegu veel neid oskuseid: \n" + str(rows_ei) + "\n"
-
-    button1 = {
-                  "type": "show_block",
-                  "block_name": "age_block_selection",
-                  "title": u"Default answer"
-                }
-    button2 =  {
-                  "type": "show_block",
-                  "block_name": "4,5M_EST",
-                  "title": "Viga, parandame..."
-                }
-
-    data = {
-      "messages": [
-        {
-          "attachment": {
-            "type": "template",
-            "payload": {
-              "template_type": "button",
-              "text": out_text,
-              "buttons": [
-                button1,
-                button2,
-                button2
-              ]
-            }
-          }
-        }
-      ]
-    }
-
-    return jsonify(data)
-    '''
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)
