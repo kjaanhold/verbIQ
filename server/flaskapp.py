@@ -186,11 +186,10 @@ def run_test():
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
-    out_text = str("Kas laps pöörab?")
 
     query = "SELECT t.description, t.block_name FROM tests t ORDER BY RANDOM() LIMIT 1;"    
     rows = execute_query(query)
-    out_text = str(rows.description)
+    out_text = str(rows)
     out_text = out_text.replace("[(u'","")
     out_text = out_text.replace("',)]","")
 
