@@ -190,7 +190,7 @@ def run_test():
 
     query = "SELECT t.description, t.block_name FROM tests t ORDER BY RANDOM() LIMIT 1;"    
     rows = execute_query(query)
-    out_text = str(rows[0][0])
+    out_text = str(rows.description)
     out_text = out_text.replace("[(u'","")
     out_text = out_text.replace("',)]","")
 
