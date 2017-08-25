@@ -220,7 +220,7 @@ def run_test():
                     "test_result": "Jah"
                   },
                   "type": "show_block",
-                  "block_name": "test recurring tests",
+                  "block_name": "test recurring tests 3",
                   "title": u"Jah"
                 },
                 {
@@ -229,7 +229,7 @@ def run_test():
                     "test_result": "Ei tea"
                   },
                   "type": "show_block",
-                  "block_name": "test recurring tests",
+                  "block_name": "test recurring tests 3",
                   "title": u"Ei tea"
                 },                
                 {
@@ -238,8 +238,8 @@ def run_test():
                     "test_result": "Ei"
                   },
                   "type": "show_block",
-                  "block_name": "test recurring tests",
-                  "title": "Ei"
+                  "block_name": "test recurring tests 3",
+                  "title": u"Ei"
                 }
               ]
             }
