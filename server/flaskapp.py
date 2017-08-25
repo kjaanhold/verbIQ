@@ -194,12 +194,11 @@ def run_test():
     out_text = out_text.replace("',)]","")
 
     data = {
-
-#      "set_attributes":
-#        {
-#          "some attribute": "some value",
-#          "another attribute": "another value"
-#        },
+      "set_attributes":
+        {
+          "last visited block name": "test_block",
+          "messenger user id": "123"
+        },
       "messages": [
         {
           "attachment": {
