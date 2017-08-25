@@ -171,6 +171,12 @@ def return_age():
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
 
+
+
+
+
+
+
 @app.route('/run_test', methods=['GET'])
 def run_test():
     dob = request.args.get('Synni_kuupaev')
@@ -179,8 +185,7 @@ def run_test():
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
-    next_test = proposenexttest()
-    out_text = str(next_test)
+    out_text = str("Kas laps pöörab?")
     data = {
       "messages": [
         {
@@ -193,12 +198,12 @@ def run_test():
                 {
                   "type": "show_block",
                   "block_name": "age_block_selection",
-                  "title": u"Õige, edasi!"
+                  "title": u"Jah"
                 },
                 {
                   "type": "show_block",
                   "block_name": "PARENT_EST",
-                  "title": "Viga, parandame..."
+                  "title": "Ei"
                 }
               ]
             }
