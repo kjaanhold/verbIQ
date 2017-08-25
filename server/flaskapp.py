@@ -190,15 +190,21 @@ def run_test():
     query = "SELECT t.description, t.block_name FROM tests t ORDER BY RANDOM() LIMIT 1;"    
     rows = execute_query(query)
     out_text = str(rows)
-    out_text = out_text.split(",")[0]
-    out_text = out_text.replace("[(u'","")
-    out_text = out_text.replace("',)]","")
+
+    next_test = out_text.split(",")[0]
+    next_test = next_test.replace("[(u'","")
+    next_test = next_test.replace("',)]","")
+
+    block_name = out_text.split(",")[1]
+    block_name = block_name.replace("[(u'","")
+    block_name = block_name.replace("',)]","")
+
 
     data = {
 
       "set_attributes":
         {
-          "last_visited_block_id": out_text
+          "last_visited_block_id": block_name
         },
       "messages": [
         {
@@ -206,7 +212,7 @@ def run_test():
             "type": "template",
             "payload": {
               "template_type": "button",
-              "text": out_text + "(eemlmine vastus oli " + str(last_test_result) +")",
+              "text": next_test + "(eemlmine vastus oli " + str(last_test_result) +")",
               "buttons": [
                 {
                   "set_attributes": 
