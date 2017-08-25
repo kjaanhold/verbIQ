@@ -210,28 +210,28 @@ def run_test():
               "text": out_text + "(eemlmine vastus oli " + str(last_test_result) +")",
               "buttons": [
                 {
-                  "set_attributes": 
-                  {
-                    "test_result": "koer"
-                  },
+#                  "set_attributes": 
+#                  {
+#                    "test_result": "koer"
+#                  },
                   "type": "show_block",
                   "block_name": "test recurring testst",
                   "title": u"Jah"
                 },
                 {
-                  "set_attributes": 
-                  {
-                    "test_result": "kass"
-                  },
+#                  "set_attributes": 
+#                  {
+#                    "test_result": "kass"
+#                  },
                   "type": "show_block",
                   "block_name": "test recurring testst",
                   "title": u"Ei tea"
                 },                
                 {
-                  "set_attributes": 
-                  {
-                    "test_result": "kana"
-                  },
+#                  "set_attributes": 
+ #                 {
+  #                  "test_result": "kana"
+   #               },
                   "type": "show_block",
                   "block_name": "test recurring tests",
                   "title": "Ei"
