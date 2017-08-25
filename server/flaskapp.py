@@ -205,13 +205,26 @@ def run_test():
                 {
                   "set_attributes": 
                   {
-                    "Lapse_eesnimi": "mall"
+                    "test_result": "jah"
                   },
                   "type": "show_block",
                   "block_name": "test recurring testst",
                   "title": u"Jah"
                 },
                 {
+                  "set_attributes": 
+                  {
+                    "test_result": "ei tea"
+                  },
+                  "type": "show_block",
+                  "block_name": "test recurring testst",
+                  "title": u"Ei tea"
+                },                
+                {
+                  "set_attributes": 
+                  {
+                    "test_result": "ei"
+                  },
                   "type": "show_block",
                   "block_name": "test recurring tests",
                   "title": "Ei"
