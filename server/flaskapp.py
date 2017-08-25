@@ -188,9 +188,9 @@ def run_test():
 
     out_text = str("Kas laps pöörab?")
 
-    query = "SELECT t.description, t.id_test FROM tests t ORDER BY RANDOM() LIMIT 1;"    
+    query = "SELECT t.description, t.block_name FROM tests t ORDER BY RANDOM() LIMIT 1;"    
     rows = execute_query(query)
-    out_text = str(rows)
+    out_text = str(rows[0])
     out_text = out_text.replace("[(u'","")
     out_text = out_text.replace("',)]","")
 
