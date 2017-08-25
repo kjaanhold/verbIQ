@@ -191,11 +191,11 @@ def run_test():
     rows = execute_query(query)
     out_text = str(rows)
 
-    next_test = out_text.split(",")[0]
+    next_test = out_text.split("', '")[0]
     next_test = next_test.replace("[(u'","")
     next_test = next_test.replace("',)]","")
 
-    block_name = out_text.split(",")[1]
+    block_name = out_text.split("', '")[1]
     block_name = block_name.replace("[(u'","")
     block_name = block_name.replace("',)]","")
 
@@ -212,7 +212,7 @@ def run_test():
             "type": "template",
             "payload": {
               "template_type": "button",
-              "text": next_test + "(eemlmine vastus oli " + str(last_test_result) +")",
+              "text": next_test,
               "buttons": [
                 {
                   "set_attributes": 
