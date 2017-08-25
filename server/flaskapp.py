@@ -197,12 +197,12 @@ def run_test():
               "buttons": [
                 {
                   "type": "show_block",
-                  "block_name": "age_block_selection",
+                  "block_name": "test recurring tests",
                   "title": u"Jah"
                 },
                 {
                   "type": "show_block",
-                  "block_name": "PARENT_EST",
+                  "block_name": "test recurring tests",
                   "title": "Ei"
                 }
               ]
