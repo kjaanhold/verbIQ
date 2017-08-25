@@ -1,4 +1,4 @@
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import csv
 import sqlite3
@@ -317,7 +317,7 @@ def age_check():
         }
       ]
     }
-    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8" ))
+    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
 '''
