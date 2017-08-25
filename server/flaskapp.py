@@ -181,6 +181,7 @@ def return_age():
 def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
+    last_test_result = request.args.get('test_result')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
@@ -200,7 +201,7 @@ def run_test():
             "type": "template",
             "payload": {
               "template_type": "button",
-              "text": out_text,
+              "text": out_text + "(eemlmine vastus oli " + str(last_test_result) +")",
               "buttons": [
                 {
                   "set_attributes": 
