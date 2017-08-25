@@ -195,6 +195,12 @@ def run_test():
     out_text = out_text.replace("',)]","")
 
     data = {
+
+#      "set_attributes":
+#        {
+#          "some attribute": "some value",
+#          "another attribute": "another value"
+#        },
       "messages": [
         {
           "attachment": {
@@ -206,7 +212,7 @@ def run_test():
                 {
                   "set_attributes": 
                   {
-                    "test_result": "jah"
+                    "test_result": "koer"
                   },
                   "type": "show_block",
                   "block_name": "test recurring testst",
@@ -215,7 +221,7 @@ def run_test():
                 {
                   "set_attributes": 
                   {
-                    "test_result": "ei tea"
+                    "test_result": "kass"
                   },
                   "type": "show_block",
                   "block_name": "test recurring testst",
@@ -224,7 +230,7 @@ def run_test():
                 {
                   "set_attributes": 
                   {
-                    "test_result": "ei"
+                    "test_result": "kana"
                   },
                   "type": "show_block",
                   "block_name": "test recurring tests",
