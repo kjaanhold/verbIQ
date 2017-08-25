@@ -193,6 +193,8 @@ def run_test():
     out_text = out_text.replace("[(u'","")
     out_text = out_text.replace("',)]","")
 
+
+
     data = {
       "messages": [
         {
@@ -203,10 +205,6 @@ def run_test():
               "text": out_text,
               "buttons": [
                 {
-                  "set_attributes": 
-                  {
-                    "Lapse_eesnimi": "mall"
-                  },
                   "type": "show_block",
                   "block_name": "test recurring testst",
                   "title": u"Jah"
