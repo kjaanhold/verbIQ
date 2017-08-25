@@ -193,17 +193,6 @@ def run_test():
     out_text = out_text.replace("[(u'","")
     out_text = out_text.replace("',)]","")
 
-{
-  "set_attributes": 
-    {
-      "some attribute": "some value",
-      "another attribute": "another value"
-    },
-  "block_names": ["BlockWithUserAttributes"],
-  "type": "show_block",
-  "title": "go"
-}
-
     data = {
       "messages": [
         {
