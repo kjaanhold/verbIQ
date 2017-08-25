@@ -179,7 +179,7 @@ def run_test():
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
-    out_text = str(proposenexttest())
+    out_text = str(jsonify(proposenexttest()))
     data = {
       "messages": [
         {
