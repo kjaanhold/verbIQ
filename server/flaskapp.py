@@ -189,9 +189,9 @@ def run_test():
 
     query = "SELECT t.description FROM tests t ORDER BY RANDOM() LIMIT 1;"    
     rows = execute_query(query)
-    out_text = str(rows)
-    out_text = out_text.replace("[(u'","")
-    out_text = out_text.replace("',)]","")
+    out_text = rows # str(rows)
+#    out_text = out_text.replace("[(u'","")
+#    out_text = out_text.replace("',)]","")
 
 
 
