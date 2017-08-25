@@ -179,7 +179,7 @@ def run_test():
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
-    out_text = u"Tänan. " + (name) + u" sündis " + str(date_object) + " ja ta on praegu " + str(int(round(int(age.days)/30))) + " kuu vanune."
+    out_text = str(next_test())
     data = {
       "messages": [
         {
