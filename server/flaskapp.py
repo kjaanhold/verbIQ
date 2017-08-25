@@ -188,7 +188,7 @@ def run_test():
 
     out_text = str("Kas laps pöörab?")
 
-    query = "SELECT t.description FROM tests t ORDER BY RANDOM() LIMIT 1;"    
+    query = "SELECT t.description, t.id_test FROM tests t ORDER BY RANDOM() LIMIT 1;"    
     rows = execute_query(query)
     out_text = str(rows)
     out_text = out_text.replace("[(u'","")
@@ -212,7 +212,7 @@ def run_test():
                 {
                   "set_attributes": 
                   {
-                    "test_result": "koer"
+                    "test_result": "Jah"
                   },
                   "type": "show_block",
                   "block_name": "test recurring tests",
@@ -221,7 +221,7 @@ def run_test():
                 {
                   "set_attributes": 
                   {
-                    "test_result": "kass"
+                    "test_result": "Ei tea"
                   },
                   "type": "show_block",
                   "block_name": "test recurring tests",
@@ -230,7 +230,7 @@ def run_test():
                 {
                   "set_attributes": 
                   {
-                    "test_result": "kana"
+                    "test_result": "Ei"
                   },
                   "type": "show_block",
                   "block_name": "test recurring tests",
