@@ -75,7 +75,8 @@ def store_test_results():
       new_data = TestResults(key_user=str(key_user), block_name=str("'"+block_name+"'"), lapse_eesnimi=str(lapse_eesnimi).lower(), date_created=str(date_created), result_type=str(result_type), result_value=str(result_value))
       db.session.add(new_data)
       db.session.commit()
-      return 'ok'
+      data = {"redirect_to_blocks": "test recurring tests 2"}
+      return jsonify(data)
 
     if request.method == "GET":
 #      out = TestResults.query.order_by(TestResults.date_created.desc()).first()
