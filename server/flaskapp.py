@@ -181,7 +181,6 @@ def return_age():
 def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
-    last_test_result = request.args.get('test_result')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
@@ -195,43 +194,24 @@ def run_test():
     out_text = out_text.replace("',)]","")
 
     data = {
-
-#      "set_attributes":
-#        {
-#          "some attribute": "some value",
-#          "another attribute": "another value"
-#        },
       "messages": [
         {
           "attachment": {
             "type": "template",
             "payload": {
               "template_type": "button",
-              "text": out_text + "(eemlmine vastus oli " + str(last_test_result) +")",
+              "text": out_text,
               "buttons": [
                 {
-#                  "set_attributes": 
-#                  {
-#                    "test_result": "koer"
-#                  },
+                  "set_attributes": 
+                  {
+                    "Lapse_eesnimi": "mall"
+                  },
                   "type": "show_block",
                   "block_name": "test recurring testst",
                   "title": u"Jah"
                 },
                 {
-#                  "set_attributes": 
-#                  {
-#                    "test_result": "kass"
-#                  },
-                  "type": "show_block",
-                  "block_name": "test recurring testst",
-                  "title": u"Ei tea"
-                },                
-                {
-#                  "set_attributes": 
- #                 {
-  #                  "test_result": "kana"
-   #               },
                   "type": "show_block",
                   "block_name": "test recurring tests",
                   "title": "Ei"
