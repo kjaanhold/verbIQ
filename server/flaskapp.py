@@ -196,8 +196,8 @@ def run_test():
     next_test = next_test.replace("',)]","")
 
     block_name = out_text.split(", ")[1]
-    block_name = block_name.replace("[(u'","")
-    block_name = block_name.replace("',)]","")
+    block_name = block_name.replace("u'","")
+    block_name = block_name.replace("')]","")
 
 
     data = {
