@@ -186,6 +186,15 @@ def run_test():
     age_months = str(int(age.days)/30)
 
     out_text = str("Kas laps pöörab?")
+
+    query = "SELECT t.description FROM tests t ORDER BY RANDOM() LIMIT 1;"    
+    rows = execute_query(query)
+    out_text = str(rows)
+    out_text = out_text.replace("[(u'","")
+    out_text = out_text.replace("',)]","")
+
+
+
     data = {
       "messages": [
         {
@@ -197,7 +206,7 @@ def run_test():
               "buttons": [
                 {
                   "type": "show_block",
-                  "block_name": "test recurring tests",
+                  "block_name": "test recurring testst",
                   "title": u"Jah"
                 },
                 {
