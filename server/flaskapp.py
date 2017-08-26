@@ -233,9 +233,6 @@ def run_test():
         block_name = block_name.replace("u'","")
         block_name = block_name.replace("')]","")
 
-#      if out_text == '[]':
-#        out_text = 'Default answer' 
-
     data = {
       "set_attributes":
         {
