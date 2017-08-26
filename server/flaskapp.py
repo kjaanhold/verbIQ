@@ -219,13 +219,13 @@ def run_test():
       query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
       rows = execute_query(query)
       out_text = str(rows)
-
+'''
       if out_text = '[]':
         next_test = 'a'
         block_name = 'b'
-        
-      else:
 
+      else:
+'''
 #      next_test = repr(rows[0][0])
 #      block_name = str(rows[0][1])
 
