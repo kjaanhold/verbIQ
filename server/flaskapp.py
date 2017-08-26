@@ -220,8 +220,8 @@ def run_test():
       rows = execute_query(query)
       out_text = str(rows)
 
-    if out_text == '[]':
-       out_text = 'Default answer' 
+#    if out_text == '[]':
+#       out_text = 'Default answer' 
 
     return str(out_text)
 '''
