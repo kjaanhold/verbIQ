@@ -220,6 +220,12 @@ def run_test():
       rows = execute_query(query)
       out_text = str(rows)
 
+      if out_text = '[]':
+        next_test = 'a'
+        block_name = 'b'
+        
+      else:
+
 #      next_test = repr(rows[0][0])
 #      block_name = str(rows[0][1])
 
