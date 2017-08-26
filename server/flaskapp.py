@@ -221,7 +221,7 @@ def run_test():
       out_text = str(rows)
 
     if out_text == '[]':
-      data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
+      data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), test_result = 'Jah').all()
 
       out_text = 'Default answer' 
 
