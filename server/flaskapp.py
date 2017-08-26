@@ -175,8 +175,7 @@ def return_age():
 
 
 def next_test_selection(dob,name):
-#    dob = request.args.get('Synni_kuupaev')
-#    name = request.args.get('Lapse_eesnimi')
+
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
@@ -188,7 +187,7 @@ def next_test_selection(dob,name):
       query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
       rows = execute_query(query)
 
-      next_test = repr(rows[0][0])
+      question = repr(rows[0][0])
       block_name = str(rows[0][1])
 
     else:
@@ -207,19 +206,19 @@ def next_test_selection(dob,name):
       out_text = str(rows)
 
       if out_text == '[]':
-        next_test  = 'Default answer'
+        question  = 'Default answer'
         block_name = 'Default answer'
 
       else:
-        next_test = out_text.split("', ")[0]
-        next_test = next_test.replace("[(u'","")
-        next_test = next_test.replace("',)]","")
+        question = out_text.split("', ")[0]
+        question = question.replace("[(u'","")
+        question = question.replace("',)]","")
 
         block_name = out_text.split("', ")[1]
         block_name = block_name.replace("u'","")
         block_name = block_name.replace("')]","")
 
-    data = [next_test,block_name]
+    data = [question,block_name]
     return data
 
 
@@ -230,10 +229,10 @@ def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
     last_test_result = request.args.get('test_result')
-    next_test_f = next_test_selection(dob = dob, name = name)
+    selected_test = next_test_selection(dob = dob, name = name)
 
-    next_test = str(next_test_f[0])
-    block_name = str(next_test_f[1])
+    question = str(selected_test[0])
+    block_name = str(selected_test[1])
 
     data = {
       "set_attributes":
@@ -246,7 +245,7 @@ def run_test():
             "type": "template",
             "payload": {
               "template_type": "button",
-              "text": next_test,
+              "text": question,
               "buttons": [
                 {
                   "set_attributes": 
