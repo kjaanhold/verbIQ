@@ -355,7 +355,9 @@ def tests_summary():
                       "block_name": "Default answer",
                       "title": u"Soovin meeldetuletusi."
                     }
+    return str(out_text) + str(button1) + str(button2) + str(button3)
 
+'''
     data = {
       "messages": [
         {
@@ -376,79 +378,8 @@ def tests_summary():
     }
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-
-'''
-    data = {
-      "messages": [
-        {
-          "attachment": {
-            "type": "template",
-            "payload": {
-              "template_type": "button",
-              "text": out_text,
-              "buttons": [
-                button1,
-                button2,
-                button3
-              ]
-            }
-          }
-        }
-      ]
-    }
-    return jsonify(data)
 '''
 
-#    return out_text
-
-'''
-@app.route('/age_test_summary', methods=['GET'])
-def age_test_summary():
-    dob = request.args.get('Synni_kuupaev')
-    name = request.args.get('Lapse_eesnimi')
-    m4_haarab = request.args.get('4m_haarab')
-    m4_refleksid = request.args.get('4m_refleksid')
-    m4_seljaltkyljele = request.args.get('4m_seljaltkyljele')
-    m4_helisuund = request.args.get('4m_helisuund')
-    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-    age = date.today() - date_object
-    if (m4_haarab == "Jah" and m4_refleksid == "Jah" and m4_seljaltkyljele == "Jah" and m4_helisuund == "Jah"):
-        out_text =  u"Tänan! " + name + u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse: \n 1. blah \n 2. blah-blah\n 3. blah-blah-blah"
-    elif (m4_haarab == "Ei" and m4_refleksid == "Ei" and m4_seljaltkyljele == "Ei" and m4_helisuund == "Ei"):
-        out_text =  u"Tänan! " + name + u" praegu veel õpib peamisi eakohaseid oskusi: \n 1. blah \n 2. blah-blah\n 3. blah-blah-blah"
-    else:
-        out_text =  u"Tänan! " + name + u" on juba omandanud järgmised lapse arengus jälgitavad oskused: \n 1. blah \n 2. blah-blah\n 3. blah-blah-blah \n " + name + u" praegu veel õpib neid oskuseid: \n 1. blah \n 2. blah-blah "
-    button1 = {
-                  "type": "show_block",
-                  "block_name": "age_block_selection",
-                  "title": u"Default answer"
-                }
-    button2 =  {
-                  "type": "show_block",
-                  "block_name": "4,5M_EST",
-                  "title": "Viga, parandame..."
-                }
-
-    data = {
-      "messages": [
-        {
-          "attachment": {
-            "type": "template",
-            "payload": {
-              "template_type": "button",
-              "text": out_text,
-              "buttons": [
-                button1,
-                button2,
-                button2
-              ]
-            }
-          }
-        }
-      ]
-    }
-    return jsonify(data)
-'''
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
 def direct_block_based_on_age(dob):
