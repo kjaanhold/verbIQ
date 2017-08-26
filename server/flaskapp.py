@@ -339,7 +339,7 @@ def tests_summary():
 
 
       if (data_jah == 'no_results' and data_ei != 'no_results'):
-        out_text = u"Tänan! " + name + u" praegu veel õpib peamisi eakohaseid oskusi:" + data_ei
+        out_text = u"Tänan! " + name + u" praegu veel õpib peamisi eakohaseid oskusi:" + '\n' + data_ei
         button1 = {
                       "type": "show_block",
                       "block_name": "Default answer",
