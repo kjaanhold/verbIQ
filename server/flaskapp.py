@@ -282,7 +282,7 @@ def return_test_results(name, result_value):
 
       query = "SELECT m.description FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
       rows = execute_query(query)
-      out_text = rows[4] + row[0]
+      out_text = str(rows[4] + row[0])
 #      out_text = ''.join(rows)
 
 
