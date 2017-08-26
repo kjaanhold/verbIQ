@@ -172,7 +172,7 @@ def return_age():
     data = {'messages':[{"text": out_text}]}
     return jsonify(data)
 
-'''
+
 
 def next_test_selection(dob,name):
 #    dob = request.args.get('Synni_kuupaev')
@@ -221,13 +221,13 @@ def next_test_selection(dob,name):
         block_name = block_name.replace("')]","")
 
     data = {
-      "next_test" = next_test,
-      "block_name" = block_name
+      "next_test": next_test,
+      "block_name": block_name
     }
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
-'''
+
 
 
 
