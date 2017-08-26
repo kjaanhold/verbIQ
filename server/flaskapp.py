@@ -145,7 +145,7 @@ def next_test_selection(dob,name):
 
       if out_text == '[]':
         question  = 'Default answer'
-        block_name = 'Default answer'
+        block_name = 'test_summary'
 
       else:
         question = out_text.split("', ")[0]
@@ -298,8 +298,6 @@ def tests_summary():
       data_jah = return_test_results(name, 'Jah')
       data_ei = return_test_results(name, 'Ei')
       data_ei_tea = return_test_results(name, 'Ei tea')
-
-      out_text = "sss"
 
       if (data_jah != 'no_results' and data_ei == 'no_results'):
         out_text = u"Tänan! " + name + u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse:" + data_jah
