@@ -222,12 +222,9 @@ def run_test():
       query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
       text = u"Veel vastamata testid"
 
-      rows = execute_query(query)
-      out_text = str(rows)
+#      rows = execute_query(query)
+#      out_text = str(rows)
 
-      next_test = str(rows[0][0])
-      block_name = str(rows[0][1])
-'''
       next_test = out_text.split("', ")[0]
       next_test = next_test.replace("[(u'","")
       next_test = next_test.replace("',)]","")
@@ -235,7 +232,7 @@ def run_test():
       block_name = out_text.split("', ")[1]
       block_name = block_name.replace("u'","")
       block_name = block_name.replace("')]","")
-'''
+
 #      if out_text == '[]':
 #        out_text = 'Default answer' 
 
