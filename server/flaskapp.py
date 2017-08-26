@@ -299,7 +299,7 @@ def tests_summary():
 
     else:
       data = return_test_results(name, 'Jah')
-      out_text = data
+      out_text = str(data)
 
     return out_text
 
