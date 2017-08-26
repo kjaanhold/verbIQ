@@ -356,6 +356,9 @@ def tests_summary():
                       "title": u"Soovin meeldetuletusi."
                     }
 
+    return str(button1)
+
+'''
     data = {
       "messages": [
         {
@@ -367,7 +370,7 @@ def tests_summary():
               "buttons": [
                 button1,
                 button2,
-                button2
+                button3
               ]
             }
           }
@@ -375,7 +378,7 @@ def tests_summary():
       ]
     }
     return jsonify(data)
-
+'''
 
 #    return out_text
 
