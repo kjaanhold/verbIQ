@@ -235,10 +235,6 @@ def run_test():
     next_test = str(next_test_f[0])
     block_name = str(next_test_f[1])
 
-
-
-    return next_test
-    '''
     data = {
       "set_attributes":
         {
@@ -287,7 +283,7 @@ def run_test():
     }
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-    '''
+
 
 
 @app.route('/age_check', methods=['GET'])
