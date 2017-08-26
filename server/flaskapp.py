@@ -317,6 +317,8 @@ def tests_summary():
                       "title": u"Sisestan ise"
                     }
 '''
+      else:
+        out_text = "other"
     return out_text
 
 '''
