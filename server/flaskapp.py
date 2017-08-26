@@ -219,13 +219,7 @@ def next_test_selection(dob,name):
         block_name = block_name.replace("u'","")
         block_name = block_name.replace("')]","")
 
-    data = {
-      "next_test": next_test,
-      "block_name": block_name
-    }
-    data = ["a","b"]
-#    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
-#    return response
+    data = [next_test,block_name]
     return data
 
 
@@ -237,8 +231,8 @@ def run_test():
     name = request.args.get('Lapse_eesnimi')
     last_test_result = request.args.get('test_result')
     next_text = next_test_selection(dob = dob, name = name)
-#    block_name = str(next_test['block_name'])
-#    next_test = str(next_test_['next_test'])
+    next_test = str(next_test_[0])
+    block_name = str(next_test[1])
 
 
 
