@@ -208,7 +208,7 @@ def run_test():
       block_name = block_name.replace("')]","")
       '''
       next_test = "a"
-      block_name = str(query)
+      block_name = str(rows)
 
 
 #    if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), test_result = 'Ei').first():
