@@ -355,30 +355,8 @@ def tests_summary():
                       "block_name": "Default answer",
                       "title": u"Soovin meeldetuletusi."
                     }
-    return str(out_text) 
+    return out_text
 
-'''
-    data = {
-      "messages": [
-        {
-          "attachment": {
-            "type": "template",
-            "payload": {
-              "template_type": "button",
-              "text": out_text,
-              "buttons": [
-                button1,
-                button2,
-                button3
-              ]
-            }
-          }
-        }
-      ]
-    }
-    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
-    return response
-'''
 
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
