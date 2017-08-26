@@ -211,7 +211,6 @@ def next_test_selection(dob,name):
         block_name = 'Default answer'
 
       else:
-
         next_test = out_text.split("', ")[0]
         next_test = next_test.replace("[(u'","")
         next_test = next_test.replace("',)]","")
@@ -224,7 +223,7 @@ def next_test_selection(dob,name):
       "next_test": next_test,
       "block_name": block_name
     }
-    data = [next_test, block_name]
+    data = jsonify(data)
 #    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
 #    return response
     return data
