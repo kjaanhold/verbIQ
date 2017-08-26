@@ -234,7 +234,9 @@ def run_test():
     if out_text == '[]':
       next_test = 'Default answer' 
       block_name = 'Default answer'
-      
+
+    return out_text
+'''
     data = {
       "set_attributes":
         {
@@ -283,7 +285,7 @@ def run_test():
     }
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-
+'''
 
 @app.route('/age_check', methods=['GET'])
 def age_check():
