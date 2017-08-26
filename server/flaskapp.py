@@ -228,7 +228,6 @@ def next_test_selection(dob,name):
 def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
-    last_test_result = request.args.get('test_result')
     selected_test = next_test_selection(dob = dob, name = name)
 
     question = str(selected_test[0])
