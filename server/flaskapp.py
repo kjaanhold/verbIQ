@@ -356,7 +356,26 @@ def tests_summary():
                       "title": u"Soovin meeldetuletusi."
                     }
 
-    return str(button1)
+    data = {
+      "messages": [
+        {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "button",
+              "text": out_text,
+              "buttons": [
+                button1,
+                button2,
+                button3
+              ]
+            }
+          }
+        }
+      ]
+    }
+    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
+    return response
 
 '''
     data = {
