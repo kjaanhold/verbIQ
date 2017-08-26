@@ -236,7 +236,7 @@ def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
     last_test_result = request.args.get('test_result')
-#    next_text = next_test_selection(dob = dob, name = name)
+    next_text = next_test_selection(dob = dob, name = name)
 #    block_name = str(next_test['block_name'])
 #    next_test = str(next_test_['next_test'])
 
