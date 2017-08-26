@@ -222,7 +222,7 @@ def run_test():
 
 #      next_test = repr(rows[0][0])
 #      block_name = str(rows[0][1])
-
+'''
       next_test = out_text.split("', ")[0]
       next_test = next_test.replace("[(u'","")
       next_test = next_test.replace("',)]","")
@@ -230,7 +230,7 @@ def run_test():
       block_name = out_text.split("', ")[1]
       block_name = block_name.replace("u'","")
       block_name = block_name.replace("')]","")
-
+'''
  #   if out_text == '[]':
  #     next_test = 'Default answer' 
  #     block_name = 'Default answer'
