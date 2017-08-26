@@ -300,7 +300,7 @@ def tests_summary():
       data = return_test_results(name, 'Jah')
       out_text = data
 
-    return (str(rows) + "\n")
+    return str(rows)
 
 
 
