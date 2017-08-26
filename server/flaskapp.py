@@ -303,61 +303,53 @@ def tests_summary():
 
       if (data_jah != 'no_results' and data_ei == 'no_results'):
         out_text = u"Tänan! " + name + u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse:" + data_jah
-        button1 = {
-                      "type": "show_block",
-                      "block_name": "Default answer",
-                      "title": u"Küsin veel"
-                    }
-        button1 = {
-                      "type": "show_block",
-                      "block_name": "Ootan juhiseid",
-                      "title": u"Küsin veel"
-                    }
-        button1 = {
-                      "type": "show_block",
-                      "block_name": "Default answer",
-                      "title": u"Sisestan ise"
-                    }
+
+        button_1_block = "Default answer"
+        button_1_title = u"Küsin veel"
+
+        button_2_block = "Default answer"
+        button_2_title = u"Ootan juhiseid"
+
+        button_3_block = "Default answer"
+        button_3_title = u"Sisestan ise"
 
       elif (data_jah != 'no_results' and data_ei != 'no_results'):
         out_text = u"Tänan! " + name + u"on juba omadanud järgmised lapse arengus jälgitavad oskused:" + data_jah + name + u"õpib praegu veel neid oskusi:"+ data_ei
-        button1 = {
-                      "type": "show_block",
-                      "block_name": "Default answer",
-                      "title": u"Selge, aitäh."
-                    }
-        button1 = {
-                      "type": "show_block",
-                      "block_name": "Ootan juhiseid",
-                      "title": u"Kuidas toetada?"
-                    }
-        button1 = {
-                      "type": "show_block",
-                      "block_name": "Default answer",
-                      "title": u"Soovin meeldetuletusi."
-                    }
 
+        button_1_block = "Default answer"
+        button_1_title = u"Selge, aitäh!"
 
-      if (data_jah == 'no_results' and data_ei != 'no_results'):
+        button_2_block = "Default answer"
+        button_2_title = u"Kuidas toetada?"
+
+        button_3_block = "Default answer"
+        button_3_title = u"Soovin meeldetuletusi."
+
+      elif (data_jah == 'no_results' and data_ei != 'no_results'):
         out_text = u"Tänan! " + name + u" praegu veel õpib peamisi eakohaseid oskusi:" + data_ei
-        button1 = {
-                      "type": "show_block",
-                      "block_name": "Default answer",
-                      "title": u"Perearstile?"
-                    }
-        button2 = {
-                      "type": "show_block",
-                      "block_name": "Ootan juhiseid",
-                      "title": u"Kuidas toetada?"
-                    }
-        button3 = {
-                      "type": "show_block",
-                      "block_name": "Default answer",
-                      "title": u"Soovin meeldetuletusi."
-                    }
-    return jsonify(button3)
 
-'''
+        button_1_block = "Default answer"
+        button_1_title = u"Perearstile"
+
+        button_2_block = "Default answer"
+        button_2_title = u"Kuidas toetada?"
+
+        button_3_block = "Default answer"
+        button_3_title = u"Soovin meeldetuletusi."
+
+      else:
+        out_text = u"Some error"
+
+        button_1_block = "Default answer"
+        button_1_title = u"Perearstile"
+
+        button_2_block = "Default answer"
+        button_2_title = u"Kuidas toetada?"
+
+        button_3_block = "Default answer"
+        button_3_title = u"Soovin meeldetuletusi."
+
+
     data = {
       "messages": [
         {
@@ -367,9 +359,21 @@ def tests_summary():
               "template_type": "button",
               "text": out_text,
               "buttons": [
-                str(button1),
-                str(button2),
-                str(button3)
+                {
+                  "type": "show_block",
+                  "block_name": button_1_block,
+                  "title": button_1_title
+                },
+                {
+                  "type": "show_block",
+                  "block_name": button_2_block,
+                  "title": button_2_title
+                },
+                {
+                  "type": "show_block",
+                  "block_name": button_3_block,
+                  "title": button_3_title
+                }
               ]
             }
           }
@@ -378,7 +382,7 @@ def tests_summary():
     }
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-'''
+
 
 
 
