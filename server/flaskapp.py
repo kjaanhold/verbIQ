@@ -366,9 +366,9 @@ def tests_summary():
               "template_type": "button",
               "text": out_text,
               "buttons": [
-                button1,
-                button2,
-                button3
+                str(button1),
+                str(button2),
+                str(button3)
               ]
             }
           }
