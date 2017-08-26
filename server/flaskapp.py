@@ -225,8 +225,8 @@ def run_test():
       rows = execute_query(query)
       out_text = str(rows)
 
-      next_test = rows[0][0]
-      block_name = rows[0][1]
+      next_test = str(rows[0][0])
+      block_name = str(rows[0][1])
 
 
 '''
