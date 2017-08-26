@@ -112,70 +112,8 @@ def to_json(inst, cls):
 
 
 
-@app.route('/next_test', methods = ['GET','POST'])
-def proposenexttest():
-
-    dob = request.args.get('Synni_kuupaev')
-    name = request.args.get('Lapse_eesnimi')
-    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-    age = date.today() - date_object
-    age_months = str(int(age.days)/30)
-
-    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
-      # this kid hasn't done any tests yet
-      query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
-      text = u"Ei ole veel ühtegi vastust"
-      rows = execute_query(query)
-      out_text = str(rows)
-      out_text = out_text.replace("[(u'","")
-      out_text = out_text.replace("',)]","")
-
-#    if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), test_result = 'Ei').first():
-
-    else:
-      # this kid has done at least one test
-      data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
-      result_dict = [u.__dict__ for u in data]
-      block_name = [d.get('block_name') for d in result_dict]
-      block_name = str(block_name)
-      block_name = block_name.replace('u"','')
-      block_name = block_name.replace('"','')
-      block_name = block_name.replace('[','')
-      block_name = block_name.replace(']','')
-
-      query = "SELECT t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
-      text = u"Veel vastamata testid"
-
-      rows = execute_query(query)
-      out_text = str(rows)
-      out_text = out_text.replace("[(u'","")
-      out_text = out_text.replace("',)]","")
-
-      if out_text == '[]':
-        out_text = 'Default answer' 
-
-    data = {
-      "redirect_to_blocks": [
-        str(out_text)
-      ]
-    }
-    return jsonify(data)
-
-
-
-@app.route('/age/', methods=['GET'])
-def return_age():
-    dob = request.args.get('Synni_kuupaev')
-    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-    age = date.today() - date_object
-    out_text = "Selge, su laps on: " + str(age.days) 
-    data = {'messages':[{"text": out_text}]}
-    return jsonify(data)
-
-
 
 def next_test_selection(dob,name):
-
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
@@ -322,6 +260,32 @@ def age_check():
     }
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
+
+
+
+@app.route('/tests_summary', methods=['GET'])
+def tests_summary():
+    name = request.args.get('Lapse_eesnimi')
+    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
+      out_text = u"Ühtegi testi pole veel tehtud"
+
+    else:
+      data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), test_result = 'Jah').all()
+      result_dict = [u.__dict__ for u in data]
+      block_name = [d.get('block_name') for d in result_dict]    
+      block_name = str(block_name)
+      block_name = block_name.replace('u"','')
+      block_name = block_name.replace('"','')
+      block_name = block_name.replace('[','')
+      block_name = block_name.replace(']','')
+
+      query = "SELECT m.description FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name IN (%s);" % (block_name)    
+      rows = execute_query(query)
+      out_text = str(rows)
+
+    return out_text
+
+
 
 '''
 @app.route('/age_test_summary', methods=['GET'])
