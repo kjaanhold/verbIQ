@@ -220,7 +220,7 @@ def run_test():
       rows = execute_query(query)
       out_text = str(rows)
 
-    return str(query)
+    return str(rows)
 '''
 #      next_test = repr(rows[0][0])
 #      block_name = str(rows[0][1])
