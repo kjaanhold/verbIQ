@@ -333,7 +333,7 @@ def tests_summary():
         button_2_title = u"Kuidas toetada?"
 
         button_3_block = "Default answer"
-        button_3_title = u"Soovin meeldetuletusi."
+        button_3_title = u"Soovin meeldetu"
 
       else:
         out_text = u"Some error"
@@ -345,35 +345,8 @@ def tests_summary():
         button_2_title = u"Kuidas toetada?"
 
         button_3_block = "Default answer"
-        button_3_title = u"Soovin meeldetuletusi."
+        button_3_title = u"Soovin meeldetu"
 
-    data = {
-      "messages": [
-        {
-          "attachment": {
-            "type": "template",
-            "payload": {
-              "template_type": "button",
-              "text": out_text,
-              "buttons": [
-                {
-                  "type": "show_block",
-                  "block_name": "age_block_selection",
-                  "title": u"Õige, edasi!"
-                },
-                {
-                  "type": "show_block",
-                  "block_name": "PARENT_EST",
-                  "title": u"Viga, parandame..."
-                }
-              ]
-            }
-          }
-        }
-      ]
-    }
-
-'''
     data = {
       "messages": [
         {
@@ -404,10 +377,9 @@ def tests_summary():
         }
       ]
     }
-'''
-#    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
-#    return response
-    return jsonify(data)
+
+    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
+    return response
 
 
 
