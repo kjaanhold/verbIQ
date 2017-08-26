@@ -236,9 +236,9 @@ def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
     last_test_result = request.args.get('test_result')
-    block_name = next_test_selection.block_name(dob,name)
-    next_test = next_test_selection.next_test(dob,name)
-    
+    block_name = next_test_selection.block_name(dob = dob, name = name)
+    next_test = next_test_selection.next_test(dob = dob, name = name)
+
     data = {
       "set_attributes":
         {
