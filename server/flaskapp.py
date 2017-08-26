@@ -268,7 +268,7 @@ def age_check():
 def return_test_results(name, result_value):
 
     if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
-      out_text = "no_results_with_this_answer"
+      out_text = "no_results"
 
     else:
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).all()
@@ -299,11 +299,60 @@ def tests_summary():
       data_ei = return_test_results(name, 'Ei')
       data_ei_tea = return_test_results(name, 'Ei tea')
 
-      out_text = str(data_jah)
-
+      if data_jah != 'no_results' and data_ei == 'no_results' and data_ei_tea == 'no_results':
+        out_text = u"Tänan! " + name + " on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse:" + data_jah
+        button1 = {
+                      "type": "show_block",
+                      "block_name": "Default answer",
+                      "title": u"Küsin veel"
+                    }
+        button1 = {
+                      "type": "show_block",
+                      "block_name": "Ootan juhiseid",
+                      "title": u"Küsin veel"
+                    }
+        button1 = {
+                      "type": "show_block",
+                      "block_name": "Default answer",
+                      "title": u"Sisestan ise"
+                    }
     return out_text
 
+'''
 
+
+
+II. Tänan! NIMI on juba omadanud järgmised lapse arengus jälgitavad oskused:
+
+jah1
+jah2
+jah3…
+
+NIMI õpib praegu veel neid oskusi:
+
+ei1
+ei2
+
+Kasutajasisend:
+A. Selge, aitäh.
+B. Kuidas toetada õppimist?
+C. Soovin saada meeldetuletusti praegu õpitavate oskuste kohta…
+
+
+
+III. Tänan! NIMI praegu veel õpib peamisi eakohaseid oskusi:
+
+ei1
+ei2
+ei3
+
+Kasutajasisend:
+A. Kas peaksin rääkima perearstiga?
+
+B. Kuidas toetada õppimist?
+
+C. Soovin saada meeldetuletusi praegu õpitavate oskuste kohta…
+'''
 
 '''
 @app.route('/age_test_summary', methods=['GET'])
