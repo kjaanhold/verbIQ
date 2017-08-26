@@ -198,7 +198,6 @@ def run_test():
       query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
       rows = execute_query(query)
   
-  '''
       next_test = out_text.split(", ")[0]
       next_test = next_test.replace("[(u'","")
       next_test = next_test.replace("',)]","")
@@ -206,9 +205,7 @@ def run_test():
       block_name = out_text.split(", ")[1]
       block_name = block_name.replace("u'","")
       block_name = block_name.replace("')]","")
-'''
-      next_test = "a"
-      block_name = "b"
+
 #    if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), test_result = 'Ei').first():
 
     else:
@@ -227,9 +224,6 @@ def run_test():
 
       rows = execute_query(query)
       out_text = str(rows)
-
-#      next_test = str(rows[0][0])
-#      block_name = str(rows[0][1])
 
       next_test = out_text.split("', ")[0]
       next_test = next_test.replace("[(u'","")
@@ -288,8 +282,7 @@ def run_test():
         }
       ]
     }
-    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
-    return response
+    return jsonify(data)
 
 
 @app.route('/age_check', methods=['GET'])
