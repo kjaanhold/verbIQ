@@ -242,7 +242,7 @@ def run_test():
 
 
 
-    return next_text
+    return str(next_text)
     '''
     data = {
       "set_attributes":
