@@ -282,7 +282,8 @@ def run_test():
         }
       ]
     }
-    return jsonify(data)
+    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
+    return response
 
 
 @app.route('/age_check', methods=['GET'])
