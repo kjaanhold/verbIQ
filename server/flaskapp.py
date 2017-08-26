@@ -301,7 +301,7 @@ def tests_summary():
 
       out_text = "sss"
 
-      if (data_jah != 'no_results' and data_ei == 'no_results' and data_ei_tea == 'no_results'):
+      if (data_jah != 'no_results' and data_ei == 'no_results'):
         out_text = u"Tänan! " + name + u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse:" + data_jah
         button1 = {
                       "type": "show_block",
@@ -319,9 +319,44 @@ def tests_summary():
                       "title": u"Sisestan ise"
                     }
 
+      elif (data_jah != 'no_results' and data_ei != 'no_results'):
+        out_text = u"Tänan! " + name + u"on juba omadanud järgmised lapse arengus jälgitavad oskused:" + data_jah + nimi + u"õpib praegu veel neid oskusi:"+ data_ei
+        button1 = {
+                      "type": "show_block",
+                      "block_name": "Default answer",
+                      "title": u"Selge, aitäh."
+                    }
+        button1 = {
+                      "type": "show_block",
+                      "block_name": "Ootan juhiseid",
+                      "title": u"Kuidas toetada?"
+                    }
+        button1 = {
+                      "type": "show_block",
+                      "block_name": "Default answer",
+                      "title": u"Soovin meeldetuletusi."
+                    }
+
+
+      if (data_jah == 'no_results' and data_ei != 'no_results'):
+        out_text = u"Tänan! " + name + u" praegu veel õpib peamisi eakohaseid oskusi:" + data_ei
+        button1 = {
+                      "type": "show_block",
+                      "block_name": "Default answer",
+                      "title": u"Perearstile?"
+                    }
+        button1 = {
+                      "type": "show_block",
+                      "block_name": "Ootan juhiseid",
+                      "title": u"Kuidas toetada?"
+                    }
+        button1 = {
+                      "type": "show_block",
+                      "block_name": "Default answer",
+                      "title": u"Soovin meeldetuletusi."
+                    }
 
     return out_text
-
 
 '''
 @app.route('/age_test_summary', methods=['GET'])
