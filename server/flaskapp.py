@@ -207,7 +207,7 @@ def run_test():
       block_name = block_name.replace("u'","")
       block_name = block_name.replace("')]","")
       '''
-      next_test = "a"
+      next_test = str(rows[0][0])
       block_name = str(rows[0][1])
 
 
