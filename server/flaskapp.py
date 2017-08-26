@@ -300,7 +300,8 @@ def tests_summary():
       data_ei_tea = return_test_results(name, 'Ei tea')
 
       if data_jah != 'no_results' and data_ei == 'no_results' and data_ei_tea == 'no_results':
-        out_text = u"Tänan! " + name + " on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse:" + data_jah
+#        out_text = u"Tänan! " + name + " on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse:" + data_jah
+        out_text = "text"
 '''        button1 = {
                       "type": "show_block",
                       "block_name": "Default answer",
