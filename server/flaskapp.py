@@ -282,7 +282,7 @@ def return_test_results(name, result_value):
 
       query = "SELECT m.description FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
       rows = execute_query(query)
-      out_text = str(rows)
+      out_text = rows
 
     return out_text
 
@@ -299,7 +299,7 @@ def tests_summary():
 
     else:
       data = return_test_results(name, 'Jah')
-      out_text = str(data)
+      out_text = data
 
     return out_text
 
