@@ -230,13 +230,14 @@ def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
     last_test_result = request.args.get('test_result')
-    next_text = next_test_selection(dob = dob, name = name)
-    next_test = str(next_test_[0])
-    block_name = str(next_test[1])
+    next_test_f = next_test_selection(dob = dob, name = name)
+
+    next_test = str(next_test_f[0])
+    block_name = str(next_test_f[1])
 
 
 
-    return str(next_test)
+    return next_test
     '''
     data = {
       "set_attributes":
