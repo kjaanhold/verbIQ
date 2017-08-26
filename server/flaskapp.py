@@ -302,7 +302,7 @@ def tests_summary():
       out_text = "sss"
 
       if (data_jah != 'no_results' and data_ei == 'no_results' and data_ei_tea == 'no_results'):
-        out_text = "text"
+        out_text = u"Tänan! " + name + u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse:" + data_jah
 
     return out_text
 
