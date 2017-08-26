@@ -286,7 +286,7 @@ def return_test_results(name, result_value):
 #      out_text = ''.join(rows)
 
 
-    return str(out_text)
+    return out_text
 
 
 
