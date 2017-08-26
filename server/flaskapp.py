@@ -241,6 +241,8 @@ def run_test():
     block_name = str(next_test['block_name'])
     next_test = str(next_test_['next_test'])
 
+    block_name = "b"
+    next_test = "a"
     data = {
       "set_attributes":
         {
