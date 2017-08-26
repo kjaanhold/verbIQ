@@ -220,7 +220,10 @@ def run_test():
       rows = execute_query(query)
       out_text = str(rows)
 
-    return str(rows)
+    if out_text == '[]':
+       out_text = 'Default answer' 
+
+    return str(out_text)
 '''
 #      next_test = repr(rows[0][0])
 #      block_name = str(rows[0][1])
@@ -233,8 +236,6 @@ def run_test():
       block_name = block_name.replace("u'","")
       block_name = block_name.replace("')]","")
 
-#      if out_text == '[]':
-#        out_text = 'Default answer' 
 
     data = {
       "set_attributes":
