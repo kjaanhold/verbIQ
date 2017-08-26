@@ -355,8 +355,9 @@ def tests_summary():
                       "block_name": "Default answer",
                       "title": u"Soovin meeldetuletusi."
                     }
-#    return out_text
+    return str(button3)
 
+'''
     data = {
       "messages": [
         {
@@ -377,7 +378,7 @@ def tests_summary():
     }
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-
+'''
 
 
 
