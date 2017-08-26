@@ -144,7 +144,7 @@ def next_test_selection(dob,name):
       out_text = str(rows)
 
       if out_text == '[]':
-        question  = 'Default answer'
+        question  = 'done'
         block_name = 'test_summary'
 
       else:
@@ -171,7 +171,7 @@ def run_test():
     question = str(selected_test[0])
     block_name = str(selected_test[1])
 
-    if block_name == "Default answer":
+    if question == "done":
       data = {"redirect_to_blocks": [block_name]}
 
     else:
