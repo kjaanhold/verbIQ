@@ -231,9 +231,9 @@ def run_test():
       block_name = block_name.replace("u'","")
       block_name = block_name.replace("')]","")
 
-    if out_text == '[]':
-      next_test = 'Default answer' 
-      block_name = 'Default answer'
+ #   if out_text == '[]':
+ #     next_test = 'Default answer' 
+ #     block_name = 'Default answer'
 
     return out_text
 '''
