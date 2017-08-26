@@ -220,6 +220,8 @@ def run_test():
       rows = execute_query(query)
       out_text = str(rows)
 
+      return str(query)
+'''
 #      next_test = repr(rows[0][0])
 #      block_name = str(rows[0][1])
 
@@ -284,7 +286,7 @@ def run_test():
 #    data = {"set_attributes":query}
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-
+'''
 
 @app.route('/age_check', methods=['GET'])
 def age_check():
