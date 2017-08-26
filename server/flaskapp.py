@@ -355,7 +355,7 @@ def tests_summary():
                       "block_name": "Default answer",
                       "title": u"Soovin meeldetuletusi."
                     }
-    return str(out_text) + str(button1) 
+    return str(out_text) 
 
 '''
     data = {
