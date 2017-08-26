@@ -233,52 +233,56 @@ def run_test():
     question = str(selected_test[0])
     block_name = str(selected_test[1])
 
-    data = {
-      "set_attributes":
-        {
-          "last_visited_block_id": block_name
-        },
-      "messages": [
-        {
-          "attachment": {
-            "type": "template",
-            "payload": {
-              "template_type": "button",
-              "text": question,
-              "buttons": [
-                {
-                  "set_attributes": 
+    if block_name == "Default answer":
+      data = {"redirect_to_blocks": [block_name]}
+
+    else:
+      data = {
+        "set_attributes":
+          {
+            "last_visited_block_id": block_name
+          },
+        "messages": [
+          {
+            "attachment": {
+              "type": "template",
+              "payload": {
+                "template_type": "button",
+                "text": question,
+                "buttons": [
                   {
-                    "test_result": "Jah"
+                    "set_attributes": 
+                    {
+                      "test_result": "Jah"
+                    },
+                    "type": "show_block",
+                    "block_name": "test recurring tests 3",
+                    "title": u"Jah"
                   },
-                  "type": "show_block",
-                  "block_name": "test recurring tests 3",
-                  "title": u"Jah"
-                },
-                {
-                  "set_attributes": 
                   {
-                    "test_result": "Ei tea"
-                  },
-                  "type": "show_block",
-                  "block_name": "test recurring tests 3",
-                  "title": u"Ei tea"
-                },                
-                {
-                  "set_attributes": 
+                    "set_attributes": 
+                    {
+                      "test_result": "Ei tea"
+                    },
+                    "type": "show_block",
+                    "block_name": "test recurring tests 3",
+                    "title": u"Ei tea"
+                  },                
                   {
-                    "test_result": "Ei"
-                  },
-                  "type": "show_block",
-                  "block_name": "test recurring tests 3",
-                  "title": u"Ei"
-                }
-              ]
+                    "set_attributes": 
+                    {
+                      "test_result": "Ei"
+                    },
+                    "type": "show_block",
+                    "block_name": "test recurring tests 3",
+                    "title": u"Ei"
+                  }
+                ]
+              }
             }
           }
-        }
-      ]
-    }
+        ]
+      }
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
