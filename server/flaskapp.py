@@ -174,6 +174,59 @@ def return_age():
 
 
 
+def next_test_selection(dob,name):
+#    dob = request.args.get('Synni_kuupaev')
+#    name = request.args.get('Lapse_eesnimi')
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    age_months = str(int(age.days)/30)
+
+
+    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
+      # this kid hasn't done any tests yet
+
+      query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
+      rows = execute_query(query)
+
+      next_test = repr(rows[0][0])
+      block_name = str(rows[0][1])
+
+    else:
+      # this kid has done at least one test
+      data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
+      result_dict = [u.__dict__ for u in data]
+      block_name = [d.get('block_name') for d in result_dict]
+      block_name = str(block_name)
+      block_name = block_name.replace('u"','')
+      block_name = block_name.replace('"','')
+      block_name = block_name.replace('[','')
+      block_name = block_name.replace(']','')
+
+      query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
+      rows = execute_query(query)
+      out_text = str(rows)
+
+      if out_text == '[]':
+        next_test  = 'Default answer'
+        block_name = 'Default answer'
+
+      else:
+
+        next_test = out_text.split("', ")[0]
+        next_test = next_test.replace("[(u'","")
+        next_test = next_test.replace("',)]","")
+
+        block_name = out_text.split("', ")[1]
+        block_name = block_name.replace("u'","")
+        block_name = block_name.replace("')]","")
+
+    data = {
+      "next_test" = next_test,
+      "block_name" = block_name
+    }
+    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
+    return response
+
 
 
 
