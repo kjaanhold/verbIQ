@@ -224,7 +224,7 @@ def run_test():
       text = u"Veel vastamata testid"
 
       rows = execute_query(query)
-'''      out_text = str(rows)
+      out_text = str(rows)
 
       next_test = out_text.split("', ")[0]
       next_test = next_test.replace("[(u'","")
@@ -233,9 +233,9 @@ def run_test():
       block_name = out_text.split("', ")[1]
       block_name = block_name.replace("u'","")
       block_name = block_name.replace("')]","")
-'''
-      next_test = rows[0][0]
-      block_name = rows[0][1]
+
+#      next_test = rows[0][0]
+#      block_name = rows[0][1]
 
 #      if out_text == '[]':
 #        out_text = 'Default answer' 
