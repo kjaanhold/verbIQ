@@ -347,7 +347,33 @@ def tests_summary():
         button_3_block = "Default answer"
         button_3_title = u"Soovin meeldetuletusi."
 
+    data = {
+      "messages": [
+        {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "button",
+              "text": out_text,
+              "buttons": [
+                {
+                  "type": "show_block",
+                  "block_name": "age_block_selection",
+                  "title": u"Õige, edasi!"
+                },
+                {
+                  "type": "show_block",
+                  "block_name": "PARENT_EST",
+                  "title": "Viga, parandame..."
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
 
+'''
     data = {
       "messages": [
         {
@@ -378,6 +404,7 @@ def tests_summary():
         }
       ]
     }
+'''
 #    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
 #    return response
     data = {'messages':[{"text": "tyhi"}]}
