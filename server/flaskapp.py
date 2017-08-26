@@ -220,7 +220,7 @@ def run_test():
             }
           }
         ]
-      }
+      }      
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
@@ -378,9 +378,10 @@ def tests_summary():
         }
       ]
     }
-    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
-    return response
-
+#    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
+#    return response
+    data = {'messages':[{"text": "tyhi"}]}
+    return jsonify(data)
 
 
 
