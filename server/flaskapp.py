@@ -263,14 +263,15 @@ def age_check():
 
 
 
-@app.route('/tests_summary', methods=['GET'])
-def tests_summary():
-    name = request.args.get('Lapse_eesnimi')
-    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
-      out_text = u"Ühtegi testi pole veel tehtud"
+
+
+def return_test_results(name, result_value):
+
+    if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
+      out_text = "no_results_with_this_answer"
 
     else:
-      data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = 'Jah').all()
+      data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).all()
       result_dict = [u.__dict__ for u in data]
       block_name = [d.get('block_name') for d in result_dict]    
       block_name = str(block_name)
@@ -282,6 +283,24 @@ def tests_summary():
       query = "SELECT m.description FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
       rows = execute_query(query)
       out_text = str(rows)
+
+    return out_text
+
+
+
+
+
+
+@app.route('/tests_summary', methods=['GET'])
+def tests_summary():
+    name = request.args.get('Lapse_eesnimi')
+    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
+      out_text = u"Ühtegi testi pole veel tehtud"
+
+    else:
+      data = return_test_results(name, 'Jah')
+      out_text = str(data)
+
     return out_text
 
 
