@@ -242,7 +242,7 @@ def run_test():
 
 
 
-    return next_text
+    return next_text['block_name']
     '''
     data = {
       "set_attributes":
