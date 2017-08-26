@@ -270,7 +270,7 @@ def tests_summary():
       out_text = u"Ühtegi testi pole veel tehtud"
 
     else:
-      data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
+      data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), test_restult = 'Jah').all()
       result_dict = [u.__dict__ for u in data]
       block_name = [d.get('block_name') for d in result_dict]    
       block_name = str(block_name)
