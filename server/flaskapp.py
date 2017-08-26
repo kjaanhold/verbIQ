@@ -226,8 +226,8 @@ def next_test_selection(dob,name):
     }
     data = [next_test, block_name]
 #    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
-    return response
-
+#    return response
+    return data
 
 
 
