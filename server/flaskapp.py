@@ -296,6 +296,9 @@ def tests_summary():
 
     else:
       data_jah = return_test_results(name, 'Jah')
+      data_ei = return_test_results(name, 'Ei')
+      data_ei_tea = return_test_results(name, 'Ei tea')
+
       out_text = "sss"
 
     return out_text
