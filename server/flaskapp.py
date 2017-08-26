@@ -320,7 +320,7 @@ def tests_summary():
                     }
 
       elif (data_jah != 'no_results' and data_ei != 'no_results'):
-        out_text = u"Tänan! " + name + u"on juba omadanud järgmised lapse arengus jälgitavad oskused:" + data_jah + nimi + u"õpib praegu veel neid oskusi:"+ data_ei
+        out_text = u"Tänan! " + name + u"on juba omadanud järgmised lapse arengus jälgitavad oskused:" + data_jah + name + u"õpib praegu veel neid oskusi:"+ data_ei
         button1 = {
                       "type": "show_block",
                       "block_name": "Default answer",
@@ -339,7 +339,7 @@ def tests_summary():
 
 
       if (data_jah == 'no_results' and data_ei != 'no_results'):
-        out_text = u"Tänan! " + name + u" praegu veel õpib peamisi eakohaseid oskusi:" + '\n' + data_ei
+        out_text = u"Tänan! " + name + u" praegu veel õpib peamisi eakohaseid oskusi:" + data_ei
         button1 = {
                       "type": "show_block",
                       "block_name": "Default answer",
@@ -356,7 +356,28 @@ def tests_summary():
                       "title": u"Soovin meeldetuletusi."
                     }
 
-    return out_text
+    data = {
+      "messages": [
+        {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "button",
+              "text": out_text,
+              "buttons": [
+                button1,
+                button2,
+                button2
+              ]
+            }
+          }
+        }
+      ]
+    }
+    return jsonify(data)
+
+
+#    return out_text
 
 '''
 @app.route('/age_test_summary', methods=['GET'])
