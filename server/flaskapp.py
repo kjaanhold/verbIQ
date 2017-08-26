@@ -340,21 +340,21 @@ def tests_summary():
 
       if (data_jah == 'no_results' and data_ei != 'no_results'):
         out_text = u"Tänan! " + name + u" praegu veel õpib peamisi eakohaseid oskusi:" + data_ei
-        button1 = str({
+        button1 = {
                       "type": "show_block",
                       "block_name": "Default answer",
                       "title": u"Perearstile?"
-                    })
-        button1 = str({
+                    }
+        button2 = {
                       "type": "show_block",
                       "block_name": "Ootan juhiseid",
                       "title": u"Kuidas toetada?"
-                    })
-        button1 = str({
+                    }
+        button3 = {
                       "type": "show_block",
                       "block_name": "Default answer",
                       "title": u"Soovin meeldetuletusi."
-                    })
+                    }
 #    return out_text
 
     data = {
