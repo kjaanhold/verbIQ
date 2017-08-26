@@ -303,6 +303,22 @@ def tests_summary():
 
       if (data_jah != 'no_results' and data_ei == 'no_results' and data_ei_tea == 'no_results'):
         out_text = u"Tänan! " + name + u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse:" + data_jah
+        button1 = {
+                      "type": "show_block",
+                      "block_name": "Default answer",
+                      "title": u"Küsin veel"
+                    }
+        button1 = {
+                      "type": "show_block",
+                      "block_name": "Ootan juhiseid",
+                      "title": u"Küsin veel"
+                    }
+        button1 = {
+                      "type": "show_block",
+                      "block_name": "Default answer",
+                      "title": u"Sisestan ise"
+                    }
+
 
     return out_text
 
