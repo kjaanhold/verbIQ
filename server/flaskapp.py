@@ -233,7 +233,7 @@ def run_test():
 
 #      if out_text == '[]':
 #        out_text = 'Default answer' 
-'''
+
     data = {
       "set_attributes":
         {
@@ -280,8 +280,8 @@ def run_test():
         }
       ]
     }
-    '''
-    data = {"set_attributes":query}
+    
+#    data = {"set_attributes":query}
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
