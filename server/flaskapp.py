@@ -285,11 +285,7 @@ def return_test_results(name, result_value):
       out_text = rows
 
 
-    return out_text
-
-
-
-
+    return str(out_text)
 
 
 @app.route('/tests_summary', methods=['GET'])
@@ -299,8 +295,11 @@ def tests_summary():
       out_text = u"Ühtegi testi pole veel tehtud"
 
     else:
-      data = return_test_results(name, 'Jah')
-      out_text = str(data)
+      data_jah = return_test_results(name, 'Jah')
+      data_ei = return_test_results(name, 'Ei')
+      data_ei_tea = return_test_results(name, 'Ei tea')
+
+      out_text = str(data_jah)
 
     return out_text
 
