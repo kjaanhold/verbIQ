@@ -236,7 +236,7 @@ def run_test():
 
 
 
-    return next_test
+    return str(next_test)
     '''
     data = {
       "set_attributes":
