@@ -220,14 +220,18 @@ def run_test():
       rows = execute_query(query)
       out_text = str(rows)
 
+      if out_text = "[]":
+        next_test = "a"
+        block_name = "b"
 
-      next_test = out_text.split("', ")[0]
-      next_test = next_test.replace("[(u'","")
-      next_test = next_test.replace("',)]","")
+      else:
+        next_test = out_text.split("', ")[0]
+        next_test = next_test.replace("[(u'","")
+        next_test = next_test.replace("',)]","")
 
-      block_name = out_text.split("', ")[1]
-      block_name = block_name.replace("u'","")
-      block_name = block_name.replace("')]","")
+        block_name = out_text.split("', ")[1]
+        block_name = block_name.replace("u'","")
+        block_name = block_name.replace("')]","")
 
 #      if out_text == '[]':
 #        out_text = 'Default answer' 
