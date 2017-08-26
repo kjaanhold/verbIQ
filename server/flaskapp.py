@@ -223,7 +223,7 @@ def next_test_selection(dob,name):
       "next_test": next_test,
       "block_name": block_name
     }
-    data = jsonify(data)
+    data = ["a","b"]
 #    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
 #    return response
     return data
@@ -242,7 +242,7 @@ def run_test():
 
 
 
-    return next_text['block_name']
+    return next_text
     '''
     data = {
       "set_attributes":
