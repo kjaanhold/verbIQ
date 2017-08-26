@@ -232,7 +232,7 @@ def run_test():
       block_name = block_name.replace("')]","")
 
     if out_text == '[]':
-      block_name = 'Default answer' 
+      next_test = 'Default answer' 
       block_name = 'Default answer'
       
     data = {
