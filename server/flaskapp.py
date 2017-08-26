@@ -296,6 +296,11 @@ def tests_summary():
 
     else:
       data_jah = return_test_results(name, 'Jah')
+      out_text = "sss"
+
+
+
+
       data_ei = return_test_results(name, 'Ei')
       data_ei_tea = return_test_results(name, 'Ei tea')
 
@@ -318,45 +323,9 @@ def tests_summary():
                       "title": u"Sisestan ise"
                     }
 '''
-      else:
-        out_text = "other"
+
     return out_text
 
-'''
-
-
-
-II. Tänan! NIMI on juba omadanud järgmised lapse arengus jälgitavad oskused:
-
-jah1
-jah2
-jah3…
-
-NIMI õpib praegu veel neid oskusi:
-
-ei1
-ei2
-
-Kasutajasisend:
-A. Selge, aitäh.
-B. Kuidas toetada õppimist?
-C. Soovin saada meeldetuletusti praegu õpitavate oskuste kohta…
-
-
-
-III. Tänan! NIMI praegu veel õpib peamisi eakohaseid oskusi:
-
-ei1
-ei2
-ei3
-
-Kasutajasisend:
-A. Kas peaksin rääkima perearstiga?
-
-B. Kuidas toetada õppimist?
-
-C. Soovin saada meeldetuletusi praegu õpitavate oskuste kohta…
-'''
 
 '''
 @app.route('/age_test_summary', methods=['GET'])
