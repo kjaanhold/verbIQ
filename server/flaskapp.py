@@ -364,7 +364,7 @@ def tests_summary():
                 {
                   "type": "show_block",
                   "block_name": "PARENT_EST",
-                  "title": "Viga, parandame..."
+                  "title": u"Viga, parandame..."
                 }
               ]
             }
@@ -407,7 +407,6 @@ def tests_summary():
 '''
 #    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
 #    return response
-    data = {'messages':[{"text": "tyhi"}]}
     return jsonify(data)
 
 
