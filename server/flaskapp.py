@@ -350,12 +350,12 @@ def tests_summary():
                       "block_name": "Ootan juhiseid",
                       "title": u"Kuidas toetada?"
                     }
-        button3 = {
+        button3 = str({
                       "type": "show_block",
                       "block_name": "Default answer",
                       "title": u"Soovin meeldetuletusi."
-                    }
-    return str(button3)
+                    })
+    return button3
 
 '''
     data = {
