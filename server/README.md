@@ -13,8 +13,9 @@ In security groups, allow:
 `~/verbIQ/server/setup_machine.sh`
 
 ## 4. Set up postgresql 
-`sudo -i -u postgres psql
-ALTER USER postgres WITH ENCRYPTED PASSWORD 'password';`
+`sudo -i -u postgres psql`
+
+`ALTER USER postgres WITH ENCRYPTED PASSWORD 'password';`
 
 1. Create the DB 
 `CREATE DATABASE my_database;`
@@ -28,6 +29,7 @@ ALTER USER postgres WITH ENCRYPTED PASSWORD 'password';`
 `python manage.py db upgrade`
 
 3. Add these lines in the beginning of pg_hba.conf
+
 `# TYPE DATABASE USER CIDR-ADDRESS  METHOD`
 
 `host  all  all 0.0.0.0/0 md5`
