@@ -20,6 +20,7 @@ ALTER USER postgres WITH ENCRYPTED PASSWORD 'password';`
 `CREATE DATABASE my_database;`
 
 2. Run migrations
+
 `python manage.py db init`
 
 `python manage.py db migrate`
