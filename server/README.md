@@ -1,4 +1,4 @@
-## Launch an AWS EC2 instance
+## Launch an AWS EC2 instance and add ssh keys
 
 In security groups, allow:
 
@@ -20,7 +20,9 @@ ALTER USER postgres WITH ENCRYPTED PASSWORD 'password';`
 
 2. Run migrations
 `python manage.py db init
+
 python manage.py db migrate
+
 python manage.py db upgrade`
 
 3. Add these lines in the beginning of pg_hba.conf
