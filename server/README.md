@@ -27,8 +27,9 @@ ALTER USER postgres WITH ENCRYPTED PASSWORD 'password';`
 `python manage.py db upgrade`
 
 3. Add these lines in the beginning of pg_hba.conf
-`# TYPE DATABASE USER CIDR-ADDRESS  METHOD
-host  all  all 0.0.0.0/0 md5`
+`# TYPE DATABASE USER CIDR-ADDRESS  METHOD`
+
+`host  all  all 0.0.0.0/0 md5`
 
 4. Change postgresql.conf listen_addresses to `'*'`
 
