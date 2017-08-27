@@ -1,17 +1,17 @@
-## Launch an AWS EC2 instance and add ssh keys
+## 1. Launch an AWS EC2 instance and add ssh keys
 
 In security groups, allow:
 
 * SSH (protocol = TCP, source = My IP, Port range = 22)
 * HTTP (protocol = TCP, source = Anywhere, Port range = 80)
 
-## Clone this repo
+## 2. Clone this repo
 
 `git clone https://github.com/kjaanhold/verbIQ.git`
 
-## Run `setup_machine.sh`
+## 3. Run `setup_machine.sh`
 
-## Set up postgresql 
+## 4. Set up postgresql 
 `sudo -i -u postgres psql
 ALTER USER postgres WITH ENCRYPTED PASSWORD 'password';`
 
