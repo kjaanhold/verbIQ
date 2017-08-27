@@ -301,7 +301,7 @@ def tests_summary():
       data_ei_tea = return_test_results(name, 'Ei tea')
 
       if (data_jah != 'no_results' and data_ei == 'no_results'):
-        out_text = u"Tänan! " + name #+ u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse:" + data_jah
+        out_text = u"Tänan! " + name + u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse:" + data_jah
 
         button_1_block = "Default answer"
         button_1_title = u"Küsin veel"
@@ -313,7 +313,7 @@ def tests_summary():
         button_3_title = u"Sisestan ise"
 
       elif (data_jah != 'no_results' and data_ei != 'no_results'):
-        out_text = u"Tänan! " + name #+ u"on juba omadanud järgmised lapse arengus jälgitavad oskused:" + data_jah + name + u"õpib praegu veel neid oskusi:"+ data_ei
+        out_text = u"Tänan! " + name + u"on juba omadanud järgmised lapse arengus jälgitavad oskused:" + data_jah + name + u"õpib praegu veel neid oskusi:"+ data_ei
 
         button_1_block = "Default answer"
         button_1_title = u"Selge, aitäh!"
@@ -325,7 +325,7 @@ def tests_summary():
         button_3_title = u"Soovin meeldetuletusi."
 
       elif (data_jah == 'no_results' and data_ei != 'no_results'):
-        out_text = u"Tänan! " + name #+ u" praegu veel õpib peamisi eakohaseid oskusi:" + data_ei
+        out_text = u"Tänan! " + name + u" praegu veel õpib peamisi eakohaseid oskusi:" + data_ei
 
         button_1_block = "Default answer"
         button_1_title = u"Perearstile"
