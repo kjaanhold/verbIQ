@@ -19,11 +19,11 @@ ALTER USER postgres WITH ENCRYPTED PASSWORD 'password';`
 `CREATE DATABASE my_database;`
 
 2. Run migrations
-`python manage.py db init
+`python manage.py db init`
 
-python manage.py db migrate
+`python manage.py db migrate`
 
-python manage.py db upgrade`
+`python manage.py db upgrade`
 
 3. Add these lines in the beginning of pg_hba.conf
 `# TYPE DATABASE USER CIDR-ADDRESS  METHOD
