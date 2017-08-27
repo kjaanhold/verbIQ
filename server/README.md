@@ -9,7 +9,8 @@ In security groups, allow:
 
 `git clone https://github.com/kjaanhold/verbIQ.git`
 
-## 3. Run `setup_machine.sh`
+## 3. Set up repos/packages etc using setup script
+`~/verbIQ/server/setup_machine.sh`
 
 ## 4. Set up postgresql 
 `sudo -i -u postgres psql
