@@ -261,7 +261,7 @@ def age_check():
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
-'''
+
 
 
 
@@ -425,6 +425,6 @@ def getmilestones():
     query = "SELECT target_age, description FROM milestones WHERE target_age <= %s;" % age_months
     rows = execute_query(query)
     return(str(rows) + "\n")
-'''
+
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)
