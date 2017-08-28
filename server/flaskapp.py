@@ -263,7 +263,7 @@ def age_check():
 
 
 
-
+'''
 
 def return_test_results(name, result_value):
 
@@ -285,7 +285,7 @@ def return_test_results(name, result_value):
       out_text = rows # "\n".join(.join(elems) for elems in rows)
     return str(out_text)
 
-'''
+
 @app.route('/tests_summary', methods=['GET'])
 def tests_summary():
     name = request.args.get('Lapse_eesnimi')
@@ -378,7 +378,7 @@ def tests_summary():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-'''
+
 
 
 
@@ -425,6 +425,6 @@ def getmilestones():
     query = "SELECT target_age, description FROM milestones WHERE target_age <= %s;" % age_months
     rows = execute_query(query)
     return(str(rows) + "\n")
-
+'''
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)
