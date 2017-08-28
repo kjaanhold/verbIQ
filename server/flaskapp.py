@@ -110,7 +110,7 @@ def to_json(inst, cls):
             d[c.name] = v
     return json.dumps(d)
 
-
+'''
 
 
 def next_test_selection(dob,name):
@@ -224,7 +224,7 @@ def run_test():
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
-
+'''
 
 @app.route('/age_check', methods=['GET'])
 def age_check():
@@ -261,9 +261,9 @@ def age_check():
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
-
-
 '''
+
+
 
 def return_test_results(name, result_value):
 
