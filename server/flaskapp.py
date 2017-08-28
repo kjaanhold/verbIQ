@@ -148,6 +148,9 @@ def next_test_selection(dob,name):
         block_name = 'test_summary'
 
       else:
+        question  = 'done'
+        block_name = 'test_summary'
+'''
         question = out_text.split("', ")[0]
         question = question.replace("[(u'","")
         question = question.replace("',)]","")
@@ -155,7 +158,7 @@ def next_test_selection(dob,name):
         block_name = out_text.split("', ")[1]
         block_name = block_name.replace("u'","")
         block_name = block_name.replace("')]","")
-
+'''
     data = [question,block_name]
     return data
 
