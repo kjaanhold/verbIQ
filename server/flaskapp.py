@@ -114,7 +114,6 @@ def to_json(inst, cls):
 
 
 def next_test_selection(dob,name):
-'''
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
@@ -149,9 +148,6 @@ def next_test_selection(dob,name):
         block_name = 'test_summary'
 
       else:
-        question  = 'done'
-        block_name = 'test_summary'
-
         question = out_text.split("', ")[0]
         question = question.replace("[(u'","")
         question = question.replace("',)]","")
@@ -159,9 +155,7 @@ def next_test_selection(dob,name):
         block_name = out_text.split("', ")[1]
         block_name = block_name.replace("u'","")
         block_name = block_name.replace("')]","")
-'''
-    question  = 'done'
-    block_name = 'test_summary'
+
     data = [question,block_name]
     return data
 
@@ -173,11 +167,11 @@ def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
 
-
-#    selected_test = next_test_selection(dob = dob, name = name)
-
     return str("question")
 '''
+
+    selected_test = next_test_selection(dob = dob, name = name)
+
 
     question = str(selected_test[0])
     block_name = str(selected_test[1])
