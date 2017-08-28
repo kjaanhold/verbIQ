@@ -167,7 +167,7 @@ def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
 
-    data = str(dob)
+    data = str(name)
     return data
 
 '''
