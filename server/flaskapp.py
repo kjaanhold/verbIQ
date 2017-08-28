@@ -174,7 +174,7 @@ def run_test():
     name = request.args.get('Lapse_eesnimi')
 
 
-    selected_test = next_test_selection(dob = dob, name = name)
+#    selected_test = next_test_selection(dob = dob, name = name)
 
     return str("question")
 '''
