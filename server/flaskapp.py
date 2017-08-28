@@ -167,7 +167,9 @@ def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
 
-    return str("question")
+    data = [question,block_name]
+    return data
+
 '''
 
     selected_test = next_test_selection(dob = dob, name = name)
