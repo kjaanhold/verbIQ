@@ -157,8 +157,7 @@ def next_test_selection(dob,name):
         block_name = block_name.replace("u'","")
         block_name = block_name.replace("')]","")
 '''
-    data = dob
-    return data
+    return dob
 
 
 
@@ -169,7 +168,7 @@ def run_test():
     name = request.args.get('Lapse_eesnimi')
 
 
-    selected_test = next_test_selection(dob = dob, name = name)
+#    selected_test = next_test_selection(dob = dob, name = name)
 
     data = str(name)
     return data
