@@ -169,6 +169,8 @@ def next_test_selection(dob,name):
 #    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
 
     if 3 < 2:
+#    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
+
       # this kid hasn't done any tests yet
 
       query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
@@ -179,8 +181,9 @@ def next_test_selection(dob,name):
 
     else:
       # this kid has done at least one test
-      data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
 '''
+
+      data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
 
       result_dict = [u.__dict__ for u in data]
       block_name = [d.get('block_name') for d in result_dict]
@@ -221,10 +224,6 @@ def run_test():
 
     selected_test = next_test_selection(dob = dob, name = name)
 
-    data = str(name)
-    return data
-
-'''
 
     question = str(selected_test[0])
     block_name = str(selected_test[1])
