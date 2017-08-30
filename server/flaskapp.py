@@ -169,8 +169,8 @@ def run_test():
 
 
     selected_test = next_test_selection(dob = dob, name = name)
-    question = str(selected_test[0])
-    block_name = str(selected_test[1])
+#    question = str(selected_test[0])
+#    block_name = str(selected_test[1])
 
     if question == "done":
       data = {"redirect_to_blocks": [block_name]}
