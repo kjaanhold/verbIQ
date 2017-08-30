@@ -112,13 +112,13 @@ def to_json(inst, cls):
 
 
 
-'''
+
 def next_test_selection(dob,name):
 
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
-
+'''
 
     if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
       # this kid hasn't done any tests yet
@@ -156,9 +156,9 @@ def next_test_selection(dob,name):
         block_name = out_text.split("', ")[1]
         block_name = block_name.replace("u'","")
         block_name = block_name.replace("')]","")
-
-    return dob
 '''
+    return str(age)
+
 
 
 
