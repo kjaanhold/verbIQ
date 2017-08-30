@@ -112,9 +112,9 @@ def to_json(inst, cls):
 
 
 
-
-def next_test_selection(dob,name):
 '''
+def next_test_selection(dob,name):
+
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
@@ -156,9 +156,9 @@ def next_test_selection(dob,name):
         block_name = out_text.split("', ")[1]
         block_name = block_name.replace("u'","")
         block_name = block_name.replace("')]","")
-'''
-    return dob
 
+    return dob
+'''
 
 
 
