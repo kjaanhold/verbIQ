@@ -166,7 +166,7 @@ def next_test_selection(dob,name):
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
-    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
+    if 3 > 2:
       # this kid hasn't done any tests yet
 
       query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
@@ -174,7 +174,7 @@ def next_test_selection(dob,name):
 
       question = repr(rows[0][0])
       block_name = str(rows[0][1])
-      
+
     return str(age)
 
 
