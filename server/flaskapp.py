@@ -166,17 +166,13 @@ def next_test_selection(dob,name):
 def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
+    question = "What's your name?"
+    block_name = "dummy_question"
 
 
 #    selected_test = next_test_selection(dob = dob, name = name)
-
-    data = str(name)
-    return data
-
-'''
-
-    question = str(selected_test[0])
-    block_name = str(selected_test[1])
+#    question = str(selected_test[0])
+#    block_name = str(selected_test[1])
 
     if question == "done":
       data = {"redirect_to_blocks": [block_name]}
@@ -231,7 +227,7 @@ def run_test():
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
-'''
+
 
 @app.route('/age_check', methods=['GET'])
 def age_check():
