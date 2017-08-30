@@ -177,9 +177,11 @@ def next_test_selection(dob,name):
 
     else:
       # this kid has done at least one test
-      data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
-      result_dict = [u.__dict__ for u in data]
-      block_name = [d.get('block_name') for d in result_dict]
+#      data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
+
+#      result_dict = [u.__dict__ for u in data]
+#      block_name = [d.get('block_name') for d in result_dict]
+      block_name = "adfaddfa"
       block_name = str(block_name)
       block_name = block_name.replace('u"','')
       block_name = block_name.replace('"','')
