@@ -171,7 +171,7 @@ def run_test():
     block_name = "dummy_question"
 
 
-#    selected_test = next_test_selection(dob = dob, name = name)
+    selected_test = next_test_selection(dob = dob, name = name)
 #    question = str(selected_test[0])
 #    block_name = str(selected_test[1])
 
