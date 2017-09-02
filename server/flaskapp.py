@@ -176,9 +176,9 @@ def run_test():
     block_name = "dummy_question"
 
 
-    selected_test = next_test_selection(dob = dob, name = name)
+#    selected_test = next_test_selection(dob = dob, name = name)
  
-    return str(selected_test)
+    return str(name)
 
 #   question = str(selected_test.split("//")[0])
  #   block_name = str(selected_test.split("//")[1])
