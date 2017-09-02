@@ -120,6 +120,13 @@ def next_test_selection():
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
+
+    question = "What's your name?"
+    block_name = "dummy_question"
+
+    data = [question,block_name]
+    return data
+
 '''
 ###    return str(age)
     if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
@@ -161,12 +168,6 @@ def next_test_selection():
         block_name = block_name.replace("u'","")
         block_name = block_name.replace("')]","")
 '''
-    question = "What's your name?"
-    block_name = "dummy_question"
-
-    data = [question,block_name]
-    return data
-
 
 
 
