@@ -136,6 +136,12 @@ def next_test_selection():
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
       block_name = "dfadf"
+      question = str(data)
+
+#    data = [question,block_name]
+    data = str(question) + str(block_name)
+
+    return data
 
 '''
       result_dict = [u.__dict__ for u in data]
@@ -150,12 +156,6 @@ def next_test_selection():
       rows = execute_query(query)
       out_text = str(rows)
 '''
-      question = str(data)
-
-#    data = [question,block_name]
-    data = str(question) + str(block_name)
-
-    return data
 
 '''
       if out_text == '[]':
