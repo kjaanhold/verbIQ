@@ -144,7 +144,7 @@ def next_test_selection(dob, name):
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
 
-      query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
+      query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
       rows = execute_query(query)
       out_text = str(rows)
 
@@ -172,12 +172,8 @@ def next_test_selection(dob, name):
 def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
-    question = "What's your name?"
-    block_name = "dummy_question"
-
 
     selected_test = next_test_selection(dob = dob, name = name)
- 
 
     question = str(selected_test.split("//")[0])
     block_name = str(selected_test.split("//")[1])
