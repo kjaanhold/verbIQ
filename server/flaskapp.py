@@ -160,6 +160,8 @@ def next_test_selection():
         block_name = out_text.split("', ")[1]
         block_name = block_name.replace("u'","")
         block_name = block_name.replace("')]","")
+    question = "What's your name?"
+    block_name = "dummy_question"
 
     data = [question,block_name]
     return data
