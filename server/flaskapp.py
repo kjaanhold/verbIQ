@@ -164,7 +164,9 @@ def next_test_selection(dob, name):
         question = question.replace("\xf5","õ")
         question = question.replace("\xe4","ä")
 #        question = question.replace("\","ö")
-        question = question.replace("\xfc","ü")
+        question = question.replace("\xf","ü")
+        question = question.replace("üc","ü")
+
 
         block_name = out_text.split("', ")[1]
         block_name = block_name.replace("u'","")
