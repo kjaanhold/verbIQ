@@ -120,7 +120,7 @@ def next_test_selection(dob,name):
     age_months = str(int(age.days)/30)
 
 ###    return str(age)
-
+    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
 
       # this kid hasn't done any tests yet
 
