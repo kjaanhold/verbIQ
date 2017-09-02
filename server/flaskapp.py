@@ -179,8 +179,8 @@ def run_test():
     selected_test = next_test_selection(dob = dob, name = name)
  
 
-   question = str(selected_test.split("//")[0])
-   block_name = str(selected_test.split("//")[1])
+    question = str(selected_test.split("//")[0])
+    block_name = str(selected_test.split("//")[1])
 
 
     if question == "done":
