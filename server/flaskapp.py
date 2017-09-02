@@ -180,6 +180,8 @@ def run_test():
     question = str(selected_test.split("//")[0])
     block_name = str(selected_test.split("//")[1])
 
+    return block_name
+'''
     if question == "done":
       data = {"redirect_to_blocks": [block_name]}
 
@@ -232,7 +234,7 @@ def run_test():
       }      
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-
+'''
 
 
 @app.route('/age_check', methods=['GET'])
