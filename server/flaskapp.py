@@ -160,6 +160,7 @@ def next_test_selection(dob, name):
         question = out_text.split("', ")[0]
         question = question.replace("[(u'","")
         question = question.replace("',)]","")
+        question = question.decode('utf8')
 
         block_name = out_text.split("', ")[1]
         block_name = block_name.replace("u'","")
