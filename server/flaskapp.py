@@ -112,8 +112,8 @@ def to_json(inst, cls):
 
 
 
-@app.route('/next_test_selection', methods=['GET'])
-def next_test_selection():
+# @app.route('/next_test_selection', methods=['GET'])
+def next_test_selection(dob, name):
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
 
@@ -176,9 +176,9 @@ def run_test():
     block_name = "dummy_question"
 
 
-#    selected_test = next_test_selection(dob = dob, name = name)
+    selected_test = next_test_selection(dob = dob, name = name)
  
-    return str(name)
+    return str(selected_test)
 
 #   question = str(selected_test.split("//")[0])
  #   block_name = str(selected_test.split("//")[1])
