@@ -163,11 +163,11 @@ def next_test_selection():
         block_name = block_name.replace("')]","")
 
 
-      block_name = str(rows)
-      question = "fadfa"
+ #     block_name = str(rows)
+ #     question = "fadfa"
 
-    data = [question,block_name]
-#    data = str(question) + " / " + str(block_name)
+#    data = [question,block_name]
+    data = str(question) + " / " + str(block_name)
 
     return data
 
