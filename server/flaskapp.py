@@ -145,9 +145,9 @@ def next_test_selection():
       block_name = block_name.replace(']','')
 
       query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
-#       rows = execute_query(query)
+      rows = execute_query(query)
 
-      block_name = str(query)
+      block_name = str(rows)
       question = "fadfa"
 
 #    data = [question,block_name]
