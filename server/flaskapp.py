@@ -72,7 +72,7 @@ def store_test_results():
       result_type = 'chatfuel'
       result_value = request.form['test_result']
 
-      new_data = TestResults(key_user=str(key_user), block_name=str("'"+block_name+"'"), lapse_eesnimi=str(lapse_eesnimi).lower(), date_created=str(date_created), result_type=str(result_type), result_value=str(result_value))
+      new_data = TestResults(key_user=str(key_user), block_name=str("'"+block_name+"'"), lapse_eesnimi=(lapse_eesnimi).lower(), date_created=str(date_created), result_type=str(result_type), result_value=str(result_value))
       db.session.add(new_data)
       db.session.commit()
       data = {"redirect_to_blocks": ["test recurring tests 2"]}
@@ -126,11 +126,13 @@ def next_test_selection(dob, name):
 
       # this kid hasn't done any tests yet
 
-      query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
+      query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
       rows = execute_query(query)
 
       question = repr(rows[0][0])
       block_name = str(rows[0][1])
+      id_test = str(rows[0][2])
+
 
     else:
       # this kid has done at least one test
