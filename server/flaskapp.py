@@ -158,9 +158,9 @@ def next_test_selection(dob, name):
 
       else:
         question = out_text.split("', ")[0]
+        question = question.encode('cp437')
         question = question.replace("[(u'","")
         question = question.replace("',)]","")
-        question = question.encode('cp437')
 
 #        u'\xe4'.encode('cp437')
 
