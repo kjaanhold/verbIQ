@@ -130,6 +130,7 @@ def next_test_selection(dob, name):
       rows = execute_query(query)
 
       question = repr(rows[0][0])
+      question = question.replace("u'","")
       block_name = str(rows[0][1])
       id_test = str(rows[0][2])
 
