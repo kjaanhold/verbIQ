@@ -157,11 +157,15 @@ def next_test_selection(dob, name):
         block_name = 'test_summary'
 
       else:
-#        question = out_text.split("', ")[0]
-#        question = question.encode('cp437')
-#        question = question.replace("[(u'","")
-#        question = question.replace("',)]","")
-        question = str(u'Kas su v\xf5tab asju m\xf5lema k\xe4ega?'.encode('cp437'))
+        question = out_text.split("', ")[0]
+        question = question.encode('cp437')
+        question = question.replace("[(u'","")
+        question = question.replace("',)]","")
+        question = question.replace("\xf5","õ")
+        question = question.replace("\xe4","ä")
+#        question = question.replace("\","ö")
+        question = question.replace("\xfc","ü")
+
         block_name = out_text.split("', ")[1]
         block_name = block_name.replace("u'","")
         block_name = block_name.replace("')]","")
