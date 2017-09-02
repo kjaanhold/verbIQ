@@ -162,12 +162,8 @@ def next_test_selection():
         block_name = block_name.replace("u'","")
         block_name = block_name.replace("')]","")
 
-
- #     block_name = str(rows)
- #     question = "fadfa"
-
 #    data = [question,block_name]
-    data = str(question) + " / " + str(block_name)
+    data = str(question) + "//" + str(block_name)
 
     return data
 
@@ -181,8 +177,8 @@ def run_test():
 
 
     selected_test = next_test_selection(dob = dob, name = name)
-#    question = str(selected_test[0])
-#    block_name = str(selected_test[1])
+    question = str(selected_test.split("//")[0])
+    block_name = str(selected_test.split("//")[1])
 
     if question == "done":
       data = {"redirect_to_blocks": [block_name]}
