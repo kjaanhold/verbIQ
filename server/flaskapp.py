@@ -143,6 +143,9 @@ def next_test_selection():
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
 
+      question = "ftees"
+
+'''
       query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
       rows = execute_query(query)
       out_text = str(rows)
@@ -152,9 +155,15 @@ def next_test_selection():
         block_name = 'test_summary'
 
       else:
-        question = "What's your name?"
-        block_name = "dummy_question"
+        question = out_text.split("', ")[0]
+        question = question.replace("[(u'","")
+        question = question.replace("',)]","")
 
+        block_name = out_text.split("', ")[1]
+        block_name = block_name.replace("u'","")
+        block_name = block_name.replace("')]","")
+'''
+#    data = [question,block_name]
     data = str(question) + str(block_name)
 
     return data
