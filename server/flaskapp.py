@@ -114,11 +114,7 @@ def to_json(inst, cls):
 
 @app.route('/next_test_selection', methods=['GET'])
 def next_test_selection():
-
-    question = "What's your name?"
-    block_name = "dummy_question"
-
-    data = [question,block_name]
+    data = "out"
     return data
 
 '''
