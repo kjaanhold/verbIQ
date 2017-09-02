@@ -159,6 +159,9 @@ def next_test_selection(dob,name):
         block_name = block_name.replace("u'","")
         block_name = block_name.replace("')]","")
 
+    data = [question,block_name]
+    return data
+
 
 
 
