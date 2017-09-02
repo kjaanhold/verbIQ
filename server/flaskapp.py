@@ -135,6 +135,7 @@ def next_test_selection():
     else:
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
+      block_name = "dfadf"
 
 '''
       result_dict = [u.__dict__ for u in data]
