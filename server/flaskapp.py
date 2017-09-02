@@ -147,6 +147,14 @@ def next_test_selection():
       query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
       rows = execute_query(query)
 
+
+
+      if str(rows) == '[]':
+        question  = 'done'
+        block_name = 'test_summary'
+
+
+
       block_name = str(rows)
       question = "fadfa"
 
@@ -160,9 +168,7 @@ def next_test_selection():
 '''
 
 '''
-      if out_text == '[]':
-        question  = 'done'
-        block_name = 'test_summary'
+
 
       else:
         question = out_text.split("', ")[0]
