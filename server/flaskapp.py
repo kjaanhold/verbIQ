@@ -124,7 +124,6 @@ def next_test_selection():
 ###    return str(age)
     if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
 
-#    if 2 > 3:
       # this kid hasn't done any tests yet
 
       query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
@@ -160,9 +159,6 @@ def next_test_selection():
         block_name = out_text.split("', ")[1]
         block_name = block_name.replace("u'","")
         block_name = block_name.replace("')]","")
-
-    question = "What's your name?"
-    block_name = "dummy_question"
 
 #    data = [question,block_name]
     data = str(question) + str(block_name)
