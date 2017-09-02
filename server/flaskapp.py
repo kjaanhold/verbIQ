@@ -153,7 +153,14 @@ def next_test_selection():
         question  = 'done'
         block_name = 'test_summary'
 
+      else:
+        question = out_text.split("', ")[0]
+        question = question.replace("[(u'","")
+        question = question.replace("',)]","")
 
+        block_name = out_text.split("', ")[1]
+        block_name = block_name.replace("u'","")
+        block_name = block_name.replace("')]","")
 
       block_name = str(rows)
       question = "fadfa"
@@ -170,14 +177,7 @@ def next_test_selection():
 '''
 
 
-      else:
-        question = out_text.split("', ")[0]
-        question = question.replace("[(u'","")
-        question = question.replace("',)]","")
 
-        block_name = out_text.split("', ")[1]
-        block_name = block_name.replace("u'","")
-        block_name = block_name.replace("')]","")
 '''
 
 
