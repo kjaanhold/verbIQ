@@ -143,7 +143,7 @@ def next_test_selection():
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
 
-      block_name = "dfadf"
+#      block_name = "dfadf"
       question = "fadfa"
 
 #    data = [question,block_name]
