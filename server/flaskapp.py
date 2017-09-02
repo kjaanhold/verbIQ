@@ -166,27 +166,10 @@ def next_test_selection():
       block_name = str(rows)
       question = "fadfa"
 
-#    data = [question,block_name]
-    data = str(question) + " / " + str(block_name)
+    data = [question,block_name]
+#    data = str(question) + " / " + str(block_name)
 
     return data
-
-'''
- 
-'''
-
-'''
-
-
-      else:
-        question = out_text.split("', ")[0]
-        question = question.replace("[(u'","")
-        question = question.replace("',)]","")
-
-        block_name = out_text.split("', ")[1]
-        block_name = block_name.replace("u'","")
-        block_name = block_name.replace("')]","")
-'''
 
 
 @app.route('/run_test', methods=['GET'])
