@@ -161,7 +161,7 @@ def next_test_selection(dob, name):
         question = question.encode('cp437')
         question = question.replace("[(u'","")
         question = question.replace("',)]","")
-        question = str(u'Kas su v\xf5tab asju m\xf5lema k\xe4ega?'.encode('cp437'))
+#        question = str(u'Kas su v\xf5tab asju m\xf5lema k\xe4ega?'.encode('cp437'))
 
 
         block_name = out_text.split("', ")[1]
