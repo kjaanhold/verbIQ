@@ -162,7 +162,7 @@ def next_test_selection(dob, name):
         question = question.replace("[(u'","")
         question = question.replace("',)]","")
 
-#        u'\xe4'.encode('cp437')
+        question = u'\xe4'.encode('cp437')
 
         block_name = out_text.split("', ")[1]
         block_name = block_name.replace("u'","")
