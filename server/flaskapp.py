@@ -131,7 +131,7 @@ def next_test_selection_2():
     question = str(repr(rows[0][0]))
     question = question.replace("u'","")
 #    question = question.decode('cp1252').encode('utf-8')
-    question = u'Kas {{Lapse_eesnimi}} j\xe4lgib liikuvaid esemeid?'
+    question = 'Kas {{Lapse_eesnimi}} j\xe4lgib liikuvaid esemeid?'
 #    question = question.encode('string-escape')
 
     return question
