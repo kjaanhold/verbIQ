@@ -127,8 +127,8 @@ def next_test_selection_2():
 
     query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
     rows = execute_query(query)
-    question = rows[0][0]
-    question = question.encode(question.originalEncoding)
+
+    question = repr(rows[0][0])
 #    question = question.replace("u'","")
 
     return str(question)
