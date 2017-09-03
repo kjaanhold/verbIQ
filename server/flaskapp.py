@@ -115,7 +115,7 @@ def function_that_prints(a):
 
 
 
-@app.route('/next_test_selection_2', methods=['GET'])
+@app.route('/next_test_selection', methods=['GET'])
 def next_test_selection_2():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
@@ -150,9 +150,8 @@ def next_test_selection_2():
       question = str(rows[0][0].encode("utf-8"))
       block_name = str(rows[0][1].encode("utf-8"))
 
-#    return str(question) + str(block_name)
-    return [str(question), str(block_name)]
-
+    return str(question) + '///' + str(block_name)
+'''
 # @app.route('/next_test_selection', methods=['GET'])
 def next_test_selection(dob, name):
     dob = request.args.get('Synni_kuupaev')
@@ -214,7 +213,7 @@ def next_test_selection(dob, name):
     data = str(question) + "//" + str(block_name)
 
     return data
-
+'''
 
 @app.route('/run_test', methods=['GET'])
 def run_test():
