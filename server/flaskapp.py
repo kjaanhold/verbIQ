@@ -110,7 +110,8 @@ def to_json(inst, cls):
             d[c.name] = v
     return json.dumps(d)
 
-
+def function_that_prints(a):
+    print a
 
 
 
@@ -134,7 +135,7 @@ def next_test_selection_2():
 #    question = u'Kas {{Lapse_eesnimi}} j\xe4lgib liikuvaid esemeid?'
 #    question = question.encode('string-escape')
 
-    return str(unicode(question).encode("utf-8")) + "   " + 'abc'.decode('utf-8')
+    return function_that_prints(question)
 
 # @app.route('/next_test_selection', methods=['GET'])
 def next_test_selection(dob, name):
