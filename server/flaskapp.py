@@ -154,8 +154,9 @@ def next_test_selection(dob, name):
       query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
       rows = execute_query(query)
 
-      question = repr(rows[0][0])
-      question = question.replace("u'","")
+#      question = repr(rows[0][0])
+      question = rows[0][0].encode("utf-8")
+#      question = question.replace("u'","")
       block_name = str(rows[0][1])
       id_test = str(rows[0][2])
 
