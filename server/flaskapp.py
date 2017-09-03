@@ -131,7 +131,7 @@ def next_test_selection_2():
     question = repr(rows[0][0])
     question = question.replace("u'","")
 
-    return str(rows)
+    return str(repr(rows[0][0]))
 
 # @app.route('/next_test_selection', methods=['GET'])
 def next_test_selection(dob, name):
