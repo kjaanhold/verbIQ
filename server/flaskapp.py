@@ -146,12 +146,12 @@ def next_test_selection_2():
 
       query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
       rows = execute_query(query)
-#      out_text = str(rows.encode("utf-8"))
 
       question = str(rows[0][0].encode("utf-8"))
       block_name = str(rows[0][1].encode("utf-8"))
 
-    return str(question) + str(block_name)
+#    return str(question) + str(block_name)
+    return [question, block_name]
 
 # @app.route('/next_test_selection', methods=['GET'])
 def next_test_selection(dob, name):
