@@ -174,23 +174,6 @@ def run_test():
       data = {"redirect_to_blocks": [block_name]}
 
     else:
-      data = {"redirect_to_blocks": [block_name]}
-
-
-    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
-    return response
-
-    return data
-
-'''
-    if question == "done":
-      data = {"redirect_to_blocks": [block_name]}
-
-    else:
-      data = {"redirect_to_blocks": [block_name]}
-'''
-'''
-    else:
       data = {
         "set_attributes":
           {
@@ -237,8 +220,14 @@ def run_test():
           }
         ]
       }      
+
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
+
+    return data
+
+'''
+
 '''
 
 
