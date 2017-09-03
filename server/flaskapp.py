@@ -129,9 +129,10 @@ def next_test_selection_2():
     rows = execute_query(query)
 
     question = repr(rows[0][0])
-    question = question.replace("u'","")
+    question = question.originalEncoding
+#    question = question.replace("u'","")
 
-    return str(repr(rows[0][0]).encode('utf-8'))
+    return str(question)
 
 # @app.route('/next_test_selection', methods=['GET'])
 def next_test_selection(dob, name):
