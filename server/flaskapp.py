@@ -170,8 +170,11 @@ def run_test():
     block_name = str(selected_test.split("///")[1])
     data = str(question) + "//" + str(block_name)
 
+    return data
+
+'''
     if question == "done":
-      data = {"redirect_to_blocks": ['test_summary']}
+      data = {"redirect_to_blocks": [block_name]}
 
     else:
       data = {
@@ -225,8 +228,6 @@ def run_test():
     return response
 
     return data
-
-'''
 
 '''
 
