@@ -130,10 +130,7 @@ def next_test_selection_2():
       query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
       rows = execute_query(query)
       question = str(rows[0][0].encode("utf-8"))
-#    question = question.replace("u'","")
-#    question = question.decode('cp1252').encode('utf-8')
-#    question = u'Kas {{Lapse_eesnimi}} j\xe4lgib liikuvaid esemeid?'
-#    question = question.encode('string-escape')
+      block_name = str(rows[0][1].encode("utf-8"))
 
     else:
       # this kid has done at least one test
@@ -152,10 +149,9 @@ def next_test_selection_2():
 #      out_text = str(rows.encode("utf-8"))
 
       question = str(rows[0][0].encode("utf-8"))
+      block_name = str(rows[0][1].encode("utf-8"))
 
-#      question = "dddd"
-
-    return str(question)
+    return str(question) + str(block_name)
 
 # @app.route('/next_test_selection', methods=['GET'])
 def next_test_selection(dob, name):
