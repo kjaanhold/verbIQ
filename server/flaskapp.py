@@ -125,15 +125,18 @@ def next_test_selection_2():
     age_months = str(int(age.days)/30)
 
       # this kid hasn't done any tests yet
+    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
 
-    query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
-    rows = execute_query(query)
-
-    question = str(rows[0][0].encode("utf-8"))
+      query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
+      rows = execute_query(query)
+      question = str(rows[0][0].encode("utf-8"))
 #    question = question.replace("u'","")
 #    question = question.decode('cp1252').encode('utf-8')
 #    question = u'Kas {{Lapse_eesnimi}} j\xe4lgib liikuvaid esemeid?'
 #    question = question.encode('string-escape')
+
+    else:
+        question = "dddd"
 
     return str(question)
 
