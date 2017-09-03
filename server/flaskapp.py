@@ -157,7 +157,7 @@ def next_test_selection():
         question = str(rows[0][0].encode("utf-8"))
         block_name = str(rows[0][1].encode("utf-8"))
 '''
-    return str(query)
+    return str(result_dict)
 #    return str(question) + '///' + str(block_name)
 
 
