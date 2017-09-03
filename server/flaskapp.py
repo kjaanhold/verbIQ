@@ -115,10 +115,10 @@ def function_that_prints(a):
 
 
 
-#@app.route('/next_test_selection', methods=['GET'])
-def next_test_selection(dob,name):
-#    dob = request.args.get('Synni_kuupaev')
-#    name = request.args.get('Lapse_eesnimi')
+@app.route('/next_test_selection', methods=['GET'])
+def next_test_selection():
+    dob = request.args.get('Synni_kuupaev')
+    name = request.args.get('Lapse_eesnimi')
 
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
@@ -147,6 +147,8 @@ def next_test_selection(dob,name):
       query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
       rows = execute_query(query)
 
+
+'''
       if str(rows[0][0].encode("utf-8")) == '[]':
         question  = 'done'
         block_name = 'test_summary'
@@ -154,9 +156,9 @@ def next_test_selection(dob,name):
       else:
         question = str(rows[0][0].encode("utf-8"))
         block_name = str(rows[0][1].encode("utf-8"))
-
-
-    return str(question) + '///' + str(block_name)
+'''
+    return str(rows[0])
+#    return str(question) + '///' + str(block_name)
 
 
 @app.route('/run_test', methods=['GET'])
@@ -170,9 +172,6 @@ def run_test():
     block_name = str(selected_test.split("///")[1])
     data = str(question) + "//" + str(block_name)
 
-    return data
-
-'''
     if question == "done":
       data = {"redirect_to_blocks": [block_name]}
 
@@ -228,6 +227,8 @@ def run_test():
     return response
 
     return data
+
+'''
 
 '''
 
