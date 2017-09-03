@@ -158,7 +158,7 @@ def next_test_selection(dob, name):
       question = rows[0][0].encode("utf-8")
 #      question = question.replace("u'","")
       block_name = str(rows[0][1])
-      id_test = str(rows[0][2])
+#      id_test = str(rows[0][2])
 
 
     else:
@@ -175,7 +175,7 @@ def next_test_selection(dob, name):
 
       query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
       rows = execute_query(query)
-      out_text = str(rows)
+      out_text = str(rows.encode("utf-8"))
 
 
       if out_text == '[]':
