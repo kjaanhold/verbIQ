@@ -170,6 +170,9 @@ def run_test():
     block_name = str(selected_test.split("///")[1])
     data = str(question) + "//" + str(block_name)
 
+    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
+    return response
+
     return data
 
 '''
