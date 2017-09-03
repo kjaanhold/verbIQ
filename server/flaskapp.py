@@ -152,7 +152,7 @@ def next_test_selection(dob,name):
         block_name = 'test_summary'
 
       else:
-        question = str(rows[0][0])
+        question = str(rows[0][0].encode("utf-8"))
         block_name = str(rows[0][1].encode("utf-8"))
 
 
@@ -185,7 +185,7 @@ def run_test():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": question.encode("utf-8"),
+                "text": question.decode("utf-8"),
                 "buttons": [
                   {
                     "set_attributes": 
