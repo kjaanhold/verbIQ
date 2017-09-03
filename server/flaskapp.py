@@ -129,7 +129,7 @@ def next_test_selection_2():
     rows = execute_query(query)
 
     question = str(repr(rows[0][0]))
-    question = question.replace("u'","")
+#    question = question.replace("u'","")
 
 
     question = question.decode('cp1252').encode('utf-8')
