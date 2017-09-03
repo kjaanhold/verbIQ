@@ -112,6 +112,27 @@ def to_json(inst, cls):
 
 
 
+
+
+@app.route('/next_test_selection_2', methods=['GET'])
+def next_test_selection_2(dob, name):
+    dob = request.args.get('Synni_kuupaev')
+    name = request.args.get('Lapse_eesnimi')
+
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    age_months = str(int(age.days)/30)
+
+      # this kid hasn't done any tests yet
+
+    query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
+    rows = execute_query(query)
+
+    question = repr(rows[0][0])
+    question = question.replace("u'","")
+
+    return str(rows)
+
 # @app.route('/next_test_selection', methods=['GET'])
 def next_test_selection(dob, name):
     dob = request.args.get('Synni_kuupaev')
