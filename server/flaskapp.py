@@ -185,7 +185,7 @@ def run_test():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": "õ",
+                "text": u"õ",
                 "buttons": [
                   {
                     "set_attributes": 
