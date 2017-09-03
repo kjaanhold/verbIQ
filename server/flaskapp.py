@@ -133,7 +133,7 @@ def next_test_selection_2():
 
 
     question = question.decode('cp1252').encode('utf-8')
-#    question = u'Kas {{Lapse_eesnimi}} \xfctleb silbirida (nt ba-ba v\xf5i ga-ga)?'
+    question = u'Kas {{Lapse_eesnimi}} j\xe4lgib liikuvaid esemeid?'
 #    question = question.encode('string-escape')
 
     return question
