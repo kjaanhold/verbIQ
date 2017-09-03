@@ -115,8 +115,8 @@ def function_that_prints(a):
 
 
 
-@app.route('/next_test_selection', methods=['GET'])
-def next_test_selection_2(dob,name):
+#@app.route('/next_test_selection', methods=['GET'])
+def next_test_selection(dob,name):
 #    dob = request.args.get('Synni_kuupaev')
 #    name = request.args.get('Lapse_eesnimi')
 
@@ -222,12 +222,11 @@ def run_test():
 
     selected_test = next_test_selection(dob = dob, name = name)
 
-    question = str(selected_test.split("///")[0])
-    block_name = str(selected_test.split("///")[1])
+#    question = str(selected_test.split("///")[0])
+#    block_name = str(selected_test.split("///")[1])
+#    data = str(question) + "//" + str(block_name)
 
-    data = str(question) + "//" + str(block_name)
-
-    return data
+    return str(selected_test)
 '''
     if question == "done":
       data = {"redirect_to_blocks": [block_name]}
