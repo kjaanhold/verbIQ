@@ -135,7 +135,7 @@ def next_test_selection_2():
 #    question = u'Kas {{Lapse_eesnimi}} j\xe4lgib liikuvaid esemeid?'
 #    question = question.encode('string-escape')
 
-    return function_that_prints(question)
+    return str(question)
 
 # @app.route('/next_test_selection', methods=['GET'])
 def next_test_selection(dob, name):
