@@ -132,7 +132,7 @@ def next_test_selection_2():
 #    question = question.replace("u'","")
 
     question = u'Kas {{Lapse_eesnimi}} \xfctleb silbirida (nt ba-ba v\xf5i ga-ga)?'
-#    question = question.encode('string-escape')
+    question = question.encode('string_escape')
 
     return question
 
