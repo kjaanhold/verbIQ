@@ -152,8 +152,12 @@ def next_test_selection():
         block_name = 'test_summary'
 
       else:
-        question = str(rows[0][0].encode("utf-8"))
-        block_name = str(rows[0][1].encode("utf-8"))
+
+        question  = 'error'
+        block_name = 'error'
+
+#        question = str(rows[0][0].encode("utf-8"))
+#        block_name = str(rows[0][1].encode("utf-8"))
 
 
     return str(question) + '///' + str(block_name)
