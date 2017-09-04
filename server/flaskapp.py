@@ -247,7 +247,7 @@ def age_check():
               "buttons": [
                 {
                   "type": "show_block",
-                  "block_name": "age_block_selection",
+                  "block_name": "test recurring tests 2",
                   "title": u"Õige, edasi!"
                 },
                 {
