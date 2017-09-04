@@ -224,7 +224,6 @@ def run_test():
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
-    return data
 
 '''
 
