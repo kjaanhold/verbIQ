@@ -147,6 +147,8 @@ def next_test_selection():
       query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
       rows = execute_query(query)
 
+      return str(query)
+'''
       if str(rows[0][0].encode("utf-8")) == '[]':
         question  = 'done'
         block_name = 'test_summary'
@@ -157,7 +159,7 @@ def next_test_selection():
 
 
     return str(question) + '///' + str(block_name)
-
+'''
 
 @app.route('/run_test', methods=['GET'])
 def run_test():
