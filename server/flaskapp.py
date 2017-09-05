@@ -274,12 +274,15 @@ def return_test_results():
 
     name = request.args.get('Lapse_eesnimi')
 
-    return str(name)
-'''
     if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
       out_text = "no_results"
 
     else:
+
+      out_text = name
+    return str(out_text)
+
+'''
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).all()
       result_dict = [u.__dict__ for u in data]
       block_name = [d.get('block_name') for d in result_dict]    
