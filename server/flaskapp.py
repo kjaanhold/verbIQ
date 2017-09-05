@@ -273,12 +273,13 @@ def age_check():
 def return_test_results():
 
     name = request.args.get('Lapse_eesnimi')
+    result_value = request.args.get('result_value')
 
-    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
+    if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
       out_text = "no_results"
 
     else:
-      data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
+      data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).all()
       result_dict = [u.__dict__ for u in data]
       block_name = [d.get('block_name') for d in result_dict]    
       block_name = str(block_name)
@@ -288,10 +289,8 @@ def return_test_results():
       block_name = block_name.replace(']','')
 
       query = "SELECT m.description FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
-
-      out_text = query
-#      rows = execute_query(query)
-#      out_text = rows # "\n".join(.join(elems) for elems in rows)
+      rows = execute_query(query)
+      out_text = rows # "\n".join(.join(elems) for elems in rows)
     return str(out_text)
 
 
