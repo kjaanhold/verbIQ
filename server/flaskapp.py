@@ -145,9 +145,10 @@ def next_test_selection():
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
 
-      query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND m.target_age > ROUND(CAST(2/3 as decimal)*%s, 0) AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months, block_name)    
+#      query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND m.target_age > ROUND(CAST(2/3 as decimal)*%s, 0) AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months, block_name)
+      query = "SELECT ROUND(CAST(2/3 as decimal)*8, 0);" 
       rows = execute_query(query)
-
+'''
       if str(rows) == '[]':
         question  = 'done'
         block_name = 'test_summary'
@@ -155,7 +156,8 @@ def next_test_selection():
       else:
         question = str(rows[0][0].encode("utf-8"))
         block_name = str(rows[0][1].encode("utf-8"))
-    return str(query)
+'''
+    return str(rows)
 #    return str(question) + '///' + str(block_name)
 
 
