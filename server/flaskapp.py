@@ -291,13 +291,10 @@ def return_test_results():
       query = "SELECT m.description FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
       rows = execute_query(query)
 #      rows = [d.get('block_name') for d in result_dict]    
+
+
       result_dict = [u.__dict__ for u in rows]
-      block_name = [d.get('block_name') for d in result_dict]    
-      block_name = str(block_name)
-      block_name = block_name.replace('u"','')
-      block_name = block_name.replace('"','')
-      block_name = block_name.replace('[','')
-      block_name = block_name.replace(']','')
+      block_name = [d.get('description') for d in result_dict]    
 
       out_text = block_name # "\n".join(.join(elems) for elems in rows)
     return str(out_text)
