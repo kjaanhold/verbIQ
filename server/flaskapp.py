@@ -290,7 +290,7 @@ def return_test_results():
 
       query = "SELECT m.description FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
       rows = execute_query(query)
-      out_text = rows # "\n".join(.join(elems) for elems in rows)
+      out_text = rows.encode("utf-8") # "\n".join(.join(elems) for elems in rows)
     return str(out_text)
 
 
@@ -306,7 +306,7 @@ def tests_summary():
       data_ei_tea = return_test_results(name, 'Ei tea')
 
       if (data_jah != 'no_results' and data_ei == 'no_results'):
-        out_text = u"Tänan! " + name + u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse:" + data_jah
+        out_text = u"Tänan! " + name + u" on omandanud kõik peamised oskused, mida selles vanuses lapse arengu hindamisel jälgitakse:" + data_jah.decode("utf-8")
 
         button_1_block = "Default answer"
         button_1_title = u"Küsin veel"
@@ -318,7 +318,7 @@ def tests_summary():
         button_3_title = u"Sisestan ise"
 
       elif (data_jah != 'no_results' and data_ei != 'no_results'):
-        out_text = u"Tänan! " + name + u"on juba omadanud järgmised lapse arengus jälgitavad oskused:" + data_jah + name + u"õpib praegu veel neid oskusi:"+ data_ei
+        out_text = u"Tänan! " + name + u"on juba omadanud järgmised lapse arengus jälgitavad oskused:" + data_jah.decode("utf-8") + name + u"õpib praegu veel neid oskusi:"+ data_ei.decode("utf-8")
 
         button_1_block = "Default answer"
         button_1_title = u"Selge, aitäh!"
@@ -330,7 +330,7 @@ def tests_summary():
         button_3_title = u"Soovin meeldetuletusi."
 
       elif (data_jah == 'no_results' and data_ei != 'no_results'):
-        out_text = u"Tänan! " + name + u" praegu veel õpib peamisi eakohaseid oskusi:" + data_ei
+        out_text = u"Tänan! " + name + u" praegu veel õpib peamisi eakohaseid oskusi:" + data_ei.decode("utf-8")
 
         button_1_block = "Default answer"
         button_1_title = u"Perearstile"
