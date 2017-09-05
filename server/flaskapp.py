@@ -8,8 +8,6 @@ from flask import Flask, request, g, jsonify, Response
 from datetime import datetime, date
 from models import db, Station, TestResults
 from sqlalchemy import exc
-from scipy.stats import norm
-
 
 DATABASE = '/home/ubuntu/verbIQ/server/verbiq.db'
 
@@ -147,7 +145,7 @@ def next_test_selection(dob,name):
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
 
-      query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= (4*%s)/3 AND m.target_age >= (2*%s)/3 AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months, block_name)
+      query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE tm.target_age <= (4*%s)/3 AND m.target_age >= (2*%s)/3 AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months, block_name)
       rows = execute_query(query)
 
       if str(rows) == '[]':
@@ -227,6 +225,9 @@ def run_test():
     return response
 
 
+'''
+
+'''
 
 
 @app.route('/age_check', methods=['GET'])
@@ -264,16 +265,6 @@ def age_check():
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
-'''
-@app.route('/score_calculation', methods=['GET'])
-def score_calculation():
-  x = request.args.get('x')  
-  mean = request.args.get('meanx')  
-  std = request.args.get('std')  
-
-  result = norm.cdf(x, mean, std)
-  return result
-'''
 
 
 
