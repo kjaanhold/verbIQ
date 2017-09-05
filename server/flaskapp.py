@@ -277,6 +277,7 @@ def return_test_results():
 
     if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
       out_text = "no_results"
+      out_text = out_text.encode("utf-8")
 
     else:
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).all()
