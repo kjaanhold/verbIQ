@@ -318,7 +318,7 @@ def tests_summary():
         button_3_title = u"Sisestan ise"
 
       elif (data_jah != 'no_results' and data_ei != 'no_results'):
-        out_text = u"Tänan! " + name + u"on juba omadanud järgmised lapse arengus jälgitavad oskused:" + data_jah + name + u"õpib praegu veel neid oskusi:"+ data_ei
+        out_text = u"Tänan! " + name + u" on juba omadanud " + data_jah + " lapse arengus jälgitavad oskused: " +  + name + u"õpib praegu veel neid oskusi:"+ data_ei
 
         button_1_block = "Default answer"
         button_1_title = u"Selge, aitäh!"
