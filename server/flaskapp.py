@@ -293,10 +293,8 @@ def return_test_results():
 #      rows = [d.get('block_name') for d in result_dict]    
 
 
-      result_dict = [u.__dict__ for u in rows]
-      block_name = [d.get('description') for d in result_dict]    
 
-      out_text = block_name # "\n".join(.join(elems) for elems in rows)
+      out_text = rows[0] # "\n".join(.join(elems) for elems in rows)
     return str(out_text)
 
 
