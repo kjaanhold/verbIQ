@@ -292,7 +292,7 @@ def return_test_results():
       rows = execute_query(query)
 #      rows = [d.get('block_name') for d in result_dict]    
 
-      out_text = rows[0] # "\n".join(.join(elems) for elems in rows)
+      out_text = rows[0][0] # "\n".join(.join(elems) for elems in rows)
     return str(out_text)
 
 
