@@ -268,12 +268,12 @@ def age_check():
 
 
 
-@app.route('/return_test_results', methods=['GET'])
-#def return_test_results(name, result_value):
-def return_test_results():
+#@app.route('/return_test_results', methods=['GET'])
+def return_test_results(name, result_value):
+#def return_test_results():
 
-    name = request.args.get('Lapse_eesnimi')
-    result_value = request.args.get('result_value')
+#    name = request.args.get('Lapse_eesnimi')
+#    result_value = request.args.get('result_value')
 
     if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
       out_text = "no_results"
@@ -290,8 +290,7 @@ def return_test_results():
 
       query = "SELECT count(distinct m.description) FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
       rows = execute_query(query)
-#      rows = [x for x,_ in rows]
-      out_text = rows[0][0] # "\n".join(.join(elems) for elems in rows)
+      out_text = rows[0][0]
     return str(out_text)
 
 
