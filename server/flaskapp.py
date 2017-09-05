@@ -291,7 +291,7 @@ def return_test_results():
       query = "SELECT count(distinct m.description) FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
       rows = execute_query(query)
 #      rows = [x for x,_ in rows]
-      out_text = rows # "\n".join(.join(elems) for elems in rows)
+      out_text = rows[0][0] # "\n".join(.join(elems) for elems in rows)
     return str(out_text)
 
 
