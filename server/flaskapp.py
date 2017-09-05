@@ -226,7 +226,14 @@ def run_test():
 
 
 '''
+@app.route('/score_calculation', methods=['GET'])
+def score_calculation():
+  x = request.args.get('x')  
+  mean = request.args.get('meanx')  
+  std = request.args.get('std')  
 
+  result = norm.cdf(x, mean, std)
+  return result
 '''
 
 
