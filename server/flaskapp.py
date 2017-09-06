@@ -8,7 +8,7 @@ from flask import Flask, request, g, jsonify, Response
 from datetime import datetime, date
 from models import db, Station, TestResults
 from sqlalchemy import exc
-# from scipy.stats import norm
+from scipy.stats import norm
 
 
 DATABASE = '/home/ubuntu/verbIQ/server/verbiq.db'
@@ -226,8 +226,6 @@ def run_test():
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
-
-'''
 @app.route('/score_calculation', methods=['GET'])
 def score_calculation():
   x = request.args.get('x')  
@@ -236,7 +234,6 @@ def score_calculation():
 
   result = norm.cdf(x, mean, std)
   return result
-'''
 
 
 @app.route('/age_check', methods=['GET'])
