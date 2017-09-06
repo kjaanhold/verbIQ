@@ -284,7 +284,6 @@ def return_test_results(name, result_value):
 #    name = request.args.get('Lapse_eesnimi')
 #    result_value = request.args.get('result_value')
 
-
     if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
       out_text = "no_results"
 
@@ -311,25 +310,14 @@ def return_test_results(name, result_value):
 
 @app.route('/tests_summary', methods=['GET'])
 def tests_summary():
-
     name = request.args.get('Lapse_eesnimi')
-
-    out_text = str(name)
-
-#    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
-    if 2<3:
+    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
       out_text = u"Ühtegi testi pole veel tehtud"
 
-    return str(out_text)
-'''  
-
     else:
-#      data_jah = return_test_results(name, 'Jah')
-#      data_ei = return_test_results(name, 'Ei')
-#      data_ei_tea = return_test_results(name, 'Ei tea')
-      data_jah = "jah"
-      data_ei = "ei"
-      data_ei_tea = "ei tea"
+      data_jah = return_test_results(name, 'Jah')
+      data_ei = return_test_results(name, 'Ei')
+      data_ei_tea = return_test_results(name, 'Ei tea')
 
       if (data_jah != 'no_results' and data_ei == 'no_results'):
         out_text = u"Tänan! " + name + u" on omandanud kõik " + data_jah + u" peamist oskust, mida selles vanuses lapse arengu hindamisel jälgitakse."
@@ -412,7 +400,7 @@ def tests_summary():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-'''
+
 
 
 
