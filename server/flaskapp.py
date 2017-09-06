@@ -285,11 +285,12 @@ def return_test_results():
     result_value = request.args.get('result_value')
     out_text = "null"
 
-    return str(out_text)
-'''    
+
     if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
       out_text = "no_results"
 
+    return str(out_text)
+'''    
     else:
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).all()
       result_dict = [u.__dict__ for u in data]
