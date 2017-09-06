@@ -316,7 +316,8 @@ def tests_summary():
 
     out_text = str(name)
 
-    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
+#    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
+    if 2<3:
       out_text = u"Ühtegi testi pole veel tehtud"
 
     return str("saa")
