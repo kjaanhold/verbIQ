@@ -314,10 +314,13 @@ def tests_summary():
 
     name = request.args.get('Lapse_eesnimi')
 
-    return str("saa")
-'''  
+    out_text = str(name)
+
     if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
       out_text = u"Ühtegi testi pole veel tehtud"
+
+    return str("saa")
+'''  
 
     else:
 #      data_jah = return_test_results(name, 'Jah')
