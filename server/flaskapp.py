@@ -3,13 +3,13 @@
 import csv
 import sqlite3
 import json
-import scipy
+#import scipy
 
 from flask import Flask, request, g, jsonify, Response
 from datetime import datetime, date
 from models import db, Station, TestResults
 from sqlalchemy import exc
-# from scipy.stats import norm
+from scipy.stats import norm
 
 
 DATABASE = '/home/ubuntu/verbIQ/server/verbiq.db'
