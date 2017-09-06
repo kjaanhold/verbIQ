@@ -285,6 +285,7 @@ def return_test_results():
     result_value = request.args.get('result_value')
     out_text = "null"
 
+    return str(out_text)
 '''    
     if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
       out_text = "no_results"
@@ -308,7 +309,7 @@ def return_test_results():
       rows = execute_query(query)
       out_text = rows[0][0]
 '''
-    return str(out_text)
+
 
 
 @app.route('/tests_summary', methods=['GET'])
