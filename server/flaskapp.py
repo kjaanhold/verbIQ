@@ -286,7 +286,7 @@ def return_test_results():
     out_text = str(name)
 
 
-#    out_text = str(TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first())
+    out_text = str(TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first())
 #    if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
 #    if 2>3:
 #      out_text = "no_results"
