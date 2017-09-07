@@ -116,8 +116,7 @@ def function_that_prints(a):
     print a
 
 
-
-#@app.route('/next_test_selection', methods=['GET'])
+@app.route('/next_test_selection', methods=['GET'])
 #def next_test_selection():
 def next_test_selection(dob,name):
 #    dob = request.args.get('Synni_kuupaev')
@@ -277,7 +276,7 @@ def age_check():
 
 
 
-#@app.route('/return_test_results', methods=['GET'])
+@app.route('/return_test_results', methods=['GET'])
 def return_test_results(name, result_value):
 #def return_test_results():
 
@@ -311,6 +310,7 @@ def return_test_results(name, result_value):
 @app.route('/tests_summary', methods=['GET'])
 def tests_summary():
     name = request.args.get('Lapse_eesnimi')
+    
     if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
       out_text = u"Ühtegi testi pole veel tehtud"
 
