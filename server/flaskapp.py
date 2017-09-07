@@ -8,6 +8,7 @@ from flask import Flask, request, g, jsonify, Response
 from datetime import datetime, date
 from models import db, Station, TestResults
 from sqlalchemy import exc
+# from scipy.stats import norm
 
 
 DATABASE = '/home/ubuntu/verbIQ/server/verbiq.db'
@@ -114,7 +115,7 @@ def to_json(inst, cls):
 def function_that_prints(a):
     print a
 
-
+'''
 
 #@app.route('/next_test_selection', methods=['GET'])
 #def next_test_selection():
@@ -224,6 +225,18 @@ def run_test():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
+'''
+
+'''
+@app.route('/score_calculation', methods=['GET'])
+def score_calculation():
+  x = request.args.get('x')  
+  mean = request.args.get('meanx')  
+  std = request.args.get('std')  
+
+  result = norm.cdf(x, mean, std)
+  return result
+'''
 
 
 @app.route('/age_check', methods=['GET'])
