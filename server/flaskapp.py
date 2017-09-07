@@ -271,8 +271,8 @@ def return_test_results(name, result_value):
     name = request.args.get('Lapse_eesnimi')
     result_value = request.args.get('result_value')
 
-    #if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
-    #  out_text = "no_results"
+    if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
+      out_text = "no_results"
 
     else:
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).all()
