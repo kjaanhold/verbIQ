@@ -115,8 +115,10 @@ def to_json(inst, cls):
 def function_that_prints(a):
     print a
 
+'''
 
-@app.route('/next_test_selection', methods=['GET'])
+#@app.route('/next_test_selection', methods=['GET'])
+>>>>>>> origin/master
 #def next_test_selection():
 def next_test_selection(dob,name):
 #    dob = request.args.get('Synni_kuupaev')
@@ -224,7 +226,7 @@ def run_test():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-
+'''
 
 '''
 @app.route('/score_calculation', methods=['GET'])
