@@ -112,24 +112,20 @@ def to_json(inst, cls):
             d[c.name] = v
     return json.dumps(d)
 
-def function_that_prints(a):
-    print a
-
 '''
-
-#@app.route('/next_test_selection', methods=['GET'])
+@app.route('/next_test_selection', methods=['GET'])
 >>>>>>> origin/master
 #def next_test_selection():
 def next_test_selection(dob,name):
-#    dob = request.args.get('Synni_kuupaev')
-#    name = request.args.get('Lapse_eesnimi')
+    dob = request.args.get('Synni_kuupaev')
+    name = request.args.get('Lapse_eesnimi')
 
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
       # this kid hasn't done any tests yet
-    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
+      if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
 
       query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= (4*%s)/3 AND m.target_age >= (2*%s)/3 ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months)
       rows = execute_query(query)
@@ -158,7 +154,7 @@ def next_test_selection(dob,name):
       else:
         question = str(rows[0][0].encode("utf-8"))
         block_name = str(rows[0][1].encode("utf-8"))
-#    return str(query)
+    return str(query)
     return str(question) + '///' + str(block_name)
 
 
@@ -226,9 +222,7 @@ def run_test():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-'''
 
-'''
 @app.route('/score_calculation', methods=['GET'])
 def score_calculation():
   x = request.args.get('x')  
@@ -238,7 +232,6 @@ def score_calculation():
   result = norm.cdf(x, mean, std)
   return result
 '''
-
 
 @app.route('/age_check', methods=['GET'])
 def age_check():
@@ -276,17 +269,13 @@ def age_check():
     return response
 
 
-
-
 @app.route('/return_test_results', methods=['GET'])
 def return_test_results(name, result_value):
-#def return_test_results():
+    name = request.args.get('Lapse_eesnimi')
+    result_value = request.args.get('result_value')
 
-#    name = request.args.get('Lapse_eesnimi')
-#    result_value = request.args.get('result_value')
-
-    if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
-      out_text = "no_results"
+    #if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
+    #  out_text = "no_results"
 
     else:
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).all()
@@ -298,10 +287,9 @@ def return_test_results(name, result_value):
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
 
-#      query = "SELECT m.description FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
-#      rows = execute_query(query)
-#      out_text = rows[0][0].encode("utf-8"))
-
+      query = "SELECT m.description FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
+      rows = execute_query(query)
+      out_text = rows[0][0].encode("utf-8"))
 
       query = "SELECT count(distinct m.description) FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
       rows = execute_query(query)
