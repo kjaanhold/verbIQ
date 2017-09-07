@@ -227,7 +227,7 @@ def run_test():
     return response
 
 
-
+'''
 @app.route('/score_calculation', methods=['GET'])
 def score_calculation(x,meanx,std):
   x = request.args.get('x')  
@@ -236,7 +236,7 @@ def score_calculation(x,meanx,std):
 
   result = norm.cdf(x, mean, std)
   return result
-
+'''
 
 
 @app.route('/age_check', methods=['GET'])
