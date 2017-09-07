@@ -10,7 +10,6 @@ from models import db, Station, TestResults
 from sqlalchemy import exc
 # from scipy.stats import norm
 
-
 DATABASE = '/home/ubuntu/verbIQ/server/verbiq.db'
 
 POSTGRES = {
@@ -114,8 +113,6 @@ def to_json(inst, cls):
 
 '''
 @app.route('/next_test_selection', methods=['GET'])
->>>>>>> origin/master
-#def next_test_selection():
 def next_test_selection(dob,name):
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
@@ -296,7 +293,6 @@ def return_test_results(name, result_value):
       out_text = rows[0][0]
     return str(out_text)
 
-
 @app.route('/tests_summary', methods=['GET'])
 def tests_summary():
     name = request.args.get('Lapse_eesnimi')
@@ -391,9 +387,6 @@ def tests_summary():
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
-
-
-
 @app.route('/age_block_selection/<dob>', methods=['GET'])
 def direct_block_based_on_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
@@ -425,7 +418,6 @@ def direct_block_based_on_age(dob):
         next_block = "48M_EST"
     data = {"redirect_to_blocks": [next_block]}
     return jsonify(data)   
-
 
 @app.route("/age_milestones")
 def getmilestones():
