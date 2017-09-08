@@ -128,7 +128,7 @@ def next_test_selection():
       rows = execute_query(query)
 
       if rows is None:
-        query "none rows"
+        query = "none rows"
 
       else: 
         query = "invisible rows"
