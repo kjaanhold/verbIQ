@@ -298,18 +298,7 @@ def return_test_results(name, result_value):
 def tests_summary():
     name = request.args.get('Lapse_eesnimi')
 
-#    out = str(TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()) == "None"
     if TestResults.query.filter_by(lapse_eesnimi = name.lower()).first() is None:
-      out = "a"
-
-    else:
-      out = "b"
-
-    return str(out)
-
-'''
-    
-    if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
       out_text = u"Ühtegi testi pole veel tehtud"
 
     else:
@@ -398,7 +387,7 @@ def tests_summary():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-'''
+
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
 def direct_block_based_on_age(dob):
