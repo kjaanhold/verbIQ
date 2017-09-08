@@ -300,7 +300,7 @@ def tests_summary():
 
     try: 
       sub_report_id = TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()
-
+      sub_report_id = sub_report_id + "afdadfa"
 
     except NoResultFound: 
       sub_report_id = "ahaa" # or however you need to handle it
