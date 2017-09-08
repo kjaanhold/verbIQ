@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import csv
 import sqlite3
 import json
