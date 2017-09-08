@@ -131,10 +131,11 @@ def next_test_selection():
       rows = execute_query(query)
 
       if rows == '':
-        query = u"täitsa tühi"
+        query = u"täitsa tühi vastus"
 
       else:
-        query = str(rows[0][0]) + " vahe " + str(rows[0][1])
+#        query = str(rows[0][0]) + " vahe " + str(rows[0][1])
+        query = u"midagi ikka on"
 
     else:
       # this kid has done at least one test
