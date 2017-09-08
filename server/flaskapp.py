@@ -293,6 +293,7 @@ def return_test_results(name, result_value):
       out_text = rows[0][0]
     return str(out_text)
 
+'''
 @app.route('/tests_summary', methods=['GET'])
 def tests_summary():
     name = request.args.get('Lapse_eesnimi')
@@ -386,7 +387,7 @@ def tests_summary():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-
+'''
 @app.route('/age_block_selection/<dob>', methods=['GET'])
 def direct_block_based_on_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
