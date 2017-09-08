@@ -127,7 +127,11 @@ def next_test_selection():
       query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= (4*%s)/3 AND m.target_age >= (2*%s)/3 ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months)
       rows = execute_query(query)
 
-      query = str(length(rows))
+      if rows is None:
+        query "none rows"
+
+      else: 
+        query = "invisible rows"
 
     else:
       # this kid has done at least one test
