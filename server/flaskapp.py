@@ -130,7 +130,10 @@ def next_test_selection():
 
       rows = execute_query(query)
 
-      if not rows:
+      if rows == '':
+        query = u"tühi string"
+
+      elif isinstance(rows, list):
         query = u"tühi list"
 
       else:
