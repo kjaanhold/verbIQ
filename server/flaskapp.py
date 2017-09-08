@@ -133,7 +133,7 @@ def next_test_selection():
       if rows == '':
         query = u"tühi string"
 
-      elif str(jsonify(rows)) == '':
+      elif rows.rowcount == 0:
         query = u"tühi list"
 
       else:
