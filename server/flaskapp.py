@@ -134,7 +134,7 @@ def next_test_selection():
         query = u"täitsa tühi vastus"
 
       else:
-        query = str(repr(rows[0][0])) # + " vahe " + str(rows[0][1])
+        query = str(rows) # + " vahe " + str(rows[0][1])
 #        query = u"midagi ikka on"
 
     else:
