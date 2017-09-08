@@ -7,8 +7,6 @@ from flask import Flask, request, g, jsonify, Response
 from datetime import datetime, date
 from models import db, Station, TestResults
 from sqlalchemy import exc
-#from sqlalchemy.orm.exc import NoResultFound
-
 
 DATABASE = '/home/ubuntu/verbIQ/server/verbiq.db'
 
@@ -294,17 +292,11 @@ def return_test_results(name, result_value):
       out_text = rows[0][0]
     return str(out_text)
 
-
+'''
 @app.route('/tests_summary', methods=['GET'])
 def tests_summary():
     name = request.args.get('Lapse_eesnimi')
-
-'''
-    try:
-        sub_report_id = DBSession.query(TSubReport.ixSubReport).filter(and_(TSubReport.ixSection==sectionID[0], TSubReport.ixReport== reportID[0])).one()
-    except NoResultFound:
-        sub_report_id = []  # or however you need to handle it
- '''           
+    
     if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
       out_text = u"Ühtegi testi pole veel tehtud"
 
@@ -394,7 +386,7 @@ def tests_summary():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-
+'''
 @app.route('/age_block_selection/<dob>', methods=['GET'])
 def direct_block_based_on_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
