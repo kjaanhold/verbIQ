@@ -131,7 +131,7 @@ def next_test_selection():
         query = "none rows"
 
       else: 
-        query = str(type(rows))
+        query = str(" ".join(rows))
 
     else:
       # this kid has done at least one test
