@@ -2,6 +2,7 @@
 import csv
 import sqlite3
 import json
+import types
 
 from flask import Flask, request, g, jsonify, Response
 from datetime import datetime, date
