@@ -227,6 +227,7 @@ def score_calculation():
 
   result = norm.cdf(x, mean, std)
   return result
+  
 '''
 
 @app.route('/age_check', methods=['GET'])
