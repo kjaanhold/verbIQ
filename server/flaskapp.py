@@ -110,18 +110,18 @@ def to_json(inst, cls):
             d[c.name] = v
     return json.dumps(d)
 
-'''
-@app.route('/next_test_selection', methods=['GET'])
+
+#@app.route('/next_test_selection', methods=['GET'])
 def next_test_selection(dob,name):
-    dob = request.args.get('Synni_kuupaev')
-    name = request.args.get('Lapse_eesnimi')
+#    dob = request.args.get('Synni_kuupaev')
+#    name = request.args.get('Lapse_eesnimi')
 
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
       # this kid hasn't done any tests yet
-      if not TestResults.query.filter_by(lapse_eesnimi = name.lower()).first():
+    if TestResults.query.filter_by(lapse_eesnimi = name.lower()).first() is None:
 
       query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= (4*%s)/3 AND m.target_age >= (2*%s)/3 ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months)
       rows = execute_query(query)
@@ -219,6 +219,10 @@ def run_test():
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
+
+
+'''
+
 @app.route('/score_calculation', methods=['GET'])
 def score_calculation():
   x = request.args.get('x')  
@@ -271,7 +275,7 @@ def return_test_results(name, result_value):
 #    name = request.args.get('Lapse_eesnimi')
 #    result_value = request.args.get('result_value')
 
-    if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
+    if TestResults.query.filter_by(lapse_eesnimi = name.lower()).first() is None:
       out_text = "no_results"
 
     else:
@@ -321,8 +325,6 @@ def tests_summary():
             }
           ]
         }
-
-
 
 
     else:
