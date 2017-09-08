@@ -137,7 +137,7 @@ def next_test_selection():
         query = u"tühi list"
 
       else:
-        query = str(jsonify(rows)) # + " vahe " + str(rows[0][1])
+        query = jsonify(rows) # + " vahe " + str(rows[0][1])
 #        query = u"midagi ikka on"
 
     else:
