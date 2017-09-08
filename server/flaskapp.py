@@ -143,13 +143,14 @@ def next_test_selection():
       result_dict = [u.__dict__ for u in data]
       block_name = [d.get('block_name') for d in result_dict]
       block_name = str(block_name)
+'''
       block_name = block_name.replace('u"','')
       block_name = block_name.replace('"','')
       block_name = block_name.replace("u'","'")
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
-
-      query = "SELECT t.description, t.block_name, t.id_test FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= (4*%s)/3 AND m.target_age >= (2*%s)/3 AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months, block_name)
+'''
+      query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= (4*%s)/3 AND m.target_age >= (2*%s)/3 AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months, block_name)
 
 
 #      query = "something"
