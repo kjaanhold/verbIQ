@@ -131,7 +131,7 @@ def next_test_selection():
         query = "none rows"
 
       else: 
-        query = "invisible rows"
+        query = str(type(rows))
 
     else:
       # this kid has done at least one test
