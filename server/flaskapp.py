@@ -305,7 +305,7 @@ def tests_summary():
     except NoResultFound: 
       sub_report_id = [] # or however you need to handle it
 
-return str(sub_report_id)
+    return str(sub_report_id)
 
 '''
     
