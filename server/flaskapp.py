@@ -298,12 +298,12 @@ def return_test_results(name, result_value):
 def tests_summary():
     name = request.args.get('Lapse_eesnimi')
 
-try: 
-  sub_report_id = TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()
+    try: 
+      sub_report_id = TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()
 
 
-except NoResultFound: 
-  sub_report_id = [] # or however you need to handle it
+    except NoResultFound: 
+      sub_report_id = [] # or however you need to handle it
 
 return str(sub_report_id)
 
