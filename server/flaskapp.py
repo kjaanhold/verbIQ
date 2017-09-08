@@ -298,7 +298,12 @@ def return_test_results(name, result_value):
 def tests_summary():
     name = request.args.get('Lapse_eesnimi')
 
-    out = str(TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()) == "None"
+#    out = str(TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()) == "None"
+    if TestResults.query.filter_by(lapse_eesnimi = name.lower()).first() is None:
+      out = "a"
+
+    else:
+      out = "b"
 
     return str(out)
 
