@@ -133,9 +133,6 @@ def next_test_selection():
       if rows == '':
         query = u"tühi string"
 
-      elif isinstance(rows, list) is True:
-        query = u"tühi list"
-
       else:
         query = str(rows) # + " vahe " + str(rows[0][1])
 #        query = u"midagi ikka on"
