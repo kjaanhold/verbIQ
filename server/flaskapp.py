@@ -2,13 +2,11 @@
 import csv
 import sqlite3
 import json
-#import scipy
 
 from flask import Flask, request, g, jsonify, Response
 from datetime import datetime, date
 from models import db, Station, TestResults
 from sqlalchemy import exc
-# from scipy.stats import norm
 
 DATABASE = '/home/ubuntu/verbIQ/server/verbiq.db'
 
@@ -267,10 +265,10 @@ def age_check():
     return response
 
 
-@app.route('/return_test_results', methods=['GET'])
+# @app.route('/return_test_results', methods=['GET'])
 def return_test_results(name, result_value):
-    name = request.args.get('Lapse_eesnimi')
-    result_value = request.args.get('result_value')
+#    name = request.args.get('Lapse_eesnimi')
+#    result_value = request.args.get('result_value')
 
     if not TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first():
       out_text = "no_results"
@@ -294,7 +292,7 @@ def return_test_results(name, result_value):
       out_text = rows[0][0]
     return str(out_text)
 
-'''
+
 @app.route('/tests_summary', methods=['GET'])
 def tests_summary():
     name = request.args.get('Lapse_eesnimi')
@@ -388,7 +386,7 @@ def tests_summary():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-'''
+
 @app.route('/age_block_selection/<dob>', methods=['GET'])
 def direct_block_based_on_age(dob):
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
