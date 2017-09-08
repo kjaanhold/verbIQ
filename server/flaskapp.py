@@ -130,8 +130,8 @@ def next_test_selection():
 
       rows = execute_query(query)
 
-      if rows == '':
-        query = u"tühi string"
+      if isinstance(rows, list) is True:
+        query = u"tühi list"
 
       else:
         query = str(rows) # + " vahe " + str(rows[0][1])
