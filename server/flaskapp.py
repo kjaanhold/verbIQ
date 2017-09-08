@@ -301,6 +301,30 @@ def tests_summary():
     if TestResults.query.filter_by(lapse_eesnimi = name.lower()).first() is None:
       out_text = u"Ühtegi testi pole veel tehtud"
 
+      data = {
+          "messages": [
+            {
+              "attachment": {
+                "type": "template",
+                "payload": {
+                  "template_type": "button",
+                  "text": out_text,
+                  "buttons": [
+                    {
+                      "type": "show_block",
+                      "block_name": "test recurring tests 2",
+                      "title": "Tagasi testima"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+
+
+
+
     else:
       data_jah = return_test_results(name, 'Jah')
       data_ei = return_test_results(name, 'Ei')
@@ -354,36 +378,36 @@ def tests_summary():
         button_3_block = "Default answer"
         button_3_title = u"Soovin meeldetu"
 
-    data = {
-      "messages": [
-        {
-          "attachment": {
-            "type": "template",
-            "payload": {
-              "template_type": "button",
-              "text": out_text,
-              "buttons": [
-                {
-                  "type": "show_block",
-                  "block_name": button_1_block,
-                  "title": button_1_title
-                },
-                {
-                  "type": "show_block",
-                  "block_name": button_2_block,
-                  "title": button_2_title
-                },
-                {
-                  "type": "show_block",
-                  "block_name": button_3_block,
-                  "title": button_3_title
-                }
-              ]
+      data = {
+        "messages": [
+          {
+            "attachment": {
+              "type": "template",
+              "payload": {
+                "template_type": "button",
+                "text": out_text,
+                "buttons": [
+                  {
+                    "type": "show_block",
+                    "block_name": button_1_block,
+                    "title": button_1_title
+                  },
+                  {
+                    "type": "show_block",
+                    "block_name": button_2_block,
+                    "title": button_2_title
+                  },
+                  {
+                    "type": "show_block",
+                    "block_name": button_3_block,
+                    "title": button_3_title
+                  }
+                ]
+              }
             }
           }
-        }
-      ]
-    }
+        ]
+      }
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
