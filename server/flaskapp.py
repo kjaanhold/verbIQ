@@ -300,12 +300,11 @@ def tests_summary():
 
     try: 
       sub_report_id = TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()
-      sub_report_id = str(sub_report_id) + "afdadfa"
 
     except NoResultFound: 
       sub_report_id = "ahaa" # or however you need to handle it
 
-    return str(sub_report_id)
+    return str(sub_report_id[0])
 
 '''
     
