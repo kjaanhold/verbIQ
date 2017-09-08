@@ -298,15 +298,13 @@ def return_test_results(name, result_value):
 def tests_summary():
     name = request.args.get('Lapse_eesnimi')
 
-    try:
-      records = TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()
-      if len(records) == 0:
-        raise MyException('No records found')
+    if TestResults.query.filter_by(lapse_eesnimi = name.lower()).first() == 'None':
+      out = "none"
 
-    except ValueError:
-      records = []
+    else:
+        out = "yess"
 
-    return str(records[0])
+    return str(out)
 
 '''
     
