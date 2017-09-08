@@ -130,7 +130,7 @@ def next_test_selection():
 
       rows = execute_query(query)
 
-      if isinstance(repr(rows), list) is True:
+      if str(rows) == "[]":
         query = u"tühi list"
 
       else:
