@@ -299,9 +299,12 @@ def tests_summary():
     name = request.args.get('Lapse_eesnimi')
 
     try:
-        records = TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()
-        if len(records) == 0:
-            raise MyException('No records found')
+      records = TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()
+      if len(records) == 0:
+        raise MyException('No records found')
+
+    except ValueError:
+      records = []
 
     return str(records[0])
 
