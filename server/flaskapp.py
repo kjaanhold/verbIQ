@@ -300,7 +300,7 @@ def tests_summary():
 
     if str(TestResults.query.filter_by(lapse_eesnimi = name.lower()).first()) == "None":
       out = u"Ühtegi testi pole veel tehtud"
-    else :
+    else:
       out = "other"
 
     return str(out)
