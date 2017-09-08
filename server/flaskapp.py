@@ -2,7 +2,6 @@
 import csv
 import sqlite3
 import json
-import types
 
 from flask import Flask, request, g, jsonify, Response
 from datetime import datetime, date
@@ -134,7 +133,7 @@ def next_test_selection():
       if rows == '':
         query = u"tühi string"
 
-      elif isinstance(rows, list):
+      elif isinstance(rows, list) is True:
         query = u"tühi list"
 
       else:
