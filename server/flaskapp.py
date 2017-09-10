@@ -130,14 +130,16 @@ def next_test_selection():
 
 #      query = "SELECT t.description, t.block_name FROM tests t LIMIT 1;"
 
-      query = age_months
       rows = execute_query(query)
 
       if rows == '':
         query = u"tühi string"
 
       else:
+
         query = str(rows) # + " vahe " + str(rows[0][1])
+        query = str(age_months)
+
 #        query = u"midagi ikka on"
 
     else:
