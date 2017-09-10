@@ -1,6 +1,6 @@
-﻿drop table if exists children;
+drop table if exists children;
 create table children (
-	id_child integer primary key not null,
+	id_child serial primary key,
 	first_name text,
 	last_name text,
 	date_of_birth date,
@@ -14,7 +14,7 @@ create table names (
 
 drop table if exists users;
 create table users (
-	id_user integer primary key not null,
+	id_user serial primary key,
 	entity_type text,
 	key_entity text,
 	language text
@@ -22,7 +22,7 @@ create table users (
 
 drop table if exists parents;
 create table parents (
-	id_parent integer primary key not null,
+	id_parent serial primary key,
 	messenger_user_id text,
 	first_name text,
 	last_name text
@@ -30,7 +30,7 @@ create table parents (
 
 drop table if exists families;
 create table families (
-	id_family integer primary key not null,
+	id_family serial primary key,
 	messenger_user_id text,
 	first_name text,
 	last_name text
@@ -38,7 +38,7 @@ create table families (
 
 drop table if exists milestones;
 create table milestones (
-	id_milestone integer primary key not null,
+	id_milestone serial primary key,
 	target_age numeric,
 	type text,
 	description text
@@ -46,23 +46,23 @@ create table milestones (
 
 drop table if exists test_blocks;
 create table test_blocks (
-	id_test_block integer primary key not null,
+	id_test_block serial primary key,
 	key_test text,
 	block_name text
 );
 
 drop table if exists tests;
 create table tests (
-	id_test integer primary key not null,
+	id_test serial primary key,
 	channel text,
 	block_name text	,
-	description text not null,
+	description text,
 	follow_up_question text
 );
 
 drop table if exists test_results;
 create table test_results (
-	id_test_result integer primary key not null,
+	id_test_result serial primary key,
 	key_test integer,
 	key_user integer,
 	key_child  integer,
@@ -74,7 +74,7 @@ create table test_results (
 
 drop table if exists milestone_tests;
 create table milestone_tests (
-	id_milestone_test integer primary key not null,
-	key_test integer not null,
-	key_milestone integer not null
+	id_milestone_test serial primary key,
+	key_test integer,
+	key_milestone integer
 );
