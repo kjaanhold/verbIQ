@@ -128,7 +128,7 @@ def next_test_selection():
 
       query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= (4*%s)/3 AND m.target_age >= (2*%s)/3 ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months)
 
-#      query = "SELECT t.description, t.block_name FROM tests t LIMIT 1;"
+      query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s ORDER BY RANDOM() LIMIT 1;" % (age_months)
 
       rows = execute_query(query)
 
@@ -138,7 +138,6 @@ def next_test_selection():
       else:
 
         query = str(rows) # + " vahe " + str(rows[0][1])
-        query = str(age_months)
 
 #        query = u"midagi ikka on"
 
