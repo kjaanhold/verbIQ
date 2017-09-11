@@ -127,12 +127,11 @@ def next_test_selection():
       query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= (4*%s)/3 AND m.target_age >= (2*%s)/3 ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months)
       rows = execute_query(query)
 
-      if rows == '':
-        query = u"tühi string"
+      question = str(rows[0][0].encode("utf-8"))
+      block_name = str(rows[0][1].encode("utf-8"))
 
-      else:
 
-        query = str(rows) # + " vahe " + str(rows[0][1])
+      query = question + block_name
 
 #        query = u"midagi ikka on"
 
