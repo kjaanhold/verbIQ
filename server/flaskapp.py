@@ -336,6 +336,33 @@ def tests_summary():
 
 
     else:
+      out_text = u"Mingi jama on"
+
+      data = {
+          "messages": [
+            {
+              "attachment": {
+                "type": "template",
+                "payload": {
+                  "template_type": "button",
+                  "text": out_text,
+                  "buttons": [
+                    {
+                      "type": "show_block",
+                      "block_name": "test recurring tests 2",
+                      "title": "Tagasi testima"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+
+    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
+    return response
+
+'''
       data_jah = return_test_results(name, 'Jah')
       data_ei = return_test_results(name, 'Ei')
       data_ei_tea = return_test_results(name, 'Ei tea')
@@ -418,9 +445,7 @@ def tests_summary():
           }
         ]
       }
-
-    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
-    return response
+'''
 
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
