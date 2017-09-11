@@ -232,17 +232,17 @@ def run_test():
 
 
 
-@app.route('/score_calculation', methods=['GET'])
-def score_calculation():
+@app.route('/lognorm', methods=['GET'])
+def lognorm():
   x = float(request.args.get('x'))  
-  s = float(request.args.get('s'))  
+  mu = float(request.args.get('mu'))  
+  sigma = float(request.args.get('sigma'))  
 
-  result = 1 / (s*x*math.sqrt(2*math.pi)) * math.exp(-1/2*(math.log(x)/s)**2)
+   a = (math.log(x) - mu)/math.sqrt(2*sigma**2)
+   p = 0.5 + 0.5*math.erf(a)
 
+  return p
 
-  return str(result)
-
-#  result = 1 / (s*x*sqrt(2*pi)) * exp(-1/2*(log(x)/s)**2)
 
 
 
