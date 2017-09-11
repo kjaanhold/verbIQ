@@ -298,12 +298,6 @@ def return_test_results():
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
 
-      out_text = str(block_name)
-
-    return str(name) + str(result_value) + ' ___' + str(out_text)
-
-'''
-
 #      query = "SELECT m.description FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
 #      rows = execute_query(query)
 #      out_text = rows[0][0].encode("utf-8")
@@ -312,7 +306,7 @@ def return_test_results():
       rows = execute_query(query)
       out_text = rows[0][0]
 
-'''
+    return str(name) + str(result_value) + ' ___' + str(out_text)
 
 
 @app.route('/tests_summary', methods=['GET'])
