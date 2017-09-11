@@ -144,7 +144,7 @@ def next_test_selection():
  
       query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age <= %s AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, block_name)    
 
-    return str(query)
+    return str(data)
 
 '''
       rows = execute_query(query)
