@@ -236,8 +236,7 @@ def score_calculation():
   x = float(request.args.get('x'))  
   s = float(request.args.get('s'))  
 
-
-  result = log(x)/s
+  result = x+s
 
   return str(result)
 
