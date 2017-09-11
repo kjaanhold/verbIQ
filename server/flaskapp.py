@@ -333,8 +333,9 @@ def tests_summary():
             }
           ]
         }
+    return str("bo")
 
-
+'''
     else:
       data_jah = return_test_results(name, 'Jah')
       data_ei = return_test_results(name, 'Ei')
@@ -421,7 +422,7 @@ def tests_summary():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-
+'''
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
 def direct_block_based_on_age(dob):
