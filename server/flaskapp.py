@@ -140,7 +140,7 @@ def next_test_selection():
       block_name = str(block_name)
       block_name = block_name.replace('u"','')
       block_name = block_name.replace('"','')
-      block_name = block_name.replace("u'","'")
+#      block_name = block_name.replace("u'","'")
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
  
