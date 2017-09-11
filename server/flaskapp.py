@@ -66,19 +66,6 @@ def hello_world():
 @app.route('/store_test_results', methods = ['GET','POST'])
 def store_test_results():
     if request.method == "POST":
-'''
-      key_user = request.form['messenger user id']
-      block_name = request.form['last_visited_block_id']
-      lapse_eesnimi = request.form['Lapse_eesnimi']
-      date_created = datetime.utcnow()
-      result_type = 'chatfuel'
-      result_value = request.form['test_result']
-
-      new_data = TestResults(key_user=str(key_user), block_name=str("'"+block_name+"'"), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), date_created=str(date_created), result_type=str(result_type), result_value=str(result_value))
-      db.session.add(new_data)
-      db.session.commit()
-
-      '''
       data = {"redirect_to_blocks": ["test recurring tests 2"]}
       return jsonify(data)
 
