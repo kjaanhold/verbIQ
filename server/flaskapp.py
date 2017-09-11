@@ -144,6 +144,7 @@ def next_test_selection():
     return str(question) + '///' + str(block_name)
 
 
+
 @app.route('/run_test', methods=['GET'])
 def run_test():
     dob = request.args.get('Synni_kuupaev')
