@@ -8,7 +8,7 @@ from datetime import datetime, date
 from models import db, Station, TestResults
 from sqlalchemy import exc
 from sqlalchemy.orm.exc import NoResultFound
-
+from scipy.stats import norm
 
 
 DATABASE = '/home/ubuntu/verbIQ/server/verbiq.db'
