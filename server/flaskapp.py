@@ -77,8 +77,7 @@ def store_test_results():
       db.session.add(new_data)
       db.session.commit()
 
-
-      data = {"redirect_to_blocks": ["test recurring tests 2" + " / "  + str(key_user) + " / "  + str(block_name) + " / "  + str(lapse_eesnimi) + " / "  + str(result_type) + " / "  + str(result_value)]}
+      data = {"redirect_to_blocks": ["test recurring tests 2"]}
       return jsonify(data)
 
     if request.method == "GET":
@@ -90,20 +89,6 @@ def store_test_results():
 
       data = {'messages':[{"text": "id_test_result: " + " / " + str(n1) + " / "  + ", " + str(n2) + " / "  + ", " + str(n3) + " / " + ", " + str(n4)}]}
       return jsonify(data)
-
-'''
-      key_user = request.form['messenger user id']
-      block_name = request.form['last_visited_block_id']
-      lapse_eesnimi = request.form['Lapse_eesnimi']
-      date_created = datetime.utcnow()
-      result_type = 'chatfuel'
-      result_value = request.form['test_result']
-
-      new_data = TestResults(key_user=str(key_user), block_name=str("'"+block_name+"'"), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), date_created=str(date_created), result_type=str(result_type), result_value=str(result_value))
-      db.session.add(new_data)
-      db.session.commit()
-
-      '''
 
 
 def to_json(inst, cls):
