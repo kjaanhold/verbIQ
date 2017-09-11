@@ -240,7 +240,7 @@ def lognorm():
   a = (math.log(x) - mu)/math.sqrt(2*sigma**2)
   p = 0.5 + 0.5*math.erf(a)
 
-  return p
+  return str(p)
 
 
 
