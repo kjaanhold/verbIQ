@@ -293,14 +293,14 @@ def return_test_results():
       block_name = [d.get('block_name') for d in result_dict]    
       block_name = str(block_name)
       block_name = block_name.replace('u"','')
-      block_name = block_name.replace(', u"',', ')
+      block_name = block_name.replace(", u'",", '")
       block_name = block_name.replace('"','')
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
 
       out_text = str(block_name)
 
-    return str(name) + str(result_value) + str(out_text)
+    return str(name) + str(result_value) + ' ___' + str(out_text)
 
 '''
 
