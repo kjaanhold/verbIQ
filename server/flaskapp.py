@@ -291,17 +291,17 @@ def return_test_results():
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).all()
       result_dict = [u.__dict__ for u in data]
       block_name = [d.get('block_name') for d in result_dict]    
+      block_name = str(block_name)
+      block_name = block_name.replace('u"','')
+      block_name = block_name.replace('"','')
+      block_name = block_name.replace('[','')
+      block_name = block_name.replace(']','')
 
       out_text = str(block_name)
 
     return str(name) + str(result_value) + str(out_text)
 
 '''
-      block_name = str(block_name)
-      block_name = block_name.replace('u"','')
-      block_name = block_name.replace('"','')
-      block_name = block_name.replace('[','')
-      block_name = block_name.replace(']','')
 
 #      query = "SELECT m.description FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
 #      rows = execute_query(query)
