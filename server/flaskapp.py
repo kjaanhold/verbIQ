@@ -288,6 +288,10 @@ def return_test_results():
       out_text = "no_results"
 
     else:
+
+    return str(name) + str(result_value)
+
+'''
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).all()
       result_dict = [u.__dict__ for u in data]
       block_name = [d.get('block_name') for d in result_dict]    
@@ -305,7 +309,7 @@ def return_test_results():
       rows = execute_query(query)
       out_text = rows[0][0]
 
-    return str(name) + str(result_value)
+'''
 
 
 @app.route('/tests_summary', methods=['GET'])
