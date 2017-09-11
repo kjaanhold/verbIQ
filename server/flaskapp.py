@@ -278,14 +278,10 @@ def age_check():
     return response
 
 
-@app.route('/return_test_results', methods=['GET'])
-def return_test_results()
-    return "bo"
-
-'''
+# @app.route('/return_test_results', methods=['GET'])
+def return_test_results(name, result_value):
 #    name = request.args.get('Lapse_eesnimi')
 #    result_value = request.args.get('result_value')
-
 
     if TestResults.query.filter_by(lapse_eesnimi = name.lower()).first() is None:
       out_text = "no_results"
@@ -307,11 +303,9 @@ def return_test_results()
       query = "SELECT count(distinct m.description) FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
       rows = execute_query(query)
       out_text = rows[0][0]
-
     return str(out_text)
-'''
 
-'''
+
 @app.route('/tests_summary', methods=['GET'])
 def tests_summary():
     name = request.args.get('Lapse_eesnimi')
@@ -339,7 +333,7 @@ def tests_summary():
             }
           ]
         }
-    return str("bo")
+
 
     else:
       data_jah = return_test_results(name, 'Jah')
@@ -427,7 +421,7 @@ def tests_summary():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-'''
+
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
 def direct_block_based_on_age(dob):
