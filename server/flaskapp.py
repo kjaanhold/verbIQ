@@ -124,7 +124,7 @@ def next_test_selection():
       # this kid hasn't done any tests yet
     if TestResults.query.filter_by(lapse_eesnimi = name.lower()).first() is None:
 
-      query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age BETWEEN (2*%s)/3 AND (4*%s)/3  ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months)
+      query = "SELECT t.description, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE %s BETWEEN (2*m.target_age)/3 AND (4*m.target_age)/3 ORDER BY RANDOM() LIMIT 1;" % (age_months)
       rows = execute_query(query)
 
       question = str(rows[0][0].encode("utf-8"))
