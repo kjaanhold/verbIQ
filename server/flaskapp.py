@@ -289,8 +289,8 @@ def return_test_results():
 
     else:
       out_text = "some results"
-      
-    return str(name) + str(result_value)
+
+    return str(name) + str(result_value) + str(out_text)
 
 '''
       data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).all()
