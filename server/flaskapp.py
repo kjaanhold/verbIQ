@@ -288,7 +288,8 @@ def return_test_results():
       out_text = "no_results"
 
     else:
-
+      out_text = "some results"
+      
     return str(name) + str(result_value)
 
 '''
