@@ -237,9 +237,8 @@ def lognorm():
   x = float(request.args.get('x'))  
   mu = float(request.args.get('mu'))  
   sigma = float(request.args.get('sigma'))  
-
-   a = (math.log(x) - mu)/math.sqrt(2*sigma**2)
-   p = 0.5 + 0.5*math.erf(a)
+  a = (math.log(x) - mu)/math.sqrt(2*sigma**2)
+  p = 0.5 + 0.5*math.erf(a)
 
   return p
 
