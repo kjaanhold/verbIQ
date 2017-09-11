@@ -73,6 +73,10 @@ def store_test_results():
       result_type = 'chatfuel'
       result_value = request.form['test_result']
 
+      new_data = TestResults(key_user=str(key_user), block_name=str("'"+block_name+"'"), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), date_created=str(date_created), result_type=str(result_type), result_value=str(result_value))
+      db.session.add(new_data)
+      db.session.commit()
+
 
       data = {"redirect_to_blocks": ["test recurring tests 2" + " / "  + str(key_user) + " / "  + str(block_name) + " / "  + str(lapse_eesnimi) + " / "  + str(result_type) + " / "  + str(result_value)]}
       return jsonify(data)
