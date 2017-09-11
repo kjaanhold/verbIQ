@@ -2,6 +2,7 @@
 import csv
 import sqlite3
 import json
+import numpy
 # import scipy
 
 from flask import Flask, request, g, jsonify, Response
