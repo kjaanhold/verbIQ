@@ -130,23 +130,6 @@ def next_test_selection():
       question = str(rows[0][0].encode("utf-8"))
       block_name = str(rows[0][1].encode("utf-8"))
 
-
-      query = question + block_name
-
-#        query = u"midagi ikka on"
-
-    else:
-      # this kid has done at least one test
-      data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
-      result_dict = [u.__dict__ for u in data]
-      block_name = [d.get('block_name') for d in result_dict]
-      block_name = str(block_name)
-
-      query = block_name
-
-    return str(query)
-'''
-
     else:
       rows = execute_query(query)
 
@@ -157,10 +140,8 @@ def next_test_selection():
       else:
         question = str(rows[0][0].encode("utf-8"))
         block_name = str(rows[0][1].encode("utf-8"))
-'''
 
-
-#    return str(question) + '///' + str(block_name)
+    return str(question) + '///' + str(block_name)
 
 
 @app.route('/run_test', methods=['GET'])
