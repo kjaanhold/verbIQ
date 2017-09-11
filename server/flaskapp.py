@@ -233,8 +233,8 @@ def run_test():
 
 @app.route('/score_calculation', methods=['GET'])
 def score_calculation():
-  x = request.args.get('x')   
-  s = request.args.get('s')  
+  x = float(request.args.get('x'))  
+  s = float(request.args.get('s'))  
 
 
   result = log(x)/s
