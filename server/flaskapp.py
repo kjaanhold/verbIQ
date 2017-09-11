@@ -281,9 +281,8 @@ def age_check():
 @app.route('/return_test_results', methods=['GET'])
 #def return_test_results(name, result_value):
 def return_test_results()
-    name = request.args.get('Lapse_eesnimi')
-    result_value = request.args.get('result_value')
-
+#    name = request.args.get('Lapse_eesnimi')
+#    result_value = request.args.get('result_value')
     return "bo"
 
 '''
