@@ -288,12 +288,13 @@ def return_test_results():
       out_text = "no_results"
 
     else:
+      data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).all()
+
       out_text = "some results"
 
     return str(name) + str(result_value) + str(out_text)
 
 '''
-      data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).all()
       result_dict = [u.__dict__ for u in data]
       block_name = [d.get('block_name') for d in result_dict]    
       block_name = str(block_name)
