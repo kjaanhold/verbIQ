@@ -9,6 +9,8 @@ from models import db, Station, TestResults
 from sqlalchemy import exc
 from sqlalchemy.orm.exc import NoResultFound
 
+
+
 DATABASE = '/home/ubuntu/verbIQ/server/verbiq.db'
 
 POSTGRES = {
@@ -64,7 +66,7 @@ def hello_world():
 @app.route('/store_test_results', methods = ['GET','POST'])
 def store_test_results():
     if request.method == "POST":
-
+'''
       key_user = request.form['messenger user id']
       block_name = request.form['last_visited_block_id']
       lapse_eesnimi = request.form['Lapse_eesnimi']
@@ -75,18 +77,19 @@ def store_test_results():
       new_data = TestResults(key_user=str(key_user), block_name=str("'"+block_name+"'"), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), date_created=str(date_created), result_type=str(result_type), result_value=str(result_value))
       db.session.add(new_data)
       db.session.commit()
+
+      '''
       data = {"redirect_to_blocks": ["test recurring tests 2"]}
       return jsonify(data)
 
     if request.method == "GET":
 #      out = TestResults.query.order_by(TestResults.date_created.desc()).first()
-      n0 = request.args.get('id_test_result')
       n1 = request.args.get('messenger user id')
-      n2 = request.args.get('last visited block id')
+      n2 = request.args.get('last_visited_block_id')
       n3 = request.args.get('Lapse_eesnimi')
       n4 = request.args.get('test_result')
 
-      data = {'messages':[{"text": "id_test_result: " + str(n0) + ", " + str(n1) + ", " + str(n2) + ", " + str(n3) + ", " + str(n4)}]}
+      data = {'messages':[{"text": "id_test_result: " + str(n1) + ", " + str(n2) + ", " + str(n3) + ", " + str(n4)}]}
       return jsonify(data)
 
 def to_json(inst, cls):
