@@ -74,7 +74,7 @@ def store_test_results():
       result_value = request.form['test_result']
 
 
-      data = {"redirect_to_blocks": ["test recurring tests 2" + str(key_user) + str(block_name) + str(lapse_eesnimi) + str(result_type) + str(result_value)]}
+      data = {"redirect_to_blocks": ["test recurring tests 2" + " / "  + str(key_user) + " / "  + str(block_name) + " / "  + str(lapse_eesnimi) + " / "  + str(result_type) + " / "  + str(result_value)]}
       return jsonify(data)
 
     if request.method == "GET":
@@ -84,7 +84,7 @@ def store_test_results():
       n3 = request.args.get('Lapse_eesnimi')
       n4 = request.args.get('test_result')
 
-      data = {'messages':[{"text": "id_test_result: " + str(n1) + ", " + str(n2) + ", " + str(n3) + ", " + str(n4)}]}
+      data = {'messages':[{"text": "id_test_result: " + " / " + str(n1) + " / "  + ", " + str(n2) + " / "  + ", " + str(n3) + " / " + ", " + str(n4)}]}
       return jsonify(data)
 
 '''
