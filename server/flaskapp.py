@@ -113,11 +113,11 @@ def to_json(inst, cls):
     return json.dumps(d)
 
 
-@app.route('/next_test_selection', methods=['GET'])
-#def next_test_selection(dob,name):
-def next_test_selection():
-    dob = request.args.get('Synni_kuupaev')
-    name = request.args.get('Lapse_eesnimi')
+#@app.route('/next_test_selection', methods=['GET'])
+def next_test_selection(dob,name):
+#def next_test_selection():
+#    dob = request.args.get('Synni_kuupaev')
+#    name = request.args.get('Lapse_eesnimi')
 
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
@@ -156,7 +156,7 @@ def next_test_selection():
         question = str(rows[0][0].encode("utf-8"))
         block_name = str(rows[0][1].encode("utf-8"))
 
-    return str(question) + '///' + str(block_name) + '///' + str(query)
+    return str(question) + '///' + str(block_name)
 
 
 
