@@ -236,10 +236,12 @@ def score_calculation():
   x = request.args.get('x')   
   s = request.args.get('s')  
 
-  result = 1 / (s*x*sqrt(2*pi)) * exp(-1/2*(log(x)/s)**2)
 
-  return result
+  result = log(x)/s
 
+  return str(result)
+
+#  result = 1 / (s*x*sqrt(2*pi)) * exp(-1/2*(log(x)/s)**2)
 
 
 
