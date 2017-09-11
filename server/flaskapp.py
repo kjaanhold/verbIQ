@@ -279,13 +279,14 @@ def age_check():
 
 
 @app.route('/return_test_results', methods=['GET'])
-#def return_test_results(name, result_value):
 def return_test_results()
-#    name = request.args.get('Lapse_eesnimi')
-#    result_value = request.args.get('result_value')
     return "bo"
 
 '''
+#    name = request.args.get('Lapse_eesnimi')
+#    result_value = request.args.get('result_value')
+
+
     if TestResults.query.filter_by(lapse_eesnimi = name.lower()).first() is None:
       out_text = "no_results"
 
@@ -310,6 +311,7 @@ def return_test_results()
     return str(out_text)
 '''
 
+'''
 @app.route('/tests_summary', methods=['GET'])
 def tests_summary():
     name = request.args.get('Lapse_eesnimi')
@@ -339,7 +341,6 @@ def tests_summary():
         }
     return str("bo")
 
-'''
     else:
       data_jah = return_test_results(name, 'Jah')
       data_ei = return_test_results(name, 'Ei')
