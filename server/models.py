@@ -80,6 +80,10 @@ class Test(BaseModel, db.Model):
         self.description = description
         self.follow_up_question = follow_up_question
 
+    @property
+    def json(self):
+        return to_json(self, self.__class__)
+
 class MilestoneTests(BaseModel, db.Model):
     """Model for the test table"""
     __tablename__ = 'milestones'
