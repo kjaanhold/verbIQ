@@ -66,7 +66,7 @@ class Test(BaseModel, db.Model):
     """Model for the test table"""
     __tablename__ = 'test'
 
-    id_test = db.Column(db.Integer, primary_key = True, ForeignKey("milestones.key_test"))
+    id_test = db.Column(db.Integer, ForeignKey("milestones.key_test"))
     channel = db.Column(db.String)
     block_name = db.Column(db.String)
     description = db.Column(db.String)
