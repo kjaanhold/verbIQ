@@ -86,7 +86,7 @@ class MilestoneTests(BaseModel, db.Model):
     __tablename__ = 'milestones'
 
     id_milestones_test = db.Column(db.Integer, primary_key = True)
-    key_test = db.Integer(db.String)
+    key_test = db.Column(db.String)
     key_milestone = db.Column(db.String)
     
     def __init__(self,key_test,key_milestone):
