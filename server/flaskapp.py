@@ -235,8 +235,11 @@ def run_test():
 @app.route('/lognorm', methods=['GET'])
 def lognorm():
   x = float(request.args.get('x'))  
-  mu = float(request.args.get('mu'))  
-  sigma = float(request.args.get('sigma'))  
+  mean = float(request.args.get('mean'))  
+  var = float(request.args.get('var'))  
+
+  mu = float(math.log((mean**2) / math.sqrt(var + mean**2) ))
+  sigma = float(math.sqrt(math.log(var / mean**2 + 1)))
   a = (math.log(x) - mu)/math.sqrt(2*sigma**2)
   p = 0.5 + 0.5*math.erf(a)
 
