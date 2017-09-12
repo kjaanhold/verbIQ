@@ -311,8 +311,8 @@ def return_test_results():
       rows = execute_query(query)
 
       result_dict = [u.__dict__ for u in rows]
-      target_age = [d.get('target_age') for d in result_dict] 
-      out_text = target_age
+#      target_age = [d.get('target_age') for d in result_dict] 
+      out_text = result_dict
 
     return str(out_text)
 
