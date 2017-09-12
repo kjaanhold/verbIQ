@@ -248,7 +248,8 @@ def lognorm():
 @app.route('/pg_data', methods=['GET'])
 def pg_data():
   test = db.session.query(Test, MilestoneTests).one()
-  return(str(test))
+  result_dict = [u.__dict__ for u in test]
+  return(str(result_dict))
 
 
 @app.route('/age_check', methods=['GET'])
