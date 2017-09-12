@@ -73,7 +73,6 @@ class Test(BaseModel, db.Model):
     follow_up_question = db.Column(db.String)
 
     id_test = db.Column(db.Integer, db.ForeignKey("milestones.id_milestones_test"))
-    id_test = db.relationship("MilestoneTests", foreign_keys=[id_test])
     
     def __init__(self,channel,block_name,description,follow_up_question):
         self.channel = channel
