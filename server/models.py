@@ -78,7 +78,7 @@ class Test(BaseModel, db.Model):
         self.description = description
         self.follow_up_question = follow_up_question
 
-    id_test = relationship("MilestoneTests", foreign_keys=[id_test])
+    id_test = db.relationship("MilestoneTests", foreign_keys=[id_test])
 
 class MilestoneTests(BaseModel, db.Model):
     """Model for the test table"""
