@@ -72,7 +72,7 @@ class Test(BaseModel, db.Model):
     description = db.Column(db.String)
     follow_up_question = db.Column(db.String)
 
-    id_test = db.Column(db.Integer, db.ForeignKey("milestones.key_test"))
+    id_test = db.Column(db.Integer, db.ForeignKey("milestones.id_milestones_test"))
     id_test = db.relationship("MilestoneTests", foreign_keys=[id_test])
     
     def __init__(self,channel,block_name,description,follow_up_question):
@@ -89,10 +89,9 @@ class MilestoneTests(BaseModel, db.Model):
     target_age = db.Column(db.Integer)
     type = db.Column(db.String)
     description = db.Column(db.String)
-    key_test = db.Column(db.String)
     key_milestone = db.Column(db.String)
     
-    def __init__(self,target_age,type,description,key_test,key_milestone):
+    def __init__(self,target_age,type,description,key_milestone):
         self.target_age = target_age
         self.type = type
         self.description = description
