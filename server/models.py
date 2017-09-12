@@ -74,11 +74,12 @@ class Test(BaseModel, db.Model):
 
     id_test = db.Column(db.Integer, db.ForeignKey("milestones.id_milestones_test"))
     
-    def __init__(self,channel,block_name,description,follow_up_question):
+    def __init__(self,channel,block_name,description,follow_up_question,id_test):
         self.channel = channel
         self.block_name = block_name
         self.description = description
         self.follow_up_question = follow_up_question
+        self.id_test = id_test
 
     @property
     def json(self):
