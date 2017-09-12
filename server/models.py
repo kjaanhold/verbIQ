@@ -66,7 +66,7 @@ class Test(BaseModel, db.Model):
     """Model for the test table"""
     __tablename__ = 'test'
 
-    id_test = db.Column(db.Integer, primary_key = True)
+    id_test = db.Column(db.Integer, primary_key = True, ForeignKey("milestones.key_test"))
     channel = db.Column(db.String)
     block_name = db.Column(db.String)
     description = db.Column(db.String)
@@ -78,8 +78,7 @@ class Test(BaseModel, db.Model):
         self.description = description
         self.follow_up_question = follow_up_question
 
-    key_test = db.relationship('MilestoneTests', foreign_keys=key_test)
-    test = db.relationship('Test', foreign_keys=id_test)
+    id_test = relationship("MilestoneTests", foreign_keys=[id_test])
 
 class MilestoneTests(BaseModel, db.Model):
     """Model for the test table"""
