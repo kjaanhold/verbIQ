@@ -306,17 +306,15 @@ def return_test_results():
       block_name = block_name.replace(']','')
 
       query = "SELECT m.target_age, t.block_name FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
-#      rows = execute_query(query)
-#      out_text = rows[0][0].encode("utf-8")
 
 #      query = "SELECT count(distinct m.description) FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
       rows = execute_query(query)
-      out_text = rows
 
-      flatten = lambda rows: [item for sublist in rows for item in sublist]
-      out_text = flatten
+      result_dict = [u.__dict__ for u in rows]
+      target_age = [d.get('target_age') for d in result_dict] 
+      out_text = target_age
 
-    return out_text
+    return str(out_text)
 
 
 @app.route('/tests_summary', methods=['GET'])
