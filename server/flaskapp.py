@@ -313,7 +313,7 @@ def return_test_results():
       rows = execute_query(query)
       out_text = rows
 
-      flatten = lambda rows: [item for sublist in rows for item in sublist]
+      flatten = lambda rows: [item for sublist in rows]
       out_text = flatten
 
     return str(out_text)
