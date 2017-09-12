@@ -62,5 +62,36 @@ class TestResults(BaseModel, db.Model):
     def json(self):
         return to_json(self, self.__class__)
 
+class Test(BaseModel, db.Model):
+    """Model for the test table"""
+    __tablename__ = 'test'
 
+    id_test = db.Column(db.Integer, primary_key = True)
+    channel = db.Column(db.String)
+    block_name = db.Column(db.String)
+    description = db.Column(db.String)
+    follow_up_question = db.Column(db.String)
+    
+    def __init__(self,channel,block_name,description,follow_up_question):
+        self.channel = channel
+        self.block_name = block_name
+        self.description = description
+        self.follow_up_question = follow_up_question
 
+    key_test = db.relationship('MilestoneTests', foreign_keys=key_test)
+    test = db.relationship('Test', foreign_keys=id_test)
+
+class MilestoneTests(BaseModel, db.Model):
+    """Model for the test table"""
+    __tablename__ = 'milestones'
+
+    id_milestones_test = db.Column(db.Integer, primary_key = True)
+    key_test = db.Column(db.String)
+    key_milestone = db.Column(db.String)
+    
+    def __init__(self,key_test,key_milestone):
+        self.key_test = key_test
+        self.key_milestone = key_milestone
+        self.block_name = block_name
+        self.description = description
+        self.follow_up_question = follow_up_question
