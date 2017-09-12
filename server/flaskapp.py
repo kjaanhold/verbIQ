@@ -250,7 +250,7 @@ def pg_data():
   test = db.session.query(Test, MilestoneTests).one()
   result_dict = [u.__dict__ for u in test]
   block_name = [d.get('block_name') for d in result_dict]    
-  return(str(block_name))
+  return(str(block_name[0]))
 
 @app.route('/age_check', methods=['GET'])
 def age_check():
