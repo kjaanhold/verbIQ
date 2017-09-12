@@ -86,12 +86,15 @@ class MilestoneTests(BaseModel, db.Model):
     __tablename__ = 'milestones'
 
     id_milestones_test = db.Column(db.Integer, primary_key = True)
+    target_age = db.Column(db.Integer)
+    type = db.Column(db.String)
+    description = db.Column(db.String)
     key_test = db.Column(db.String)
     key_milestone = db.Column(db.String)
     
-    def __init__(self,key_test,key_milestone):
+    def __init__(self,target_age,type,description,key_test,key_milestone):
+        self.target_age = target_age
+        self.type = type
+        self.description = description
         self.key_test = key_test
         self.key_milestone = key_milestone
-        self.block_name = block_name
-        self.description = description
-        self.follow_up_question = follow_up_question
