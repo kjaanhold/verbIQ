@@ -92,6 +92,29 @@ def store_test_results():
       return jsonify(data)
 
 
+
+@app.route('/store_children', methods = ['GET','POST'])
+def store_children():
+    if request.method == "POST":
+      key_user = request.form['messenger user id']
+      lapse_eesnimi = request.form['Lapse_eesnimi']
+      date_of_birth = request.form['Synni_kuupaev']
+      gender = request.form['Lapse_sugu']
+      block_name = request.form['last_visited_block_id']
+      first_updated = datetime.utcnow()
+      last_updated = datetime.utcnow()
+
+      new_data = TestResults(key_user=str(key_user), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), date_of_birth=str(date_of_birth), gender=str(gender), block_name=str(first_updated), block_name=str(last_updated))
+      db.session.add(new_data)
+      db.session.commit()
+
+      data = {"redirect_to_blocks": ["test recurring tests 2"]}
+      return jsonify(data)
+
+    if request.method == "GET":
+      data = {'messages':[{"text": "error: "}]}
+      return jsonify(data)
+
 def to_json(inst, cls):
     """
     Jsonify the sql alchemy query result.
