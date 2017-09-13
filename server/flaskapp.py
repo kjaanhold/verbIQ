@@ -247,7 +247,8 @@ def lognorm():
 
 @app.route('/pg_data', methods=['GET'])
 def pg_data():
-  test = db.session.query(Test, MilestoneTests).one()
+  name = request.args.get('Lapse_eesnimi')
+  test = db.session.query(Test, MilestoneTests).filter_by(lapse_eesnimi = name.lower()).one()
   result_dict = [u.__dict__ for u in test]
   block_name = [d.get('block_name') for d in result_dict]    
   return(str(block_name[0]))
