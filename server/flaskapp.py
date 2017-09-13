@@ -103,7 +103,8 @@ def store_children():
       first_updated = datetime.utcnow()
       last_updated = datetime.utcnow()
 
-      new_data = TestResults(key_user=str(key_user), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), date_of_birth=str(date_of_birth), gender=str(gender), first_updated=str(first_updated), last_updated=str(last_updated))
+#      new_data = TestResults(key_user=str(key_user), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), date_of_birth=str(date_of_birth), gender=str(gender), first_updated=str(first_updated), last_updated=str(last_updated))
+      new_data = TestResults(key_user=str(key_user), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), gender=str(gender))
       db.session.add(new_data)
       db.session.commit()
 
