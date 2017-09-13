@@ -107,7 +107,7 @@ class ChildrenTest(BaseModel, db.Model):
     """Model for the test table"""
     __tablename__ = 'children'
 
-    id = db.Column(db.Integer, primary_key=True)
+    id_child = db.Column(db.Integer, primary_key=True)
     key_user = db.Column(db.String)
     lapse_eesnimi = db.Column(db.String)
 
@@ -128,7 +128,7 @@ class Children(BaseModel, db.Model):
     first_updated = db.Column(db.String)
     last_updated = db.Column(db.String)
 
-    def __init__(self,key_facebook_user,lapse_eesnimi,date_of_birth,gender,first_updated,last_updated):
+    def __init__(self,key_user,lapse_eesnimi,date_of_birth,gender,first_updated,last_updated):
         self.key_user = key_user
         self.lapse_eesnimi = lapse_eesnimi
         self.date_of_birth = date_of_birth
