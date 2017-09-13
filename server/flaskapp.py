@@ -91,7 +91,7 @@ def store_test_results():
       data = {'messages':[{"text": "id_test_result: " + " / " + str(n1) + " / "  + ", " + str(n2) + " / "  + ", " + str(n3) + " / " + ", " + str(n4)}]}
       return jsonify(data)
 
-
+'''
 
 @app.route('/store_children', methods = ['GET','POST'])
 def store_children():
@@ -114,6 +114,7 @@ def store_children():
     if request.method == "GET":
       data = {'messages':[{"text": "error: "}]}
       return jsonify(data)
+'''
 
 def to_json(inst, cls):
     """
