@@ -103,6 +103,19 @@ class MilestoneTests(BaseModel, db.Model):
         self.key_milestone = key_milestone
 
 
+class ChildrenTest(BaseModel, db.Model):
+    """Model for the test table"""
+    __tablename__ = 'children'
+
+    id = db.Column(db.Integer, primary_key=True)
+    key_user = db.Column(db.String)
+    lapse_eesnimi = db.Column(db.String)
+
+    def __init__(self,key_user,lapse_eesnimi):
+        self.key_user = key_user
+        self.lapse_eesnimi = lapse_eesnimi
+
+'''
 class Children(BaseModel, db.Model):
     """Model for the test table"""
     __tablename__ = 'children'
@@ -122,7 +135,7 @@ class Children(BaseModel, db.Model):
         self.gender = gender
         self.first_updated = first_updated
         self.last_updated = last_updated
-
+'''
 
 
 

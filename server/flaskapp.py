@@ -93,6 +93,26 @@ def store_test_results():
 
 
 
+@app.route('/store_children_test', methods = ['GET','POST'])
+def store_children_test():
+    if request.method == "POST":
+      key_user = request.form['messenger user id']
+      lapse_eesnimi = request.form['Lapse_eesnimi']
+
+      new_data = ChildrenTest(key_user=str(key_user), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower())
+
+      db.session.add(new_data)
+      db.session.commit()
+
+      data = {"redirect_to_blocks": ["test recurring tests 2"]}
+      return jsonify(data)
+
+    if request.method == "GET":
+      data = {'messages':[{"text": "error: "}]}
+      return jsonify(data)
+
+
+'''
 @app.route('/store_children', methods = ['GET','POST'])
 def store_children():
     if request.method == "POST":
@@ -114,6 +134,7 @@ def store_children():
     if request.method == "GET":
       data = {'messages':[{"text": "error: "}]}
       return jsonify(data)
+'''
 
 
 def to_json(inst, cls):
