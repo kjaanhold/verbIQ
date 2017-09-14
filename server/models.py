@@ -115,35 +115,6 @@ class ChildrenTest(BaseModel, db.Model):
         self.key_user = key_user
         self.lapse_eesnimi = lapse_eesnimi
 
-
-
-class Children(BaseModel, db.Model):
-    """Model for the test_results table"""
-    __tablename__ = 'children'
-
-    id_test_result = db.Column(db.Integer, primary_key = True)
-    key_user = db.Column(db.String)
-    block_name = db.Column(db.String)
-    lapse_eesnimi = db.Column(db.String)
-    date_created = db.Column(db.DateTime)
-    result_type = db.Column(db.String)
-    result_value = db.Column(db.String)
-
-    def __init__(self,key_user,block_name,lapse_eesnimi,date_created,result_type,result_value):
-        self.key_user = key_user
-        self.block_name = block_name
-        self.lapse_eesnimi = lapse_eesnimi
-        self.date_created = date_created
-        self.result_type = result_type
-        self.result_value = result_value
-
-    @property
-    def json(self):
-        return to_json(self, self.__class__)
-
-
-
-
 '''
 class Children(BaseModel, db.Model):
     """Model for the test table"""
