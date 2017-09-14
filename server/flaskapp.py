@@ -50,7 +50,6 @@ def execute_query(query, args=()):
     rows = cur.fetchall()
     cur.close()
     return rows
-
 '''
 @app.route('/', methods = ['GET','POST'])
 def hello_world():

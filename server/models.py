@@ -39,22 +39,6 @@ class Station(BaseModel, db.Model):
     	self.lng = lng
         self.last_updated = last_updated
 
-
-class Children(BaseModel, db.Model):
-    """Model for the stations table"""
-#    __tablename__ = 'children'
-    __tablename__ = 'stations'
-
-    id = db.Column(db.Integer, primary_key = True)
-    lat = db.Column(db.Float)
-    lng = db.Column(db.Float)
-    last_updated = db.Column(db.DateTime)
-    def __init__(self, lat, lng, last_updated):
-        self.lat = lat
-        self.lng = lng
-        self.last_updated = last_updated
-
-
 class TestResults(BaseModel, db.Model):
     """Model for the test_results table"""
     __tablename__ = 'test_results'
