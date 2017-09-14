@@ -66,21 +66,6 @@ def hello_world():
       data = Station.query.order_by(Station.id.asc()).first()
       return str(data.lat) + str(data.lng) + str(data.id)
 
-
-@app.route('/store_children', methods = ['GET','POST'])
-def store_children():
-    if request.method == "POST":
-      lat = request.form['lat']
-      lng = request.form['lng']
-      last_updated = datetime.utcnow()
-
-      new_data = Station(lat=lat, lng=lng, last_updated=last_updated)
-      db.session.add(new_data)
-      db.session.commit()
-      return 'OK'
-    if request.method == "GET":
-      data = Station.query.order_by(Station.id.asc()).first()
-      return str(data.lat) + str(data.lng) + str(data.id)
 '''
       key_user = request.form['messenger user id']
       lapse_eesnimi = request.form['Lapse_eesnimi']
