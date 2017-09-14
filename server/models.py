@@ -104,20 +104,7 @@ class MilestoneTests(BaseModel, db.Model):
         self.key_milestone = key_milestone
 
 
-class ChildrenTest(BaseModel, db.Model):
-    """Model for the test table"""
-    __tablename__ = 'children'
 
-    id_child = db.Column(db.Integer, primary_key=True)
-    key_user = db.Column(db.String)
-    lapse_eesnimi = db.Column(db.String)
-
-    def __init__(self,key_user,lapse_eesnimi):
-        self.key_user = key_user
-        self.lapse_eesnimi = lapse_eesnimi
-
-
-'''
 class Children(BaseModel, db.Model):
     """Model for the children table"""
     __tablename__ = 'children'
@@ -141,7 +128,7 @@ class Children(BaseModel, db.Model):
     @property
     def json(self):
         return to_json(self, self.__class__)
-'''
+
 
 
 

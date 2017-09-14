@@ -132,7 +132,7 @@ def store_children():
       return jsonify(data)
 
 
-'''
+
 @app.route('/store_children', methods = ['GET','POST'])
 def store_children():
     if request.method == "POST":
@@ -154,7 +154,7 @@ def store_children():
     if request.method == "GET":
       data = {'messages':[{"text": "error: "}]}
       return jsonify(data)
-'''
+
 
 
 def to_json(inst, cls):
