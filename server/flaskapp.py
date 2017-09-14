@@ -67,7 +67,7 @@ def hello_world():
       return str(data.lat) + str(data.lng) + str(data.id)
 
 
-@app.route('/store_children', methods = ['GET','POST'])
+#@app.route('/store_children', methods = ['GET','POST'])
 def hello_world():
     if request.method == "POST":
       lat = request.form['lat']
