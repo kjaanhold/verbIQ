@@ -68,7 +68,7 @@ def hello_world():
 
 
 @app.route('/store_children', methods = ['GET','POST'])
-def store_children():
+def hello_world():
     if request.method == "POST":
       lat = request.form['lat']
       lng = request.form['lng']
