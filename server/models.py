@@ -102,7 +102,7 @@ class MilestoneTests(BaseModel, db.Model):
         self.description = description
         self.key_test = key_test
         self.key_milestone = key_milestone
-
+'''
 
 
 class Children(BaseModel, db.Model):
@@ -130,7 +130,7 @@ class Children(BaseModel, db.Model):
         return to_json(self, self.__class__)
 
 
-
+'''
 
 '''
 class Children(BaseModel, db.Model):
