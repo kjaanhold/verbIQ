@@ -108,7 +108,7 @@ class MilestoneTests(BaseModel, db.Model):
 
 
 
-
+'''
 class Children(BaseModel, db.Model):
     """Model for the stations table"""
     __tablename__ = 'children'
@@ -121,6 +121,8 @@ class Children(BaseModel, db.Model):
         self.lat = lat
         self.lng = lng
         self.last_updated = last_updated
+'''
+
 
 '''
 
