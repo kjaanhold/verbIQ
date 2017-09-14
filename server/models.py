@@ -116,9 +116,9 @@ class ChildrenTest(BaseModel, db.Model):
         self.lapse_eesnimi = lapse_eesnimi
 
 
-
+'''
 class Children(BaseModel, db.Model):
-    """Model for the test_results table"""
+    """Model for the children table"""
     __tablename__ = 'children'
 
     id_test_result = db.Column(db.Integer, primary_key = True)
@@ -140,7 +140,7 @@ class Children(BaseModel, db.Model):
     @property
     def json(self):
         return to_json(self, self.__class__)
-
+'''
 
 
 
