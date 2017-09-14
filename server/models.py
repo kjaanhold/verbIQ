@@ -39,6 +39,9 @@ class Station(BaseModel, db.Model):
     	self.lng = lng
         self.last_updated = last_updated
 
+
+
+
 class TestResults(BaseModel, db.Model):
     """Model for the test_results table"""
     __tablename__ = 'test_results'
@@ -102,6 +105,23 @@ class MilestoneTests(BaseModel, db.Model):
         self.description = description
         self.key_test = key_test
         self.key_milestone = key_milestone
+
+
+
+
+class Children(BaseModel, db.Model):
+    """Model for the stations table"""
+    __tablename__ = 'children'
+
+    id = db.Column(db.Integer, primary_key = True)
+    lat = db.Column(db.Float)
+    lng = db.Column(db.Float)
+    last_updated = db.Column(db.DateTime)
+    def __init__(self, lat, lng, last_updated):
+        self.lat = lat
+        self.lng = lng
+        self.last_updated = last_updated
+
 '''
 
 
@@ -132,27 +152,6 @@ class Children(BaseModel, db.Model):
 
 '''
 
-'''
-class Children(BaseModel, db.Model):
-    """Model for the test table"""
-    __tablename__ = 'children'
-
-    id = db.Column(db.Integer, primary_key=True)
-    key_user = db.Column(db.String)
-    lapse_eesnimi = db.Column(db.String)
-    date_of_birth = db.Column(db.String)
-    gender = db.Column(db.String)
-    first_updated = db.Column(db.String)
-    last_updated = db.Column(db.String)
-
-    def __init__(self,key_user,lapse_eesnimi,date_of_birth,gender,first_updated,last_updated):
-        self.key_user = key_user
-        self.lapse_eesnimi = lapse_eesnimi
-        self.date_of_birth = date_of_birth
-        self.gender = gender
-        self.first_updated = first_updated
-        self.last_updated = last_updated
-'''
 
 
 
