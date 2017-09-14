@@ -50,6 +50,7 @@ def execute_query(query, args=()):
     rows = cur.fetchall()
     cur.close()
     return rows
+
 '''
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
@@ -74,12 +75,12 @@ def hello_world():
       lng = request.form['lng']
       last_updated = datetime.utcnow()
 
-      new_data = Station(lat=lat, lng=lng, last_updated=last_updated)
+      new_data = Children(lat=lat, lng=lng, last_updated=last_updated)
       db.session.add(new_data)
       db.session.commit()
       return 'OK'
     if request.method == "GET":
-      data = Station.query.order_by(Station.id.asc()).first()
+      data = Children.query.order_by(Children.id.asc()).first()
       return str(data.lat) + str(data.lng) + str(data.id)
 '''
       key_user = request.form['messenger user id']
