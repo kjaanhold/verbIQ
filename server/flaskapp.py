@@ -64,8 +64,8 @@ def hello_world():
       data = Station.query.order_by(Station.id.asc()).first()
       return str(data.lat) + str(data.lng) + str(data.id)
 
-@app.route('/store_children', methods = ['GET','POST'])
-def store_children():
+@app.route('/store_test_results', methods = ['GET','POST'])
+def store_test_results():
     if request.method == "POST":
       key_user = request.form['messenger user id']
       block_name = request.form['last_visited_block_id']
@@ -92,7 +92,7 @@ def store_children():
       return jsonify(data)
 
 
-'''
+
 @app.route('/store_children', methods = ['GET','POST'])
 def store_children():
     if request.method == "POST":
@@ -119,7 +119,7 @@ def store_children():
 
       data = {'messages':[{"text": "id_test_result: " + " / " + str(n1) + " / "  + ", " + str(n2) + " / "  + ", " + str(n3) + " / " + ", " + str(n4)}]}
       return jsonify(data)
-'''
+
 
 '''
 @app.route('/store_children', methods = ['GET','POST'])
