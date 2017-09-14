@@ -42,7 +42,8 @@ class Station(BaseModel, db.Model):
 
 class Children(BaseModel, db.Model):
     """Model for the stations table"""
-    __tablename__ = 'children'
+#    __tablename__ = 'children'
+    __tablename__ = 'stations'
 
     id = db.Column(db.Integer, primary_key = True)
     lat = db.Column(db.Float)
