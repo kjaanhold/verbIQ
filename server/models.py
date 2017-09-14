@@ -109,7 +109,7 @@ class Children(BaseModel, db.Model):
     """Model for the children table"""
     __tablename__ = 'children'
 
-    id = db.Column(db.Integer, primary_key=True)
+    id_child = db.Column(db.Integer, primary_key=True)
     key_user = db.Column(db.String)
     lapse_eesnimi = db.Column(db.String)
     date_of_birth = db.Column(db.DateTime)
