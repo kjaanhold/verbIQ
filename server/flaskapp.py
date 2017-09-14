@@ -50,7 +50,7 @@ def execute_query(query, args=()):
     rows = cur.fetchall()
     cur.close()
     return rows
-
+'''
 @app.route('/', methods = ['GET','POST'])
 def hello_world():
     if request.method == "POST":
@@ -65,7 +65,7 @@ def hello_world():
     if request.method == "GET":
       data = Station.query.order_by(Station.id.asc()).first()
       return str(data.lat) + str(data.lng) + str(data.id)
-
+'''
 
 @app.route('/store_children', methods = ['GET','POST'])
 def hello_world():
