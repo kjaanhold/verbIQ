@@ -33,10 +33,11 @@ class Station(BaseModel, db.Model):
     id = db.Column(db.Integer, primary_key = True)
     lat = db.Column(db.Float)
     lng = db.Column(db.Float)
-
-    def __init__(self, lat, lng):
+    last_updated = db.Column(db.DateTime)
+    def __init__(self, lat, lng, last_updated):
     	self.lat = lat
     	self.lng = lng
+        self.last_updated = last_updated
 
 class TestResults(BaseModel, db.Model):
     """Model for the test_results table"""
@@ -126,8 +127,8 @@ class Children(BaseModel, db.Model):
     block_name = db.Column(db.String)
     lapse_eesnimi = db.Column(db.String)
     date_created = db.Column(db.DateTime)
-    result_type = db.Column(db.String)
-    result_value = db.Column(db.String)
+    result_type = db.Column(db.DateTime)
+    result_value = db.Column(db.DateTime)
 
     def __init__(self,key_user,block_name,lapse_eesnimi,date_created,result_type,result_value):
         self.key_user = key_user

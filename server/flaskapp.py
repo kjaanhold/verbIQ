@@ -56,13 +56,24 @@ def hello_world():
     if request.method == "POST":
       lat = request.form['lat']
       lng = request.form['lng']
-      new_data = Station(lat=lat, lng=lng)
+      last_updated = datetime.utcnow()
+
+      new_data = Station(lat=lat, lng=lng, last_updated=last_updated)
       db.session.add(new_data)
       db.session.commit()
       return 'OK'
     if request.method == "GET":
       data = Station.query.order_by(Station.id.asc()).first()
       return str(data.lat) + str(data.lng) + str(data.id)
+
+'''
+      key_user = request.form['messenger user id']
+      lapse_eesnimi = request.form['Lapse_eesnimi']
+      date_of_birth = request.form['Synni_kuupaev']
+      gender = request.form['Lapse_sugu']
+      first_updated = datetime.utcnow()
+      last_updated = datetime.utcnow()
+'''
 
 @app.route('/store_test_results', methods = ['GET','POST'])
 def store_test_results():
