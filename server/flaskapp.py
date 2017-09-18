@@ -425,8 +425,28 @@ def tests_summary():
               }
             ]
           }
-
-
+          
+      else:
+        data = {
+            "messages": [
+              {
+                "attachment": {
+                  "type": "template",
+                  "payload": {
+                    "template_type": "button",
+                    "text": u"aga ta ei oska hästi veel ise " + data_ei,
+                    "buttons": [
+                      {
+                        "type": "show_block",
+                        "block_name": "test recurring tests 2",
+                        "title": "Tagasi testima"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
