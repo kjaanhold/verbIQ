@@ -377,11 +377,9 @@ def tests_summary():
       data_ei = return_test_results(name, 'Ei')
       data_ei_tea = return_test_results(name, 'Ei tea')
 
-    return str(data_jah) + str(data_ei) + str(data_ei_tea)
 
-'''
       if (data_jah != 'no_results' and data_ei == 'no_results'):
-        out_text = u"Tänan! " + name + u" on omandanud kõik " + data_jah + u" peamist oskust, mida selles vanuses lapse arengu hindamisel jälgitakse."
+        out_text = u"Tänan! " + name + u" on omandanud kõik " + str(data_jah) + u" peamist oskust, mida selles vanuses lapse arengu hindamisel jälgitakse."
 
         button_1_block = "Default answer"
         button_1_title = u"Küsin veel"
@@ -461,7 +459,7 @@ def tests_summary():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-'''
+
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
 def direct_block_based_on_age(dob):
