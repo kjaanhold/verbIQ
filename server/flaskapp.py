@@ -344,6 +344,7 @@ def return_test_results(name, result_value):
 
 @app.route('/tests_summary', methods=['GET'])
 def tests_summary():
+
     name = request.args.get('Lapse_eesnimi')
     dob = request.args.get('Synni_kuupaev')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
@@ -381,7 +382,7 @@ def tests_summary():
       data_ei = str(return_test_results(name, 'Ei'))
       data_ei_tea = str(return_test_results(name, 'Ei tea'))
 
-      out_text = age_months + " / " + data_jah
+      out_text = str(name) + " " + age_months + " / " + data_jah
   
       data = {
           "messages": [
