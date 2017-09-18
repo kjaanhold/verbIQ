@@ -413,7 +413,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": "aga " + name + " ei oska eriti veel ise " + data_ei + ".",
+                    "text": "aga " + str(name) + " ei oska eriti veel ise " + data_ei + ".",
                     "buttons": [
                       {
                         "type": "show_block",
@@ -427,7 +427,27 @@ def tests_summary():
             ]
           }
 
-
+      elif (str(data_jah) == 'no_results' and str(data_ei) != 'no_results'):
+        data = {
+            "messages": [
+              {
+                "attachment": {
+                  "type": "template",
+                  "payload": {
+                    "template_type": "button",
+                    "text": str(name) + " on " + age_months + " kuu vanune ja ei oska veel " + data_ei + ".",
+                    "buttons": [
+                      {
+                        "type": "show_block",
+                        "block_name": "test recurring tests 2",
+                        "title": "Tagasi testima"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
 
       else:
         data = {
@@ -437,7 +457,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": u"aga ta ei oska hästi veel ise " + data_ei,
+                    "text": "viga",
                     "buttons": [
                       {
                         "type": "show_block",
