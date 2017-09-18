@@ -373,9 +373,9 @@ def tests_summary():
 
     else:
 
-      data_jah = return_test_results(name, 'Jah')
-      data_ei = return_test_results(name, 'Ei')
-      data_ei_tea = return_test_results(name, 'Ei tea')
+      data_jah = str(return_test_results(name, 'Jah'))
+      data_ei = str(return_test_results(name, 'Ei'))
+      data_ei_tea = str(return_test_results(name, 'Ei tea'))
 
 
       if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
