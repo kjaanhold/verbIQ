@@ -386,16 +386,7 @@ def tests_summary():
   
       data = {
           "messages": [
-            {
-              "attachment": {
-                "type": "template",
-                "payload": {
-                  "template_type": "button",
-                  "text": out_text
-                }
-              }
-            }
-
+            {"text": "id_test_result:"},
 
             {
               "attachment": {
