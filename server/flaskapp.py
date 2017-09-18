@@ -381,11 +381,8 @@ def tests_summary():
       data_ei = str(return_test_results(name, 'Ei'))
       data_ei_tea = str(return_test_results(name, 'Ei tea'))
 
-      out_text = data_jah
+      out_text = name + u" on " + age_months + u"-kuune ja oskab" + data_jah
 
-
-    return out_text
-'''    
       data = {
           "messages": [
             {
@@ -409,7 +406,7 @@ def tests_summary():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-'''
+
 
 '''
       if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
