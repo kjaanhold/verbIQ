@@ -382,30 +382,30 @@ def tests_summary():
       data_ei = str(return_test_results(name, 'Ei'))
       data_ei_tea = str(return_test_results(name, 'Ei tea'))
 
-      out_text = str(name) + " " + age_months + " / " + data_jah
-  
-      data = {
-          "messages": [
-            {"text": "id_test_result:"},
+      if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
 
-            {
-              "attachment": {
-                "type": "template",
-                "payload": {
-                  "template_type": "button",
-                  "text": out_text,
-                  "buttons": [
-                    {
-                      "type": "show_block",
-                      "block_name": "test recurring tests 2",
-                      "title": "Tagasi testima"
-                    }
-                  ]
+        out_text_yes = str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah
+  
+        data = {
+            "messages": [
+              {
+                "attachment": {
+                  "type": "template",
+                  "payload": {
+                    "template_type": "button",
+                    "text": out_text,
+                    "buttons": [
+                      {
+                        "type": "show_block",
+                        "block_name": "test recurring tests 2",
+                        "title": "Tagasi testima"
+                      }
+                    ]
+                  }
                 }
               }
-            }
-          ]
-        }
+            ]
+          }
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
