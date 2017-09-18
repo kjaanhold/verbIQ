@@ -345,6 +345,10 @@ def return_test_results(name, result_value):
 @app.route('/tests_summary', methods=['GET'])
 def tests_summary():
     name = request.args.get('Lapse_eesnimi')
+    dob = request.args.get('Synni_kuupaev')
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    age_months = str(int(age.days)/30)
 
     if TestResults.query.filter_by(lapse_eesnimi = name.lower()).first() is None:
       out_text = u"Ühtegi testi pole veel tehtud"
@@ -377,7 +381,7 @@ def tests_summary():
       data_ei = str(return_test_results(name, 'Ei'))
       data_ei_tea = str(return_test_results(name, 'Ei tea'))
 
-      out_text = u"Ühtegi testi pole veel tehtud"
+      out_text = name + u" on " + age_months + "-kuune ja oskab" + data_jah
 
       data = {
           "messages": [
