@@ -381,7 +381,7 @@ def tests_summary():
       data_ei = str(return_test_results(name, 'Ei'))
       data_ei_tea = str(return_test_results(name, 'Ei tea'))
 
-      out_text = name + u" on " + age_months + "-kuune ja oskab" + data_jah
+      out_text = name + u" on " + age_months + u"-kuune ja oskab" + data_jah
 
       data = {
           "messages": [
@@ -404,7 +404,7 @@ def tests_summary():
           ]
         }
 
-    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
+    response = jsonify(data)
     return response
 
 
