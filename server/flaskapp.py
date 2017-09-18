@@ -381,7 +381,7 @@ def tests_summary():
       data_ei = str(return_test_results(name, 'Ei'))
       data_ei_tea = str(return_test_results(name, 'Ei tea'))
 
-      out_text = str(name) + u" on " + str(age_months) + u"-kuune ja oskab" + data_jah
+      out_text = data_jah
 
 
     return out_text
