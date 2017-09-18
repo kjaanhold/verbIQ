@@ -346,6 +346,7 @@ def return_test_results():
       out_text = str(rows[0])
       out_text = out_text.replace('(','')
       out_text = out_text.replace(',)','')
+      out_text = out_text.encode("utf-8")
     return str(out_text)
 
 
