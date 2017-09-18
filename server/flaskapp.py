@@ -383,6 +383,9 @@ def tests_summary():
       data_ei_tea = str(return_test_results(name, 'Ei tea'))
 
       if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
+
+        out_text = str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah
+  
         data = {
             "messages": [
               {
@@ -390,7 +393,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": str(name) + u" on " + str(age_months) + u" kuu vanune ja ta oskab " + str(data_jah),
+                    "text": out_text,
                     "buttons": [
                       {
                         "type": "show_block",
@@ -407,75 +410,6 @@ def tests_summary():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-
-'''
-      elif (str(data_jah) != 'no_results' and str(data_ei) != 'no_results'):
-        data = {
-            "messages": [
-              {"text": str(name) + u" on " + str(age_months) + u" kuu vanune ja ta oskab " + str(data_jah)},
-              {
-                "attachment": {
-                  "type": "template",
-                  "payload": {
-                    "template_type": "button",
-                    "text": u"aga ta ei oska hästi veel ise " + str(data_ei),
-                    "buttons": [
-                      {
-                        "type": "show_block",
-                        "block_name": "test recurring tests 2",
-                        "title": "Tagasi testima"
-                      }
-                    ]
-                  }
-                }
-              }
-            ]
-          }
-
-      elif (str(data_jah) == 'no_results' and str(data_ei) != 'no_results'):
-        data = {
-            "messages": [
-              {
-                "attachment": {
-                  "type": "template",
-                  "payload": {
-                    "template_type": "button",
-                    "text": str(name) + u" on " + str(age_months) + u" kuu vanune ja ta ei oska hästi veel " + str(data_jah)
-                    "buttons": [
-                      {
-                        "type": "show_block",
-                        "block_name": "test recurring tests 2",
-                        "title": "Tagasi testima"
-                      }
-                    ]
-                  }
-                }
-              }
-            ]
-          }
-
-      else:
-        data = {
-            "messages": [
-              {
-                "attachment": {
-                  "type": "template",
-                  "payload": {
-                    "template_type": "button",
-                    "text": u"viga!"
-                    "buttons": [
-                      {
-                        "type": "show_block",
-                        "block_name": "test recurring tests 2",
-                        "title": "Tagasi testima"
-                      }
-                    ]
-                  }
-                }
-              }
-            ]
-          }
-'''
 
 
 '''
