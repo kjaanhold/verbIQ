@@ -407,12 +407,13 @@ def tests_summary():
       elif (str(data_jah) != 'no_results' and str(data_ei) != 'no_results'):
         data = {
             "messages": [
+              {"text": str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah},
               {
                 "attachment": {
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": "aga ta ei oska hasti veel ise " + data_ei,
+                    "text": "aga ta ei oska eriti veel ise " + data_ei,
                     "buttons": [
                       {
                         "type": "show_block",
