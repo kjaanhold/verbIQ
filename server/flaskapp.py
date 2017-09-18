@@ -384,7 +384,7 @@ def tests_summary():
 
       if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
 
-        out_text_yes = str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah
+        out_text = str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah
   
         data = {
             "messages": [
