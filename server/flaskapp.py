@@ -344,7 +344,8 @@ def return_test_results():
       rows = execute_query(query)
 #      out_text = rows[0][0]
       out_text = str(rows[0])
-
+      out_text = out_text.replace('(','')
+      out_text = out_text.replace(',)','')
     return str(out_text)
 
 
