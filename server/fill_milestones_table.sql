@@ -11,8 +11,8 @@ insert into milestones (target_age,type,description) values (3,"NA","kõhuliolek
 insert into milestones (target_age,type,description) values (3,"NA","painutada keha mõlemale küljele");
 insert into milestones (target_age,type,description) values (3,"NA","vastata kõnele häälitsusega");
 insert into milestones (target_age,type,description) values (5,"NA","haarata mänguasja");
-insert into milestones (target_age,type,description) values (5,"NA","tbd");
-insert into milestones (target_age,type,description) values (5,"NA","tbd");
+insert into milestones (target_age,type,description) values (500,"NA","tbd");
+insert into milestones (target_age,type,description) values (500,"NA","tbd");
 insert into milestones (target_age,type,description) values (5,"NA","keerata seljalt küljele");
 insert into milestones (target_age,type,description) values (5,"NA","proovida aru saada, kust tuleb heli");
 insert into milestones (target_age,type,description) values (6,"NA","keerata seljalt kõhule ja tagasi");
