@@ -391,6 +391,17 @@ def tests_summary():
                 "type": "template",
                 "payload": {
                   "template_type": "button",
+                  "text": out_text
+                }
+              }
+            }
+
+
+            {
+              "attachment": {
+                "type": "template",
+                "payload": {
+                  "template_type": "button",
                   "text": out_text,
                   "buttons": [
                     {
