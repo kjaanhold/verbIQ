@@ -315,11 +315,11 @@ def age_check():
     return response
 
 
-@app.route('/return_test_results', methods=['GET'])
-def return_test_results():
-#def return_test_results(name, result_value):
-    name = request.args.get('Lapse_eesnimi')
-    result_value = request.args.get('result_value')
+#@app.route('/return_test_results', methods=['GET'])
+#def return_test_results():
+def return_test_results(name, result_value):
+#    name = request.args.get('Lapse_eesnimi')
+#    result_value = request.args.get('result_value')
 
     if TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first() is None:
       out_text = "no_results"
@@ -335,10 +335,6 @@ def return_test_results():
       block_name = block_name.replace('"','')
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
-
-#      query = "SELECT m.description FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
-#      rows = execute_query(query)
-#      out_text = rows[0][0].encode("utf-8")
 
       query = "SELECT group_concat(m.description, ', '), 'a' FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s) LIMIT 1;" % (block_name)    
       rows = execute_query(query)
@@ -381,6 +377,9 @@ def tests_summary():
       data_ei = return_test_results(name, 'Ei')
       data_ei_tea = return_test_results(name, 'Ei tea')
 
+    return str(data_jah) + str(data_ei) + str(data_ei_tea)
+
+'''
       if (data_jah != 'no_results' and data_ei == 'no_results'):
         out_text = u"Tänan! " + name + u" on omandanud kõik " + data_jah + u" peamist oskust, mida selles vanuses lapse arengu hindamisel jälgitakse."
 
@@ -462,7 +461,7 @@ def tests_summary():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-
+'''
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
 def direct_block_based_on_age(dob):
