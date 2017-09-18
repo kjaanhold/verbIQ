@@ -390,7 +390,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah,
+                    "text": str(name) + u" on " + str(age_months) + u" kuu vanune ja ta oskab " + str(data_jah),
                     "buttons": [
                       {
                         "type": "show_block",
@@ -407,13 +407,13 @@ def tests_summary():
       elif (str(data_jah) != 'no_results' and str(data_ei) != 'no_results'):
         data = {
             "messages": [
-              {"text": str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah},
+              {"text": str(name) + u" on " + str(age_months) + u" kuu vanune ja ta oskab " + str(data_jah)},
               {
                 "attachment": {
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": "aga ta ei oska hästi veel ise " + data_ei,
+                    "text": u"aga ta ei oska hästi veel ise " + str(data_ei),
                     "buttons": [
                       {
                         "type": "show_block",
@@ -435,7 +435,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": str(name) + " on " + age_months + " kuu vanune ja ta ei oska hästi veel " + data_jah
+                    "text": str(name) + u" on " + str(age_months) + u" kuu vanune ja ta ei oska hästi veel " + str(data_jah)
                     "buttons": [
                       {
                         "type": "show_block",
@@ -457,7 +457,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": "viga!"
+                    "text": u"viga!"
                     "buttons": [
                       {
                         "type": "show_block",
