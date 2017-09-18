@@ -315,11 +315,11 @@ def age_check():
     return response
 
 
-@app.route('/return_test_results', methods=['GET'])
-def return_test_results():
-#def return_test_results(name, result_value):
-    name = request.args.get('Lapse_eesnimi')
-    result_value = request.args.get('result_value')
+#@app.route('/return_test_results', methods=['GET'])
+#def return_test_results():
+def return_test_results(name, result_value):
+#    name = request.args.get('Lapse_eesnimi')
+#    result_value = request.args.get('result_value')
 
     if TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first() is None:
       out_text = "no_results"
@@ -336,10 +336,6 @@ def return_test_results():
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
 
-#      query = "SELECT m.description FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s);" % (block_name)    
-#      rows = execute_query(query)
-#      out_text = rows[0][0].encode("utf-8")
-
       query = "SELECT group_concat(m.description, ', '), 'a' FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s) LIMIT 1;" % (block_name)    
       rows = execute_query(query)
       out_text = str(rows[0][0].encode("utf-8"))
@@ -349,6 +345,10 @@ def return_test_results():
 @app.route('/tests_summary', methods=['GET'])
 def tests_summary():
     name = request.args.get('Lapse_eesnimi')
+    dob = request.args.get('Synni_kuupaev')
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    age_months = str(int(age.days)/30)
 
     if TestResults.query.filter_by(lapse_eesnimi = name.lower()).first() is None:
       out_text = u"Ühtegi testi pole veel tehtud"
@@ -382,7 +382,7 @@ def tests_summary():
       data_ei_tea = return_test_results(name, 'Ei tea')
 
       if (data_jah != 'no_results' and data_ei == 'no_results'):
-        out_text = u"Tänan! " + name + u" on omandanud kõik " + data_jah + u" peamist oskust, mida selles vanuses lapse arengu hindamisel jälgitakse."
+        out_text = u"Tänan! " + age_months + "-kuune " + name + u" oskab " + data_jah + "."
 
         button_1_block = "Default answer"
         button_1_title = u"Küsin veel"
