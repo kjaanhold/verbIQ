@@ -412,7 +412,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": u"aga ta ei oska hästi veel ise " + data_ei,
+                    "text": data_ei,
                     "buttons": [
                       {
                         "type": "show_block",
