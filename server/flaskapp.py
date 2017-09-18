@@ -345,10 +345,6 @@ def return_test_results(name, result_value):
 @app.route('/tests_summary', methods=['GET'])
 def tests_summary():
     name = request.args.get('Lapse_eesnimi')
-    dob = request.args.get('Synni_kuupaev')
-    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-    age = date.today() - date_object
-    age_months = str(int(age.days)/30)
 
     if TestResults.query.filter_by(lapse_eesnimi = name.lower()).first() is None:
       out_text = u"Ühtegi testi pole veel tehtud"
@@ -382,7 +378,7 @@ def tests_summary():
       data_ei_tea = return_test_results(name, 'Ei tea')
 
       if (data_jah != 'no_results' and data_ei == 'no_results'):
-        out_text = u"Tänan! " + age_months + "-kuune " + name + u" oskab " + data_jah + "."
+        out_text = u"Tänan! " + name + u" on omandanud kõik " + data_jah + u" peamist oskust, mida selles vanuses lapse arengu hindamisel jälgitakse."
 
         button_1_block = "Default answer"
         button_1_title = u"Küsin veel"
