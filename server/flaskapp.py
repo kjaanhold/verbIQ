@@ -381,7 +381,7 @@ def tests_summary():
       data_ei = str(return_test_results(name, 'Ei'))
       data_ei_tea = str(return_test_results(name, 'Ei tea'))
 
-      out_text = data_jah + " "+ name
+      out_text = data_jah + " "
 
 
     return out_text
