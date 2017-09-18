@@ -383,9 +383,6 @@ def tests_summary():
       data_ei_tea = str(return_test_results(name, 'Ei tea'))
 
       if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
-
-        out_text = str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah
-  
         data = {
             "messages": [
               {
@@ -393,7 +390,31 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": out_text,
+                    "text": str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah,
+                    "buttons": [
+                      {
+                        "type": "show_block",
+                        "block_name": "test recurring tests 2",
+                        "title": "Tagasi testima"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+
+      elif (str(data_jah) != 'no_results' and str(data_ei) != 'no_results'):
+
+
+        data = {
+            "messages": [
+              {
+                "attachment": {
+                  "type": "template",
+                  "payload": {
+                    "template_type": "button",
+                    "text": str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah,
                     "buttons": [
                       {
                         "type": "show_block",
