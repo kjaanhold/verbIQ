@@ -379,7 +379,8 @@ def tests_summary():
 
 
       if (data_jah != 'no_results' and data_ei == 'no_results'):
-        out_text = u"Tänan! " + name + u" on omandanud kõik " + str(data_jah) + u" peamist oskust, mida selles vanuses lapse arengu hindamisel jälgitakse."
+#        out_text = u"Tänan! " + name + u" on omandanud kõik " + str(data_jah) + u" peamist oskust, mida selles vanuses lapse arengu hindamisel jälgitakse."
+        out_text = str(data_jah)
 
         button_1_block = "Default answer"
         button_1_title = u"Küsin veel"
