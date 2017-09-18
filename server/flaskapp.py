@@ -403,6 +403,11 @@ def tests_summary():
               }
             ]
           }
+
+
+    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
+    return response
+
 '''
       elif (str(data_jah) != 'no_results' and str(data_ei) != 'no_results'):
         data = {
@@ -471,9 +476,6 @@ def tests_summary():
             ]
           }
 '''
-
-    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
-    return response
 
 
 '''
