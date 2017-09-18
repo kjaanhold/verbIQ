@@ -321,7 +321,7 @@ def return_test_results():
     name = request.args.get('Lapse_eesnimi')
     result_value = request.args.get('result_value')
 
-    if TestResults.query.filter_by(lapse_eesnimi = name.lower()).first() is None:
+    if TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first() is None:
       out_text = "no_results"
 
     else:
@@ -342,7 +342,6 @@ def return_test_results():
 
       query = "SELECT group_concat(m.description, ', '), 'a' FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s) LIMIT 1;" % (block_name)    
       rows = execute_query(query)
-#      out_text = rows[0][0]
       out_text = str(rows[0][0].encode("utf-8"))
     return str(out_text)
 
