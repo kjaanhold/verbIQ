@@ -391,7 +391,7 @@ def tests_summary():
         button_3_title = u"Sisestan ise"
 
       elif (data_jah != 'no_results' and data_ei != 'no_results'):
-        out_text = u"Tänan! " + name + u" on juba omadanud " + data_jah + u" lapse arengus jälgitavat oskust. " + name + u" õpib praegu veel: "+ data_ei + u" oskust."
+        out_text = u"Tänan! " + name + u" on juba omadanud " + str(data_jah) + u" lapse arengus jälgitavat oskust. " + name + u" õpib praegu veel: "+ str(data_ei) + u" oskust."
 
         button_1_block = "Default answer"
         button_1_title = u"Selge, aitäh!"
@@ -403,7 +403,7 @@ def tests_summary():
         button_3_title = u"Soovin meeldetuletusi."
 
       elif (data_jah == 'no_results' and data_ei != 'no_results'):
-        out_text = u"Tänan! " + name + u" praegu veel õpib " + data_ei + u" peamist eakohast oskust."
+        out_text = u"Tänan! " + name + u" praegu veel õpib " + str(data_ei) + u" peamist eakohast oskust."
 
         button_1_block = "Default answer"
         button_1_title = u"Perearstile"
