@@ -104,22 +104,25 @@ def store_children():
       gender = request.form['Lapse_sugu']
       first_updated = datetime.utcnow()
       last_updated = datetime.utcnow()
-
       new_data = Children(key_user=str(key_user), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), date_of_birth=str(date_of_birth), gender=str(gender), first_updated=str(first_updated), last_updated=str(last_updated))
-
       db.session.add(new_data)
       db.session.commit()
-
       data = {"redirect_to_blocks": ["test recurring tests 2"]}
       return jsonify(data)
 
     if request.method == "GET":
-      child = Children.query.filter_by(lapse_eesnimi = "peeter").first()
-      child.last_updated = datetime.utcnow()
-      db.session.commit()
       data = {'messages':[{"text": "error: "}]}
       return jsonify(data)
 
+
+@app.route('/update_children', methods = ['GET'])
+def update_children(key_user):
+
+    child = Children.query.filter_by(key_user = key_user).first()
+    child.last_updated = datetime.utcnow()
+    db.session.commit()
+    data = {'messages':[{"text": "updated: "}]}
+    return jsonify(data)
 
 
 def to_json(inst, cls):
