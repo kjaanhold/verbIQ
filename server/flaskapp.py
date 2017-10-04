@@ -116,9 +116,9 @@ def store_children():
 
 
 @app.route('/update_children', methods = ['GET'])
-def update_children(key_user):
+def update_children():
 
-    child = Children.query.filter_by(key_user = key_user).first()
+    child = Children.query.filter_by(key_user = "peeter").first()
     child.last_updated = datetime.utcnow()
     db.session.commit()
     data = {'messages':[{"text": "updated: "}]}
