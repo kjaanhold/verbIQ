@@ -114,6 +114,9 @@ def store_children():
       return jsonify(data)
 
     if request.method == "GET":
+      child = Children.query.filter_by(lapse_eesnimi = "peeter").first()
+      child.last_updated = datetime.utcnow()
+      db.session.commit()
       data = {'messages':[{"text": "error: "}]}
       return jsonify(data)
 
