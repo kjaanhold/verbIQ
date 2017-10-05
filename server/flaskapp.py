@@ -105,7 +105,7 @@ def store_children():
       first_updated = datetime.utcnow()
       last_updated = datetime.utcnow()
 
-      if TestResults.query.filter_by(key_user == str(key_user)).count() > 0:
+      if TestResults.query.filter_by(key_user = key_user, lapse_eesnimi = lapse_eesnimi).count() > 0:
         new_data = Children(key_user=str(key_user), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), date_of_birth=str(date_of_birth), gender=str(gender), first_updated=str(first_updated), last_updated=str(last_updated))
         db.session.add(new_data)
         db.session.commit()
@@ -113,7 +113,7 @@ def store_children():
         return jsonify(data)
 
       else:
-        child = Children.query.filter_by(key_user = key_user).first()
+        child = Children.query.filter_by(key_user = key_user, lapse_eesnimi = lapse_eesnimi).first()
         child.last_updated = datetime.utcnow()
         db.session.commit()
         data = {"redirect_to_blocks": ["updated"]}
