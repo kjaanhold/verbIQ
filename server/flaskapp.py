@@ -110,14 +110,14 @@ def store_children():
         db.session.add(new_data)
         db.session.commit()
         data = {"redirect_to_blocks": ["inserted"]}
+        return jsonify(data)
 
       else:
         child = Children.query.filter_by(key_user = key_user).first()
         child.last_updated = datetime.utcnow()
         db.session.commit()
         data = {"redirect_to_blocks": ["updated"]}
-
-      return jsonify(data)
+        return jsonify(data)
 
     if request.method == "GET":
       data = {'messages':[{"text": "error: "}]}
