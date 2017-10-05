@@ -95,13 +95,26 @@ def store_test_results():
 
 
 
+    if Children.query.filter_by(key_user = key_user).first() is None:
+      data = {"redirect_to_blocks": ["no children yet"]}
+      return jsonify(data)
+
+    else: 
+      child = Children.query.filter_by(key_user = key_user).first()
+      child.last_updated = datetime.utcnow()
+      db.session.commit()
+      data = {'messages':[{"text": "su lapsed on: ...: "}]}
+      return jsonify(data)
+
+
+
 @app.route('/store_children', methods = ['GET','POST'])
 def store_children():
     if request.method == "POST":
       key_user = request.form['messenger user id']
       lapse_eesnimi = request.form['Lapse_eesnimi']
       date_of_birth = request.form['Synni_kuupaev']
-      gender = request.form['Lapse_sugu']
+      gender = requemst.form['Lapse_sugu']
       first_updated = datetime.utcnow()
       last_updated = datetime.utcnow()
 
@@ -116,28 +129,15 @@ def store_children():
         child = Children.query.filter_by(key_user = key_user).first()
         child.last_updated = datetime.utcnow()
         db.session.commit()
-        data = {'messages':[{"text": "lapsed on: ...: "}]}
+        data = {'messages':[{"text": "su lapsed on: ...: "}]}
         return jsonify(data)
-        
+
 
     if request.method == "GET":
       data = {'messages':[{"text": "error: "}]}
       return jsonify(data)
 
 
-@app.route('/return_children', methods = ['GET'])
-def return_children(key_user):
-
-    if Children.query.filter_by(key_user = key_user).first() is None:
-      data = {"redirect_to_blocks": ["yhtegi last pole veel sisestatud"]}
-      return jsonify(data)
-
-    else:
-      child = Children.query.filter_by(key_user = key_user).first()
-      child.last_updated = datetime.utcnow()
-      db.session.commit()
-      data = {'messages':[{"text": "lapsed on: ...: "}]}
-      return jsonify(data)
 
 
 def to_json(inst, cls):
