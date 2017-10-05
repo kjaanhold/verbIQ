@@ -105,7 +105,7 @@ def store_children():
       first_updated = datetime.utcnow()
       last_updated = datetime.utcnow()
 
-      if TestResults.query.filter_by(key_user = str(key_user)).first() None:
+      if TestResults.query.filter_by(key_user = str(key_user)).first() is None:
         new_data = Children(key_user=str(key_user), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), date_of_birth=str(date_of_birth), gender=str(gender), first_updated=str(first_updated), last_updated=str(last_updated))
         db.session.add(new_data)
         db.session.commit()
