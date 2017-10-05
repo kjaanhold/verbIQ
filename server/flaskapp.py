@@ -113,11 +113,11 @@ def store_children():
         return jsonify(data)
 
       else: 
-      child = Children.query.filter_by(key_user = key_user).first()
-      child.last_updated = datetime.utcnow()
-      db.session.commit()
-      data = {'messages':[{"text": "lapsed on: ...: "}]}
-      return jsonify(data)
+        child = Children.query.filter_by(key_user = key_user).first()
+        child.last_updated = datetime.utcnow()
+        db.session.commit()
+        data = {'messages':[{"text": "lapsed on: ...: "}]}
+        return jsonify(data)
         
 
     if request.method == "GET":
