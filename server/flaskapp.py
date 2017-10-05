@@ -97,14 +97,15 @@ def store_test_results():
 
 def has_children():
     key_user = request.form['messenger user id']
+    
     if Children.query.filter_by(key_user = key_user).first() is None:
       data = {"redirect_to_blocks": ["no children yet"]}
       return jsonify(data)
 
     else: 
-      child = Children.query.filter_by(key_user = key_user).first()
-      child.last_updated = datetime.utcnow()
-      db.session.commit()
+#      child = Children.query.filter_by(key_user = key_user).first()
+#      child.last_updated = datetime.utcnow()
+#      db.session.commit()
       data = {'messages':[{"text": "su lapsed on: ...: "}]}
       return jsonify(data)
 
