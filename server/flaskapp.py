@@ -116,8 +116,8 @@ def store_children():
         child = Children.query.filter_by(key_user = key_user, lapse_eesnimi = lapse_eesnimi).first()
         child.last_updated = datetime.utcnow()
         db.session.commit()
-        a = TestResults.query.filter_by(key_user = key_user, lapse_eesnimi = lapse_eesnimi).count()
-        data = {"redirect_to_blocks": ["updated: " + a]}
+#        a = TestResults.query.filter_by(key_user = key_user, lapse_eesnimi = lapse_eesnimi).count()
+        data = {"redirect_to_blocks": ["updated: "]}
         return jsonify(data)
 
     if request.method == "GET":
