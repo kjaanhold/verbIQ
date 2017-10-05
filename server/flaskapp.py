@@ -112,7 +112,7 @@ def store_children():
         data = {"redirect_to_blocks": ["inserted"]}
 
       else:
-        child = Children.query.filter_by(key_user = "muu").first()
+        child = Children.query.filter_by(key_user = key_user).first()
         child.last_updated = datetime.utcnow()
         db.session.commit()
         data = {"redirect_to_blocks": ["updated"]}
