@@ -94,7 +94,7 @@ def store_test_results():
       return jsonify(data)
 
 
-
+@app.route('/has_children', methods = ['GET'])
 def has_children():
     key_user = request.form['messenger user id']
     
