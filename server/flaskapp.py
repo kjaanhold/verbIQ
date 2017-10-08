@@ -102,13 +102,14 @@ def has_children():
       data = {"redirect_to_blocks": ["create_child"]}
       return jsonify(data)
 
-#    elif Children.query.filter_by(key_user = key_user).count() == 1:
-#      data = {"redirect_to_blocks": ["returning_parents"]}
-#      return jsonify(data)
-
     else: 
       data = {
-        "messages":[{"text": u"Üle kolme lapse ei saa!"}],
+        "messages":
+        [
+          {
+            "text": u"Üle kolme lapse ei saa!"
+          }
+        ],
         "redirect_to_blocks": ["returning_parents"]
         }
       return jsonify(data)
@@ -377,7 +378,7 @@ def tests_summary():
     age_months = str(int(age.days)/30)
 
     if TestResults.query.filter_by(lapse_eesnimi = name.lower()).first() is None:
-      out_text = u"Ühtegi testi pole veel tehtud"
+      out_text = name + u" pole veel ühtegi testi teinud."
 
       data = {
           "messages": [
