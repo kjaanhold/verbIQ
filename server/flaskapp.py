@@ -125,7 +125,7 @@ def store_children():
         new_data = Children(key_user=str(key_user), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), date_of_birth=str(date_of_birth), gender=str(gender), first_updated=str(first_updated), last_updated=str(last_updated))
         db.session.add(new_data)
         db.session.commit()
-        data = {'messages':[{"text": "..."}]}
+        data = {"redirect_to_blocks": ["returning_parents"]}
         return jsonify(data)
 
       else: 
@@ -137,7 +137,7 @@ def store_children():
 
 
     if request.method == "GET":
-      data = {'messages':[{"text": "error: "}]}
+      data = {'messages':[{"text": "error!"}]}
       return jsonify(data)
 
 
@@ -321,7 +321,7 @@ def age_check():
               "buttons": [
                 {
                   "type": "show_block",
-                  "block_name": "test recurring tests 2",
+                  "block_name": "insert_child",
                   "title": u"Õige, edasi!"
                 },
                 {
