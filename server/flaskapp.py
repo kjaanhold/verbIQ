@@ -103,7 +103,7 @@ def has_children():
       return jsonify(data)
 
     else: 
-      data = {"redirect_to_blocks": ["test recurring tests 2"]}
+      data = {"redirect_to_blocks": ["returning_parents"]}
       return jsonify(data)
 
 
