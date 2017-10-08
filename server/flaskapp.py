@@ -93,29 +93,27 @@ def store_test_results():
       data = {'messages':[{"text": "id_test_result: " + " / " + str(n1) + " / "  + ", " + str(n2) + " / "  + ", " + str(n3) + " / " + ", " + str(n4)}]}
       return jsonify(data)
 
-'''
+
 @app.route('/has_children', methods = ['GET'])
 def has_children():
-    key_user = request.form['user_id']
+#    key_user = request.form['user_id']
     
+#    if Children.query.filter_by(key_user = key_user).first() is None:
     if Children.query.filter_by(key_user = key_user).first() is None:
       data = {"redirect_to_blocks": ["no children yet"]}
       return jsonify(data)
 
     else: 
-#      child = Children.query.filter_by(key_user = key_user).first()
-#      child.last_updated = datetime.utcnow()
-#      db.session.commit()
       data = {'messages':[{"text": "su lapsed on: ...: "}]}
       return jsonify(data)
-'''
 
+'''
 @app.route('/has_children', methods=['GET'])
 def has_children():
 #  key_user = request.args.get('user_id')
   test = Children.query.filter_by(key_user = '1').first()   
   return(str(test[0]))
-
+'''
 
 @app.route('/store_children', methods = ['GET','POST'])
 def store_children():
