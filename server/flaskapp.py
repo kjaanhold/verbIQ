@@ -96,8 +96,7 @@ def store_test_results():
 
 @app.route('/has_children', methods = ['GET'])
 def has_children():
-#    key_user = request.form['user_id']
-    
+    key_user = request.args.get('user_id')    
 #    if Children.query.filter_by(key_user = key_user).first() is None:
     if Children.query.first() is None:
       data = {"redirect_to_blocks": ["no children yet"]}
