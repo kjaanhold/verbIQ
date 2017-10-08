@@ -117,7 +117,7 @@ def store_children():
       key_user = request.form['messenger user id']
       lapse_eesnimi = request.form['Lapse_eesnimi']
       date_of_birth = request.form['Synni_kuupaev']
-      gender = requemst.form['Lapse_sugu']
+      gender = request.form['Lapse_sugu']
       first_updated = datetime.utcnow()
       last_updated = datetime.utcnow()
       return jsonify(str(gender))
