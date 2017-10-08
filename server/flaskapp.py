@@ -112,7 +112,7 @@ def has_children():
         "messages":
         [
           {
-            "text": u"Oled lisanud juba kolm last. Mida soovid edasi teha?"
+            "text": u"Oled lisanud juba kolm last."
           }
         ],
         "redirect_to_blocks": ["returning_parents"]
