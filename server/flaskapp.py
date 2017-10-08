@@ -97,22 +97,14 @@ def store_test_results():
 @app.route('/has_children', methods = ['GET'])
 def has_children():
     key_user = request.args.get('messenger user id')    
-#    if Children.query.filter_by(key_user = key_user).first() is None:
     if Children.query.filter_by(key_user = key_user).first() is None:
-      data = {"redirect_to_blocks": ["no children yet"]}
+      data = {"redirect_to_blocks": ["create_child"]}
       return jsonify(data)
 
     else: 
-      data = {'messages':[{"text": "su lapsed on: ...: "}]}
+      data = {"redirect_to_blocks": ["returning_parents"]}
       return jsonify(data)
 
-'''
-@app.route('/has_children', methods=['GET'])
-def has_children():
-#  key_user = request.args.get('user_id')
-  test = Children.query.filter_by(key_user = '1').first()   
-  return(str(test[0]))
-'''
 
 @app.route('/store_children', methods = ['GET','POST'])
 def store_children():
