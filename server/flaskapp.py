@@ -112,7 +112,8 @@ def has_children():
 
 @app.route('/has_children', methods=['GET'])
 def has_children():
-  test = Children.query.first()   
+  key_user = request.args.get('messenger user id')
+  test = Children.query.filter_by(key_user = key_user).first()   
   return(str(test))
 
 
