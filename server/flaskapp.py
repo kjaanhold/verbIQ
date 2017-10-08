@@ -111,34 +111,33 @@ def has_children():
       return jsonify(data)
 
 
-@app.route('/store_children', methods = ['GET','POST'])
-def store_children():
+@app.route('/store_test_results', methods = ['GET','POST'])
+def store_test_results():
     if request.method == "POST":
       key_user = request.form['messenger user id']
+      block_name = request.form['last_visited_block_id']
       lapse_eesnimi = request.form['Lapse_eesnimi']
-      date_of_birth = request.form['Synni_kuupaev']
-      gender = requemst.form['Lapse_sugu']
-      first_updated = datetime.utcnow()
-      last_updated = datetime.utcnow()
+      date_created = datetime.utcnow()
+      result_type = 'chatfuel'
+      result_value = request.form['test_result']
 
-      if Children.query.filter_by(key_user = key_user).first() is None:
-        new_data = Children(key_user=str(key_user), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), date_of_birth=str(date_of_birth), gender=str(gender), first_updated=str(first_updated), last_updated=str(last_updated))
-        db.session.add(new_data)
-        db.session.commit()
-        data = {"redirect_to_blocks": ["test recurring tests 2"]}
-        return jsonify(data)
+      new_data = TestResults(key_user=str(key_user), block_name=str("'"+block_name+"'"), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), date_created=str(date_created), result_type=str(result_type), result_value=str(result_value))
+      db.session.add(new_data)
+      db.session.commit()
 
-      else: 
-        child = Children.query.filter_by(key_user = key_user).first()
-        child.last_updated = datetime.utcnow()
-        db.session.commit()
-        data = {'messages':[{"text": "su lapsed on: ...: "}]}
-        return jsonify(data)
-
+      data = {"redirect_to_blocks": ["test recurring tests 2"]}
+      return jsonify(data)
 
     if request.method == "GET":
-      data = {'messages':[{"text": "error: "}]}
+#      out = TestResults.query.order_by(TestResults.date_created.desc()).first()
+      n1 = request.args.get('messenger user id')
+      n2 = request.args.get('last_visited_block_id')
+      n3 = request.args.get('Lapse_eesnimi')
+      n4 = request.args.get('test_result')
+
+      data = {'messages':[{"text": "id_test_result: " + " / " + str(n1) + " / "  + ", " + str(n2) + " / "  + ", " + str(n3) + " / " + ", " + str(n4)}]}
       return jsonify(data)
+
 
 
 
