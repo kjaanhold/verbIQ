@@ -93,7 +93,7 @@ def store_test_results():
       data = {'messages':[{"text": "id_test_result: " + " / " + str(n1) + " / "  + ", " + str(n2) + " / "  + ", " + str(n3) + " / " + ", " + str(n4)}]}
       return jsonify(data)
 
-
+'''
 @app.route('/has_children', methods = ['GET'])
 def has_children():
     key_user = request.form['user_id']
@@ -108,7 +108,14 @@ def has_children():
 #      db.session.commit()
       data = {'messages':[{"text": "su lapsed on: ...: "}]}
       return jsonify(data)
+'''
 
+@app.route('/has_children', methods=['GET'])
+def has_children():
+  test = db.session.query(Test, MilestoneTests).one()
+  result_dict = [u.__dict__ for u in test]
+  block_name = [d.get('block_name') for d in result_dict]    
+  return(str(block_name[0]))
 
 
 @app.route('/store_children', methods = ['GET','POST'])
