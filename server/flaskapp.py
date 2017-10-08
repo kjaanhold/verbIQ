@@ -112,7 +112,7 @@ def has_children():
         "messages":
         [
           {
-            "text": u"Üle kolme lapse ei saa!"
+            "text": u"Oled lisanud juba kolm last. Mida soovid edasi teha?"
           }
         ],
         "redirect_to_blocks": ["returning_parents"]
