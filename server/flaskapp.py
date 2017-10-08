@@ -80,6 +80,11 @@ def store_test_results():
       db.session.add(new_data)
       db.session.commit()
 
+
+      child = Children.query.filter_by(key_user = key_user, lapse_eesnimi = lapse_eesnimi).first()
+      child.last_updated = datetime.utcnow()
+      db.session.commit()
+
       data = {"redirect_to_blocks": ["test recurring tests 2"]}
       return jsonify(data)
 
@@ -114,6 +119,7 @@ def has_children():
         }
       return jsonify(data)
 
+## work in progress
 @app.route('/child_selection', methods = ['GET'])
 def child_selection():
     key_user = request.args.get('messenger user id')
