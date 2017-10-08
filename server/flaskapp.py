@@ -114,6 +114,33 @@ def has_children():
         }
       return jsonify(data)
 
+@app.route('/child_selection', methods = ['GET'])
+def child_selection():
+    key_user = request.args.get('messenger user id')
+
+    if Children.query.filter_by(key_user = key_user).count() > 0:
+      data = Children.query.filter_by(key_user = key_user).all()
+      result_dict = [u.__dict__ for u in data]
+      child_name = [d.get('lapse_eesnimi') for d in result_dict]    
+      child_name_1 = child_name[0]
+      child_name_2 = child_name[1]
+      child_name_3 = child_name[2]
+      data = {'messages':[{"text": "lapsed: " + child_name_1 + ", " + child_name_2 + ", " + child_name_3}]}
+      return jsonify(data)
+
+    else: 
+      data = {
+        "messages":
+        [
+          {
+            "text": u"Ühtegi last ei leitud, palun sisesta info."
+          }
+        ],
+        "redirect_to_blocks": ["create_child"]
+        }
+
+
+
 
 @app.route('/store_children', methods = ['GET','POST'])
 def store_children():
@@ -136,6 +163,7 @@ def store_children():
       return jsonify(data)
 
 '''
+## update children table
       else: 
         child = Children.query.filter_by(key_user = key_user, lapse_eesnimi = lapse_eesnimi).first()
         child.last_updated = datetime.utcnow()
@@ -501,90 +529,6 @@ def tests_summary():
     return response
 
 
-'''
-      if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
-#        out_text = u"Tänan! " + name + u" on omandanud kõik " + str(data_jah) + u" peamist oskust, mida selles vanuses lapse arengu hindamisel jälgitakse."
-        out_text = str(data_jah)
-
-        button_1_block = "Default answer"
-        button_1_title = u"Küsin veel"
-
-        button_2_block = "Default answer"
-        button_2_title = u"Ootan juhiseid"
-
-        button_3_block = "Default answer"
-        button_3_title = u"Sisestan ise"
-
-      elif (str(data_jah) != 'no_results' and str(data_ei) != 'no_results'):
-        out_text = u"Tänan! " + name + u" on juba omadanud " + str(data_jah) + u" lapse arengus jälgitavat oskust. " + name + u" õpib praegu veel: "+ str(data_ei) + u" oskust."
-
-        button_1_block = "Default answer"
-        button_1_title = u"Selge, aitäh!"
-
-        button_2_block = "Default answer"
-        button_2_title = u"Kuidas toetada?"
-
-        button_3_block = "Default answer"
-        button_3_title = u"Soovin meeldetuletusi."
-
-      elif (str(data_jah) == 'no_results' and str(data_ei) != 'no_results'):
-        out_text = u"Tänan! " + name + u" praegu veel õpib " + str(data_ei) + u" peamist eakohast oskust."
-
-        button_1_block = "Default answer"
-        button_1_title = u"Perearstile"
-
-        button_2_block = "Default answer"
-        button_2_title = u"Kuidas toetada?"
-
-        button_3_block = "Default answer"
-        button_3_title = u"Soovin meeldetu"
-
-      else:
-        out_text = u"Some error"
-
-        button_1_block = "Default answer"
-        button_1_title = u"Perearstile"
-
-        button_2_block = "Default answer"
-        button_2_title = u"Kuidas toetada?"
-
-        button_3_block = "Default answer"
-        button_3_title = u"Soovin meeldetu"
-
-      data = {
-        "messages": [
-          {
-            "attachment": {
-              "type": "template",
-              "payload": {
-                "template_type": "button",
-                "text": out_text,
-                "buttons": [
-                  {
-                    "type": "show_block",
-                    "block_name": button_1_block,
-                    "title": button_1_title
-                  },
-                  {
-                    "type": "show_block",
-                    "block_name": button_2_block,
-                    "title": button_2_title
-                  },
-                  {
-                    "type": "show_block",
-                    "block_name": button_3_block,
-                    "title": button_3_title
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      }
-
-    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
-    return response
-'''
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
 def direct_block_based_on_age(dob):
