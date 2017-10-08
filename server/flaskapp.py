@@ -113,7 +113,7 @@ def has_children():
 @app.route('/has_children', methods=['GET'])
 def has_children():
   key_user = request.args.get('user_id')
-  test = Children.query.filter_by(key_user = key_user).first()   
+  test = Children.query.filter_by(key_user = '1').first()   
   return(str(test))
 
 
