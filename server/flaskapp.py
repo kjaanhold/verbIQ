@@ -96,13 +96,14 @@ def store_test_results():
 
 @app.route('/has_children', methods = ['GET'])
 def has_children():
-    key_user = request.args.get('messenger user id')    
+    key_user = request.args.get('messenger user id')
+        
     if Children.query.filter_by(key_user = key_user).first() is None:
       data = {"redirect_to_blocks": ["create_child"]}
       return jsonify(data)
 
     else: 
-      data = {"redirect_to_blocks": ["returning_parents"]}
+      data = {"redirect_to_blocks": ["test recurring tests 2"]}
       return jsonify(data)
 
 
