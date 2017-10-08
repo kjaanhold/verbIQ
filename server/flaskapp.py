@@ -98,7 +98,7 @@ def store_test_results():
 def has_children():
     key_user = request.args.get('messenger user id')
 
-    if Children.query.filter_by(key_user = key_user).count() == 0:
+    if Children.query.filter_by(key_user = key_user).count() < 3:
       data = {"redirect_to_blocks": ["create_child"]}
       return jsonify(data)
 
@@ -107,7 +107,10 @@ def has_children():
 #      return jsonify(data)
 
     else: 
-      data = {"redirect_to_blocks": ["returning_parents"]}
+      data = {
+        "messages":[{"text": u"Üle kolme lapse ei saa!"}],
+        "redirect_to_blocks": ["returning_parents"]
+        }
       return jsonify(data)
 
 
