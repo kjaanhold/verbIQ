@@ -120,7 +120,20 @@ def store_children():
       gender = request.form['Lapse_sugu']
       first_updated = datetime.utcnow()
       last_updated = datetime.utcnow()
-      return jsonify(str(gender))
+
+      if Children.query.filter_by(key_user = key_user).first() is None:
+        new_data = Children(key_user=str(key_user), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), date_of_birth=str(date_of_birth), gender=str(gender), first_updated=str(first_updated), last_updated=str(last_updated))
+        db.session.add(new_data)
+        db.session.commit()
+        data = {"redirect_to_blocks": ["test recurring tests 2"]}
+        return jsonify(data)
+
+      else: 
+        child = Children.query.filter_by(key_user = key_user).first()
+        child.last_updated = datetime.utcnow()
+        db.session.commit()
+        data = {'messages':[{"text": "su lapsed on: ...: "}]}
+        return jsonify(data)
 
 
     if request.method == "GET":
