@@ -112,10 +112,8 @@ def has_children():
 
 @app.route('/has_children', methods=['GET'])
 def has_children():
-  test = db.session.query(Test, MilestoneTests).one()
-  result_dict = [u.__dict__ for u in test]
-  block_name = [d.get('block_name') for d in result_dict]    
-  return(str(block_name[0]))
+  test = Children.query.filter_by(key_user = key_user).first()   
+  return(str(test))
 
 
 @app.route('/store_children', methods = ['GET','POST'])
