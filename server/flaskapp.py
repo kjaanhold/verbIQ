@@ -102,7 +102,7 @@ def has_children():
       data = {"redirect_to_blocks": ["create_child"]}
       return jsonify(data)
 
-    elif Children.query.filter_by(key_user = key_user).count() == 1:
+    elif Children.query.filter_by(key_user = key_user).count() > 0:
       data = {"redirect_to_blocks": ["returning_parents"]}
       return jsonify(data)
 
@@ -324,7 +324,7 @@ def age_check():
                 },
                 {
                   "type": "show_block",
-                  "block_name": "PARENT_EST",
+                  "block_name": "create_child",
                   "title": "Viga, parandame..."
                 }
               ]
