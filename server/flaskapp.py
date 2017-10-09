@@ -382,26 +382,23 @@ def next_test_selection(dob,name):
 def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
-    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-    age = date.today() - date_object
-    age_months = float(age.days)/30
 
     selected_test = next_test_selection(dob = dob, name = name)
 
     question = str(selected_test.split("///")[0])
-    block_name = str(selected_test.split("///")[1])
-    target_age = float(selected_test.split("///")[2])
-    variance = float("1")
-
-    cdf = lognorm(age_months, target_age, variance)
-
-    
-    data = str(question) + "//" + str(block_name)
 
     if question == "done":
       data = {"redirect_to_blocks": ["test_summary"]}
 
     else:
+      date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+      age = date.today() - date_object
+      age_months = float(age.days)/30
+
+      target_age = float(selected_test.split("///")[2])
+      variance = float("1")
+      cdf = lognorm(age_months, target_age, variance)
+
       data = {
         "set_attributes":
           {
