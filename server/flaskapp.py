@@ -326,11 +326,11 @@ def to_json(inst, cls):
     return json.dumps(d)
 
 
-@app.route('/next_test_selection', methods=['GET'])
-#def next_test_selection(dob,name):
-def next_test_selection():
-    dob = request.args.get('Synni_kuupaev')
-    name = request.args.get('Lapse_eesnimi')
+#@app.route('/next_test_selection', methods=['GET'])
+def next_test_selection(dob,name):
+#def next_test_selection():
+#    dob = request.args.get('Synni_kuupaev')
+#    name = request.args.get('Lapse_eesnimi')
 
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
@@ -365,7 +365,7 @@ def next_test_selection():
       if str(rows) == '[]':
         question  = 'done'
         block_name = 'test_summary'
-        target_age = 'no_target'
+        target_age = str("0")
 
       else:
         question = str(rows[0][0].encode("utf-8"))
