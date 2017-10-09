@@ -624,7 +624,7 @@ def tests_summary():
         data = {
             "messages": [
               {"text": str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah + ","},
-              {"text": "aga " + str(name) + " ei oska eriti veel ise " + data_ei + "."},
+#              {"text": "aga " + str(name) + " ei oska eriti veel ise " + data_ei + "."},
               {
                 "attachment": {
                   "type": "template",
@@ -692,38 +692,6 @@ def tests_summary():
     return response
 
 
-
-@app.route('/age_block_selection/<dob>', methods=['GET'])
-def direct_block_based_on_age(dob):
-    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
-    age = date.today() - date_object
-    age_in_days = int(age.days)
-    if age_in_days < 3*30:
-        next_block = "2M_EST"
-    elif age_in_days < 4.5*30:
-        next_block = "3M_EST"        
-    elif age_in_days < 6*30:
-        next_block = "4,5M_EST"
-    elif age_in_days < 7*30:
-        next_block = "6M_EST"
-    elif age_in_days < 8*30:
-        next_block = "7M_EST"
-    elif age_in_days < 9*30:
-        next_block = "8M_EST"
-    elif age_in_days < 12*30:
-        next_block = "9M_EST"
-    elif age_in_days < 1.5*365:
-        next_block = "12M_EST"
-    elif age_in_days < 2*365:
-        next_block = "18M_EST"
-    elif age_in_days < 3*365:
-        next_block = "24M_EST"
-    elif age_in_days < 4*365:
-        next_block = "36M_EST"
-    else:
-        next_block = "48M_EST"
-    data = {"redirect_to_blocks": [next_block]}
-    return jsonify(data)   
 
 @app.route("/age_milestones")
 def getmilestones():
