@@ -116,7 +116,10 @@ def has_enough_children():
     key_user = request.args.get('messenger user id')
 
     if Children.query.filter_by(key_user = key_user).count() > 2:
-      data = {"redirect_to_blocks": ["returning_parents"]}
+      data = {
+          'messages':[{"text": u"Üle kolme lapse ei saa sisestada."}], 
+          "redirect_to_blocks": ["has_children"]
+        }
       return jsonify(data)
 
     else: 
