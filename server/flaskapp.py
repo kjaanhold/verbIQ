@@ -399,7 +399,7 @@ def run_test():
     data = str(question) + "//" + str(block_name)
 
     if question == "done":
-      data = {"redirect_to_blocks": [block_name]}
+      data = {"redirect_to_blocks": ["test_summary"]}
 
     else:
       data = {
