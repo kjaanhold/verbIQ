@@ -117,7 +117,16 @@ def has_children():
 def child_selection():
     key_user = request.args.get('messenger user id')
 
-    if Children.query.filter_by(key_user = key_user).count() == 2:      
+
+    if Children.query.filter_by(key_user = key_user).count() == 1:
+
+
+      data = {
+        "redirect_to_blocks": ["create_child"]
+      }
+
+
+    elif Children.query.filter_by(key_user = key_user).count() == 2:      
       data = Children.query.filter_by(key_user = key_user).all()
       result_dict = [u.__dict__ for u in data]
 
@@ -137,7 +146,7 @@ def child_selection():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": u"Ühtegi last ei leitud, palun sisesta info.",
+                "text": u"Kelle kohta sooovid infot sisestada?",
                 "buttons": [
                   {
                     "set_attributes": 
@@ -187,7 +196,7 @@ def child_selection():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": u"Ühtegi last ei leitud, palun sisesta info.",
+                "text": u"Kelle kohta sooovid infot sisestada?",
                 "buttons": [
                   {
                     "set_attributes": 
