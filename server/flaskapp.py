@@ -312,11 +312,11 @@ def to_json(inst, cls):
     return json.dumps(d)
 
 
-#@app.route('/next_test_selection', methods=['GET'])
-def next_test_selection(dob,name):
-#def next_test_selection():
-#    dob = request.args.get('Synni_kuupaev')
-#    name = request.args.get('Lapse_eesnimi')
+@app.route('/next_test_selection', methods=['GET'])
+#def next_test_selection(dob,name):
+def next_test_selection():
+    dob = request.args.get('Synni_kuupaev')
+    name = request.args.get('Lapse_eesnimi')
 
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
@@ -330,6 +330,7 @@ def next_test_selection(dob,name):
 
       question = str(rows[0][0].encode("utf-8"))
       block_name = str(rows[0][1].encode("utf-8"))
+      target_age = str(rows[0][2].encode("utf-8"))
 
     else:
       # this kid has done at least one test
@@ -350,13 +351,14 @@ def next_test_selection(dob,name):
       if str(rows) == '[]':
         question  = 'done'
         block_name = 'test_summary'
+        target_age = 'no_target'
 
       else:
         question = str(rows[0][0].encode("utf-8"))
         block_name = str(rows[0][1].encode("utf-8"))
-        target_age = str(rows[0][1].encode("utf-8"))
+        target_age = str(rows[0][2].encode("utf-8"))
 
-    return str(question) + '///' + str(block_name) + '///' + str(block_name)
+    return str(question) + '///' + str(block_name) + '///' + str(target_age)
 
 
 
@@ -366,11 +368,20 @@ def next_test_selection(dob,name):
 def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    age_months = numeric(int(age.days)/30)
 
     selected_test = next_test_selection(dob = dob, name = name)
 
     question = str(selected_test.split("///")[0])
     block_name = str(selected_test.split("///")[1])
+    target_age = numeric(selected_test.split("///")[2])
+    variance = 1
+
+    cdf = lognorm(age_months, target_age, variance)
+
+    
     data = str(question) + "//" + str(block_name)
 
     if question == "done":
@@ -388,7 +399,7 @@ def run_test():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": question.decode("utf-8"),
+                "text": question.decode("utf-8") + " ; " + str(cdf),
                 "buttons": [
                   {
                     "set_attributes": 
@@ -431,11 +442,12 @@ def run_test():
 
 
 
-@app.route('/lognorm', methods=['GET'])
-def lognorm():
-  x = float(request.args.get('x'))  
-  mean = float(request.args.get('mean'))  
-  var = float(request.args.get('var'))  
+# @app.route('/lognorm', methods=['GET'])
+# def lognorm():
+def lognorm(x, mean, var):
+#  x = float(request.args.get('x'))  
+#  mean = float(request.args.get('mean'))  
+#  var = float(request.args.get('var'))  
 
   mu = float(math.log((mean**2) / math.sqrt(var + mean**2) ))
   sigma = float(math.sqrt(math.log(var / mean**2 + 1)))
