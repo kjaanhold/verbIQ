@@ -543,11 +543,15 @@ def return_test_results():
       query = "SELECT group_concat(m.description, ', '), 'a' FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s) LIMIT 1;" % (block_name)    
       rows = execute_query(query)
 
-      score = TestResults.query(func.avg(TestResults.result_cdf_value)).filter_by(lapse_eesnimi = name).first()
+#      score = TestResults.query(func.avg(TestResults.result_cdf_value)).filter_by(lapse_eesnimi = name).first()
+
+      data = TestResults.query.filter_by(lapse_eesnimi = name, result_value = result_value).all()
+      result_dict = [u.__dict__ for u in data]
+      block_name = [d.get('result_cdf_value') for d in result_dict]    
+      block_name = str(block_name)
 
 
-
-      out_text = str(rows[0][0].encode("utf-8")) + '///' + str(score)
+      out_text = str(rows[0][0].encode("utf-8")) + '///' + str(block_name)
     return str(out_text)
 
 
