@@ -50,14 +50,16 @@ class TestResults(BaseModel, db.Model):
     date_created = db.Column(db.DateTime)
     result_type = db.Column(db.String)
     result_value = db.Column(db.String)
+    result_cdf_value = db.Column(db.Float)
 
-    def __init__(self,key_user,block_name,lapse_eesnimi,date_created,result_type,result_value):
+    def __init__(self,key_user,block_name,lapse_eesnimi,date_created,result_type,result_value,result_cdf_value):
         self.key_user = key_user
         self.block_name = block_name
         self.lapse_eesnimi = lapse_eesnimi
         self.date_created = date_created
         self.result_type = result_type
         self.result_value = result_value
+        self.result_cdf_value = result_cdf_value
 
     @property
     def json(self):
