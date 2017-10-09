@@ -116,7 +116,19 @@ def has_children():
 @app.route('/child_selection', methods = ['GET'])
 def child_selection():
     key_user = request.args.get('messenger user id')
+    data = {
+      "messages":
+      [
+        {
+          "text": u"Ühtegi last ei leitud, palun sisesta info."
+        }
+      ],
+      "redirect_to_blocks": ["create_child"]
+    }
 
+    return jsonify(data)
+
+'''
     if Children.query.filter_by(key_user = key_user).count() == 2:
       data = Children.query.filter_by(key_user = key_user).all()
       result_dict = [u.__dict__ for u in data]
@@ -223,7 +235,7 @@ def child_selection():
         "redirect_to_blocks": ["create_child"]
       }
       return jsonify(data)
-
+'''
 
 @app.route('/store_children', methods = ['GET','POST'])
 def store_children():
