@@ -111,6 +111,17 @@ def has_children():
       data = {"redirect_to_blocks": ["returning_parents"]}
       return jsonify(data)
 
+@app.route('/has_enough_children', methods = ['GET'])
+def has_enough_children():
+    key_user = request.args.get('messenger user id')
+
+    if Children.query.filter_by(key_user = key_user).count() > 2:
+      data = {"redirect_to_blocks": ["returning_parents"]}
+      return jsonify(data)
+
+    else: 
+      data = {'messages':[{"text": "..."}]}
+      return jsonify(data)
 
 ## work in progress
 @app.route('/child_selection', methods = ['GET'])
