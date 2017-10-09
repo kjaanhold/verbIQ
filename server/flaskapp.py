@@ -133,7 +133,7 @@ def child_selection():
         "messages":
         [
           {
-            "text": u"kaks last"
+            "text": u"kaks last" + date_of_birth_2 + child_name_2
           }
         ],
         "redirect_to_blocks": ["create_child"]
