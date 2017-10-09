@@ -646,17 +646,18 @@ def tests_summary():
       elif (str(data_jah) == 'no_results' and str(data_ei) != 'no_results'):
         data = {
             "messages": [
+              {"text": str(name) + " on " + age_months + " kuu vanune ja ei oska veel " + data_ei + "."},
               {
                 "attachment": {
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": str(name) + " on " + age_months + " kuu vanune ja ei oska veel " + data_ei + ".",
+                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100).",
                     "buttons": [
                       {
                         "type": "show_block",
-                        "block_name": "test recurring tests 2",
-                        "title": "Tagasi testima"
+                        "block_name": "returning_parents",
+                        "title": "Tagasi"
                       }
                     ]
                   }
