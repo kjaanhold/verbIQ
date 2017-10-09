@@ -116,15 +116,29 @@ def has_children():
 @app.route('/child_selection', methods = ['GET'])
 def child_selection():
     key_user = request.args.get('messenger user id')
-    data = {
-      "messages":
-      [
-        {
-          "text": u"Ühtegi last ei leitud, palun sisesta info."
-        }
-      ],
-      "redirect_to_blocks": ["create_child"]
-    }
+
+    if Children.query.filter_by(key_user = key_user).count() == 2:      
+      data = {
+        "messages":
+        [
+          {
+            "text": u"leiti 2 last."
+          }
+        ],
+        "redirect_to_blocks": ["create_child"]
+      }
+
+    else: 
+      data = {
+        "messages":
+        [
+          {
+            "text": u"Ühtegi last ei leitud, palun sisesta info."
+          }
+        ],
+        "redirect_to_blocks": ["create_child"]
+      }
+
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
