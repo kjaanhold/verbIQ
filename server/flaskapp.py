@@ -543,13 +543,19 @@ def return_test_results(name, result_value):
       query = "SELECT group_concat(m.description, ', '), 'a' FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s) LIMIT 1;" % (block_name)    
       rows = execute_query(query)
 
-      data = TestResults.query.filter_by(lapse_eesnimi = name, result_value = result_value).all()
+      out_text = str(rows[0][0].encode("utf-8"))
+    return str(out_text)
+
+def return_test_score(name):
+
+    if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
+      out_text = "0"
+    else:
+      data = TestResults.query.filter_by(lapse_eesnimi = name).all()
       result_dict = [u.__dict__ for u in data]
       result_cdf_value = [d.get('result_cdf_value') for d in result_dict]    
       result_cdf_value = str(round(sum(result_cdf_value)*100/len(result_cdf_value)))
-
-
-      out_text = str(rows[0][0].encode("utf-8")) + '///' + str(result_cdf_value)
+      out_text = str(result_cdf_value)
     return str(out_text)
 
 
@@ -586,13 +592,11 @@ def tests_summary():
           ]
         }
 
-
     else:
-
-      data_jah = str(return_test_results(name, 'Jah').split("///")[0])
-      data_ei = str(return_test_results(name, 'Ei').split("///")[0])
-      data_ei_tea = str(return_test_results(name, 'Ei tea').split("///")[0])
-      score = str(return_test_results(name, 'Ei').split("///")[1])
+      data_jah = str(return_test_results(name, 'Jah'))
+      data_ei = str(return_test_results(name, 'Ei'))
+      data_ei_tea = str(return_test_results(name, 'Ei tea'))
+      score = str(return_test_score(name))
 
       if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
         data = {
