@@ -625,17 +625,17 @@ def tests_summary():
             "messages": [
               {"text": str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah + ","},
               {"text": "aga " + str(name) + " ei oska eriti veel ise " + data_ei + "."},
-              {"text":  str(name) + " skoor on " + score + "."},
               {
                 "attachment": {
                   "type": "template",
                   "payload": {
                     "template_type": "button",
+                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100.",
                     "buttons": [
                       {
                         "type": "show_block",
-                        "block_name": "test recurring tests 2",
-                        "title": "Tagasi testima"
+                        "block_name": "returning_parents",
+                        "title": u"Peamenüüsse"
                       }
                     ]
                   }
