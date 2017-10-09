@@ -390,9 +390,9 @@ def run_test():
     target_age = float(selected_test.split("///")[2])
     variance = float("1")
 
-    cdf = lognorm(age_months, target_age, variance)
+#    cdf = lognorm(age_months, target_age, variance)
 
-    data = {"redirect_to_blocks": [block_name] + str(cdf)}
+    data = {"redirect_to_blocks": [block_name]}
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
