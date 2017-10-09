@@ -547,11 +547,11 @@ def return_test_results():
 
       data = TestResults.query.filter_by(lapse_eesnimi = name, result_value = result_value).all()
       result_dict = [u.__dict__ for u in data]
-      block_name = [d.get('result_cdf_value') for d in result_dict]    
-      block_name = str(block_name)
+      result_cdf_value = [d.get('result_cdf_value') for d in result_dict]    
+      result_cdf_value = str(sum(result_cdf_value)
 
 
-      out_text = str(rows[0][0].encode("utf-8")) + '///' + str(block_name)
+      out_text = str(rows[0][0].encode("utf-8")) + '///' + str(result_cdf_value)
     return str(out_text)
 
 
