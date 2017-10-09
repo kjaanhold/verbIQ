@@ -629,12 +629,12 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + ".",
+                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100).",
                     "buttons": [
                       {
                         "type": "show_block",
-                        "block_name": "test recurring tests 2",
-                        "title": "Tagasi testima"
+                        "block_name": "returning_parents",
+                        "title": "Tagasi"
                       }
                     ]
                   }
