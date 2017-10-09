@@ -122,7 +122,7 @@ def has_enough_children():
     if Children.query.filter_by(key_user = key_user).count() > 2:
       data = {
           'messages':[{"text": u"Üle kolme lapse ei saa sisestada."}], 
-          "redirect_to_blocks": ["has_children"]
+          "redirect_to_blocks": ["returning_parents"]
         }
       return jsonify(data)
 
