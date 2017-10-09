@@ -546,7 +546,7 @@ def return_test_results(name, result_value):
       data = TestResults.query.filter_by(lapse_eesnimi = name, result_value = result_value).all()
       result_dict = [u.__dict__ for u in data]
       result_cdf_value = [d.get('result_cdf_value') for d in result_dict]    
-      result_cdf_value = str(sum(result_cdf_value)/len(result_cdf_value))
+      result_cdf_value = str(round(sum(result_cdf_value)*100/len(result_cdf_value)))
 
 
       out_text = str(rows[0][0].encode("utf-8")) + '///' + str(result_cdf_value)
@@ -592,7 +592,7 @@ def tests_summary():
       data_jah = str(return_test_results(name, 'Jah').split("///")[0])
       data_ei = str(return_test_results(name, 'Ei').split("///")[0])
       data_ei_tea = str(return_test_results(name, 'Ei tea').split("///")[0])
-      score = str(round(float(return_test_results(name, 'Ei').split("///")[1])*100))
+      score = str(return_test_results(name, 'Ei').split("///")[1])
 
       if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
         data = {
