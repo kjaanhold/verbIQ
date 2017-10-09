@@ -537,7 +537,7 @@ def tests_summary():
                     {
                       "type": "show_block",
                       "block_name": "test recurring tests 2",
-                      "title": "Tagasi testima"
+                      "title": u"Hakkan testima"
                     }
                   ]
                 }
@@ -565,8 +565,8 @@ def tests_summary():
                     "buttons": [
                       {
                         "type": "show_block",
-                        "block_name": "test recurring tests 2",
-                        "title": "Tagasi testima"
+                        "block_name": "has_children",
+                        "title": u"Tagasi peamenüüsse"
                       }
                     ]
                   }
@@ -588,8 +588,8 @@ def tests_summary():
                     "buttons": [
                       {
                         "type": "show_block",
-                        "block_name": "test recurring tests 2",
-                        "title": "Tagasi testima"
+                        "block_name": "has_children",
+                        "title": u"Tagasi peamenüüsse"
                       }
                     ]
                   }
@@ -610,8 +610,8 @@ def tests_summary():
                     "buttons": [
                       {
                         "type": "show_block",
-                        "block_name": "test recurring tests 2",
-                        "title": "Tagasi testima"
+                        "block_name": "has_children",
+                        "title": u"Tagasi peamenüüsse"
                       }
                     ]
                   }
