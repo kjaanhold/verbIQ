@@ -543,8 +543,6 @@ def return_test_results():
       query = "SELECT group_concat(m.description, ', '), 'a' FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s) LIMIT 1;" % (block_name)    
       rows = execute_query(query)
 
-#      score = TestResults.query(func.avg(TestResults.result_cdf_value)).filter_by(lapse_eesnimi = name).first()
-
       data = TestResults.query.filter_by(lapse_eesnimi = name, result_value = result_value).all()
       result_dict = [u.__dict__ for u in data]
       result_cdf_value = [d.get('result_cdf_value') for d in result_dict]    
@@ -591,9 +589,10 @@ def tests_summary():
 
     else:
 
-      data_jah = str(return_test_results(name, 'Jah'))
-      data_ei = str(return_test_results(name, 'Ei'))
-      data_ei_tea = str(return_test_results(name, 'Ei tea'))
+      data_jah = str(return_test_results(name, 'Jah').split("///")[0])
+      data_ei = str(return_test_results(name, 'Ei').split("///")[0])
+      data_ei_tea = str(return_test_results(name, 'Ei tea').split("///")[0])
+      score = str(return_test_results(name, 'Jah').split("///")[1])
 
       if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
         data = {
