@@ -117,14 +117,99 @@ def has_children():
 def child_selection():
     key_user = request.args.get('messenger user id')
 
-    if Children.query.filter_by(key_user = key_user).count() > 0:
+    if Children.query.filter_by(key_user = key_user).count() == 2:
       data = Children.query.filter_by(key_user = key_user).all()
       result_dict = [u.__dict__ for u in data]
+
+      child_name = [d.get('lapse_eesnimi') for d in result_dict]    
+      child_name_1 = child_name[0]
+      child_name_2 = child_name[1]
+
+      date_of_birth = [d.get('date_of_birth') for d in result_dict]    
+      date_of_birth_1 = date_of_birth[0]
+      date_of_birth_2 = date_of_birth[1]
+
+      data = {
+        "messages":
+        [
+          {
+            "text": u"Kelle kohta sooovid infot sisestada?"
+          }
+        ],
+        {
+          "set_attributes": 
+            {
+              "Lapse_eesnimi": str(child_name_1),
+              "Synni_kuupaev": str(date_of_birth_1)
+            },
+          "block_names": ["returning_parents"],
+          "type": "show_block",
+          "title": str(child_name_1)
+        },
+        {
+          "set_attributes": 
+            {
+              "Lapse_eesnimi": str(child_name_2),
+              "Synni_kuupaev": str(date_of_birth_2)
+            },
+          "block_names": ["returning_parents"],
+          "type": "show_block",
+          "title": str(child_name_2)
+        }
+      }
+
+    elif Children.query.filter_by(key_user = key_user).count() == 3:
+      data = Children.query.filter_by(key_user = key_user).all()
+      result_dict = [u.__dict__ for u in data]
+
       child_name = [d.get('lapse_eesnimi') for d in result_dict]    
       child_name_1 = child_name[0]
       child_name_2 = child_name[1]
       child_name_3 = child_name[2]
-      data = {'messages':[{"text": "lapsed: " + child_name_1 + ", " + child_name_2 + ", " + child_name_3}]}
+
+      date_of_birth = [d.get('date_of_birth') for d in result_dict]    
+      date_of_birth_1 = date_of_birth[0]
+      date_of_birth_2 = date_of_birth[1]
+      date_of_birth_3 = date_of_birth[2]
+
+      data = {
+        "messages":
+        [
+          {
+            "text": u"Kelle kohta sooovid infot sisestada?"
+          }
+        ],
+        {
+          "set_attributes": 
+            {
+              "Lapse_eesnimi": str(child_name_1),
+              "Synni_kuupaev": str(date_of_birth_1)
+            },
+          "block_names": ["returning_parents"],
+          "type": "show_block",
+          "title": str(child_name_1)
+        },
+        {
+          "set_attributes": 
+            {
+              "Lapse_eesnimi": str(child_name_2),
+              "Synni_kuupaev": str(date_of_birth_2)
+            },
+          "block_names": ["returning_parents"],
+          "type": "show_block",
+          "title": str(child_name_2)
+        },
+        {
+          "set_attributes": 
+            {
+              "Lapse_eesnimi": str(child_name_3),
+              "Synni_kuupaev": str(date_of_birth_3)
+            },
+          "block_names": ["returning_parents"],
+          "type": "show_block",
+          "title": str(child_name_3)
+        }
+      }
       return jsonify(data)
 
     else: 
@@ -136,9 +221,8 @@ def child_selection():
           }
         ],
         "redirect_to_blocks": ["create_child"]
-        }
-
-
+      }
+      return jsonify(data)
 
 
 @app.route('/store_children', methods = ['GET','POST'])
