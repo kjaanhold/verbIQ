@@ -350,12 +350,14 @@ def next_test_selection(dob,name):
       if str(rows) == '[]':
         question  = 'done'
         block_name = 'test_summary'
+        target_age = 'no_target'
 
       else:
         question = str(rows[0][0].encode("utf-8"))
         block_name = str(rows[0][1].encode("utf-8"))
+        target_age = str(rows[0][2].encode("utf-8"))
 
-    return str(question) + '///' + str(block_name)
+    return str(question) + '///' + str(block_name) + '///' + str(target_age)
 
 
 
