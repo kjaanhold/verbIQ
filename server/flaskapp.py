@@ -143,7 +143,7 @@ def child_selection():
 
     if Children.query.filter_by(key_user = key_user).count() == 0:
       data = {
-        'messages':[{"text": u"Palun sisesta oma lapse andmed."}], 
+        'messages':[{"text": u"Tore! Palun sisesta oma lapse andmed."}], 
         "redirect_to_blocks": ["create_child"]
       }
 
@@ -326,11 +326,11 @@ def to_json(inst, cls):
     return json.dumps(d)
 
 
-#@app.route('/next_test_selection', methods=['GET'])
-def next_test_selection(dob,name):
-#def next_test_selection():
-#    dob = request.args.get('Synni_kuupaev')
-#    name = request.args.get('Lapse_eesnimi')
+@app.route('/next_test_selection', methods=['GET'])
+#def next_test_selection(dob,name):
+def next_test_selection():
+    dob = request.args.get('Synni_kuupaev')
+    name = request.args.get('Lapse_eesnimi')
 
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
