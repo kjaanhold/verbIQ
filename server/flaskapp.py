@@ -126,7 +126,8 @@ def child_selection():
       "redirect_to_blocks": ["create_child"]
     }
 
-    return jsonify(data)
+    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
+    return response
 
 '''
     if Children.query.filter_by(key_user = key_user).count() == 2:
