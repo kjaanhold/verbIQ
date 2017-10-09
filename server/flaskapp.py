@@ -75,10 +75,9 @@ def store_test_results():
       date_created = datetime.utcnow()
       result_type = 'chatfuel'
       result_value = request.form['test_result']
-
       result_cdf_value = request.form['test_result_cdf']
 
-      new_data = TestResults(key_user=str(key_user), block_name=str("'"+block_name+"'"), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')), date_created=str(date_created), result_type=str(result_type), result_value=str(result_value))
+      new_data = TestResults(key_user=str(key_user), block_name=str("'"+block_name+"'"), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')), date_created=str(date_created), result_type=str(result_type), result_value=str(result_value), result_cdf_value = float(result_cdf_value))
       db.session.add(new_data)
       db.session.commit()
 
