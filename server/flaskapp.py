@@ -519,11 +519,11 @@ def age_check():
     return response
 
 
-@app.route('/return_test_results', methods=['GET'])
-def return_test_results():
-#def return_test_results(name, result_value):
-    name = request.args.get('Lapse_eesnimi')
-    result_value = request.args.get('result_value')
+#@app.route('/return_test_results', methods=['GET'])
+#def return_test_results():
+def return_test_results(name, result_value):
+#    name = request.args.get('Lapse_eesnimi')
+#    result_value = request.args.get('result_value')
 
     if TestResults.query.filter_by(lapse_eesnimi = name, result_value = result_value).first() is None:
       out_text = "no_results"
@@ -540,9 +540,14 @@ def return_test_results():
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
 
-      query = "SELECT group_concat(m.description, ', '), avg(result_cdf_value) FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s) LIMIT 1;" % (block_name)    
+      query = "SELECT group_concat(m.description, ', '), 'a' FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s) LIMIT 1;" % (block_name)    
       rows = execute_query(query)
-      out_text = str(rows[0][0].encode("utf-8")) + '///' +  str(rows[0][1])
+
+      score = TestResults.query(func.avg(TestResults.result_cdf_value)).filter_by(lapse_eesnimi = name).first()
+
+
+
+      out_text = str(rows[0][0].encode("utf-8")) + '///' + str(score)
     return str(out_text)
 
 
