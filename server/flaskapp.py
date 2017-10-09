@@ -325,11 +325,11 @@ def to_json(inst, cls):
     return json.dumps(d)
 
 
-@app.route('/next_test_selection', methods=['GET'])
-#def next_test_selection(dob,name):
-def next_test_selection():
-    dob = request.args.get('Synni_kuupaev')
-    name = request.args.get('Lapse_eesnimi')
+#@app.route('/next_test_selection', methods=['GET'])
+def next_test_selection(dob,name):
+#def next_test_selection():
+#    dob = request.args.get('Synni_kuupaev')
+#    name = request.args.get('Lapse_eesnimi')
 
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
@@ -385,6 +385,7 @@ def run_test():
     selected_test = next_test_selection(dob = dob, name = name)
 
     question = str(selected_test.split("///")[0])
+    block_name = str(selected_test.split("///")[1])
 
     if question == "done":
       data = {"redirect_to_blocks": ["test_summary"]}
