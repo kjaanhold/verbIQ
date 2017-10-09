@@ -143,6 +143,7 @@ def child_selection():
 
     if Children.query.filter_by(key_user = key_user).count() == 0:
       data = {
+        'messages':[{"text": u"Palun sisesta oma lapse andmed."}], 
         "redirect_to_blocks": ["create_child"]
       }
 
