@@ -351,7 +351,7 @@ def next_test_selection():
       if str(rows) == '[]':
         question  = 'done'
         block_name = 'test_summary'
-#        target_age = 'no_target'
+        target_age = 'no_target'
 
       else:
         question = str(rows[0][0].encode("utf-8"))
