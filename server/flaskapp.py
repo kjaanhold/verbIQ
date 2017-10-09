@@ -141,9 +141,12 @@ def has_enough_children():
 def child_selection():
     key_user = request.args.get('messenger user id')
 
+    if Children.query.filter_by(key_user = key_user).count() == 0:
+      data = {
+        "redirect_to_blocks": ["create_child"]
+      }
 
-    if Children.query.filter_by(key_user = key_user).count() == 1:
-
+    elif Children.query.filter_by(key_user = key_user).count() == 1:
       data = {
         "redirect_to_blocks": ["returning_parents"]
       }
@@ -261,7 +264,7 @@ def child_selection():
     else: 
 
       data = {
-        "redirect_to_blocks": ["create_child"]
+        "redirect_to_blocks": ["returning_parents"]
       }
 
 
