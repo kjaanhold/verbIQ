@@ -558,13 +558,6 @@ def tests_summary():
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
-    data = {"redirect_to_blocks": name}
-
-    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
-    return response
-
-
-'''
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
       out_text = name + u" pole veel ühtegi testi teinud."
 
@@ -687,7 +680,7 @@ def tests_summary():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-'''
+
 
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
