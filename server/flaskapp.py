@@ -330,7 +330,7 @@ def next_test_selection():
 
       question = str(rows[0][0].encode("utf-8"))
       block_name = str(rows[0][1].encode("utf-8"))
-#      target_age = str(rows[0][2].encode("utf-8"))
+      target_age = str(rows[0][2].encode("utf-8"))
 
     else:
       # this kid has done at least one test
