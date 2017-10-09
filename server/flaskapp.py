@@ -348,7 +348,7 @@ def next_test_selection(dob,name):
 
     else:
       # this kid has done at least one test
-      data = TestResults.query.filter_by(lapse_eesnimi = name.lower()).all()
+      data = TestResults.query.filter_by(lapse_eesnimi = name).all()
       result_dict = [u.__dict__ for u in data]
       block_name = [d.get('block_name') for d in result_dict]
       block_name = str(block_name)
@@ -528,11 +528,11 @@ def return_test_results(name, result_value):
 #    name = request.args.get('Lapse_eesnimi')
 #    result_value = request.args.get('result_value')
 
-    if TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).first() is None:
+    if TestResults.query.filter_by(lapse_eesnimi = name, result_value = result_value).first() is None:
       out_text = "no_results"
 
     else:
-      data = TestResults.query.filter_by(lapse_eesnimi = name.lower(), result_value = result_value).all()
+      data = TestResults.query.filter_by(lapse_eesnimi = name, result_value = result_value).all()
       result_dict = [u.__dict__ for u in data]
       block_name = [d.get('block_name') for d in result_dict]    
       block_name = str(block_name)
@@ -558,7 +558,7 @@ def tests_summary():
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
-    if TestResults.query.filter_by(lapse_eesnimi = name.lower()).first() is None:
+    if TestResults.query.filter_by(lapse_eesnimi = name.first() is None:
       out_text = name + u" pole veel ühtegi testi teinud."
 
       data = {
