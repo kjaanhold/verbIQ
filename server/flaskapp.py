@@ -358,7 +358,7 @@ def next_test_selection():
         block_name = str(rows[0][1].encode("utf-8"))
 #        target_age = str(rows[0][2].encode("utf-8"))
 
-    return str(question) + '///' + str(block_name) + '///' # + str(target_age)
+    return str(question) + '///' + str(block_name) + '///' + str(target_age)
 
 
 
