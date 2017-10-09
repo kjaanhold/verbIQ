@@ -77,7 +77,7 @@ def store_test_results():
       result_cdf_value = request.form['test_result_cdf']
 
       if result_value == "Jah":
-        result_cdf_value = float(1)
+        result_cdf_value = 1
       elif result_value == "Ei":
         result_cdf_value = float(1) - float(result_cdf_value)
       else:
@@ -113,7 +113,11 @@ def has_children():
     key_user = request.args.get('messenger user id')
 
     if Children.query.filter_by(key_user = key_user).count() == 0:
-      data = {"redirect_to_blocks": ["create_child"]}
+      data = {
+        'messages':[{"text": u"Tore! Palun sisesta oma lapse andmed."}], 
+        "redirect_to_blocks": ["create_child"]
+      }
+
       return jsonify(data)
 
     else: 
