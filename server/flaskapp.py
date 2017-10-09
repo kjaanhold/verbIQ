@@ -399,7 +399,7 @@ def run_test():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": question.decode("utf-8") + " ; " + str(cdf),
+                "text": question.decode("utf-8")
                 "buttons": [
                   {
                     "set_attributes": 
