@@ -120,9 +120,8 @@ def child_selection():
 
     if Children.query.filter_by(key_user = key_user).count() == 1:
 
-
       data = {
-        "redirect_to_blocks": ["create_child"]
+        "redirect_to_blocks": ["returning_parents"]
       }
 
 
@@ -238,12 +237,6 @@ def child_selection():
     else: 
 
       data = {
-        "messages":
-        [
-          {
-            "text": u"Ühtegi last ei leitud, palun sisesta info."
-          }
-        ],
         "redirect_to_blocks": ["create_child"]
       }
 
@@ -262,7 +255,7 @@ def store_children():
       first_updated = datetime.utcnow()
       last_updated = datetime.utcnow()
 
-      new_data = Children(key_user=str(key_user), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')).lower(), date_of_birth=str(date_of_birth), gender=str(gender), first_updated=str(first_updated), last_updated=str(last_updated))
+      new_data = Children(key_user=str(key_user), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')), date_of_birth=str(date_of_birth), gender=str(gender), first_updated=str(first_updated), last_updated=str(last_updated))
       db.session.add(new_data)
       db.session.commit()
       data = {"redirect_to_blocks": ["returning_parents"]}
