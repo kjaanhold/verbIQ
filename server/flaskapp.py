@@ -368,9 +368,9 @@ def next_test_selection(dob,name):
 def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
- #   date_object = datetime.strptime(dob, "%Y-%m-%d").date()
- #   age = date.today() - date_object
- #   age_months = numeric(int(age.days)/30)
+    date_object = datetime.strptime(dob, "%Y-%m-%d").date()
+    age = date.today() - date_object
+    age_months = int(round(int(age.days)/30))
 
     selected_test = next_test_selection(dob = dob, name = name)
 
