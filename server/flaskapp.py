@@ -387,6 +387,10 @@ def run_test():
 
     question = str(selected_test.split("///")[0])
     block_name = str(selected_test.split("///")[1])
+    target_age = float(selected_test.split("///")[2])
+    variance = float("1")
+
+#    cdf = lognorm(age_months, target_age, variance)
 
     data = {"redirect_to_blocks": [block_name]}
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
