@@ -592,7 +592,7 @@ def tests_summary():
       data_jah = str(return_test_results(name, 'Jah').split("///")[0])
       data_ei = str(return_test_results(name, 'Ei').split("///")[0])
       data_ei_tea = str(return_test_results(name, 'Ei tea').split("///")[0])
-      score = str(return_test_results(name, 'Jah').split("///")[1])
+      score = str(round(float(return_test_results(name, 'Jah').split("///")[1])*100))
 
       if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
         data = {
@@ -621,6 +621,7 @@ def tests_summary():
             "messages": [
               {"text": str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah + ","},
               {"text": "aga " + str(name) + " ei oska eriti veel ise " + data_ei + "."},
+              {"text": str(name) + u" arengu koondnäitaja on " + score + u"(kus 100 vastab keskmise lapse arengule)."},
               {
                 "attachment": {
                   "type": "template",
