@@ -87,7 +87,10 @@ def store_test_results():
       child.last_updated = datetime.utcnow()
       db.session.commit()
 
-      data = {"redirect_to_blocks": ["test recurring tests 2"]}
+      data = {
+        'messages':[{"text": result_value + " " + result_cdf_value}],
+        "redirect_to_blocks": ["test recurring tests 2"]
+      }
       return jsonify(data)
 
     if request.method == "GET":
