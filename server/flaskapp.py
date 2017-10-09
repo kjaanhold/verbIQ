@@ -133,29 +133,10 @@ def child_selection():
         "messages":
         [
           {
-            "text": u"Kelle kohta sooovid infot sisestada?"
+            "text": u"kaks last"
           }
         ],
-        {
-          "set_attributes": 
-            {
-              "Lapse_eesnimi": str(child_name_1),
-              "Synni_kuupaev": str(date_of_birth_1)
-            },
-          "block_names": ["returning_parents"],
-          "type": "show_block",
-          "title": str(child_name_1)
-        },
-        {
-          "set_attributes": 
-            {
-              "Lapse_eesnimi": str(child_name_2),
-              "Synni_kuupaev": str(date_of_birth_2)
-            },
-          "block_names": ["returning_parents"],
-          "type": "show_block",
-          "title": str(child_name_2)
-        }
+        "redirect_to_blocks": ["create_child"]
       }
 
 
