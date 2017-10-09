@@ -387,70 +387,12 @@ def run_test():
 
     question = str(selected_test.split("///")[0])
     block_name = str(selected_test.split("///")[1])
-    target_age = float(selected_test.split("///")[2])
-    variance = float("1")
-
-#    cdf = lognorm(age_months, target_age, variance)
 
     data = {"redirect_to_blocks": [block_name]}
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
- '''   
-    if question == "done":
-      data = {"redirect_to_blocks": [block_name]}
 
-    else:
-      data = {
-        "set_attributes":
-          {
-            "last_visited_block_id": block_name
-          },
-        "messages": [
-          {
-            "attachment": {
-              "type": "template",
-              "payload": {
-                "template_type": "button",
-                "text": question.decode("utf-8"),
-                "buttons": [
-                  {
-                    "set_attributes": 
-                    {
-                      "test_result": "Jah",
-                      "test_result_cdf": str(cdf)
-                    },
-                    "type": "show_block",
-                    "block_name": "test recurring tests 3",
-                    "title": u"Jah"
-                  },
-                  {
-                    "set_attributes": 
-                    {
-                      "test_result": "Ei tea",
-                      "test_result_cdf": str(cdf)                      
-                    },
-                    "type": "show_block",
-                    "block_name": "test recurring tests 3",
-                    "title": u"Ei tea"
-                  },                
-                  {
-                    "set_attributes": 
-                    {
-                      "test_result": "Ei",
-                      "test_result_cdf": str(cdf)                      
-                    },
-                    "type": "show_block",
-                    "block_name": "test recurring tests 3",
-                    "title": u"Ei"
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      }      
-'''
 
 
 
