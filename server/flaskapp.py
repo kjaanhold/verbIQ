@@ -378,7 +378,7 @@ def run_test():
     target_age = numeric(selected_test.split("///")[2])
     variance = 1
 
-    cdf = lognorm(age_months, target_age, variance)
+    cdf = str("a") # lognorm(age_months, target_age, variance)
 
     
     data = str(question) + "//" + str(block_name)
