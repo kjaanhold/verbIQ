@@ -375,6 +375,9 @@ def next_test_selection(dob,name):
     return str(question) + '///' + str(block_name) + '///' + str(target_age)
 
 
+
+
+
 @app.route('/run_test', methods=['GET'])
 def run_test():
     dob = request.args.get('Synni_kuupaev')
@@ -390,9 +393,65 @@ def run_test():
     target_age = float(selected_test.split("///")[2])
     variance = float("1")
 
-#    cdf = lognorm(age_months, target_age, variance)
+    cdf = lognorm(age_months, target_age, variance)
 
-    data = {"redirect_to_blocks": [block_name]}
+    
+    data = str(question) + "//" + str(block_name)
+
+    if question == "done":
+      data = {"redirect_to_blocks": [block_name]}
+
+    else:
+      data = {
+        "set_attributes":
+          {
+            "last_visited_block_id": block_name
+          },
+        "messages": [
+          {
+            "attachment": {
+              "type": "template",
+              "payload": {
+                "template_type": "button",
+                "text": question.decode("utf-8"),
+                "buttons": [
+                  {
+                    "set_attributes": 
+                    {
+                      "test_result": "Jah",
+                      "test_result_cdf": str(cdf)
+                    },
+                    "type": "show_block",
+                    "block_name": "test recurring tests 3",
+                    "title": u"Jah"
+                  },
+                  {
+                    "set_attributes": 
+                    {
+                      "test_result": "Ei tea",
+                      "test_result_cdf": str(cdf)                      
+                    },
+                    "type": "show_block",
+                    "block_name": "test recurring tests 3",
+                    "title": u"Ei tea"
+                  },                
+                  {
+                    "set_attributes": 
+                    {
+                      "test_result": "Ei",
+                      "test_result_cdf": str(cdf)                      
+                    },
+                    "type": "show_block",
+                    "block_name": "test recurring tests 3",
+                    "title": u"Ei"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }      
+
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
 
@@ -400,14 +459,12 @@ def run_test():
 
 
 
-
-
-@app.route('/lognorm', methods=['GET'])
-def lognorm():
-#def lognorm(x, mean, var):
-  x = float(request.args.get('x'))  
-  mean = float(request.args.get('mean'))  
-  var = float(request.args.get('var'))  
+#@app.route('/lognorm', methods=['GET'])
+#def lognorm():
+def lognorm(x, mean, var):
+#  x = float(request.args.get('x'))  
+#  mean = float(request.args.get('mean'))  
+#  var = float(request.args.get('var'))  
 
   mu = float(math.log((mean**2) / math.sqrt(var + mean**2) ))
   sigma = float(math.sqrt(math.log(var / mean**2 + 1)))
