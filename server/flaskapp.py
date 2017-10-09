@@ -630,7 +630,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100.",
+#                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100.",
                     "buttons": [
                       {
                         "type": "show_block",
