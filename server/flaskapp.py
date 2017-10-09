@@ -592,7 +592,7 @@ def tests_summary():
       data_jah = str(return_test_results(name, 'Jah').split("///")[0])
       data_ei = str(return_test_results(name, 'Ei').split("///")[0])
       data_ei_tea = str(return_test_results(name, 'Ei tea').split("///")[0])
-      score = str(return_test_results(name, 'Ei').split("///")[1])
+      score = str(round(float(return_test_results(name, 'Ei').split("///")[1])*100))
 
       if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
         data = {
