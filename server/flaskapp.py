@@ -326,11 +326,11 @@ def to_json(inst, cls):
     return json.dumps(d)
 
 
-@app.route('/next_test_selection', methods=['GET'])
-#def next_test_selection(dob,name):
-def next_test_selection():
-    dob = request.args.get('Synni_kuupaev')
-    name = request.args.get('Lapse_eesnimi')
+#@app.route('/next_test_selection', methods=['GET'])
+def next_test_selection(dob,name):
+#def next_test_selection():
+#    dob = request.args.get('Synni_kuupaev')
+#    name = request.args.get('Lapse_eesnimi')
 
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
@@ -558,6 +558,13 @@ def tests_summary():
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
+    data = {"redirect_to_blocks": name}
+
+    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
+    return response
+
+
+'''
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
       out_text = name + u" pole veel ühtegi testi teinud."
 
@@ -680,7 +687,7 @@ def tests_summary():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
-
+'''
 
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
