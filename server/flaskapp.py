@@ -129,23 +129,50 @@ def child_selection():
       date_of_birth_1 = date_of_birth[0]
       date_of_birth_2 = date_of_birth[1]
 
-      data = {
-        "messages":
-        [
-          {
-            "text": u"kaks last" + str(date_of_birth_2) + str(child_name_2)
-          }
-        ],
-        "redirect_to_blocks": ["create_child"]
-      }
 
+      data = {
+        "messages": [
+          {
+            "attachment": {
+              "type": "template",
+              "payload": {
+                "template_type": "button",
+                "text": u"Ühtegi last ei leitud, palun sisesta info.",
+                "buttons": [
+                  {
+                    "set_attributes": 
+                      {
+                        "Lapse_eesnimi": str(child_name_1),
+                        "Synni_kuupaev": str(date_of_birth_1)
+                      },
+                    "block_names": ["returning_parents"],
+                    "type": "show_block",
+                    "title": str(child_name_1)
+                  },
+                  {
+                    "set_attributes": 
+                      {
+                        "Lapse_eesnimi": str(child_name_2),
+                        "Synni_kuupaev": str(date_of_birth_2)
+                      },
+                    "block_names": ["returning_parents"],
+                    "type": "show_block",
+                    "title": str(child_name_2)
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }      
 
     else: 
+
       data = {
         "messages":
         [
           {
-            "text": u"Ühtegi last ei leitud, palun sisesta info."
+            "text": u"lapsi ei leitud"
           }
         ],
         "redirect_to_blocks": ["create_child"]
