@@ -172,6 +172,15 @@ def child_selection():
 
 
     elif Children.query.filter_by(key_user = key_user).count() == 1:
+      data = Children.query.filter_by(key_user = key_user).all()
+      result_dict = [u.__dict__ for u in data]
+
+      child_name = [d.get('lapse_eesnimi') for d in result_dict]    
+      child_name_1 = child_name[0]
+
+      date_of_birth = [d.get('date_of_birth') for d in result_dict]    
+      date_of_birth_1 = date_of_birth[0]
+
       data = {
         "messages": [
           {
