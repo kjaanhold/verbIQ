@@ -393,7 +393,7 @@ def to_json(inst, cls):
 
 
 #@app.route('/next_test_selection', methods=['GET'])
-def next_test_selection(dob,name,round):
+def next_test_selection(dob,name,turn):
 #def next_test_selection():
 #    dob = request.args.get('Synni_kuupaev')
 #    name = request.args.get('Lapse_eesnimi')
@@ -403,7 +403,7 @@ def next_test_selection(dob,name,round):
     age_months = str(int(age.days)/30)
 
       # this kid hasn't done any tests yet
-    if (round = "first" and TestResults.query.filter_by(lapse_eesnimi = name).first() is None):
+    if (turn = "first" and TestResults.query.filter_by(lapse_eesnimi = name).first() is None):
 
       query = "SELECT t.description, t.block_name, m.target_age FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age BETWEEN (2*%s)/3 AND (4*%s)/3 ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months)
       rows = execute_query(query)
@@ -449,7 +449,7 @@ def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
 
-    selected_test = next_test_selection(dob = dob, name = name, round = "first")
+    selected_test = next_test_selection(dob = dob, name = name, turn = "first")
 
     question = str(selected_test.split("///")[0])
     block_name = str(selected_test.split("///")[1])
