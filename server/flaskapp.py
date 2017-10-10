@@ -558,10 +558,10 @@ def return_test_score(name):
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
       out_text = "0"
     else:
-      data = TestResults.query.filter_by(lapse_eesnimi = name).all()
+      data = TestResults.query.filter_by(lapse_eesnimi = name, result_value != "Ei tea").all()
       result_dict = [u.__dict__ for u in data]
       result_cdf_value = [d.get('result_cdf_value') for d in result_dict]    
-      result_cdf_value = str(round(sum(result_cdf_value)*100/len(result_cdf_value)))
+      result_cdf_value = str(round(sum(result_cdf_value)*2*100/len(result_cdf_value)))
       out_text = str(result_cdf_value)
     return str(out_text)
 
