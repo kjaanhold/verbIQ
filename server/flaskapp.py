@@ -76,15 +76,12 @@ def store_test_results():
       result_value = request.form['test_result']
       result_cdf_value = request.form['test_result_cdf']
 
-      if (result_value == "Jah" and float(result_cdf_value) < float(0.5)):
-        result_cdf_value = floeat(1) - float(result_cdf_value)
-
-      elif (result_value == "Ei" and float(result_cdf_value) > float(0.5)):
-        result_cdf_value = floeat(1) - float(result_cdf_value)
-      elif (result_value == "Ei tea"):
-        result_cdf_value = floeat(-1)
+      if result_value == "Jah":
+        result_cdf_value = 1
+      elif (result_value == "Ei" and result_cdf_value > 0.5):
+        result_cdf_value = float(1) - float(result_cdf_value)
       else:
-        result_cdf_value = floeat(0.5)
+        result_cdf_value = float(-1)
 
       new_data = TestResults(key_user=str(key_user), block_name=str("'"+block_name+"'"), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')), date_created=str(date_created), result_type=str(result_type), result_value=str(result_value), result_cdf_value = float(result_cdf_value))
       db.session.add(new_data)
