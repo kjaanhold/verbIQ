@@ -414,7 +414,7 @@ def next_test_selection(dob,name):
 
     else:
       # this kid has done at least one test
-      data = TestResults.query.filter_by(test_result = 'Jah').all()
+      data = TestResults.query.filter_by(lapse_eesnimi = name, result_value = 'Jah').all()
       result_dict = [u.__dict__ for u in data]
       block_name = [d.get('block_name') for d in result_dict]
       block_name = str(block_name)
