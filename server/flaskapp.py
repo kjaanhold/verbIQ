@@ -196,7 +196,6 @@ def child_selection():
                     "type": "show_block",
                     "title": "Lisa uus laps"
                   }
-
                 ]
               }
             }
