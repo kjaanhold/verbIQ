@@ -149,14 +149,60 @@ def child_selection():
 
     if Children.query.filter_by(key_user = key_user).count() == 0:
       data = {
-        'messages':[{"text": u"Tore! Palun sisesta oma lapse andmed."}], 
-        "redirect_to_blocks": ["create_child"]
-      }
+        "messages": [
+          {
+            "attachment": {
+              "type": "template",
+              "payload": {
+                "template_type": "button",
+                "text": u"Sul pole vel ühtegi last sisestatud.",
+                "buttons": [
+                  {
+                    "block_names": ["create_child"],
+                    "type": "show_block",
+                    "title": "Lisa uus laps"
+                  }
+
+                ]
+              }
+            }
+          }
+        ]
+      }      
+
 
     elif Children.query.filter_by(key_user = key_user).count() == 1:
       data = {
-        "redirect_to_blocks": ["returning_parents"]
-      }
+        "messages": [
+          {
+            "attachment": {
+              "type": "template",
+              "payload": {
+                "template_type": "button",
+                "text": u"Kelle kohta sooovid infot sisestada?",
+                "buttons": [
+                  {
+                    "set_attributes": 
+                      {
+                        "Lapse_eesnimi": str(child_name_1),
+                        "Synni_kuupaev": str(date_of_birth_1)
+                      },
+                    "block_names": ["returning_parents"],
+                    "type": "show_block",
+                    "title": str(child_name_1)
+                  },
+                  {
+                    "block_names": ["create_child"],
+                    "type": "show_block",
+                    "title": "Lisa uus laps"
+                  }
+
+                ]
+              }
+            }
+          }
+        ]
+      }      
 
 
     elif Children.query.filter_by(key_user = key_user).count() == 2:      
@@ -200,7 +246,13 @@ def child_selection():
                     "block_names": ["returning_parents"],
                     "type": "show_block",
                     "title": str(child_name_2)
+                  },
+                  {
+                    "block_names": ["create_child"],
+                    "type": "show_block",
+                    "title": "Lisa uus laps"
                   }
+
                 ]
               }
             }
