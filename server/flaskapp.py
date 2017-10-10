@@ -75,11 +75,12 @@ def store_test_results():
       result_type = 'chatfuel'
       result_value = request.form['test_result']
       result_cdf_value = request.form['test_result_cdf']
+      result_cdf_value = float(result_cdf_value)
 
       if result_value == "Jah":
         result_cdf_value = 1
       elif (result_value == "Ei" and result_cdf_value > 0.5):
-        result_cdf_value = float(1) - float(result_cdf_value)
+        result_cdf_value = 1 - result_cdf_value
       else:
         result_cdf_value = float(-1)
 
