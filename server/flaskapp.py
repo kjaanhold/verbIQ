@@ -412,32 +412,6 @@ def next_test_selection(dob,name):
       block_name = str(rows[0][1].encode("utf-8"))
       target_age = str(rows[0][2])
 
-    elif (1 == 1):
-      data = TestResults.query.filter_by(lapse_eesnimi = name, test_result = "Jah").all()
-      result_dict = [u.__dict__ for u in data]
-      block_name = [d.get('block_name') for d in result_dict]
-      block_name = str(block_name)
-      block_name = block_name.replace('u"','')
-      block_name = block_name.replace('"','')
-#      block_name = block_name.replace("u'","'")
-      block_name = block_name.replace('[','')
-      block_name = block_name.replace(']','')
- 
-      query = "SELECT t.description, t.block_name, m.target_age FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE ( m.target_age BETWEEN (2*%s)/3 AND (4*%s)/3 ) AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months, block_name)    
-
-      rows = execute_query(query)
-
-      if str(rows) == '[]':
-        question  = 'done'
-        block_name = 'test_summary'
-        target_age = str("0")
-
-      else:
-        question = str(rows[0][0].encode("utf-8"))
-        block_name = str(rows[0][1].encode("utf-8"))
-        target_age = str(rows[0][2])
-
-
     else:
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name).all()
