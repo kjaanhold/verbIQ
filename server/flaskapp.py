@@ -393,7 +393,7 @@ def to_json(inst, cls):
 
 
 #@app.route('/next_test_selection', methods=['GET'])
-def next_test_selection(dob,name,turn):
+def next_test_selection(dob,name,last_block):
 #def next_test_selection():
 #    dob = request.args.get('Synni_kuupaev')
 #    name = request.args.get('Lapse_eesnimi')
@@ -412,7 +412,7 @@ def next_test_selection(dob,name,turn):
       block_name = str(rows[0][1].encode("utf-8"))
       target_age = str(rows[0][2])
 
-    elif (turn == "return"):
+    elif (last_block == "update_previous_tests"):
       # this kid has done at least one test
       data = TestResults.query.filter_by(lapse_eesnimi = name, result_value = 'Jah').all()
       result_dict = [u.__dict__ for u in data]
@@ -474,8 +474,9 @@ def next_test_selection(dob,name,turn):
 def run_test():
     dob = request.args.get('Synni_kuupaev')
     name = request.args.get('Lapse_eesnimi')
+    last_block =  request.args.get('last visited block name') 
 
-    selected_test = next_test_selection(dob = dob, name = name, turn = "return")
+    selected_test = next_test_selection(dob = dob, name = name, last_block = last_block)
 
     question = str(selected_test.split("///")[0])
     block_name = str(selected_test.split("///")[1])
