@@ -139,7 +139,7 @@ def has_enough_children():
       return jsonify(data)
 
     else: 
-      data = {'messages':[{"text": "..."}]}
+      data = {'messages':[{"text": "Tore! Palun sisesta oma lapse andmed."}]}
       return jsonify(data)
 
 ## work in progress
