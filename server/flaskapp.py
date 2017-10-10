@@ -80,7 +80,7 @@ def store_test_results():
       if result_value == "Jah":
         result_cdf_value = 1
       elif (result_value == "Ei" and result_cdf_value > 0.5):
-        result_cdf_value = 1 - result_cdf_value
+        result_cdf_value = float(1) - result_cdf_value
       else:
         result_cdf_value = float(-1)
 
