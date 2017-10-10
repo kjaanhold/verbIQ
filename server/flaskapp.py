@@ -76,9 +76,10 @@ def store_test_results():
       result_value = request.form['test_result']
       result_cdf_value = request.form['test_result_cdf']
 
-      if (result_value == "Jah" and float(result_cdf_value) < 0.5):
+      if (result_value == "Jah" and float(result_cdf_value) < float(0.5)):
         result_cdf_value = floeat(1) - float(result_cdf_value)
-      elif (result_value == "Ei" and float(result_cdf_value) > 0.5):
+
+      elif (result_value == "Ei" and float(result_cdf_value) > float(0.5)):
         result_cdf_value = floeat(1) - float(result_cdf_value)
       elif (result_value == "Ei tea"):
         result_cdf_value = floeat(-1)
