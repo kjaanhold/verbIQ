@@ -560,7 +560,7 @@ def return_test_score(name):
     else:
       data = TestResults.query.filter_by(lapse_eesnimi = name).all()
       result_dict = [u.__dict__ for u in data]
-      result_cdf_value = [d.get('result_cdf_value') for d in result_dict]    
+      result_cdf_value = [d.get('result_cdf_value') for d in result_dict if d.get('result_cdf_value') >= 0]    
       result_cdf_value = str(round(sum(result_cdf_value)*2*100/len(result_cdf_value)))
       out_text = str(result_cdf_value)
     return str(out_text)
