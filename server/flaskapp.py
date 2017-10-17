@@ -709,7 +709,7 @@ def tests_summary():
       data_ei = str(return_test_results(name, 'Ei'))
       data_ei_tea = str(return_test_results(name, 'Ei tea'))
       returned_test_score = str(return_test_score(name))
-      score = returned_test_score 
+      score = str(returned_test_score.split("///")[1]) 
       #str(returned_test_score.split("///")[0])
       #weaknesses = str(returned_test_score.split("///")[1])
 
