@@ -751,6 +751,11 @@ def tests_summary():
                     "buttons": [
                       {
                         "type": "show_block",
+                        "block_name": "test_summary_hidden",
+                        "title": u"Õppima"
+                      },
+                      {
+                        "type": "show_block",
                         "block_name": "returning_parents",
                         "title": "Tagasi"
                       }
