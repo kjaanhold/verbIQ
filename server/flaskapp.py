@@ -655,7 +655,7 @@ def return_test_score(name):
       bottom_block_name = [d.get('block_name') for d in result_dict]    
       bottom_block_name = str(bottom_block_name)
 
-      out_text = str(result_cdf_value) # + ", bottom blocks:" + str(bottom_block_name)
+      out_text = str(bottom_block_name) # + ", bottom blocks:" + str(bottom_block_name)
     return str(out_text)
 
 '''
