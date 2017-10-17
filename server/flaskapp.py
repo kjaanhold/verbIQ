@@ -649,17 +649,14 @@ def return_test_score(name):
       result_dict = [u.__dict__ for u in data]
       result_cdf_value = [d.get('result_cdf_value') for d in result_dict if d.get('result_cdf_value') >= 0]    
       result_cdf_value = str(round(sum(result_cdf_value)*2*100/len(result_cdf_value)))
-      out_text = str(result_cdf_value)
-    return str(out_text)
 
-'''
       bottom_skills_data = TestResults.query.filter_by(lapse_eesnimi = name).order_by(TestResults.query.result_cdf_value).limit(3)
       bottom_result_dict = [u.__dict__ for u in bottom_skills_data]
       bottom_block_name = [d.get('block_name') for d in result_dict]    
       bottom_block_name = str(bottom_block_name)
       out_text = str(result_cdf_value) + ", bottom blocks:" + str(bottom_block_name)
     return str(out_text)
-'''
+
 
 @app.route('/tests_summary', methods=['GET'])
 def tests_summary():
