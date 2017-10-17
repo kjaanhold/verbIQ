@@ -747,7 +747,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + u" (keskmise lapse skoor selles vanuses on 100). Taseme parandamiseks peaks ta ennekõike suutma " + weaknesses,
+                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100). Taseme parandamiseks peaks ta esmalt suutma " + weaknesses,
                     "buttons": [
                       {
                         "type": "show_block",
@@ -770,7 +770,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + u" (keskmise lapse skoor selles vanuses on 100). Taseme parandamiseks peaks ta ennekõike suutma " + weaknesses,
+                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100). Taseme parandamiseks peaks ta esmalt suutma "+ weaknesses,
                     "buttons": [
                       {
                         "type": "show_block",
