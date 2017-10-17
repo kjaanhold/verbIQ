@@ -710,6 +710,7 @@ def tests_summary():
       data_ei_tea = str(return_test_results(name, 'Ei tea'))
       returned_test_score = str(return_test_score(name))
       score = str(returned_test_score.split("///")[0]) 
+      weaknesses = str(returned_test_score.split("///")[1]) 
       #str(returned_test_score.split("///")[0])
       #weaknesses = str(returned_test_score.split("///")[1])
 
@@ -746,7 +747,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100). Taseme parandamiseks peaks ta suutma ",
+                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100). Taseme parandamiseks peaks ta suutma " + weaknesses,
                     "buttons": [
                       {
                         "type": "show_block",
