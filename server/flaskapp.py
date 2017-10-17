@@ -679,7 +679,7 @@ def tests_summary():
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
-
+    
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
       out_text = name + u" pole veel ühtegi testi teinud."
 
@@ -708,11 +708,7 @@ def tests_summary():
       data_jah = str(return_test_results(name, 'Jah'))
       data_ei = str(return_test_results(name, 'Ei'))
       data_ei_tea = str(return_test_results(name, 'Ei tea'))
-
-      returned_test_score = str(return_test_score(name))
-
-      score = str(returned_test_score.split("///")[0])
-#      weaknesses = str(returned_test_score.split("///")[1])
+      score = str(return_test_score(name))
 
       if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
         data = {
@@ -723,7 +719,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score # + u" (keskmise lapse skoor selles vanuses on 100). Suurimad nõrkused on " + weaknesses ".",
+                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100).",
                     "buttons": [
                       {
                         "type": "show_block",
