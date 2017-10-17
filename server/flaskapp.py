@@ -717,7 +717,7 @@ def tests_summary():
       if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
         data = {
             "messages": [
-              {"text": str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah + "."},
+#              {"text": str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah + "."},
               {
                 "attachment": {
                   "type": "template",
@@ -740,8 +740,8 @@ def tests_summary():
       elif (str(data_jah) != 'no_results' and str(data_ei) != 'no_results'):
         data = {
             "messages": [
-              {"text": str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah + ","},
-              {"text": "aga " + str(name) + " ei oska eriti veel ise " + data_ei + "."},
+#              {"text": str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah + ","},
+#              {"text": "aga " + str(name) + " ei oska eriti veel ise " + data_ei + "."},
               {
                 "attachment": {
                   "type": "template",
@@ -752,7 +752,7 @@ def tests_summary():
                       {
                         "type": "show_block",
                         "block_name": "test_summary_hidden",
-                        "title": "Oppima"
+                        "title": "Treenima"
                       },
                       {
                         "type": "show_block",
@@ -769,7 +769,7 @@ def tests_summary():
       elif (str(data_jah) == 'no_results' and str(data_ei) != 'no_results'):
         data = {
             "messages": [
-              {"text": str(name) + " on " + age_months + " kuu vanune ja ei oska veel " + data_ei + "."},
+#              {"text": str(name) + " on " + age_months + " kuu vanune ja ei oska veel " + data_ei + "."},
               {
                 "attachment": {
                   "type": "template",
@@ -777,6 +777,11 @@ def tests_summary():
                     "template_type": "button",
                     "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100). Taseme parandamiseks peaks ta esmalt suutma "+ weaknesses,
                     "buttons": [
+                      {
+                        "type": "show_block",
+                        "block_name": "test_summary_hidden",
+                        "title": "Treenima"
+                      },
                       {
                         "type": "show_block",
                         "block_name": "returning_parents",
