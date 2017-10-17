@@ -709,8 +709,9 @@ def tests_summary():
       data_ei = str(return_test_results(name, 'Ei'))
       data_ei_tea = str(return_test_results(name, 'Ei tea'))
       returned_test_score = str(return_test_score(name))
-      score = str(returned_test_score.split("///")[0])
-      weaknesses = str(returned_test_score.split("///")[1])
+      score = returned_test_score 
+      #str(returned_test_score.split("///")[0])
+      #weaknesses = str(returned_test_score.split("///")[1])
 
       if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
         data = {
@@ -721,7 +722,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + u" (keskmise lapse skoor selles vanuses on 100). Suurimad nõrkused on: " + weaknesses.decode("utf-8") + ".",
+                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100).",
                     "buttons": [
                       {
                         "type": "show_block",
@@ -745,7 +746,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100)." + weaknesses.decode("utf-8"),
+                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100).",
                     "buttons": [
                       {
                         "type": "show_block",
@@ -768,7 +769,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100)." + weaknesses.decode("utf-8"),
+                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100).",
                     "buttons": [
                       {
                         "type": "show_block",
