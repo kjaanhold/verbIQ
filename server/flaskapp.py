@@ -709,8 +709,8 @@ def tests_summary():
       data_ei = str(return_test_results(name, 'Ei'))
       data_ei_tea = str(return_test_results(name, 'Ei tea'))
       returned_test_score = str(return_test_score(name))
-      score = str(selected_test.split("///")[0])
-      weaknesses = str(selected_test.split("///")[1])
+      score = str(returned_test_score.split("///")[0])
+      weaknesses = str(returned_test_score.split("///")[1])
 
       if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
         data = {
