@@ -652,7 +652,7 @@ def return_test_score(name):
 
       bottom_skills_data = TestResults.query.filter_by(lapse_eesnimi = name).order_by(TestResults.result_cdf_value).limit(3)
       bottom_result_dict = [u.__dict__ for u in bottom_skills_data]
-      bottom_block_name = [d.get('block_name') for d in result_dict]    
+      bottom_block_name = [d.get('result_cdf_value') for d in result_dict]    
       bottom_block_name = str(bottom_block_name)
 
       out_text = str(bottom_block_name) # + ", bottom blocks:" + str(bottom_block_name)
