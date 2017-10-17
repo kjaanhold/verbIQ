@@ -780,7 +780,7 @@ def tests_summary():
                       {
                         "type": "show_block",
                         "block_name": "test_summary_hidden",
-                        "title": u"Õppima"
+                        "title": u"Õppima!"
                       },
                       {
                         "type": "show_block",
