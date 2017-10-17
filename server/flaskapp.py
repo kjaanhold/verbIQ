@@ -650,12 +650,24 @@ def return_test_score(name):
       result_cdf_value = [d.get('result_cdf_value') for d in result_dict if d.get('result_cdf_value') >= 0]    
       result_cdf_value = str(round(sum(result_cdf_value)*2*100/len(result_cdf_value)))
 
-      bottom_skills_data = TestResults.query.filter_by(lapse_eesnimi = name).order_by(TestResults.result_cdf_value.desc()).limit(1)
+      bottom_skills_data = TestResults.query.filter_by(lapse_eesnimi = name).order_by(TestResults.result_cdf_value.asc()).limit(3)
       bottom_result_dict = [u.__dict__ for u in bottom_skills_data]
       bottom_block_name = [d.get('result_cdf_value') for d in bottom_result_dict]    
       bottom_block_name = str(bottom_block_name)
 
-      out_text = str(bottom_block_name) # + ", bottom blocks:" + str(bottom_block_name)
+      bottom_block_name = bottom_block_name.replace('[u"', "")
+      bottom_block_name = bottom_block_name.replace('", u"',', ')
+      bottom_block_name = bottom_block_name.replace('"','')
+      bottom_block_name = bottom_block_name.replace('[','')
+      bottom_block_name = bottom_block_name.replace(']','')
+
+      query = "SELECT group_concat(m.description, ', '), 'a' FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s) LIMIT 1;" % (bottom_block_name)    
+      rows = execute_query(query)
+
+      out_text_1 = str(rows[0][0].encode("utf-8"))
+
+
+      out_text = str(bottom_block_name) + str(out_text_1) # + ", bottom blocks:" + str(bottom_block_name)
     return str(out_text)
 
 '''
