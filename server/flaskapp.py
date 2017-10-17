@@ -741,7 +741,7 @@ def tests_summary():
         data = {
             "messages": [
 #              {"text": str(name) + " on " + age_months + " kuu vanune ja ta oskab " + data_jah + ","},
-#              {"text": "aga " + str(name) + " ei oska eriti veel ise " + data_ei + "."},
+              {"text": "aga " + str(name) + " ei oska eriti veel ise " + data_ei + "."},
               {
                 "attachment": {
                   "type": "template",
