@@ -664,16 +664,11 @@ def return_test_score(name):
       query = "SELECT group_concat(m.description, ', '), 'a' FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s) LIMIT 1;" % (bottom_block_name)    
       rows = execute_query(query)
 
-      out_text_1 = str(rows[0][0].encode("utf-8"))
+      bottom_block_descriptions = str(rows[0][0].encode("utf-8"))
 
-
-      out_text = str(bottom_block_name) + str(out_text_1) # + ", bottom blocks:" + str(bottom_block_name)
+      out_text = str(result_cdf_value) + "///" + str(bottom_block_descriptions) # + ", bottom blocks:" + str(bottom_block_name)
     return str(out_text)
 
-'''
-      out_text = str(result_cdf_value) + ", bottom blocks:" + str(bottom_block_name)
-    return str(out_text)
-'''
 
 @app.route('/tests_summary', methods=['GET'])
 def tests_summary():
@@ -683,6 +678,7 @@ def tests_summary():
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
+
 
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
       out_text = name + u" pole veel ühtegi testi teinud."
@@ -712,7 +708,9 @@ def tests_summary():
       data_jah = str(return_test_results(name, 'Jah'))
       data_ei = str(return_test_results(name, 'Ei'))
       data_ei_tea = str(return_test_results(name, 'Ei tea'))
-      score = str(return_test_score(name))
+      returned_test_score = str(return_test_score(name))
+      score = str(selected_test.split("///")[0])
+      weaknesses = str(selected_test.split("///")[1])
 
       if (str(data_jah) != 'no_results' and str(data_ei) == 'no_results'):
         data = {
@@ -723,7 +721,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100).",
+                    "text":  str(name) + " skoor on " + score + u" (keskmise lapse skoor selles vanuses on 100). Suurimad nõrkused on " + weaknesses ".",
                     "buttons": [
                       {
                         "type": "show_block",
