@@ -832,6 +832,16 @@ def propose_exercise():
     else:
       image_1 = str(rows[0][2].encode("utf-8"))
 
+    if str(rows[1][2].encode("utf-8")) == "none":
+      image_2 = str("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f")
+    else:
+      image_2 = str(rows[1][2].encode("utf-8"))
+
+    if str(rows[2][2].encode("utf-8")) == "none":
+      image_3 = str("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f")
+    else:
+      image_3 = str(rows[2][2].encode("utf-8"))
+
 
     data = {
       "messages": [
@@ -842,9 +852,9 @@ def propose_exercise():
               "template_type":"generic",
               "elements":[
                 {
-                  "title": str(rows[0][0].encode("utf-8")),
+                  "title": "Ei oska " + str(rows[0][0].encode("utf-8")),
                   "image_url": str(image_1),
-                  "subtitle":str(rows[0][1].encode("utf-8")),
+                  "subtitle": str(rows[0][1].encode("utf-8")),
                   "buttons":[
                     {
                       "type":"web_url",
@@ -854,7 +864,7 @@ def propose_exercise():
                   ]
                 },
                 {
-                  "title": str(rows[1][0].encode("utf-8")),
+                  "title": "Ei oska " +  str(rows[1][0].encode("utf-8")),
                   "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f",
                   "subtitle":str(rows[1][1].encode("utf-8")),
                   "buttons":[
