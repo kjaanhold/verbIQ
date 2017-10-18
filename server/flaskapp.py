@@ -824,7 +824,7 @@ def propose_exercise():
 #    name = request.args.get('Lapse_eesnimi')
 
 
-    query = "SELECT * FROM tests LIMIT 1;" 
+    query = "SELECT * FROM exercises LIMIT 1;" 
     rows = execute_query(query)
     return(str(rows))
 
