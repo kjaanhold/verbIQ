@@ -1,0 +1,9 @@
+insert into milestones_exercises (key_milestone, key_exercise) values (47,1);
+insert into milestones_exercises (key_milestone, key_exercise) values (13,2);
+insert into milestones_exercises (key_milestone, key_exercise) values (4,3);
+insert into milestones_exercises (key_milestone, key_exercise) values (3,3);
+insert into milestones_exercises (key_milestone, key_exercise) values (16,5);
+insert into milestones_exercises (key_milestone, key_exercise) values (17,6);
+insert into milestones_exercises (key_milestone, key_exercise) values (22,6);
+insert into milestones_exercises (key_milestone, key_exercise) values (18,7);
+insert into milestones_exercises (key_milestone, key_exercise) values (19,8);
