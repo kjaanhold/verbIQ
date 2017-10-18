@@ -666,7 +666,7 @@ def return_test_score(name):
 
       bottom_block_descriptions = str(rows[0][0].encode("utf-8"))
 
-      out_text = str(result_cdf_value) + "///" + str(bottom_block_descriptions) # + ", bottom blocks:" + str(bottom_block_name)
+      out_text = str(result_cdf_value) + "///" + str(bottom_block_descriptions) + "///" + str(bottom_block_name) # + ", bottom blocks:" + str(bottom_block_name)
     return str(out_text)
 
 
@@ -818,6 +818,17 @@ def tests_summary():
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
+
+@app.route('/propose_exercise/', methods=['GET'])
+def propose_exercise():
+    name = request.args.get('Lapse_eesnimi')
+    bottom_block_name = str(returned_test_score.split("///")[2]) 
+    query = "SELECT group_concat(e.description_est, ', '), 'a' FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones_exercises me ON ms.key_milestone = me.key_milestone JOIN exercises e ON me.key_exercise = e.id_exercise WHERE t.block_name IN (%s) LIMIT 1;" % (bottom_block_name)    
+    rows = execute_query(query)
+
+    out_text = str(rows[0][0].encode("utf-8"))
+
+    return str(out_text)
 
 
 
