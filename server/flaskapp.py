@@ -840,7 +840,7 @@ def propose_exercise():
 
     data = {
       "messages": [
-        {"text": "Selleks et aidata " + str(name) + " arengule kaasa, tee talle järgnevaid harjutusi.",
+        {"text": "Selleks et aidata " + str(name) + " arengule kaasa, tee talle järgnevaid harjutusi."},
         {
           "attachment":{
             "type":"template",
