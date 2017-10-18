@@ -822,7 +822,7 @@ def tests_summary():
 @app.route('/propose_exercise/', methods=['GET'])
 def propose_exercise():
     name = request.args.get('Lapse_eesnimi')
-    bottom_block_name = str(returned_test_score.split("///")[2]) 
+    bottom_block_name = str(returned_test_score(name).split("///")[2]) 
 
 
     return(bottom_block_name)
