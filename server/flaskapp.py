@@ -828,9 +828,9 @@ def propose_exercise():
     rows = execute_query(query)
 
     if str(rows[0][2].encode("utf-8")) == "none":
-      image_1 = str(rows[0][2].encode("utf-8"))
-    else:
       image_1 = str("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f")
+    else:
+      image_1 = str(rows[0][2].encode("utf-8"))
 
 
     data = {
