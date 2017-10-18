@@ -827,14 +827,52 @@ def propose_exercise():
     query = "SELECT m.description, e.description_est FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN milestones_exercises me ON ms.key_milestone = me.key_milestone JOIN exercises e ON me.key_exercise = e.id_exercise WHERE t.block_name IN (%s) LIMIT 3;" % (bottom_block_name)    
     rows = execute_query(query)
 
-    out_text = str(rows[1][1].encode("utf-8"))
-    return str(out_text)
 
 
+    data = {
+      "messages": [
+        {
+          "attachment":{
+            "type":"template",
+            "payload":{
+              "template_type":"generic",
+              "elements":[
+                {
+                  "title":"Chatfuel Rockets T-Shirt",
+                  "image_url":"https://rockets.chatfuel.com/img/shirt.png",
+                  "subtitle":"Soft white cotton t-shirt with CF Rockets logo",
+                  "buttons":[
+                    {
+                      "type":"web_url",
+                      "url":"https://rockets.chatfuel.com/store/shirt",
+                      "title":"View Item"
+                    }
+                  ]
+                },
+                {
+                  "title":"Chatfuel Rockets Hoodie",
+                  "image_url":"https://rockets.chatfuel.com/img/hoodie.png",
+                  "subtitle":"Soft grey cotton hoddie with CF Rockets logo",
+                  "buttons":[
+                    {
+                      "type":"web_url",
+                      "url":"https://rockets.chatfuel.com/store/hoodie",
+                      "title":"View Item"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+
+    response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
+    return response
 
 
-#    return str(query)
-
+#    out_text = str(rows[1][1].encode("utf-8"))
 
 
 @app.route('/age_block_selection/<dob>', methods=['GET'])
