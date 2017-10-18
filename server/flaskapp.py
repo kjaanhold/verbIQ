@@ -848,26 +848,26 @@ def propose_exercise():
               "template_type":"generic",
               "elements":[
                 {
-                  "title": "Ei oska " + str(rows[0][0].encode("utf-8")),
+                  "title": "Ei oska " + str(rows[0][0].encode("utf-8")) + "?",
                   "image_url": str(image_1),
                   "subtitle": str(rows[0][1].encode("utf-8")),
                   "buttons":[
                     {
-                      "type":"web_url",
-                      "url":"https://rockets.chatfuel.com/store/shirt",
-                      "title":"View Item"
+                      "type":"show_block",
+                      "block_name": "ask_feedback",
+                      "title":"Saada küsimus"
                     }
                   ]
                 },
                 {
-                  "title": "Ei oska " +  str(rows[1][0].encode("utf-8")),
+                  "title": "Ei oska " +  str(rows[1][0].encode("utf-8")) + "?",
                   "image_url":str(image_2),
                   "subtitle":str(rows[1][1].encode("utf-8")),
                   "buttons":[
                     {
-                      "type":"web_url",
-                      "url":"https://rockets.chatfuel.com/store/hoodie",
-                      "title":"View Item"
+                      "type":"show_block",
+                      "block_name": "ask_feedback",
+                      "title":"Saada küsimus"
                     }
                   ]
                 }
