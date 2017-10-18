@@ -838,9 +838,9 @@ def propose_exercise():
               "template_type":"generic",
               "elements":[
                 {
-                  "title":"Chatfuel Rockets T-Shirt",
+                  "title":str(rows[0][0].encode("utf-8")),
                   "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f",
-                  "subtitle":"Soft white cotton t-shirt with CF Rockets logo",
+                  "subtitle":str(rows[1][0].encode("utf-8")),
                   "buttons":[
                     {
                       "type":"web_url",
@@ -850,9 +850,21 @@ def propose_exercise():
                   ]
                 },
                 {
-                  "title":"Chatfuel Rockets Hoodie",
+                  "title":str(rows[0][1].encode("utf-8")),
                   "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f",
-                  "subtitle":"Soft grey cotton hoddie with CF Rockets logo",
+                  "subtitle":str(rows[1][1].encode("utf-8")),
+                  "buttons":[
+                    {
+                      "type":"web_url",
+                      "url":"https://rockets.chatfuel.com/store/hoodie",
+                      "title":"View Item"
+                    }
+                  ]
+                },
+                {
+                  "title":str(rows[0][2].encode("utf-8")),
+                  "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f",
+                  "subtitle":str(rows[1][2].encode("utf-8")),
                   "buttons":[
                     {
                       "type":"web_url",
