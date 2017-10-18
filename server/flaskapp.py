@@ -827,6 +827,10 @@ def propose_exercise():
     query = "SELECT m.description, e.description_est, e.image_url FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN milestones_exercises me ON ms.key_milestone = me.key_milestone JOIN exercises e ON me.key_exercise = e.id_exercise WHERE t.block_name IN (%s) LIMIT 3;" % (bottom_block_name)    
     rows = execute_query(query)
 
+    if str(rows[0][2].encode("utf-8")) == "none":
+      image_1 = str(rows[0][2].encode("utf-8"))
+    else:
+      image_1 = str("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f")
 
 
     data = {
@@ -838,8 +842,8 @@ def propose_exercise():
               "template_type":"generic",
               "elements":[
                 {
-                  "title": str(rows[0][2].encode("utf-8")),
-                  "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f",
+                  "title": str(rows[0][0].encode("utf-8")),
+                  "image_url": str(image_1),
                   "subtitle":str(rows[0][1].encode("utf-8")),
                   "buttons":[
                     {
