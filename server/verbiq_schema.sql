@@ -60,6 +60,20 @@ create table tests (
 	follow_up_question text
 );
 
+drop table if exists exercises;
+create table exercises (
+	id_exercise integer primary key not null,
+	description_est text,
+	description_eng text
+);
+
+drop table if exists milestones_exercises;
+create table milestones_exercises (
+	id_milestone_exercise integer primary key not null,
+	key_milestone integer not null,
+	key_exercise integer not null
+);
+
 drop table if exists test_results;
 create table test_results (
 	id_test_result integer primary key not null,
