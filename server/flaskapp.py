@@ -839,7 +839,7 @@ def propose_exercise():
               "elements":[
                 {
                   "title":"Chatfuel Rockets T-Shirt",
-                  "image_url":"https://rockets.chatfuel.com/img/shirt.png",
+                  "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f",
                   "subtitle":"Soft white cotton t-shirt with CF Rockets logo",
                   "buttons":[
                     {
@@ -851,7 +851,7 @@ def propose_exercise():
                 },
                 {
                   "title":"Chatfuel Rockets Hoodie",
-                  "image_url":"https://rockets.chatfuel.com/img/hoodie.png",
+                  "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f",
                   "subtitle":"Soft grey cotton hoddie with CF Rockets logo",
                   "buttons":[
                     {
