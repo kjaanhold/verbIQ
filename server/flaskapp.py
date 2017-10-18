@@ -860,6 +860,18 @@ def propose_exercise():
                       "title":"View Item"
                     }
                   ]
+                },
+                {
+                  "title": str(rows[2][0].encode("utf-8")),
+                  "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f",
+                  "subtitle":"Soft grey cotton hoddie with CF Rockets logo",
+                  "buttons":[
+                    {
+                      "type":"web_url",
+                      "url":"https://rockets.chatfuel.com/store/hoodie",
+                      "title":"View Item"
+                    }
+                  ]
                 }
               ]
             }
