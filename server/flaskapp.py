@@ -824,7 +824,7 @@ def propose_exercise():
     name = request.args.get('Lapse_eesnimi')
     returned_test_score = str(return_test_score(name))
     bottom_block_name = str(returned_test_score.split("///")[2]) 
-    query = "SELECT m.description, e.description_est FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN milestones_exercises me ON ms.key_milestone = me.key_milestone JOIN exercises e ON me.key_exercise = e.id_exercise WHERE t.block_name IN (%s) LIMIT 3;" % (bottom_block_name)    
+    query = "SELECT m.description, e.description_est, e.image_url FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN milestones_exercises me ON ms.key_milestone = me.key_milestone JOIN exercises e ON me.key_exercise = e.id_exercise WHERE t.block_name IN (%s) LIMIT 3;" % (bottom_block_name)    
     rows = execute_query(query)
 
 
@@ -838,7 +838,7 @@ def propose_exercise():
               "template_type":"generic",
               "elements":[
                 {
-                  "title": str(rows[0][0].encode("utf-8")),
+                  "title": str(rows[0][2].encode("utf-8")),
                   "image_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f",
                   "subtitle":str(rows[0][1].encode("utf-8")),
                   "buttons":[
