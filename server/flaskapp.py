@@ -824,7 +824,7 @@ def propose_exercise():
 #    name = request.args.get('Lapse_eesnimi')
 
 
-    query = "SELECT target_age, description FROM milestones;" 
+    query = "SELECT * FROM exercises;" 
     rows = execute_query(query)
     return(str(rows))
 
