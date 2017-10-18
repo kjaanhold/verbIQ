@@ -821,7 +821,7 @@ def tests_summary():
 
 @app.route('/propose_exercise/', methods=['GET'])
 def propose_exercise():
-#    name = request.args.get('Lapse_eesnimi')
+    name = request.args.get('Lapse_eesnimi')
 
 
     query = "SELECT * FROM exercises LIMIT 1;" 
