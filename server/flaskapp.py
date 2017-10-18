@@ -828,6 +828,7 @@ def propose_exercise():
 
 #    query = "SELECT * FROM exercises LIMIT 1;" 
     query = "SELECT group_concat(e.description_est, ', '), 'a' FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones_exercises me ON ms.key_milestone = me.key_milestone JOIN exercises e ON me.key_exercise = e.id_exercise WHERE t.block_name IN (%s) LIMIT 1;" % (bottom_block_name)    
+    rows = execute_query(query)
 
     out_text = str(rows[0][0].encode("utf-8"))
     return str(out_text)
@@ -836,7 +837,6 @@ def propose_exercise():
 
 
 #    return str(query)
-#    rows = execute_query(query)
 
 
 
