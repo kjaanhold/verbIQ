@@ -64,7 +64,9 @@ drop table if exists exercises;
 create table exercises (
 	id_exercise integer primary key not null,
 	description_est text,
-	description_eng text
+	description_eng text,
+	image_url text,
+	video_url text
 );
 
 drop table if exists milestones_exercises;
