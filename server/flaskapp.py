@@ -832,60 +832,187 @@ def propose_exercise():
 
     rows = execute_query(query)
 
-    a = len(rows)
-    return str(a)
-'''
-
-    if str(rows[0][2].encode("utf-8")) == "none":
-      image_1 = str("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f")
-    else:
-      image_1 = str(rows[0][2].encode("utf-8"))
-
-    if str(rows[1][2].encode("utf-8")) == "none":
-      image_2 = str("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f")
-    else:
-      image_2 = str(rows[1][2].encode("utf-8"))
-
-
-    data = {
-      "messages": [
-        {"text": "Selleks et aidata " + str(name) + " arengule kaasa, tee talle järgnevaid harjutusi."},
-        {
-          "attachment":{
-            "type":"template",
-            "payload":{
-              "template_type":"generic",
-              "elements":[
-                {
-                  "title": "Ei oska " + str(rows[0][0].encode("utf-8")) + "?",
-                  "image_url": str(image_1),
-                  "subtitle": str(rows[0][1].encode("utf-8")),
-                  "buttons":[
+    if (len(rows) == 0):
+      data = {
+          "messages": [
+            {"text": "Ei ole veel/enam midagi uut omandada"},
+            {
+              "attachment": {
+                "type": "template",
+                "payload": {
+                  "template_type": "button",
+                  "text": "viga",
+                  "buttons": [
                     {
-                      "type":"show_block",
-                      "block_name": "ask_feedback",
-                      "title":"Saada küsimus"
-                    }
-                  ]
-                },
-                {
-                  "title": "Ei oska " +  str(rows[1][0].encode("utf-8")) + "?",
-                  "image_url":str(image_2),
-                  "subtitle":str(rows[1][1].encode("utf-8")),
-                  "buttons":[
-                    {
-                      "type":"show_block",
-                      "block_name": "ask_feedback",
-                      "title":"Saada küsimus"
+                      "type": "show_block",
+                      "block_name": "returning_parents",
+                      "title": "Tagasi"
                     }
                   ]
                 }
-              ]
+              }
             }
-          }
+          ]
         }
-      ]
-    }
+
+    elif (len(rows) == 1):
+    
+      if str(rows[0][2].encode("utf-8")) == "none":
+        image_1 = str("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f")
+      else:
+        image_1 = str(rows[0][2].encode("utf-8"))
+
+      data = {
+          "messages": [
+            {"text": "Selleks et aidata " + str(name) + " arengule kaasa, tee talle järgnevaid harjutusi."},
+            {
+              "attachment":{
+                "type":"template",
+                "payload":{
+                  "template_type":"generic",
+                  "elements":[
+                    {
+                      "title": "Ei oska " + str(rows[0][0].encode("utf-8")) + "?",
+                      "image_url": str(image_1),
+                      "subtitle": str(rows[0][1].encode("utf-8")),
+                      "buttons":[
+                        {
+                          "type":"show_block",
+                          "block_name": "ask_feedback",
+                          "title":"Saada küsimus"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+
+
+    elif (len(rows) == 2):
+
+      if str(rows[0][2].encode("utf-8")) == "none":
+        image_1 = str("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f")
+      else:
+        image_1 = str(rows[0][2].encode("utf-8"))
+
+      if str(rows[1][2].encode("utf-8")) == "none":
+        image_2 = str("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f")
+      else:
+        image_2 = str(rows[1][2].encode("utf-8"))
+
+      data = {
+          "messages": [
+            {"text": "Selleks et aidata " + str(name) + " arengule kaasa, tee talle järgnevaid harjutusi."},
+            {
+              "attachment":{
+                "type":"template",
+                "payload":{
+                  "template_type":"generic",
+                  "elements":[
+                    {
+                      "title": "Ei oska " + str(rows[0][0].encode("utf-8")) + "?",
+                      "image_url": str(image_1),
+                      "subtitle": str(rows[0][1].encode("utf-8")),
+                      "buttons":[
+                        {
+                          "type":"show_block",
+                          "block_name": "ask_feedback",
+                          "title":"Saada küsimus"
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Ei oska " +  str(rows[1][0].encode("utf-8")) + "?",
+                      "image_url":str(image_2),
+                      "subtitle":str(rows[1][1].encode("utf-8")),
+                      "buttons":[
+                        {
+                          "type":"show_block",
+                          "block_name": "ask_feedback",
+                          "title":"Saada küsimus"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+
+    else:
+
+
+      if str(rows[0][2].encode("utf-8")) == "none":
+        image_1 = str("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f")
+      else:
+        image_1 = str(rows[0][2].encode("utf-8"))
+
+      if str(rows[1][2].encode("utf-8")) == "none":
+        image_2 = str("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f")
+      else:
+        image_2 = str(rows[1][2].encode("utf-8"))
+
+      if str(rows[2][2].encode("utf-8")) == "none":
+        image_3 = str("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhKLJBGZa3B6J9HoQ04GAWZSp452Vun8wHlTup4126RifmIM-f")
+      else:
+        image_3 = str(rows[2][2].encode("utf-8"))
+
+      data = {
+            "messages": [
+              {"text": "Selleks et aidata " + str(name) + " arengule kaasa, tee talle järgnevaid harjutusi."},
+              {
+                "attachment":{
+                  "type":"template",
+                  "payload":{
+                    "template_type":"generic",
+                    "elements":[
+                      {
+                        "title": "Ei oska " + str(rows[0][0].encode("utf-8")) + "?",
+                        "image_url": str(image_1),
+                        "subtitle": str(rows[0][1].encode("utf-8")),
+                        "buttons":[
+                          {
+                            "type":"show_block",
+                            "block_name": "ask_feedback",
+                            "title":"Saada küsimus"
+                          }
+                        ]
+                      },
+                      {
+                        "title": "Ei oska " +  str(rows[1][0].encode("utf-8")) + "?",
+                        "image_url":str(image_2),
+                        "subtitle":str(rows[1][1].encode("utf-8")),
+                        "buttons":[
+                          {
+                            "type":"show_block",
+                            "block_name": "ask_feedback",
+                            "title":"Saada küsimus"
+                          }
+                        ]
+                      },
+                      {
+                        "title": "Ei oska " +  str(rows[2][0].encode("utf-8")) + "?",
+                        "image_url":str(image_3),
+                        "subtitle":str(rows[2][1].encode("utf-8")),
+                        "buttons":[
+                          {
+                            "type":"show_block",
+                            "block_name": "ask_feedback",
+                            "title":"Saada küsimus"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+  
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
     return response
