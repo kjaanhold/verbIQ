@@ -825,7 +825,6 @@ def propose_exercise():
     return str("ei saa aru")
 
 '''
-
     name = request.args.get('Lapse_eesnimi')
     returned_test_score = str(return_test_score(name))
     bottom_block_name = str(returned_test_score.split("///")[2]) 
@@ -885,8 +884,8 @@ def propose_exercise():
     }
 
     response = Response(json.dumps(data,ensure_ascii = False), content_type="application/json; charset=utf-8")
-'''    return response
-
+    return response
+'''
 
 #    out_text = str(rows[1][1].encode("utf-8"))
 
