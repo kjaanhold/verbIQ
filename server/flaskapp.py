@@ -830,7 +830,7 @@ def propose_exercise():
 #    query = "SELECT m.description, e.description_est, e.image_url FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN milestones_exercises me ON ms.key_milestone = me.key_milestone JOIN exercises e ON me.key_exercise = e.id_exercise WHERE t.block_name IN (%s) LIMIT 3;" % (bottom_block_name)    
     rows = execute_query(query)
 
-    return(len(rows))
+    return(str(len(rows)))
 
 '''
     if (len(rows) == 0):
