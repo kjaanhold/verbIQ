@@ -640,7 +640,10 @@ def return_test_results(name, result_value):
       out_text = str(rows[0][0].encode("utf-8"))
     return str(out_text)
 
-def return_test_score(name):
+@app.route('/return_test_score', methods=['GET'])
+def return_test_score():
+#def return_test_score(name):
+    name = request.args.get('Lapse_eesnimi')
 
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
       out_text = "0"
@@ -832,7 +835,7 @@ def propose_exercise():
     if (len(rows) == 0):
       data = {
           "messages": [
-            {"text": "Ei ole veel/enam midagi uut omandada"},
+            {"text": "Ei ole veel/enam midagi uut omandanud."},
             {
               "attachment": {
                 "type": "template",
