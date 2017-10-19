@@ -826,8 +826,8 @@ def propose_exercise():
     returned_test_score = str(return_test_score(name))
     bottom_block_name = str(returned_test_score.split("///")[2]) 
 
-    query = "SELECT * FROM tests t WHERE t.block_name IN (%s) LIMIT 3;" % (bottom_block_name)    
-#    query = "SELECT m.description, e.description_est, e.image_url FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN milestones_exercises me ON ms.key_milestone = me.key_milestone JOIN exercises e ON me.key_exercise = e.id_exercise WHERE t.block_name IN (%s) LIMIT 3;" % (bottom_block_name)    
+#    query = "SELECT * FROM tests t WHERE t.block_name IN (%s) LIMIT 3;" % (bottom_block_name)    
+    query = "SELECT m.description, e.description_est, e.image_url FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN milestones_exercises me ON ms.key_milestone = me.key_milestone JOIN exercises e ON me.key_exercise = e.id_exercise WHERE t.block_name IN (%s) LIMIT 3;" % (bottom_block_name)    
     rows = execute_query(query)
 
     return(str(len(rows)))
