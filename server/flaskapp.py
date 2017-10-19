@@ -832,7 +832,7 @@ def propose_exercise():
 
     rows = execute_query(query)
 
-    return str(rows[2][2].encode("utf-8"))
+    return str(rows.encode("utf-8"))
 '''
 
     if str(rows[0][2].encode("utf-8")) == "none":
