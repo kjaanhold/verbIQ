@@ -830,8 +830,6 @@ def propose_exercise():
 
 
 
-    return str("ei saa aru")
-'''
     rows = execute_query(query)
 
     if str(rows[0][2].encode("utf-8")) == "none":
@@ -844,6 +842,8 @@ def propose_exercise():
     else:
       image_2 = str(rows[1][2].encode("utf-8"))
 
+    return str("ei saa aru")
+'''
 
     data = {
       "messages": [
