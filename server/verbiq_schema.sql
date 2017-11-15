@@ -63,8 +63,8 @@ create table tests (
 drop table if exists exercises;
 create table exercises (
 	id_exercise integer primary key not null,
-	description_est text,
-	description_eng text,
+	language text,
+	description text,
 	image_url text,
 	video_url text
 );
