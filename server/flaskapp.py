@@ -148,7 +148,7 @@ def child_selection():
     key_user = request.args.get('messenger user id')
     user_language = request.args.get('user_language')
 
-    if Children.query.filter_by(key_user = key_user).count() == 0 and user_language == 'est':
+    if Children.query.filter_by(key_user = key_user).count() == 0:
       data = {
         "messages": [
           {
@@ -172,7 +172,7 @@ def child_selection():
       }      
 
 
-    elif Children.query.filter_by(key_user = key_user).count() == 1 and user_language == 'est':
+    elif Children.query.filter_by(key_user = key_user).count() == 1:
       data = Children.query.filter_by(key_user = key_user).all()
       result_dict = [u.__dict__ for u in data]
 
@@ -214,7 +214,7 @@ def child_selection():
       }      
 
 
-    elif Children.query.filter_by(key_user = key_user).count() == 2 and user_language == 'est':      
+    elif Children.query.filter_by(key_user = key_user).count() == 2:      
       data = Children.query.filter_by(key_user = key_user).all()
       result_dict = [u.__dict__ for u in data]
 
@@ -269,7 +269,7 @@ def child_selection():
         ]
       }      
 
-    elif Children.query.filter_by(key_user = key_user).count() == 3 and user_language == 'est':      
+    elif Children.query.filter_by(key_user = key_user).count() == 3:      
       data = Children.query.filter_by(key_user = key_user).all()
       result_dict = [u.__dict__ for u in data]
 
