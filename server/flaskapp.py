@@ -827,7 +827,7 @@ def propose_exercise():
     returned_test_score = str(return_test_score(name))
     bottom_block_name = str(returned_test_score.split("///")[2]) 
 
-    query = "SELECT m.description, e.description, e.image_url FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN milestones_exercises me ON ms.key_milestone = me.key_milestone JOIN exercises e ON me.key_exercise = e.id_exercise WHERE t.block_name IN (%s) LIMIT 3;" % (bottom_block_name)    
+    query = "SELECT m.description, e.description, e.image_url FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN milestones_exercises me ON ms.key_milestone = me.key_milestone JOIN exercises e ON me.key_exercise = e.id_exercise WHERE t.block_name IN (%s) AND e.language = 'eng' LIMIT 3;" % (bottom_block_name)    
     rows = execute_query(query)
 
     if (len(rows) == 0):
@@ -870,14 +870,14 @@ def propose_exercise():
                   "template_type":"generic",
                   "elements":[
                     {
-                      "title": "Ei oska " + str(rows[0][0].encode("utf-8")) + "?",
+                      "title": "Can't " + str(rows[0][0].encode("utf-8")) + "?",
                       "image_url": str(image_1),
                       "subtitle": str(rows[0][1].encode("utf-8")),
                       "buttons":[
                         {
                           "type":"show_block",
                           "block_name": "ask_feedback_eng",
-                          "title":"Saada küsimus"
+                          "title":"Ask us more"
                         }
                       ]
                     }
@@ -918,7 +918,7 @@ def propose_exercise():
                         {
                           "type":"show_block",
                           "block_name": "ask_feedback_eng",
-                          "title":"Saada küsimus"
+                          "title":"Ask us more"
                         }
                       ]
                     },
@@ -930,7 +930,7 @@ def propose_exercise():
                         {
                           "type":"show_block",
                           "block_name": "ask_feedback_eng",
-                          "title":"Saada küsimus"
+                          "title":"Ask us more"
                         }
                       ]
                     }
@@ -976,19 +976,19 @@ def propose_exercise():
                           {
                             "type":"show_block",
                             "block_name": "ask_feedback_eng",
-                            "title":"Saada küsimus"
+                            "title":"Ask us more"
                           }
                         ]
                       },
                       {
-                        "title": "Ei oska " +  str(rows[1][0].encode("utf-8")) + "?",
+                        "title": "Can't " +  str(rows[1][0].encode("utf-8")) + "?",
                         "image_url":str(image_2),
                         "subtitle":str(rows[1][1].encode("utf-8")),
                         "buttons":[
                           {
                             "type":"show_block",
                             "block_name": "ask_feedback_eng",
-                            "title":"Saada küsimus"
+                            "title":"Ask us more"
                           }
                         ]
                       },
@@ -1000,7 +1000,7 @@ def propose_exercise():
                           {
                             "type":"show_block",
                             "block_name": "ask_feedback_eng",
-                            "title":"Saada küsimus"
+                            "title":"Ask us more"
                           }
                         ]
                       }
