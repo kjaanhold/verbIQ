@@ -596,7 +596,7 @@ def age_check():
                 {
                   "type": "show_block",
                   "block_name": "insert_child_eng",
-                  "title": u"Yes, correct!"
+                  "title": u"Correct!"
                 },
                 {
                   "type": "show_block",
