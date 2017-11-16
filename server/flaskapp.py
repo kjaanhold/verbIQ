@@ -124,7 +124,7 @@ def has_children():
       return jsonify(data)
 
     else: 
-      data = {"redirect_to_blocks": ["returning_parents"]}
+      data = {"redirect_to_blocks": ["returning_parents_eng"]}
       return jsonify(data)
 
 @app.route('/has_enough_children', methods = ['GET'])
@@ -134,7 +134,7 @@ def has_enough_children():
     if Children.query.filter_by(key_user = key_user).count() > 2:
       data = {
           'messages':[{"text": u"Üle kolme lapse ei saa sisestada."}], 
-          "redirect_to_blocks": ["returning_parents"]
+          "redirect_to_blocks": ["returning_parents_eng"]
         }
       return jsonify(data)
 
@@ -197,7 +197,7 @@ def child_selection():
                         "Lapse_eesnimi": str(child_name_1),
                         "Synni_kuupaev": str(date_of_birth_1)
                       },
-                    "block_names": ["returning_parents"],
+                    "block_names": ["returning_parents_eng"],
                     "type": "show_block",
                     "title": str(child_name_1)
                   },
@@ -242,7 +242,7 @@ def child_selection():
                         "Lapse_eesnimi": str(child_name_1),
                         "Synni_kuupaev": str(date_of_birth_1)
                       },
-                    "block_names": ["returning_parents"],
+                    "block_names": ["returning_parents_eng"],
                     "type": "show_block",
                     "title": str(child_name_1)
                   },
@@ -252,7 +252,7 @@ def child_selection():
                         "Lapse_eesnimi": str(child_name_2),
                         "Synni_kuupaev": str(date_of_birth_2)
                       },
-                    "block_names": ["returning_parents"],
+                    "block_names": ["returning_parents_eng"],
                     "type": "show_block",
                     "title": str(child_name_2)
                   },
@@ -298,7 +298,7 @@ def child_selection():
                         "Lapse_eesnimi": str(child_name_1),
                         "Synni_kuupaev": str(date_of_birth_1)
                       },
-                    "block_names": ["returning_parents"],
+                    "block_names": ["returning_parents_eng"],
                     "type": "show_block",
                     "title": str(child_name_1)
                   },
@@ -308,7 +308,7 @@ def child_selection():
                         "Lapse_eesnimi": str(child_name_2),
                         "Synni_kuupaev": str(date_of_birth_2)
                       },
-                    "block_names": ["returning_parents"],
+                    "block_names": ["returning_parents_eng"],
                     "type": "show_block",
                     "title": str(child_name_2)
                   },
@@ -318,7 +318,7 @@ def child_selection():
                         "Lapse_eesnimi": str(child_name_3),
                         "Synni_kuupaev": str(date_of_birth_3)
                       },
-                    "block_names": ["returning_parents"],
+                    "block_names": ["returning_parents_eng"],
                     "type": "show_block",
                     "title": str(child_name_3)
                   }
@@ -332,7 +332,7 @@ def child_selection():
     else: 
 
       data = {
-        "redirect_to_blocks": ["returning_parents"]
+        "redirect_to_blocks": ["returning_parents_eng"]
       }
 
 
@@ -353,7 +353,7 @@ def store_children():
       new_data = Children(key_user=str(key_user), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')), date_of_birth=str(date_of_birth), gender=str(gender.encode('utf8')), first_updated=str(first_updated), last_updated=str(last_updated))
       db.session.add(new_data)
       db.session.commit()
-      data = {"redirect_to_blocks": ["returning_parents"]}
+      data = {"redirect_to_blocks": ["returning_parents_eng"]}
       return jsonify(data)
 
     if request.method == "GET":
@@ -695,7 +695,7 @@ def tests_summary():
                   "buttons": [
                     {
                       "type": "show_block",
-                      "block_name": "returning_parents",
+                      "block_name": "returning_parents_eng",
                       "title": "Tagasi"
                     }
                   ]
@@ -728,7 +728,7 @@ def tests_summary():
                     "buttons": [
                       {
                         "type": "show_block",
-                        "block_name": "returning_parents",
+                        "block_name": "returning_parents_eng",
                         "title": "Tagasi"
                       }
                     ]
@@ -757,7 +757,7 @@ def tests_summary():
                       },
                       {
                         "type": "show_block",
-                        "block_name": "returning_parents",
+                        "block_name": "returning_parents_eng",
                         "title": "Tagasi"
                       }
                     ]
@@ -785,7 +785,7 @@ def tests_summary():
                       },
                       {
                         "type": "show_block",
-                        "block_name": "returning_parents",
+                        "block_name": "returning_parents_eng",
                         "title": "Tagasi"
                       }
                     ]
@@ -807,7 +807,7 @@ def tests_summary():
                     "buttons": [
                       {
                         "type": "show_block",
-                        "block_name": "returning_parents",
+                        "block_name": "returning_parents_eng",
                         "title": "Tagasi"
                       }
                     ]
@@ -843,7 +843,7 @@ def propose_exercise():
                   "buttons": [
                     {
                       "type": "show_block",
-                      "block_name": "returning_parents",
+                      "block_name": "returning_parents_eng",
                       "title": "Tagasi"
                     }
                   ]
