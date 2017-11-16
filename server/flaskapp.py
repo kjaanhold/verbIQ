@@ -146,7 +146,6 @@ def has_enough_children():
 @app.route('/child_selection', methods = ['GET'])
 def child_selection():
     key_user = request.args.get('messenger user id')
-    user_language = request.args.get('user_language')
 
     if Children.query.filter_by(key_user = key_user).count() == 0:
       data = {
@@ -156,12 +155,12 @@ def child_selection():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": u"Sul pole vel ühtegi last sisestatud.",
+                "text": u"You haven't inserted any children yet.",
                 "buttons": [
                   {
                     "block_names": ["create_child"],
                     "type": "show_block",
-                    "title": "Lisa uus laps"
+                    "title": "Add a new child"
                   }
 
                 ]
@@ -833,7 +832,7 @@ def propose_exercise():
     if (len(rows) == 0):
       data = {
           "messages": [
-            {"text": "Hasn't learnt anything new yet."},
+            {"text": "Hasn't learnt or doesen't have to learn anything new yet."},
             {
               "attachment": {
                 "type": "template",
