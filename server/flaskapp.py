@@ -682,7 +682,7 @@ def tests_summary():
 
 
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
-      out_text = name + u" pole veel ühtegi testi teinud."
+      out_text = name + u" hasn't taken any tests yet."
 
       data = {
           "messages": [
@@ -696,7 +696,7 @@ def tests_summary():
                     {
                       "type": "show_block",
                       "block_name": "returning_parents_eng",
-                      "title": "Tagasi"
+                      "title": "Back"
                     }
                   ]
                 }
@@ -729,7 +729,7 @@ def tests_summary():
                       {
                         "type": "show_block",
                         "block_name": "returning_parents_eng",
-                        "title": "Tagasi"
+                        "title": "Back"
                       }
                     ]
                   }
@@ -827,13 +827,13 @@ def propose_exercise():
     returned_test_score = str(return_test_score(name))
     bottom_block_name = str(returned_test_score.split("///")[2]) 
 
-    query = "SELECT m.description, e.description, e.image_url FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN milestones_exercises me ON ms.key_milestone = me.key_milestone JOIN exercises e ON me.key_exercise = e.id_exercise WHERE t.block_name IN (%s) AND e.language = 'eng' LIMIT 3;" % (bottom_block_name)    
+    query = "SELECT m.description, e.description, e.image_url FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN milestones_exercises me ON ms.key_milestone = me.key_milestone JOIN exercises e ON me.key_exercise = e.id_exercise WHERE t.block_name IN (%s) LIMIT 3;" % (bottom_block_name)    
     rows = execute_query(query)
 
     if (len(rows) == 0):
       data = {
           "messages": [
-            {"text": "Ei ole veel/enam midagi uut omandanud."},
+            {"text": "Hasn't learnt anything new yet."},
             {
               "attachment": {
                 "type": "template",
@@ -844,7 +844,7 @@ def propose_exercise():
                     {
                       "type": "show_block",
                       "block_name": "returning_parents_eng",
-                      "title": "Tagasi"
+                      "title": "Back"
                     }
                   ]
                 }
