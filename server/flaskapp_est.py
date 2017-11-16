@@ -96,7 +96,7 @@ def store_test_results():
       db.session.commit()
 
       data = {
-        "redirect_to_blocks": ["test recurring tests 2"]
+        "redirect_to_blocks": ["test recurring tests 2_est"]
       }
       return jsonify(data)
 
@@ -514,7 +514,7 @@ def run_test():
                       "test_result_cdf": str(cdf)
                     },
                     "type": "show_block",
-                    "block_name": "test recurring tests 3",
+                    "block_name": "test recurring tests 3_est",
                     "title": u"Jah"
                   },
                   {
@@ -524,7 +524,7 @@ def run_test():
                       "test_result_cdf": str(cdf)                      
                     },
                     "type": "show_block",
-                    "block_name": "test recurring tests 3",
+                    "block_name": "test recurring tests 3_est",
                     "title": u"Ei tea"
                   },                
                   {
@@ -534,7 +534,7 @@ def run_test():
                       "test_result_cdf": str(cdf)                      
                     },
                     "type": "show_block",
-                    "block_name": "test recurring tests 3",
+                    "block_name": "test recurring tests 3_est",
                     "title": u"Ei"
                   }
                 ]
@@ -596,7 +596,7 @@ def age_check():
               "buttons": [
                 {
                   "type": "show_block",
-                  "block_name": "insert_child",
+                  "block_name": "insert_child_est",
                   "title": u"Õige, edasi!"
                 },
                 {
@@ -876,7 +876,7 @@ def propose_exercise():
                       "buttons":[
                         {
                           "type":"show_block",
-                          "block_name": "ask_feedback",
+                          "block_name": "ask_feedback_est",
                           "title":"Saada küsimus"
                         }
                       ]
@@ -917,7 +917,7 @@ def propose_exercise():
                       "buttons":[
                         {
                           "type":"show_block",
-                          "block_name": "ask_feedback",
+                          "block_name": "ask_feedback_est",
                           "title":"Saada küsimus"
                         }
                       ]
@@ -929,7 +929,7 @@ def propose_exercise():
                       "buttons":[
                         {
                           "type":"show_block",
-                          "block_name": "ask_feedback",
+                          "block_name": "ask_feedback_est",
                           "title":"Saada küsimus"
                         }
                       ]
@@ -975,7 +975,7 @@ def propose_exercise():
                         "buttons":[
                           {
                             "type":"show_block",
-                            "block_name": "ask_feedback",
+                            "block_name": "ask_feedback_est",
                             "title":"Saada küsimus"
                           }
                         ]
@@ -987,7 +987,7 @@ def propose_exercise():
                         "buttons":[
                           {
                             "type":"show_block",
-                            "block_name": "ask_feedback",
+                            "block_name": "ask_feedback_est",
                             "title":"Saada küsimus"
                           }
                         ]
@@ -999,7 +999,7 @@ def propose_exercise():
                         "buttons":[
                           {
                             "type":"show_block",
-                            "block_name": "ask_feedback",
+                            "block_name": "ask_feedback_est",
                             "title":"Saada küsimus"
                           }
                         ]

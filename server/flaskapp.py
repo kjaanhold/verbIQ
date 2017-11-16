@@ -96,7 +96,7 @@ def store_test_results():
       db.session.commit()
 
       data = {
-        "redirect_to_blocks": ["test recurring tests 2"]
+        "redirect_to_blocks": ["test recurring tests 2_eng"]
       }
       return jsonify(data)
 
@@ -514,7 +514,7 @@ def run_test():
                       "test_result_cdf": str(cdf)
                     },
                     "type": "show_block",
-                    "block_name": "test recurring tests 3",
+                    "block_name": "test recurring tests 3_eng",
                     "title": u"Jah"
                   },
                   {
@@ -524,7 +524,7 @@ def run_test():
                       "test_result_cdf": str(cdf)                      
                     },
                     "type": "show_block",
-                    "block_name": "test recurring tests 3",
+                    "block_name": "test recurring tests 3_eng",
                     "title": u"Ei tea"
                   },                
                   {
@@ -534,7 +534,7 @@ def run_test():
                       "test_result_cdf": str(cdf)                      
                     },
                     "type": "show_block",
-                    "block_name": "test recurring tests 3",
+                    "block_name": "test recurring tests 3_eng",
                     "title": u"Ei"
                   }
                 ]
@@ -584,7 +584,7 @@ def age_check():
     name = request.args.get('Lapse_eesnimi')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
-    out_text = u"Tänan. " + (name) + u" sündis " + str(date_object) + " ja ta on praegu " + str(int(round(int(age.days)/30))) + " kuu vanune."
+    out_text = u"Thanks. " + (name) + u" was born on " + str(date_object) + " and he/she is currently " + str(int(round(int(age.days)/30))) + " months old."
     data = {
       "messages": [
         {
@@ -596,13 +596,13 @@ def age_check():
               "buttons": [
                 {
                   "type": "show_block",
-                  "block_name": "insert_child",
-                  "title": u"Õige, edasi!"
+                  "block_name": "insert_child_eng",
+                  "title": u"Correct!"
                 },
                 {
                   "type": "show_block",
                   "block_name": "create_child",
-                  "title": "Viga, parandame..."
+                  "title": "Error, fix it"
                 }
               ]
             }
@@ -876,7 +876,7 @@ def propose_exercise():
                       "buttons":[
                         {
                           "type":"show_block",
-                          "block_name": "ask_feedback",
+                          "block_name": "ask_feedback_eng",
                           "title":"Saada küsimus"
                         }
                       ]
@@ -917,7 +917,7 @@ def propose_exercise():
                       "buttons":[
                         {
                           "type":"show_block",
-                          "block_name": "ask_feedback",
+                          "block_name": "ask_feedback_eng",
                           "title":"Saada küsimus"
                         }
                       ]
@@ -929,7 +929,7 @@ def propose_exercise():
                       "buttons":[
                         {
                           "type":"show_block",
-                          "block_name": "ask_feedback",
+                          "block_name": "ask_feedback_eng",
                           "title":"Saada küsimus"
                         }
                       ]
@@ -975,7 +975,7 @@ def propose_exercise():
                         "buttons":[
                           {
                             "type":"show_block",
-                            "block_name": "ask_feedback",
+                            "block_name": "ask_feedback_eng",
                             "title":"Saada küsimus"
                           }
                         ]
@@ -987,7 +987,7 @@ def propose_exercise():
                         "buttons":[
                           {
                             "type":"show_block",
-                            "block_name": "ask_feedback",
+                            "block_name": "ask_feedback_eng",
                             "title":"Saada küsimus"
                           }
                         ]
@@ -999,7 +999,7 @@ def propose_exercise():
                         "buttons":[
                           {
                             "type":"show_block",
-                            "block_name": "ask_feedback",
+                            "block_name": "ask_feedback_eng",
                             "title":"Saada küsimus"
                           }
                         ]
