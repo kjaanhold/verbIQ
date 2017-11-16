@@ -509,32 +509,32 @@ def run_test():
                   {
                     "set_attributes": 
                     {
-                      "test_result": "Jah",
+                      "test_result": "Yes",
                       "test_result_cdf": str(cdf)
                     },
                     "type": "show_block",
                     "block_name": "test recurring tests 3_eng",
-                    "title": u"Jah"
+                    "title": u"Yes"
                   },
                   {
                     "set_attributes": 
                     {
-                      "test_result": "Ei tea",
+                      "test_result": "Not sure",
                       "test_result_cdf": str(cdf)                      
                     },
                     "type": "show_block",
                     "block_name": "test recurring tests 3_eng",
-                    "title": u"Ei tea"
+                    "title": u"Not sure"
                   },                
                   {
                     "set_attributes": 
                     {
-                      "test_result": "Ei",
+                      "test_result": "No",
                       "test_result_cdf": str(cdf)                      
                     },
                     "type": "show_block",
                     "block_name": "test recurring tests 3_eng",
-                    "title": u"Ei"
+                    "title": u"No"
                   }
                 ]
               }
