@@ -133,7 +133,7 @@ def has_enough_children():
 
     if Children.query.filter_by(key_user = key_user).count() > 2:
       data = {
-          'messages':[{"text": u"You can't enter more than three kids."}], 
+          'messages':[{"text": u"You cannot enter more than three kids."}], 
           "redirect_to_blocks": ["returning_parents"]
         }
       return jsonify(data)
@@ -156,7 +156,7 @@ def child_selection():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": u"You haven't entered any children yet.",
+                "text": u"You have not entered any children yet.",
                 "buttons": [
                   {
                     "block_names": ["create_child"],
@@ -377,7 +377,7 @@ def to_json(inst, cls):
     """
     convert = dict()
     # add your coversions for things like datetime's 
-    # and what-not that aren't serializable.
+    # and what-not that are not serializable.
     d = dict()
     for c in cls.__table__.columns:
         v = getattr(inst, c.name)
@@ -403,7 +403,7 @@ def next_test_selection(dob,name,last_block):
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
-      # this kid hasn't done any tests yet
+      # this kid has not done any tests yet
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
 
       query = "SELECT t.description, t.block_name, m.target_age FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age BETWEEN (2*%s)/3 AND (4*%s)/3 ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months)
@@ -682,7 +682,7 @@ def tests_summary():
 
 
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
-      out_text = name + u" hasn't taken any tests yet."
+      out_text = name + u" hasn not taken any tests yet."
 
       data = {
           "messages": [
@@ -833,7 +833,7 @@ def propose_exercise():
     if (len(rows) == 0):
       data = {
           "messages": [
-            {"text": "Your child hasn't learnt anything new yet."},
+            {"text": "Your child has not learnt anything new yet."},
             {
               "attachment": {
                 "type": "template",
@@ -870,7 +870,7 @@ def propose_exercise():
                   "template_type":"generic",
                   "elements":[
                     {
-                      "title": "Can't " + str(rows[0][0].encode("utf-8")) + "?",
+                      "title": "Cannot " + str(rows[0][0].encode("utf-8")) + "?",
                       "image_url": str(image_1),
                       "subtitle": str(rows[0][1].encode("utf-8")),
                       "buttons":[
@@ -911,7 +911,7 @@ def propose_exercise():
                   "template_type":"generic",
                   "elements":[
                     {
-                      "title": "Can't " + str(rows[0][0].encode("utf-8")) + "?",
+                      "title": "Cannot " + str(rows[0][0].encode("utf-8")) + "?",
                       "image_url": str(image_1),
                       "subtitle": str(rows[0][1].encode("utf-8")),
                       "buttons":[
@@ -923,7 +923,7 @@ def propose_exercise():
                       ]
                     },
                     {
-                      "title": "Can't " +  str(rows[1][0].encode("utf-8")) + "?",
+                      "title": "Cannot " +  str(rows[1][0].encode("utf-8")) + "?",
                       "image_url":str(image_2),
                       "subtitle":str(rows[1][1].encode("utf-8")),
                       "buttons":[
@@ -969,7 +969,7 @@ def propose_exercise():
                     "template_type":"generic",
                     "elements":[
                       {
-                        "title": "Can't " + str(rows[0][0].encode("utf-8")) + "?",
+                        "title": "Can not " + str(rows[0][0].encode("utf-8")) + "?",
                         "image_url": str(image_1),
                         "subtitle": str(rows[0][1].encode("utf-8")),
                         "buttons":[
@@ -981,7 +981,7 @@ def propose_exercise():
                         ]
                       },
                       {
-                        "title": "Can't " +  str(rows[1][0].encode("utf-8")) + "?",
+                        "title": "Cannot " +  str(rows[1][0].encode("utf-8")) + "?",
                         "image_url":str(image_2),
                         "subtitle":str(rows[1][1].encode("utf-8")),
                         "buttons":[
@@ -993,7 +993,7 @@ def propose_exercise():
                         ]
                       },
                       {
-                        "title": "Can't " +  str(rows[2][0].encode("utf-8")) + "?",
+                        "title": "Cannot " +  str(rows[2][0].encode("utf-8")) + "?",
                         "image_url":str(image_3),
                         "subtitle":str(rows[2][1].encode("utf-8")),
                         "buttons":[

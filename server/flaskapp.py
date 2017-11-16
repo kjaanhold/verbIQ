@@ -77,11 +77,11 @@ def store_test_results():
       result_cdf_value = request.form['test_result_cdf']
       result_cdf_value = float(result_cdf_value)
 
-      if (result_value == "Jah" and result_cdf_value < 0.5):
+      if (result_value == "Yes" and result_cdf_value < 0.5):
         result_cdf_value = float(1) - result_cdf_value
-      elif (result_value == "Ei" and result_cdf_value > 0.5):
+      elif (result_value == "No" and result_cdf_value > 0.5):
         result_cdf_value = float(1) - result_cdf_value
-      elif (result_value == "Ei tea"):
+      elif (result_value == "Not sure"):
         result_cdf_value = -1
       else:
         result_cdf_value = 0.5
@@ -117,7 +117,7 @@ def has_children():
 
     if Children.query.filter_by(key_user = key_user).count() == 0:
       data = {
-        'messages':[{"text": u"Tore! Palun sisesta oma lapse andmed."}], 
+        'messages':[{"text": u"Great! Please enter information about your child."}], 
         "redirect_to_blocks": ["create_child"]
       }
 
@@ -133,13 +133,13 @@ def has_enough_children():
 
     if Children.query.filter_by(key_user = key_user).count() > 2:
       data = {
-          'messages':[{"text": u"Üle kolme lapse ei saa sisestada."}], 
+          'messages':[{"text": u"You cannot enter more than three kids."}], 
           "redirect_to_blocks": ["returning_parents"]
         }
       return jsonify(data)
 
     else: 
-      data = {'messages':[{"text": "Tore! Palun sisesta oma lapse andmed."}]}
+      data = {'messages':[{"text": "Great! Please enter information about your child."}]}
       return jsonify(data)
 
 ## work in progress
@@ -148,7 +148,7 @@ def child_selection():
     key_user = request.args.get('messenger user id')
     user_language = request.args.get('user_language')
 
-    if Children.query.filter_by(key_user = key_user).count() == 0 and user_language == 'est':
+    if Children.query.filter_by(key_user = key_user).count() == 0:
       data = {
         "messages": [
           {
@@ -156,12 +156,12 @@ def child_selection():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": u"Sul pole vel ühtegi last sisestatud.",
+                "text": u"You have not entered any children yet.",
                 "buttons": [
                   {
                     "block_names": ["create_child"],
                     "type": "show_block",
-                    "title": "Lisa uus laps"
+                    "title": "Insert new child"
                   }
 
                 ]
@@ -172,7 +172,7 @@ def child_selection():
       }      
 
 
-    elif Children.query.filter_by(key_user = key_user).count() == 1 and user_language == 'est':
+    elif Children.query.filter_by(key_user = key_user).count() == 1:
       data = Children.query.filter_by(key_user = key_user).all()
       result_dict = [u.__dict__ for u in data]
 
@@ -189,7 +189,7 @@ def child_selection():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": u"Kelle kohta sooovid infot sisestada?",
+                "text": u"Whose info you want to add?",
                 "buttons": [
                   {
                     "set_attributes": 
@@ -204,7 +204,7 @@ def child_selection():
                   {
                     "block_names": ["create_child"],
                     "type": "show_block",
-                    "title": "Lisa uus laps"
+                    "title": "Insert new child."
                   }
                 ]
               }
@@ -214,7 +214,7 @@ def child_selection():
       }      
 
 
-    elif Children.query.filter_by(key_user = key_user).count() == 2 and user_language == 'est':      
+    elif Children.query.filter_by(key_user = key_user).count() == 2:      
       data = Children.query.filter_by(key_user = key_user).all()
       result_dict = [u.__dict__ for u in data]
 
@@ -234,7 +234,7 @@ def child_selection():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": u"Kelle kohta sooovid infot sisestada?",
+                "text": u"Whose info you want to add?",
                 "buttons": [
                   {
                     "set_attributes": 
@@ -259,7 +259,7 @@ def child_selection():
                   {
                     "block_names": ["create_child"],
                     "type": "show_block",
-                    "title": "Lisa uus laps"
+                    "title": "Insert new child"
                   }
 
                 ]
@@ -269,7 +269,7 @@ def child_selection():
         ]
       }      
 
-    elif Children.query.filter_by(key_user = key_user).count() == 3 and user_language == 'est':      
+    elif Children.query.filter_by(key_user = key_user).count() == 3:      
       data = Children.query.filter_by(key_user = key_user).all()
       result_dict = [u.__dict__ for u in data]
 
@@ -290,7 +290,7 @@ def child_selection():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": u"Kelle kohta sooovid infot sisestada?",
+                "text": u"Whose info you want to add?",
                 "buttons": [
                   {
                     "set_attributes": 
@@ -377,7 +377,7 @@ def to_json(inst, cls):
     """
     convert = dict()
     # add your coversions for things like datetime's 
-    # and what-not that aren't serializable.
+    # and what-not that are not serializable.
     d = dict()
     for c in cls.__table__.columns:
         v = getattr(inst, c.name)
@@ -403,7 +403,7 @@ def next_test_selection(dob,name,last_block):
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
-      # this kid hasn't done any tests yet
+      # this kid has not done any tests yet
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
 
       query = "SELECT t.description, t.block_name, m.target_age FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age BETWEEN (2*%s)/3 AND (4*%s)/3 ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months)
@@ -510,32 +510,32 @@ def run_test():
                   {
                     "set_attributes": 
                     {
-                      "test_result": "Jah",
+                      "test_result": "Yes",
                       "test_result_cdf": str(cdf)
                     },
                     "type": "show_block",
                     "block_name": "test recurring tests 3",
-                    "title": u"Jah"
+                    "title": u"Yes"
                   },
                   {
                     "set_attributes": 
                     {
-                      "test_result": "Ei tea",
+                      "test_result": "Not sure",
                       "test_result_cdf": str(cdf)                      
                     },
                     "type": "show_block",
                     "block_name": "test recurring tests 3",
-                    "title": u"Ei tea"
+                    "title": u"Not sure"
                   },                
                   {
                     "set_attributes": 
                     {
-                      "test_result": "Ei",
+                      "test_result": "No",
                       "test_result_cdf": str(cdf)                      
                     },
                     "type": "show_block",
                     "block_name": "test recurring tests 3",
-                    "title": u"Ei"
+                    "title": u"No"
                   }
                 ]
               }
@@ -584,7 +584,7 @@ def age_check():
     name = request.args.get('Lapse_eesnimi')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
-    out_text = u"Tänan. " + (name) + u" sündis " + str(date_object) + " ja ta on praegu " + str(int(round(int(age.days)/30))) + " kuu vanune."
+    out_text = u"Thanks. " + (name) + u" was born on " + str(date_object) + " and is currently " + str(int(round(int(age.days)/30))) + " months old."
     data = {
       "messages": [
         {
@@ -597,12 +597,12 @@ def age_check():
                 {
                   "type": "show_block",
                   "block_name": "insert_child",
-                  "title": u"Õige, edasi!"
+                  "title": u"Correct, lwra move on!"
                 },
                 {
                   "type": "show_block",
                   "block_name": "create_child",
-                  "title": "Viga, parandame..."
+                  "title": "Wrong, lets fix it ..."
                 }
               ]
             }
@@ -682,7 +682,7 @@ def tests_summary():
 
 
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
-      out_text = name + u" pole veel ühtegi testi teinud."
+      out_text = name + u" hasn not taken any tests yet."
 
       data = {
           "messages": [
@@ -696,7 +696,7 @@ def tests_summary():
                     {
                       "type": "show_block",
                       "block_name": "returning_parents",
-                      "title": "Tagasi"
+                      "title": "Back"
                     }
                   ]
                 }
@@ -706,9 +706,9 @@ def tests_summary():
         }
 
     else:
-      data_jah = str(return_test_results(name, 'Jah'))
-      data_ei = str(return_test_results(name, 'Ei'))
-      data_ei_tea = str(return_test_results(name, 'Ei tea'))
+      data_jah = str(return_test_results(name, 'Yes'))
+      data_ei = str(return_test_results(name, 'No'))
+      data_ei_tea = str(return_test_results(name, 'Not sure'))
       returned_test_score = str(return_test_score(name))
       score = str(returned_test_score.split("///")[0]) 
       weaknesses = str(returned_test_score.split("///")[1]) 
@@ -724,12 +724,12 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100).",
+                    "text":  "Score for " str(name) + " is " + score + " (average score for children in this age is 100).",
                     "buttons": [
                       {
                         "type": "show_block",
                         "block_name": "returning_parents",
-                        "title": "Tagasi"
+                        "title": "Back"
                       }
                     ]
                   }
@@ -748,17 +748,17 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100). Taseme parandamiseks peaks ta esmalt suutma " + weaknesses,
+                    "text":  "Score for " str(name) + " is " + score + " (average score for children in this age is 100). To improve it, he/she should " + weaknesses,
                     "buttons": [
                       {
                         "type": "show_block",
                         "block_name": "test_summary_hidden",
-                        "title": "Treenima"
+                        "title": "Start training"
                       },
                       {
                         "type": "show_block",
                         "block_name": "returning_parents",
-                        "title": "Tagasi"
+                        "title": "Back"
                       }
                     ]
                   }
@@ -776,17 +776,17 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100). Taseme parandamiseks peaks ta esmalt suutma "+ weaknesses,
+                    "text": "Score for " str(name) + " is " + score + " (average score for children in this age is 100). To improve it, he/she should " + weaknesses,
                     "buttons": [
                       {
                         "type": "show_block",
                         "block_name": "test_summary_hidden",
-                        "title": "Treenima"
+                        "title": "Start training"
                       },
                       {
                         "type": "show_block",
                         "block_name": "returning_parents",
-                        "title": "Tagasi"
+                        "title": "Back"
                       }
                     ]
                   }
@@ -803,12 +803,12 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": "viga",
+                    "text": "error",
                     "buttons": [
                       {
                         "type": "show_block",
                         "block_name": "returning_parents",
-                        "title": "Tagasi"
+                        "title": "Back"
                       }
                     ]
                   }
@@ -833,18 +833,18 @@ def propose_exercise():
     if (len(rows) == 0):
       data = {
           "messages": [
-            {"text": "Ei ole veel/enam midagi uut omandanud."},
+            {"text": "Your child has not learnt anything new yet."},
             {
               "attachment": {
                 "type": "template",
                 "payload": {
                   "template_type": "button",
-                  "text": "viga",
+                  "text": "error",
                   "buttons": [
                     {
                       "type": "show_block",
                       "block_name": "returning_parents",
-                      "title": "Tagasi"
+                      "title": "Back"
                     }
                   ]
                 }
@@ -862,7 +862,7 @@ def propose_exercise():
 
       data = {
           "messages": [
-            {"text": "Selleks et aidata " + str(name) + " arengule kaasa, tee talle järgnevaid harjutusi."},
+            {"text": "In order to speed up the progress for " + str(name) + ", you should do following exercises."},
             {
               "attachment":{
                 "type":"template",
@@ -870,14 +870,14 @@ def propose_exercise():
                   "template_type":"generic",
                   "elements":[
                     {
-                      "title": "Ei oska " + str(rows[0][0].encode("utf-8")) + "?",
+                      "title": "Cannot " + str(rows[0][0].encode("utf-8")) + "?",
                       "image_url": str(image_1),
                       "subtitle": str(rows[0][1].encode("utf-8")),
                       "buttons":[
                         {
                           "type":"show_block",
                           "block_name": "ask_feedback",
-                          "title":"Saada küsimus"
+                          "title":"Send us your question."
                         }
                       ]
                     }
@@ -903,7 +903,7 @@ def propose_exercise():
 
       data = {
           "messages": [
-            {"text": "Selleks et aidata " + str(name) + " arengule kaasa, tee talle järgnevaid harjutusi."},
+            {"text": "In order to speed up the progress for " + str(name) + ", you should do following exercises."},
             {
               "attachment":{
                 "type":"template",
@@ -911,26 +911,26 @@ def propose_exercise():
                   "template_type":"generic",
                   "elements":[
                     {
-                      "title": "Ei oska " + str(rows[0][0].encode("utf-8")) + "?",
+                      "title": "Cannot " + str(rows[0][0].encode("utf-8")) + "?",
                       "image_url": str(image_1),
                       "subtitle": str(rows[0][1].encode("utf-8")),
                       "buttons":[
                         {
                           "type":"show_block",
                           "block_name": "ask_feedback",
-                          "title":"Saada küsimus"
+                          "title":"Send us your question."
                         }
                       ]
                     },
                     {
-                      "title": "Ei oska " +  str(rows[1][0].encode("utf-8")) + "?",
+                      "title": "Cannot " +  str(rows[1][0].encode("utf-8")) + "?",
                       "image_url":str(image_2),
                       "subtitle":str(rows[1][1].encode("utf-8")),
                       "buttons":[
                         {
                           "type":"show_block",
                           "block_name": "ask_feedback",
-                          "title":"Saada küsimus"
+                          "title":"Send us your question."
                         }
                       ]
                     }
@@ -969,38 +969,38 @@ def propose_exercise():
                     "template_type":"generic",
                     "elements":[
                       {
-                        "title": "Ei oska " + str(rows[0][0].encode("utf-8")) + "?",
+                        "title": "Can not " + str(rows[0][0].encode("utf-8")) + "?",
                         "image_url": str(image_1),
                         "subtitle": str(rows[0][1].encode("utf-8")),
                         "buttons":[
                           {
                             "type":"show_block",
                             "block_name": "ask_feedback",
-                            "title":"Saada küsimus"
+                            "title":"Send us your question."
                           }
                         ]
                       },
                       {
-                        "title": "Ei oska " +  str(rows[1][0].encode("utf-8")) + "?",
+                        "title": "Cannot " +  str(rows[1][0].encode("utf-8")) + "?",
                         "image_url":str(image_2),
                         "subtitle":str(rows[1][1].encode("utf-8")),
                         "buttons":[
                           {
                             "type":"show_block",
                             "block_name": "ask_feedback",
-                            "title":"Saada küsimus"
+                            "title":"SSend us your question."
                           }
                         ]
                       },
                       {
-                        "title": "Ei oska " +  str(rows[2][0].encode("utf-8")) + "?",
+                        "title": "Cannot " +  str(rows[2][0].encode("utf-8")) + "?",
                         "image_url":str(image_3),
                         "subtitle":str(rows[2][1].encode("utf-8")),
                         "buttons":[
                           {
                             "type":"show_block",
                             "block_name": "ask_feedback",
-                            "title":"Saada küsimus"
+                            "title":"Send us your question."
                           }
                         ]
                       }
