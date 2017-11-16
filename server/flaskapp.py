@@ -189,7 +189,7 @@ def child_selection():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": u"Kelle kohta sooovid infot sisestada?",
+                "text": u"Whose data you want to enter?",
                 "buttons": [
                   {
                     "set_attributes": 
@@ -204,7 +204,7 @@ def child_selection():
                   {
                     "block_names": ["create_child"],
                     "type": "show_block",
-                    "title": "Lisa uus laps"
+                    "title": "Insert new child"
                   }
                 ]
               }
@@ -234,7 +234,7 @@ def child_selection():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": u"Kelle kohta sooovid infot sisestada?",
+                "text": u"Whose data you want to enter?",
                 "buttons": [
                   {
                     "set_attributes": 
@@ -259,7 +259,7 @@ def child_selection():
                   {
                     "block_names": ["create_child"],
                     "type": "show_block",
-                    "title": "Lisa uus laps"
+                    "title": "Insert new child"
                   }
 
                 ]
@@ -290,7 +290,7 @@ def child_selection():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": u"Kelle kohta sooovid infot sisestada?",
+                "text": u"Whose data you want to enter?",
                 "buttons": [
                   {
                     "set_attributes": 
