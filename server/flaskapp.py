@@ -117,8 +117,8 @@ def has_children():
 
     if Children.query.filter_by(key_user = key_user).count() == 0:
       data = {
-        'messages':[{"text": u"Tore! Palun sisesta oma lapse andmed."}], 
-        "redirect_to_blocks": ["create_child"]
+        'messages':[{"text": u"Great! Please enter your childs information."}], 
+        "redirect_to_blocks": ["create_child_eng"]
       }
 
       return jsonify(data)
@@ -139,7 +139,7 @@ def has_enough_children():
       return jsonify(data)
 
     else: 
-      data = {'messages':[{"text": "Tore! Palun sisesta oma lapse andmed."}]}
+      data = {'messages':[{"text": "Great! Please enter your childs information."}]}
       return jsonify(data)
 
 ## work in progress
@@ -158,7 +158,7 @@ def child_selection():
                 "text": u"You haven't inserted any children yet.",
                 "buttons": [
                   {
-                    "block_names": ["create_child"],
+                    "block_names": ["create_child_eng"],
                     "type": "show_block",
                     "title": "Add a new child"
                   }
@@ -201,7 +201,7 @@ def child_selection():
                     "title": str(child_name_1)
                   },
                   {
-                    "block_names": ["create_child"],
+                    "block_names": ["create_child_eng"],
                     "type": "show_block",
                     "title": "Insert new child"
                   }
@@ -256,7 +256,7 @@ def child_selection():
                     "title": str(child_name_2)
                   },
                   {
-                    "block_names": ["create_child"],
+                    "block_names": ["create_child_eng"],
                     "type": "show_block",
                     "title": "Insert new child"
                   }
@@ -600,7 +600,7 @@ def age_check():
                 },
                 {
                   "type": "show_block",
-                  "block_name": "create_child",
+                  "block_name": "create_child_eng",
                   "title": "Error, fix it"
                 }
               ]

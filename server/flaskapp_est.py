@@ -118,7 +118,7 @@ def has_children():
     if Children.query.filter_by(key_user = key_user).count() == 0:
       data = {
         'messages':[{"text": u"Tore! Palun sisesta oma lapse andmed."}], 
-        "redirect_to_blocks": ["create_child"]
+        "redirect_to_blocks": ["create_child_est"]
       }
 
       return jsonify(data)
@@ -159,7 +159,7 @@ def child_selection():
                 "text": u"Sul pole vel ühtegi last sisestatud.",
                 "buttons": [
                   {
-                    "block_names": ["create_child"],
+                    "block_names": ["create_child_est"],
                     "type": "show_block",
                     "title": "Lisa uus laps"
                   }
@@ -202,7 +202,7 @@ def child_selection():
                     "title": str(child_name_1)
                   },
                   {
-                    "block_names": ["create_child"],
+                    "block_names": ["create_child_est"],
                     "type": "show_block",
                     "title": "Lisa uus laps"
                   }
@@ -257,7 +257,7 @@ def child_selection():
                     "title": str(child_name_2)
                   },
                   {
-                    "block_names": ["create_child"],
+                    "block_names": ["create_child_est"],
                     "type": "show_block",
                     "title": "Lisa uus laps"
                   }
@@ -601,7 +601,7 @@ def age_check():
                 },
                 {
                   "type": "show_block",
-                  "block_name": "create_child",
+                  "block_name": "create_child_est",
                   "title": "Viga, parandame..."
                 }
               ]
