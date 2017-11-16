@@ -450,7 +450,7 @@ def next_test_selection(dob,name,last_block):
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
  
-      query = "SELECT t.description, t.block_name, m.target_age FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE ( m.target_age BETWEEN (2*%s)/3 AND (4*%s)/3 ) AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months, block_name)    
+      query = "SELECT t.description, t.block_name, m.target_age FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE ( m.target_age BETWEEN (2*%s)/3 AND (4*%s)/3 ) AND t.block_name NOT IN (%s) AND t.language = 'eng' ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months, block_name)    
 
       rows = execute_query(query)
 
