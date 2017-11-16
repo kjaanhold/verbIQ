@@ -862,7 +862,7 @@ def propose_exercise():
 
       data = {
           "messages": [
-            {"text": "Selleks et aidata " + str(name) + " arengule kaasa, tee talle järgnevaid harjutusi."},
+            {"text": "In order to speed up developmental progress for " + str(name) + ", you should practice following exercises."},
             {
               "attachment":{
                 "type":"template",
@@ -903,7 +903,7 @@ def propose_exercise():
 
       data = {
           "messages": [
-            {"text": "Selleks et aidata " + str(name) + " arengule kaasa, tee talle järgnevaid harjutusi."},
+            {"text": "In order to speed up developmental progress for " + str(name) + ", you should practice following exercises"},
             {
               "attachment":{
                 "type":"template",
@@ -911,7 +911,7 @@ def propose_exercise():
                   "template_type":"generic",
                   "elements":[
                     {
-                      "title": "Ei oska " + str(rows[0][0].encode("utf-8")) + "?",
+                      "title": "Can't " + str(rows[0][0].encode("utf-8")) + "?",
                       "image_url": str(image_1),
                       "subtitle": str(rows[0][1].encode("utf-8")),
                       "buttons":[
@@ -923,7 +923,7 @@ def propose_exercise():
                       ]
                     },
                     {
-                      "title": "Ei oska " +  str(rows[1][0].encode("utf-8")) + "?",
+                      "title": "Can't " +  str(rows[1][0].encode("utf-8")) + "?",
                       "image_url":str(image_2),
                       "subtitle":str(rows[1][1].encode("utf-8")),
                       "buttons":[
@@ -961,7 +961,7 @@ def propose_exercise():
 
       data = {
             "messages": [
-              {"text": "Selleks et aidata " + str(name) + " arengule kaasa, tee talle järgnevaid harjutusi."},
+              {"text": "In order to speed up developmental progress for " + str(name) + ", you should practice following exercises."},
               {
                 "attachment":{
                   "type":"template",
@@ -969,7 +969,7 @@ def propose_exercise():
                     "template_type":"generic",
                     "elements":[
                       {
-                        "title": "Ei oska " + str(rows[0][0].encode("utf-8")) + "?",
+                        "title": "Can't " + str(rows[0][0].encode("utf-8")) + "?",
                         "image_url": str(image_1),
                         "subtitle": str(rows[0][1].encode("utf-8")),
                         "buttons":[
@@ -993,7 +993,7 @@ def propose_exercise():
                         ]
                       },
                       {
-                        "title": "Ei oska " +  str(rows[2][0].encode("utf-8")) + "?",
+                        "title": "Can't " +  str(rows[2][0].encode("utf-8")) + "?",
                         "image_url":str(image_3),
                         "subtitle":str(rows[2][1].encode("utf-8")),
                         "buttons":[
