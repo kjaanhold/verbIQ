@@ -751,11 +751,11 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  "Score for " + str(name) + " is " + score + " (average score in this age is 100). Taseme parandamiseks peaks ta esmalt suutma " + weaknesses,
+                    "text":  "Score for " + str(name) + " is " + score + " (average score in this age is 100). In order to speed up development, " +  str(name) + " should first " + weaknesses,
                     "buttons": [
                       {
                         "type": "show_block",
-                        "block_name": "test_summary_hidden",
+                        "block_name": "exercises_eng",
                         "title": "Start training"
                       },
                       {
@@ -779,12 +779,12 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  "Score for " + str(name) + " is " + score + " (average score in this age is 100). Taseme parandamiseks peaks ta esmalt suutma "+ weaknesses,
+                    "text":  "Score for " + str(name) + " is " + score + " (average score in this age is 100). In order to speed up development, " +  str(name) + " should first " + weaknesses,
                     "buttons": [
                       {
                         "type": "show_block",
-                        "block_name": "test_summary_hidden",
-                        "title": "Strat training"
+                        "block_name": "exercises_eng",
+                        "title": "Start training"
                       },
                       {
                         "type": "show_block",
