@@ -830,7 +830,7 @@ def propose_exercise():
       data = {
           "messages": [
 #            {"text": "Hasn't learnt or doesen't have to learn anything new yet."},
-            {"text": str(query)},
+            {"text": str(rows[0])},
             {
               "attachment": {
                 "type": "template",
