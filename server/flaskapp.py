@@ -727,7 +727,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100).",
+                    "text":  "Score for " + str(name) + " is " + score + " (average score in this age is 100).",
                     "buttons": [
                       {
                         "type": "show_block",
@@ -751,17 +751,17 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100). Taseme parandamiseks peaks ta esmalt suutma " + weaknesses,
+                    "text":  "Score for " + str(name) + " is " + score + " (average score in this age is 100). Taseme parandamiseks peaks ta esmalt suutma " + weaknesses,
                     "buttons": [
                       {
                         "type": "show_block",
                         "block_name": "test_summary_hidden",
-                        "title": "Treenima"
+                        "title": "Start training"
                       },
                       {
                         "type": "show_block",
                         "block_name": "returning_parents_eng",
-                        "title": "Tagasi"
+                        "title": "Back"
                       }
                     ]
                   }
@@ -779,17 +779,17 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100). Taseme parandamiseks peaks ta esmalt suutma "+ weaknesses,
+                    "text":  "Score for " + str(name) + " is " + score + " (average score in this age is 100). Taseme parandamiseks peaks ta esmalt suutma "+ weaknesses,
                     "buttons": [
                       {
                         "type": "show_block",
                         "block_name": "test_summary_hidden",
-                        "title": "Treenima"
+                        "title": "Strat training"
                       },
                       {
                         "type": "show_block",
                         "block_name": "returning_parents_eng",
-                        "title": "Tagasi"
+                        "title": "Back"
                       }
                     ]
                   }
@@ -806,12 +806,12 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": "viga",
+                    "text": "error",
                     "buttons": [
                       {
                         "type": "show_block",
                         "block_name": "returning_parents_eng",
-                        "title": "Tagasi"
+                        "title": "Back"
                       }
                     ]
                   }
