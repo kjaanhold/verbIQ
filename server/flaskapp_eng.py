@@ -77,11 +77,11 @@ def store_test_results():
       result_cdf_value = request.form['test_result_cdf']
       result_cdf_value = float(result_cdf_value)
 
-      if (result_value == "Yes" and result_cdf_value < 0.5):
+      if (result_value == "Jah" and result_cdf_value < 0.5):
         result_cdf_value = float(1) - result_cdf_value
-      elif (result_value == "No" and result_cdf_value > 0.5):
+      elif (result_value == "Ei" and result_cdf_value > 0.5):
         result_cdf_value = float(1) - result_cdf_value
-      elif (result_value == "Not sure"):
+      elif (result_value == "Ei tea"):
         result_cdf_value = -1
       else:
         result_cdf_value = 0.5
@@ -96,7 +96,7 @@ def store_test_results():
       db.session.commit()
 
       data = {
-        "redirect_to_blocks": ["test recurring tests 2"]
+        "redirect_to_blocks": ["test recurring tests 2_eng"]
       }
       return jsonify(data)
 
@@ -117,14 +117,14 @@ def has_children():
 
     if Children.query.filter_by(key_user = key_user).count() == 0:
       data = {
-        'messages':[{"text": u"Great! Please enter information about your child."}], 
-        "redirect_to_blocks": ["create_child"]
+        'messages':[{"text": u"Great! Please enter your childs information."}], 
+        "redirect_to_blocks": ["create_child_eng"]
       }
 
       return jsonify(data)
 
     else: 
-      data = {"redirect_to_blocks": ["returning_parents"]}
+      data = {"redirect_to_blocks": ["returning_parents_eng"]}
       return jsonify(data)
 
 @app.route('/has_enough_children', methods = ['GET'])
@@ -133,20 +133,19 @@ def has_enough_children():
 
     if Children.query.filter_by(key_user = key_user).count() > 2:
       data = {
-          'messages':[{"text": u"You cannot enter more than three kids."}], 
-          "redirect_to_blocks": ["returning_parents"]
+          'messages':[{"text": u"Üle kolme lapse ei saa sisestada."}], 
+          "redirect_to_blocks": ["returning_parents_eng"]
         }
       return jsonify(data)
 
     else: 
-      data = {'messages':[{"text": "Great! Please enter information about your child."}]}
+      data = {'messages':[{"text": "Great! Please enter your childs information."}]}
       return jsonify(data)
 
 ## work in progress
 @app.route('/child_selection', methods = ['GET'])
 def child_selection():
     key_user = request.args.get('messenger user id')
-    user_language = request.args.get('user_language')
 
     if Children.query.filter_by(key_user = key_user).count() == 0:
       data = {
@@ -156,12 +155,12 @@ def child_selection():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": u"You have not entered any children yet.",
+                "text": u"You haven't inserted any children yet.",
                 "buttons": [
                   {
-                    "block_names": ["create_child"],
+                    "block_names": ["create_child_eng"],
                     "type": "show_block",
-                    "title": "Insert new child"
+                    "title": "Add a new child"
                   }
 
                 ]
@@ -189,7 +188,7 @@ def child_selection():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": u"Whose info you want to add?",
+                "text": u"Whose data you want to enter?",
                 "buttons": [
                   {
                     "set_attributes": 
@@ -197,14 +196,14 @@ def child_selection():
                         "Lapse_eesnimi": str(child_name_1),
                         "Synni_kuupaev": str(date_of_birth_1)
                       },
-                    "block_names": ["returning_parents"],
+                    "block_names": ["returning_parents_eng"],
                     "type": "show_block",
                     "title": str(child_name_1)
                   },
                   {
-                    "block_names": ["create_child"],
+                    "block_names": ["create_child_eng"],
                     "type": "show_block",
-                    "title": "Insert new child."
+                    "title": "Add a new child"
                   }
                 ]
               }
@@ -234,7 +233,7 @@ def child_selection():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": u"Whose info you want to add?",
+                "text": u"Whose data you want to enter?",
                 "buttons": [
                   {
                     "set_attributes": 
@@ -242,7 +241,7 @@ def child_selection():
                         "Lapse_eesnimi": str(child_name_1),
                         "Synni_kuupaev": str(date_of_birth_1)
                       },
-                    "block_names": ["returning_parents"],
+                    "block_names": ["returning_parents_eng"],
                     "type": "show_block",
                     "title": str(child_name_1)
                   },
@@ -252,14 +251,14 @@ def child_selection():
                         "Lapse_eesnimi": str(child_name_2),
                         "Synni_kuupaev": str(date_of_birth_2)
                       },
-                    "block_names": ["returning_parents"],
+                    "block_names": ["returning_parents_eng"],
                     "type": "show_block",
                     "title": str(child_name_2)
                   },
                   {
-                    "block_names": ["create_child"],
+                    "block_names": ["create_child_eng"],
                     "type": "show_block",
-                    "title": "Insert new child"
+                    "title": "Add a new child"
                   }
 
                 ]
@@ -290,7 +289,7 @@ def child_selection():
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": u"Whose info you want to add?",
+                "text": u"Whose data you want to enter?",
                 "buttons": [
                   {
                     "set_attributes": 
@@ -298,7 +297,7 @@ def child_selection():
                         "Lapse_eesnimi": str(child_name_1),
                         "Synni_kuupaev": str(date_of_birth_1)
                       },
-                    "block_names": ["returning_parents"],
+                    "block_names": ["returning_parents_eng"],
                     "type": "show_block",
                     "title": str(child_name_1)
                   },
@@ -308,7 +307,7 @@ def child_selection():
                         "Lapse_eesnimi": str(child_name_2),
                         "Synni_kuupaev": str(date_of_birth_2)
                       },
-                    "block_names": ["returning_parents"],
+                    "block_names": ["returning_parents_eng"],
                     "type": "show_block",
                     "title": str(child_name_2)
                   },
@@ -318,7 +317,7 @@ def child_selection():
                         "Lapse_eesnimi": str(child_name_3),
                         "Synni_kuupaev": str(date_of_birth_3)
                       },
-                    "block_names": ["returning_parents"],
+                    "block_names": ["returning_parents_eng"],
                     "type": "show_block",
                     "title": str(child_name_3)
                   }
@@ -332,7 +331,7 @@ def child_selection():
     else: 
 
       data = {
-        "redirect_to_blocks": ["returning_parents"]
+        "redirect_to_blocks": ["returning_parents_eng"]
       }
 
 
@@ -353,7 +352,7 @@ def store_children():
       new_data = Children(key_user=str(key_user), lapse_eesnimi=str(lapse_eesnimi.encode('utf8')), date_of_birth=str(date_of_birth), gender=str(gender.encode('utf8')), first_updated=str(first_updated), last_updated=str(last_updated))
       db.session.add(new_data)
       db.session.commit()
-      data = {"redirect_to_blocks": ["returning_parents"]}
+      data = {"redirect_to_blocks": ["returning_parents_eng"]}
       return jsonify(data)
 
     if request.method == "GET":
@@ -377,7 +376,7 @@ def to_json(inst, cls):
     """
     convert = dict()
     # add your coversions for things like datetime's 
-    # and what-not that are not serializable.
+    # and what-not that aren't serializable.
     d = dict()
     for c in cls.__table__.columns:
         v = getattr(inst, c.name)
@@ -403,7 +402,7 @@ def next_test_selection(dob,name,last_block):
     age = date.today() - date_object
     age_months = str(int(age.days)/30)
 
-      # this kid has not done any tests yet
+      # this kid hasn't done any tests yet
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
 
       query = "SELECT t.description, t.block_name, m.target_age FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE m.target_age BETWEEN (2*%s)/3 AND (4*%s)/3 ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months)
@@ -415,7 +414,7 @@ def next_test_selection(dob,name,last_block):
 
     elif (last_block == "update_previous_tests"):
       # this kid has done at least one test
-      data = TestResults.query.filter_by(lapse_eesnimi = name, result_value = 'Yes').all()
+      data = TestResults.query.filter_by(lapse_eesnimi = name, result_value = 'Jah').all()
       result_dict = [u.__dict__ for u in data]
       block_name = [d.get('block_name') for d in result_dict]
       block_name = str(block_name)
@@ -425,7 +424,7 @@ def next_test_selection(dob,name,last_block):
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
  
-      query = "SELECT t.description, t.block_name, m.target_age FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE ( m.target_age BETWEEN (2*%s)/3 AND (4*%s)/3 ) AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months, block_name)    
+      query = "SELECT t.description, t.block_name, m.target_age FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.language = 'eng' AND ( m.target_age BETWEEN (2*%s)/3 AND (4*%s)/3 ) AND t.block_name NOT IN (%s)  ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months, block_name)    
 
       rows = execute_query(query)
 
@@ -451,7 +450,7 @@ def next_test_selection(dob,name,last_block):
       block_name = block_name.replace('[','')
       block_name = block_name.replace(']','')
  
-      query = "SELECT t.description, t.block_name, m.target_age FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE ( m.target_age BETWEEN (2*%s)/3 AND (4*%s)/3 ) AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months, block_name)    
+      query = "SELECT t.description, t.block_name, m.target_age FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.language = 'eng' AND ( m.target_age BETWEEN (2*%s)/3 AND (4*%s)/3 ) AND t.block_name NOT IN (%s) ORDER BY RANDOM() LIMIT 1;" % (age_months, age_months, block_name)    
 
       rows = execute_query(query)
 
@@ -514,7 +513,7 @@ def run_test():
                       "test_result_cdf": str(cdf)
                     },
                     "type": "show_block",
-                    "block_name": "test recurring tests 3",
+                    "block_name": "test recurring tests 3_eng",
                     "title": u"Yes"
                   },
                   {
@@ -524,7 +523,7 @@ def run_test():
                       "test_result_cdf": str(cdf)                      
                     },
                     "type": "show_block",
-                    "block_name": "test recurring tests 3",
+                    "block_name": "test recurring tests 3_eng",
                     "title": u"Not sure"
                   },                
                   {
@@ -534,7 +533,7 @@ def run_test():
                       "test_result_cdf": str(cdf)                      
                     },
                     "type": "show_block",
-                    "block_name": "test recurring tests 3",
+                    "block_name": "test recurring tests 3_eng",
                     "title": u"No"
                   }
                 ]
@@ -584,7 +583,7 @@ def age_check():
     name = request.args.get('Lapse_eesnimi')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
-    out_text = u"Thanks. " + (name) + u" was born on " + str(date_object) + " and is currently " + str(int(round(int(age.days)/30))) + " months old."
+    out_text = u"Thanks. " + (name) + u" was born on " + str(date_object) + " and he/she is currently " + str(int(round(int(age.days)/30))) + " months old."
     data = {
       "messages": [
         {
@@ -596,13 +595,13 @@ def age_check():
               "buttons": [
                 {
                   "type": "show_block",
-                  "block_name": "insert_child",
-                  "title": u"Correct, lwra move on!"
+                  "block_name": "insert_child_eng",
+                  "title": u"Yes, continue!"
                 },
                 {
                   "type": "show_block",
-                  "block_name": "create_child",
-                  "title": "Wrong, lets fix it ..."
+                  "block_name": "create_child_eng",
+                  "title": "Error, fix it"
                 }
               ]
             }
@@ -641,7 +640,11 @@ def return_test_results(name, result_value):
       out_text = str(rows[0][0].encode("utf-8"))
     return str(out_text)
 
+
+
+    
 def return_test_score(name):
+    name = request.args.get('Lapse_eesnimi')
 
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
       out_text = "0"
@@ -682,7 +685,7 @@ def tests_summary():
 
 
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
-      out_text = name + u" hasn not taken any tests yet."
+      out_text = name + u" hasn't taken any tests yet."
 
       data = {
           "messages": [
@@ -695,7 +698,7 @@ def tests_summary():
                   "buttons": [
                     {
                       "type": "show_block",
-                      "block_name": "returning_parents",
+                      "block_name": "returning_parents_eng",
                       "title": "Back"
                     }
                   ]
@@ -724,11 +727,11 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  "Score for " str(name) + " is " + score + " (average score for children in this age is 100).",
+                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100).",
                     "buttons": [
                       {
                         "type": "show_block",
-                        "block_name": "returning_parents",
+                        "block_name": "returning_parents_eng",
                         "title": "Back"
                       }
                     ]
@@ -748,17 +751,17 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  "Score for " str(name) + " is " + score + " (average score for children in this age is 100). To improve it, he/she should " + weaknesses,
+                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100). Taseme parandamiseks peaks ta esmalt suutma " + weaknesses,
                     "buttons": [
                       {
                         "type": "show_block",
                         "block_name": "test_summary_hidden",
-                        "title": "Start training"
+                        "title": "Treenima"
                       },
                       {
                         "type": "show_block",
-                        "block_name": "returning_parents",
-                        "title": "Back"
+                        "block_name": "returning_parents_eng",
+                        "title": "Tagasi"
                       }
                     ]
                   }
@@ -776,17 +779,17 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": "Score for " str(name) + " is " + score + " (average score for children in this age is 100). To improve it, he/she should " + weaknesses,
+                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100). Taseme parandamiseks peaks ta esmalt suutma "+ weaknesses,
                     "buttons": [
                       {
                         "type": "show_block",
                         "block_name": "test_summary_hidden",
-                        "title": "Start training"
+                        "title": "Treenima"
                       },
                       {
                         "type": "show_block",
-                        "block_name": "returning_parents",
-                        "title": "Back"
+                        "block_name": "returning_parents_eng",
+                        "title": "Tagasi"
                       }
                     ]
                   }
@@ -803,12 +806,12 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": "error",
+                    "text": "viga",
                     "buttons": [
                       {
                         "type": "show_block",
-                        "block_name": "returning_parents",
-                        "title": "Back"
+                        "block_name": "returning_parents_eng",
+                        "title": "Tagasi"
                       }
                     ]
                   }
@@ -827,23 +830,23 @@ def propose_exercise():
     returned_test_score = str(return_test_score(name))
     bottom_block_name = str(returned_test_score.split("///")[2]) 
 
-    query = "SELECT m.description, e.description, e.image_url FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN milestones_exercises me ON ms.key_milestone = me.key_milestone JOIN exercises e ON me.key_exercise = e.id_exercise WHERE t.block_name IN (%s) LIMIT 3;" % (bottom_block_name)    
+    query = "SELECT m.description, e.description, e.image_url FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone JOIN milestones_exercises me ON ms.key_milestone = me.key_milestone JOIN exercises e ON me.key_exercise = e.id_exercise WHERE t.block_name IN (%s) AND e.language = 'eng' LIMIT 3;" % (bottom_block_name)    
     rows = execute_query(query)
 
     if (len(rows) == 0):
       data = {
           "messages": [
-            {"text": "Your child has not learnt anything new yet."},
+            {"text": "Hasn't learnt or doesen't have to learn anything new yet."},
             {
               "attachment": {
                 "type": "template",
                 "payload": {
                   "template_type": "button",
-                  "text": "error",
+                  "text": "viga",
                   "buttons": [
                     {
                       "type": "show_block",
-                      "block_name": "returning_parents",
+                      "block_name": "returning_parents_eng",
                       "title": "Back"
                     }
                   ]
@@ -862,7 +865,7 @@ def propose_exercise():
 
       data = {
           "messages": [
-            {"text": "In order to speed up the progress for " + str(name) + ", you should do following exercises."},
+            {"text": "In order to speed up developmental progress for " + str(name) + ", you should practice following exercises."},
             {
               "attachment":{
                 "type":"template",
@@ -870,14 +873,14 @@ def propose_exercise():
                   "template_type":"generic",
                   "elements":[
                     {
-                      "title": "Cannot " + str(rows[0][0].encode("utf-8")) + "?",
+                      "title": "Can't " + str(rows[0][0].encode("utf-8")) + "?",
                       "image_url": str(image_1),
                       "subtitle": str(rows[0][1].encode("utf-8")),
                       "buttons":[
                         {
                           "type":"show_block",
-                          "block_name": "ask_feedback",
-                          "title":"Send us your question."
+                          "block_name": "ask_feedback_eng",
+                          "title":"Ask us more"
                         }
                       ]
                     }
@@ -903,7 +906,7 @@ def propose_exercise():
 
       data = {
           "messages": [
-            {"text": "In order to speed up the progress for " + str(name) + ", you should do following exercises."},
+            {"text": "In order to speed up developmental progress for " + str(name) + ", you should practice following exercises"},
             {
               "attachment":{
                 "type":"template",
@@ -911,26 +914,26 @@ def propose_exercise():
                   "template_type":"generic",
                   "elements":[
                     {
-                      "title": "Cannot " + str(rows[0][0].encode("utf-8")) + "?",
+                      "title": "Can't " + str(rows[0][0].encode("utf-8")) + "?",
                       "image_url": str(image_1),
                       "subtitle": str(rows[0][1].encode("utf-8")),
                       "buttons":[
                         {
                           "type":"show_block",
-                          "block_name": "ask_feedback",
-                          "title":"Send us your question."
+                          "block_name": "ask_feedback_eng",
+                          "title":"Ask us more"
                         }
                       ]
                     },
                     {
-                      "title": "Cannot " +  str(rows[1][0].encode("utf-8")) + "?",
+                      "title": "Can't " +  str(rows[1][0].encode("utf-8")) + "?",
                       "image_url":str(image_2),
                       "subtitle":str(rows[1][1].encode("utf-8")),
                       "buttons":[
                         {
                           "type":"show_block",
-                          "block_name": "ask_feedback",
-                          "title":"Send us your question."
+                          "block_name": "ask_feedback_eng",
+                          "title":"Ask us more"
                         }
                       ]
                     }
@@ -961,7 +964,7 @@ def propose_exercise():
 
       data = {
             "messages": [
-              {"text": "Selleks et aidata " + str(name) + " arengule kaasa, tee talle järgnevaid harjutusi."},
+              {"text": "In order to speed up developmental progress for " + str(name) + ", you should practice following exercises."},
               {
                 "attachment":{
                   "type":"template",
@@ -969,38 +972,38 @@ def propose_exercise():
                     "template_type":"generic",
                     "elements":[
                       {
-                        "title": "Can not " + str(rows[0][0].encode("utf-8")) + "?",
+                        "title": "Can't " + str(rows[0][0].encode("utf-8")) + "?",
                         "image_url": str(image_1),
                         "subtitle": str(rows[0][1].encode("utf-8")),
                         "buttons":[
                           {
                             "type":"show_block",
-                            "block_name": "ask_feedback",
-                            "title":"Send us your question."
+                            "block_name": "ask_feedback_eng",
+                            "title":"Ask us more"
                           }
                         ]
                       },
                       {
-                        "title": "Cannot " +  str(rows[1][0].encode("utf-8")) + "?",
+                        "title": "Can't " +  str(rows[1][0].encode("utf-8")) + "?",
                         "image_url":str(image_2),
                         "subtitle":str(rows[1][1].encode("utf-8")),
                         "buttons":[
                           {
                             "type":"show_block",
-                            "block_name": "ask_feedback",
-                            "title":"SSend us your question."
+                            "block_name": "ask_feedback_eng",
+                            "title":"Ask us more"
                           }
                         ]
                       },
                       {
-                        "title": "Cannot " +  str(rows[2][0].encode("utf-8")) + "?",
+                        "title": "Can't " +  str(rows[2][0].encode("utf-8")) + "?",
                         "image_url":str(image_3),
                         "subtitle":str(rows[2][1].encode("utf-8")),
                         "buttons":[
                           {
                             "type":"show_block",
-                            "block_name": "ask_feedback",
-                            "title":"Send us your question."
+                            "block_name": "ask_feedback_eng",
+                            "title":"Ask us more"
                           }
                         ]
                       }
