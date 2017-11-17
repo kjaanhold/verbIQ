@@ -618,26 +618,8 @@ def return_test_results():
 #def return_test_results(name, result_value):
     name = request.args.get('Lapse_eesnimi')
     result_value = request.args.get('result_value')
+    out_text = "no_results"
 
-    if TestResults.query.filter_by(lapse_eesnimi = name, result_value = result_value).first() is None:
-      out_text = "no_results"
-
-    else:
-      data = TestResults.query.filter_by(lapse_eesnimi = name, result_value = result_value).all()
-      result_dict = [u.__dict__ for u in data]
-      block_name = [d.get('block_name') for d in result_dict]    
-      block_name = str(block_name)
-
-      block_name = block_name.replace('[u"', "")
-      block_name = block_name.replace('", u"',', ')
-      block_name = block_name.replace('"','')
-      block_name = block_name.replace('[','')
-      block_name = block_name.replace(']','')
-
-      query = "SELECT group_concat(m.description, ', '), 'a' FROM tests t JOIN milestone_tests ms ON t.id_test = ms.key_test JOIN milestones m ON ms.key_milestone = m.id_milestone WHERE t.block_name IN (%s) LIMIT 1;" % (block_name)    
-      rows = execute_query(query)
-
-      out_text = str(rows[0][0].encode("utf-8"))
     return str(out_text)
 
 
