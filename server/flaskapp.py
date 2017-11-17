@@ -613,11 +613,11 @@ def age_check():
     return response
 
 
-#@app.route('/return_test_results', methods=['GET'])
-#def return_test_results():
-def return_test_results(name, result_value):
-#    name = request.args.get('Lapse_eesnimi')
-#    result_value = request.args.get('result_value')
+@app.route('/return_test_results', methods=['GET'])
+def return_test_results():
+#def return_test_results(name, result_value):
+    name = request.args.get('Lapse_eesnimi')
+    result_value = request.args.get('result_value')
 
     if TestResults.query.filter_by(lapse_eesnimi = name, result_value = result_value).first() is None:
       out_text = "no_results"
@@ -645,7 +645,7 @@ def return_test_results(name, result_value):
 @app.route('/return_test_score', methods=['GET'])
 #def return_test_score(name):
 def return_test_score():
-    
+
     name = request.args.get('Lapse_eesnimi')
 
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
