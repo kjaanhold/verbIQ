@@ -637,8 +637,11 @@ def return_test_results(name, result_value):
     return str(out_text)
 
 
+@app.route('/return_test_score', methods=['GET'])
+def return_test_score():
+#def return_test_score(name):
 
-def return_test_score(name):
+    name = request.args.get('Lapse_eesnimi')
 
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
       out_text = "0"
