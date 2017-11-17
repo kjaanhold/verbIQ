@@ -430,7 +430,7 @@ def next_test_selection(dob,name,last_block):
 
       if str(rows) == '[]':
         question  = 'done'
-        block_name = 'test_summary'
+        block_name = 'test_summary_eng'
         target_age = str("0")
 
       else:
@@ -456,7 +456,7 @@ def next_test_selection(dob,name,last_block):
 
       if str(rows) == '[]':
         question  = 'done'
-        block_name = 'test_summary'
+        block_name = 'test_summary_eng'
         target_age = str("0")
 
       else:
@@ -482,7 +482,7 @@ def run_test():
     block_name = str(selected_test.split("///")[1])
 
     if question == "done":
-      data = {"redirect_to_blocks": ["test_summary"]}
+      data = {"redirect_to_blocks": ["test_summary_eng"]}
 
     else:
       date_object = datetime.strptime(dob, "%Y-%m-%d").date()
