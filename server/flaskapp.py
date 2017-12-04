@@ -829,7 +829,7 @@ def propose_exercise():
     if (len(rows) == 0):
       data = {
           "messages": [
-            {"text": "Hasn't learnt or doesen't have to learn anything new yet."},
+            {"text": "Child on track! Come back in a week."},
             {
               "attachment": {
                 "type": "template",
