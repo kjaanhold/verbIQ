@@ -583,7 +583,7 @@ def age_check():
     name = request.args.get('Lapse_eesnimi')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
-    out_text = u"Thanks. " + (name) + u" was born on " + str(date_object) + " and he/she is currently " + str(int(round(int(age.days)/30))) + " months old."
+    out_text = u"Thanks. " + (name) + u" was born on " + str(date_object) + " and is currently " + str(int(round(int(age.days)/30))) + " months old."
     data = {
       "messages": [
         {
@@ -601,7 +601,7 @@ def age_check():
                 {
                   "type": "show_block",
                   "block_name": "create_child_eng",
-                  "title": "Error, fix it"
+                  "title": "Whoops, re-enter data!"
                 }
               ]
             }
