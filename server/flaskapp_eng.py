@@ -430,7 +430,7 @@ def next_test_selection(dob,name,last_block):
 
       if str(rows) == '[]':
         question  = 'done'
-        block_name = 'test_summary'
+        block_name = 'test_summary_eng'
         target_age = str("0")
 
       else:
@@ -456,7 +456,7 @@ def next_test_selection(dob,name,last_block):
 
       if str(rows) == '[]':
         question  = 'done'
-        block_name = 'test_summary'
+        block_name = 'test_summary_eng'
         target_age = str("0")
 
       else:
@@ -482,7 +482,7 @@ def run_test():
     block_name = str(selected_test.split("///")[1])
 
     if question == "done":
-      data = {"redirect_to_blocks": ["test_summary"]}
+      data = {"redirect_to_blocks": ["test_summary_eng"]}
 
     else:
       date_object = datetime.strptime(dob, "%Y-%m-%d").date()
@@ -583,7 +583,7 @@ def age_check():
     name = request.args.get('Lapse_eesnimi')
     date_object = datetime.strptime(dob, "%Y-%m-%d").date()
     age = date.today() - date_object
-    out_text = u"Thanks. " + (name) + u" was born on " + str(date_object) + " and he/she is currently " + str(int(round(int(age.days)/30))) + " months old."
+    out_text = u"Thanks. " + (name) + u" was born on " + str(date_object) + " and is currently " + str(int(round(int(age.days)/30))) + " months old."
     data = {
       "messages": [
         {
@@ -601,7 +601,7 @@ def age_check():
                 {
                   "type": "show_block",
                   "block_name": "create_child_eng",
-                  "title": "Error, fix it"
+                  "title": "Whoops, re-enter data!"
                 }
               ]
             }
@@ -613,11 +613,7 @@ def age_check():
     return response
 
 
-#@app.route('/return_test_results', methods=['GET'])
-#def return_test_results():
 def return_test_results(name, result_value):
-#    name = request.args.get('Lapse_eesnimi')
-#    result_value = request.args.get('result_value')
 
     if TestResults.query.filter_by(lapse_eesnimi = name, result_value = result_value).first() is None:
       out_text = "no_results"
@@ -641,10 +637,7 @@ def return_test_results(name, result_value):
     return str(out_text)
 
 
-
-    
 def return_test_score(name):
-    name = request.args.get('Lapse_eesnimi')
 
     if TestResults.query.filter_by(lapse_eesnimi = name).first() is None:
       out_text = "0"
@@ -727,7 +720,7 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100).",
+                    "text":  "Score for " + str(name) + " is " + score + " (average score in this age is 100).",
                     "buttons": [
                       {
                         "type": "show_block",
@@ -751,17 +744,17 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100). Taseme parandamiseks peaks ta esmalt suutma " + weaknesses,
+                    "text":  "Score for " + str(name) + " is " + score + " (average score in this age is 100). In order to speed up development, " +  str(name) + " should first " + weaknesses,
                     "buttons": [
                       {
                         "type": "show_block",
-                        "block_name": "test_summary_hidden",
-                        "title": "Treenima"
+                        "block_name": "exercises_eng",
+                        "title": "Start training"
                       },
                       {
                         "type": "show_block",
                         "block_name": "returning_parents_eng",
-                        "title": "Tagasi"
+                        "title": "Back"
                       }
                     ]
                   }
@@ -779,17 +772,17 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text":  str(name) + " skoor on " + score + " (keskmise lapse skoor selles vanuses on 100). Taseme parandamiseks peaks ta esmalt suutma "+ weaknesses,
+                    "text":  "Score for " + str(name) + " is " + score + " (average score in this age is 100). In order to speed up development, " +  str(name) + " should first " + weaknesses,
                     "buttons": [
                       {
                         "type": "show_block",
-                        "block_name": "test_summary_hidden",
-                        "title": "Treenima"
+                        "block_name": "exercises_eng",
+                        "title": "Start training"
                       },
                       {
                         "type": "show_block",
                         "block_name": "returning_parents_eng",
-                        "title": "Tagasi"
+                        "title": "Back"
                       }
                     ]
                   }
@@ -806,12 +799,12 @@ def tests_summary():
                   "type": "template",
                   "payload": {
                     "template_type": "button",
-                    "text": "viga",
+                    "text": "error",
                     "buttons": [
                       {
                         "type": "show_block",
                         "block_name": "returning_parents_eng",
-                        "title": "Tagasi"
+                        "title": "Back"
                       }
                     ]
                   }
@@ -836,13 +829,13 @@ def propose_exercise():
     if (len(rows) == 0):
       data = {
           "messages": [
-            {"text": "Hasn't learnt or doesen't have to learn anything new yet."},
+            {"text": "Child on track! Come back in a week."},
             {
               "attachment": {
                 "type": "template",
                 "payload": {
                   "template_type": "button",
-                  "text": "viga",
+#                  "text": "viga",
                   "buttons": [
                     {
                       "type": "show_block",
